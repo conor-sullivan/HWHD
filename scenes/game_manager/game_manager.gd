@@ -59,6 +59,7 @@ func setup_players() -> void:
 	
 	players.append(computer3)
 	
+	current_player = real_player
 	GameEvents.player_data_changed.emit()
 
 
@@ -66,6 +67,14 @@ func get_player_by_id(player_id : int) -> Player:
 	var player_to_return = null
 	for player in players:
 		if player.player_id == player_id:
+			player_to_return = player
+	return player_to_return
+
+
+func get_solo_real_player() -> Player:
+	var player_to_return = null
+	for player in players:
+		if not player.is_computer:
 			player_to_return = player
 	return player_to_return
 
@@ -101,16 +110,22 @@ func draw_initial_district_cards() -> void:
 	real_player.district_deck_cards.shuffle()
 	district_deck_instance.set_district_deck(real_player.district_deck_cards)
 	
+
+	real_player.district_deck_cards.shuffle()
+	var starting_index = real_player.district_deck_cards.find(real_player.district_deck_cards[0])
+	var ending_index = real_player.district_deck_cards.find(real_player.district_deck_cards[4])
+	real_player.district_cards_in_hand = real_player.district_deck_cards.slice(starting_index, ending_index)
+
 	var cards_in_hand = await district_deck_instance.draw_four_cards()
-	real_player.district_cards_in_hand = cards_in_hand
+	real_player.district_deck_cards = real_player.district_deck_cards.slice(starting_index, ending_index)
 	real_player.district_cards_in_hand_count = real_player.district_cards_in_hand.size()
-	real_player.district_deck_cards = district_deck_instance.cards_in_deck
+	
 
 	# computers
 	for computer in computers:
 		computer.district_deck_cards.shuffle()
 		computer.district_cards_in_hand = computer.district_deck_cards.slice(0, 4)
-		computer.district_deck_cards = computer.district_deck_cards.slice(0, 4)
+		computer.district_deck_cards = computer.district_deck_cards.slice(4, computer.district_deck_cards.size())
 		computer.district_cards_in_hand_count = computer.district_cards_in_hand.size()
 	
 	GameEvents.player_data_changed.emit()
@@ -155,15 +170,13 @@ func change_turn() -> void:
 func place_cards_back_in_hand() -> void:
 	var player_hand = get_tree().get_first_node_in_group("player_hand") as PlayerHand
 	for card in current_player.district_cards_in_hand:
-		if card is DistrictCard:
-			player_hand.add_child(card)
-			player_hand.add_card_to_hand(card)
-			(card as DistrictCard).is_face_down = false
-		else:
-			var card_scene = DISTRICT_CARD_SCENE.instantiate()
-			card_scene.district_resource = card
-			player_hand.add_child(card_scene)
-			player_hand.add_card_to_hand(card_scene)
+		var card_scene = DISTRICT_CARD_SCENE.instantiate() as DistrictCard
+		card_scene.district_resource = card
+		player_hand.add_child(card_scene)
+		player_hand.add_card_to_hand(card_scene)
+		
+		if current_player.is_computer == false:
+			card_scene.is_face_down = false
 
 
 func set_current_player() -> void:

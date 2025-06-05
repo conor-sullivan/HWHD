@@ -13,9 +13,9 @@ var window_size : Vector2
 func _ready() -> void:
 	window_size = get_viewport().size
 	player_hand = get_tree().get_first_node_in_group("player_hand")
-	var input_manager = get_tree().get_first_node_in_group("input_manager")
-	input_manager.connect("left_mouse_button_pressed", _on_left_mouse_button_pressed)
-	input_manager.connect("left_mouse_button_released", _on_left_mouse_button_released)
+
+	GameEvents.connect("left_mouse_button_pressed", _on_left_mouse_button_pressed)
+	GameEvents.connect("left_mouse_button_released", _on_left_mouse_button_released)
 
 
 func _process(_delta: float) -> void:
@@ -81,7 +81,8 @@ func card_start_drag(card : DistrictCard) -> void:
 
 
 func card_stop_drag(_delta = null) -> void:
-	#card_being_dragged.scale = Vector2(1.0, 1.0)
+	player_hand = get_tree().get_first_node_in_group("player_hand")
+
 	var card_slot_found = raycast_check_for_card_slot() as CardSlot
 	
 	if card_slot_found and not card_slot_found.card_in_slot:

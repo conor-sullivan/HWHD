@@ -1,9 +1,6 @@
 extends Node2D
 class_name InputManager
 
-signal left_mouse_button_pressed
-signal left_mouse_button_released
-
 const CARD_COLLISION_MASK : int = 1
 const DECK_COLLISION_MASK : int = 4
 
@@ -19,13 +16,16 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
-			left_mouse_button_pressed.emit()
+			GameEvents.left_mouse_button_pressed.emit()
 			raycast_at_cursor()
 		else: 
-			left_mouse_button_released.emit()
+			print("released")
+			GameEvents.left_mouse_button_released.emit()
 
 
 func raycast_at_cursor() -> void:
+	card_manager = get_tree().get_first_node_in_group("card_manager")
+	deck = get_tree().get_first_node_in_group("district_deck")
 	var space_state = get_world_2d().direct_space_state
 	var paramters = PhysicsPointQueryParameters2D.new()
 	paramters.position = get_global_mouse_position()

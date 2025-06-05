@@ -21,3 +21,6 @@ signal player_data_changed()
 
 signal card_hovered(hovered_over_card : DistrictCard, card_doing_the_hovering : DistrictCard)
 signal card_hovered_off(hovered_over_card : DistrictCard, card_doing_the_hovering : DistrictCard)
+
+signal left_mouse_button_pressed
+signal left_mouse_button_released

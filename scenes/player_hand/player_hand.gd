@@ -17,17 +17,12 @@ func _ready() -> void:
 	GameEvents.card_hovered_off.connect(_on_card_hovered_off)
 
 
-func _physics_process(delta: float) -> void:
-	pass#make_room_for_card_swap()
-
-
 func _on_card_hovered(hovered_over_card : DistrictCard, card_doing_the_hovering : DistrictCard) -> void:
 	make_room_for_card_swap(hovered_over_card, card_doing_the_hovering)
 
 
 func _on_card_hovered_off(hovered_over_card : DistrictCard, card_doing_the_hovering : DistrictCard) -> void:
 	make_room_for_card_swap(hovered_over_card, card_doing_the_hovering)
-
 
 
 func add_card_to_hand(card : DistrictCard, speed : float = DEFAULT_CARD_MOVE_SPEED) -> void:
@@ -38,12 +33,22 @@ func add_card_to_hand(card : DistrictCard, speed : float = DEFAULT_CARD_MOVE_SPE
 
 
 func update_hand_positions(speed : float = DEFAULT_CARD_MOVE_SPEED) -> void:
+	var player = (get_tree().get_first_node_in_group("game_manager") as GameManager).current_player
 	for i in range(player_hand.size()):
 		move_child(player_hand[i -1], i - 1)
 		var new_position = Vector2(calculate_card_position(i), HAND_Y_POSITION)
 		var card = player_hand[i] as DistrictCard
 		card.position_in_hand = new_position
 		animate_card_to_position(card, new_position, speed)
+		
+
+	var new_hand_resources : Array[DistrictData]
+	var reverse_order_cards = player_hand.duplicate()
+	reverse_order_cards.reverse()
+	for card in reverse_order_cards:
+		new_hand_resources.append(card.district_resource)
+	
+	player.district_cards_in_hand = new_hand_resources
 
 
 func calculate_card_position(index : int) -> float:

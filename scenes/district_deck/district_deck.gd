@@ -34,7 +34,7 @@ func set_district_deck(deck) -> void:
 
 
 func draw_card() -> DistrictCard:
-	var card = cards_in_deck[-1]
+	var card = cards_in_deck[0]
 	print("drawing " , card.district_resource.district_name)
 	#card_in_hand_test = card.duplicate()
 	cards_in_deck.erase(card)

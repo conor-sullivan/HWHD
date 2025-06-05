@@ -1,0 +1,17 @@
+res://scenes/game_ui/game_ui.tscn
+res://shaders/background_texture.gdshader
+res://shaders/foil_card.gdshader
+res://resources/theme/default_theme.tres
+res://shaders/avatar_transparent_circle.gdshader
+res://resources/district_decks/default_district_deck.tres
+res://shaders/character_unused_shader.gdshader
+res://scenes/game_manager/game_manager.gd
+res://scenes/game_manager/game_manager.tscn
+res://scenes/player_tracker/player_tracker.tscn
+res://scenes/player_tracker_container/player_tracker_container.tscn
+res://scenes/player_hand/player_hand.tscn
+res://scenes/input_manager/input_manager.gd
+res://singletons/game_events.gd
+res://scenes/card_manager/card_manager.gd
+res://scenes/player_hand/player_hand.gd
+res://scenes/district_deck/district_deck.gd
