@@ -9,13 +9,15 @@ signal ended_turn()
 signal requested_to_play_top_card_of_character_deck_face_down
 signal requested_to_play_top_card_of_character_deck_face_up
 signal requested_to_shuffle_character_deck
+signal requested_move_pickable_cards_to_character_picker
+signal request_make_character_picker_visible
 
 signal character_deck_shuffled
 signal played_top_card_of_character_deck(card : CharacterCard)
 
 signal character_deck_ready_to_begin_passing_around(cards_in_deck : Array[CharacterCard], cards_not_in_deck : Array[CharacterCard])
 
-signal character_card_chosen_by_player(card : CharacterCard, player_id : int)
+signal character_card_chosen_by_player(card : CharacterData, player_id : int)
 
 signal player_data_changed()
 

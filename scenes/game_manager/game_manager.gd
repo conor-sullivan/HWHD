@@ -14,6 +14,8 @@ var current_player : Player
 
 
 func _ready() -> void:
+	GameEvents.character_card_chosen_by_player.connect(_on_character_card_chosen_by_player)
+	
 	setup_players()
 	create_player_trackers()
 	draw_initial_district_cards()
@@ -187,3 +189,8 @@ func set_current_player() -> void:
 
 func _on_button_pressed() -> void:
 	change_turn()
+
+
+func _on_character_card_chosen_by_player(cardData : CharacterData, player : Player) -> void:
+	player.has_chosen_character_card = true
+	player.current_character_card = cardData

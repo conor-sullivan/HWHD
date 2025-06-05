@@ -64,10 +64,16 @@ func move_cards_to_character_tracker_container() -> void:
 		i += 1
 
 
+func move_pickable_cards_to_character_picker() -> void:
+	GameEvents.requested_move_pickable_cards_to_character_picker.emit()
+
+
 func _on_button_pressed() -> void:
 	GameEvents.requested_to_shuffle_character_deck.emit()
 
 
 func _on_timer_timeout() -> void:
+	GameEvents.request_make_character_picker_visible.emit()
+	move_pickable_cards_to_character_picker()
 	move_cards_to_character_tracker_container()
 	$AnimationPlayer.play("destroy_scene")

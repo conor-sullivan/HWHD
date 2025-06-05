@@ -40,10 +40,12 @@ game_manager=""
 character_tracker_container=""
 character_deck=""
 game_ui=""
+character_picker=""
 
 [layer_names]
 
-2d_physics/layer_1="card"
+2d_physics/layer_1="district_card"
+2d_physics/layer_2="character_card"
 
 [rendering]
 

@@ -15,3 +15,13 @@ res://singletons/game_events.gd
 res://scenes/card_manager/card_manager.gd
 res://scenes/player_hand/player_hand.gd
 res://scenes/district_deck/district_deck.gd
+res://scenes/character_picker/character_picker.tscn
+res://scenes/character_card_area_controller/character_card_controller.tscn
+res://scenes/character_card/character_card.tscn
+res://scenes/character_card/character_card.gd
+res://scenes/character_card_area_controller/character_card_controller.gd
+res://scenes/character_deck/character_deck.gd
+res://scenes/character_picker/character_picker.gd
+res://scenes/character_deck/character_deck.tscn
+res://scenes/district_card/district_card.tscn
+res://classes/player_class.gd

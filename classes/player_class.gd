@@ -4,7 +4,7 @@ class_name Player
 var player_name : String #- name
 var avatar_texture : Texture2D #- avatar texture
 var player_id : int #- player number (for turn order)
-var current_character_card : CharacterCard #- chosen character card
+var current_character_card : CharacterData #- chosen character card
 
 var district_deck_cards : Array
 

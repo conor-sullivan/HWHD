@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgxfypihwmwi1"]
+[gd_scene load_steps=14 format=3 uid="uid://dgxfypihwmwi1"]
 
 [ext_resource type="Script" uid="uid://yy6sfdhdq6l7" path="res://scenes/character_card/character_card.gd" id="1_2uesw"]
 [ext_resource type="Texture2D" uid="uid://cau5hfv844mhp" path="res://assets/pixelCardAssest.png" id="1_j5vwu"]
@@ -68,6 +68,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_8m626"]
@@ -154,26 +166,54 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(0.8, 0.8)]
 }
 
+[sub_resource type="Animation" id="Animation_t0yhe"]
+resource_name = "waiting_to_pick"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, 0.0, -0.0349066, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8m626"]
 _data = {
 &"RESET": SubResource("Animation_ybxm7"),
 &"place_card": SubResource("Animation_8m626"),
 &"reveal_flip": SubResource("Animation_qhiff"),
-&"shrink_scale": SubResource("Animation_m8cc1")
+&"shrink_scale": SubResource("Animation_m8cc1"),
+&"waiting_to_pick": SubResource("Animation_t0yhe")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhiff"]
+size = Vector2(71.0277, 102.981)
 
 [node name="CharacterCard" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
+mouse_filter = 1
 script = ExtResource("1_2uesw")
 character_resource = ExtResource("2_qhiff")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8m626")
+}
 
 [node name="CardFront" type="Control" parent="."]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="CardBackgroundSprite" type="Sprite2D" parent="CardFront"]
 texture = ExtResource("1_j5vwu")
@@ -214,13 +254,22 @@ vertical_alignment = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="CardBackSprite" type="Sprite2D" parent="CardBack"]
 texture = ExtResource("3_2uesw")
 region_enabled = true
 region_rect = Rect2(318, 134, 96, 128)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_8m626")
-}
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.410036, 0.491807)
+shape = SubResource("RectangleShape2D_qhiff")
+disabled = true
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

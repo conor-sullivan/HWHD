@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlol5cuibkwyi"]
+[gd_scene load_steps=13 format=3 uid="uid://dlol5cuibkwyi"]
 
 [ext_resource type="PackedScene" uid="uid://c4jeaaf8ftef3" path="res://scenes/character_tracker_container/character_tracker_container.tscn" id="1_1i64n"]
 [ext_resource type="Shader" uid="uid://cr41aeytfvcse" path="res://shaders/background_texture.gdshader" id="1_8qcbp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cw1lpgjur4mty" path="res://scenes/player_hand/player_hand.tscn" id="7_t24f4"]
 [ext_resource type="PackedScene" uid="uid://be2vc3knmxvfh" path="res://scenes/input_manager/input_manager.tscn" id="8_falxo"]
 [ext_resource type="PackedScene" uid="uid://daedyb1df3yuc" path="res://scenes/card_manager/card_manager.tscn" id="9_pxslt"]
+[ext_resource type="PackedScene" uid="uid://vrd3f87yaqot" path="res://scenes/character_picker/character_picker.tscn" id="10_pxslt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t24f4"]
 shader = ExtResource("1_8qcbp")
@@ -76,3 +77,8 @@ position = Vector2(334, 251)
 [node name="InputManager" parent="." instance=ExtResource("8_falxo")]
 
 [node name="CardManager" parent="." instance=ExtResource("9_pxslt")]
+
+[node name="CharacterPicker" parent="." instance=ExtResource("10_pxslt")]
+visible = false
+layout_mode = 1
+mouse_filter = 1
