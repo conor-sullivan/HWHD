@@ -33,7 +33,7 @@ func add_card_to_hand(card : DistrictCard, speed : float = DEFAULT_CARD_MOVE_SPE
 
 
 func update_hand_positions(speed : float = DEFAULT_CARD_MOVE_SPEED) -> void:
-	var player = (get_tree().get_first_node_in_group("game_manager") as GameManager).current_player
+	#var player = (get_tree().get_first_node_in_group("game_manager") as GameManager).current_player
 	for i in range(player_hand.size()):
 		move_child(player_hand[i -1], i - 1)
 		var new_position = Vector2(calculate_card_position(i), HAND_Y_POSITION)
@@ -48,7 +48,7 @@ func update_hand_positions(speed : float = DEFAULT_CARD_MOVE_SPEED) -> void:
 	for card in reverse_order_cards:
 		new_hand_resources.append(card.district_resource)
 	
-	player.district_cards_in_hand = new_hand_resources
+	GameData.current_player.district_cards_in_hand = new_hand_resources
 
 
 func calculate_card_position(index : int) -> float:

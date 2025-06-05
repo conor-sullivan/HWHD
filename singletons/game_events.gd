@@ -11,6 +11,9 @@ signal requested_to_play_top_card_of_character_deck_face_up
 signal requested_to_shuffle_character_deck
 signal requested_move_pickable_cards_to_character_picker
 signal request_make_character_picker_visible
+signal requested_to_draw_cards_from_district_deck(number_of_cards : int)
+
+signal set_district_deck(deck : Array[DistrictData])
 
 signal character_deck_shuffled
 signal played_top_card_of_character_deck(card : CharacterCard)

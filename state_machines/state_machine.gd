@@ -1,7 +1,7 @@
 extends Node
 class_name StateMachine
 
-@export var stating_state : State
+@export var starting_state : State
 
 var current_state : State
 
@@ -10,11 +10,11 @@ func _ready() -> void:
 	init(get_parent())
 	
 
-func init(parent : Node2D) -> void:
+func init(parent : Node) -> void:
 	for child in get_children():
 		child.parent = parent
 	
-	change_state(stating_state)
+	change_state(starting_state)
 
 
 func change_state(new_state : State) -> void:

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dis6s6vd868qe"]
+[gd_scene load_steps=6 format=3 uid="uid://dis6s6vd868qe"]
 
 [ext_resource type="Script" uid="uid://hstio5i80c13" path="res://scenes/game_manager/game_manager.gd" id="1_lycnq"]
 [ext_resource type="PackedScene" uid="uid://dlol5cuibkwyi" path="res://scenes/game_ui/game_ui.tscn" id="2_0drbn"]
+[ext_resource type="PackedScene" uid="uid://dox0btimk4g0a" path="res://state_machines/state_machine.tscn" id="3_kc0kb"]
+[ext_resource type="Script" uid="uid://cajws1c22ictn" path="res://state_machines/game_states/setup_game_state.gd" id="4_qetoq"]
+[ext_resource type="Script" uid="uid://dfraw2ettrnv3" path="res://state_machines/game_states/exclude_characters_state.gd" id="5_jnlof"]
 
 [node name="GameManager" type="Node" groups=["game_manager"]]
 script = ExtResource("1_lycnq")
@@ -14,5 +17,32 @@ offset_top = 293.0
 offset_right = 168.0
 offset_bottom = 324.0
 text = "Change Player Turn"
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_kc0kb")]
+starting_state = NodePath("SetupGame")
+
+[node name="SetupGame" type="Node" parent="StateMachine"]
+script = ExtResource("4_qetoq")
+
+[node name="ExcludeCharacters" type="Node" parent="StateMachine"]
+script = ExtResource("5_jnlof")
+
+[node name="UnusedStates" type="Node" parent="."]
+
+[node name="StartScreen" type="Node" parent="UnusedStates"]
+
+[node name="SelectCharacter" type="Node" parent="UnusedStates"]
+
+[node name="PlayerTurn" type="Node" parent="UnusedStates"]
+
+[node name="SelectAction" type="Node" parent="UnusedStates"]
+
+[node name="BuildDistrict" type="Node" parent="UnusedStates"]
+
+[node name="UseAbility" type="Node" parent="UnusedStates"]
+
+[node name="EndRound" type="Node" parent="UnusedStates"]
+
+[node name="EndGame" type="Node" parent="UnusedStates"]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

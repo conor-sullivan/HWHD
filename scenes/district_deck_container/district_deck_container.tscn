@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://db8kvoxm0deh0"]
+
+[ext_resource type="PackedScene" uid="uid://bq52os1fhi6w8" path="res://scenes/district_deck/district_deck.tscn" id="1_0xxqw"]
+[ext_resource type="Script" uid="uid://chfk73hpsmsnc" path="res://scenes/district_deck_container/district_deck_container.gd" id="1_27tw6"]
+
+[node name="DistrictDeckContainer" type="Control" groups=["district_deck_container"]]
+visible = false
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_27tw6")
+
+[node name="DistrictDeck" parent="." instance=ExtResource("1_0xxqw")]
+position = Vector2(-100, -100)

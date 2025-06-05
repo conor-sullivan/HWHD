@@ -10,17 +10,15 @@ class_name PlayerTracker
 func _ready() -> void:
 	GameEvents.player_data_changed.connect(_on_player_data_changed)
 	
-	if player:
-		set_card_count(player.district_cards_in_hand_count)
-		set_gold_count(player.gold_count)
-		set_district_count(player.districts_built_count)
-		set_avatar_texture(player.avatar_texture)
-		set_king_crown(player.is_king)
+	set_card_count(player.district_cards_in_hand_count)
+	set_gold_count(player.gold_count)
+	set_district_count(player.districts_built_count)
+	set_avatar_texture(player.avatar_texture)
+	set_king_crown(player.is_king)
 
 
 func _on_player_data_changed() -> void:
-	var players : Array[Player] = get_tree().get_first_node_in_group("game_manager").players
-	for p in players:
+	for p in GameData.players:
 		if p == player:
 			print(p.district_cards_in_hand_count)
 			set_card_count(p.district_cards_in_hand_count)

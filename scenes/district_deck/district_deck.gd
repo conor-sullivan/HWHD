@@ -18,39 +18,44 @@ var card_in_hand_test : DistrictCard
 
 func _ready() -> void:
 	#build_deck()
-	
-	cards_in_deck.shuffle()
-	
-	print("deck size ", cards_in_deck.size())
-	for card in cards_in_deck:
-		card.rotation = randf_range(-random_rotation_amount, random_rotation_amount)
+	print("here")
+	GameEvents.requested_to_draw_cards_from_district_deck.connect(_on_requested_to_draw_cards_from_district_deck)
+	GameEvents.set_district_deck.connect(_on_set_district_deck)
 
 
-func set_district_deck(deck) -> void:
+func _on_set_district_deck(deck : Array[DistrictData]) -> void:
+	for card_resource in deck:
+		var new_card_instance = CARD_SCENE.instantiate()
+		new_card_instance.district_resource = card_resource
+		$CardsInDeck.add_child(new_card_instance)
+	print("set deck")
 	for district_resource in deck:
 		var card = district_card_scene.instantiate() as DistrictCard
 		card.district_resource = district_resource
 		cards_in_deck.append(card)
+	
+	cards_in_deck.shuffle()
+	
+	for card in cards_in_deck:
+		card.rotation = randf_range(-random_rotation_amount, random_rotation_amount)
 
 
 func draw_card() -> DistrictCard:
 	var card = cards_in_deck[0]
 	print("drawing " , card.district_resource.district_name)
-	#card_in_hand_test = card.duplicate()
 	cards_in_deck.erase(card)
-	#card.queue_free()
 	
 	# new
 	var new_card = CARD_SCENE.instantiate() as DistrictCard
 	var player_hand = get_tree().get_first_node_in_group("player_hand")
 
 	new_card.district_resource = card.district_resource
-	#new_card.position = position
 	player_hand.add_child(new_card)
 	player_hand.add_card_to_hand(new_card, CARD_DRAW_SPEED)
-	#new_card.play_flip_animation()
 	new_card.is_face_down = false
 	
+	GameData.current_player.district_cards_in_hand.append(new_card.district_resource)
+	GameData.current_player.district_cards_in_hand_count = GameData.current_player.district_cards_in_hand.size()
 	GameEvents.player_data_changed.emit()
 	
 	return card
@@ -72,6 +77,17 @@ func draw_four_cards() -> Array:
 		$TimeBetweenCardDrawTimer.start()
 		await  $TimeBetweenCardDrawTimer.timeout
 	return cards
+
+
+func _on_requested_to_draw_cards_from_district_deck(number_of_cards) -> void:
+
+	var cards = []
+	for i in number_of_cards:
+		cards.append(draw_card())
+		$TimeBetweenCardDrawTimer.start()
+		await  $TimeBetweenCardDrawTimer.timeout
+	#return cards
+	pass
 
 
 func place_card_on_bottom_of_deck(card : DistrictCard) -> void:

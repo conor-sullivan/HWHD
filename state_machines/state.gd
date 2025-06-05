@@ -1,7 +1,7 @@
 extends Node
 class_name State
 
-var parent : Node2D
+var parent : Node
 
 
 func enter() -> void:
