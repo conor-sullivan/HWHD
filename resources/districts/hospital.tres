@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DistrictData" load_steps=2 format=3 uid="uid://bot5w3cgjrvdh"]
+
+[ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_dgxb7"]
+
+[resource]
+script = ExtResource("1_dgxb7")
+district_name = "Hospital"
+color = "Purple"
+cost = 6
+is_purple_foil = true
+ability_text = "If you are assassinated, you still take take your one action per turn."
+is_in_deck = false
+is_visible = false
+metadata/_custom_type_script = "uid://bbdpyr8inju5f"

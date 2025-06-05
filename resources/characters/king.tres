@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://bpv8sb42yc1ad"]
+
+[ext_resource type="Texture2D" uid="uid://cvw5wsfnywh0i" path="res://assets/avatars/Icon45.png" id="1_fgfuy"]
+[ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_w6ntu"]
+
+[resource]
+script = ExtResource("1_w6ntu")
+character_name = "King"
+avatar_texture = ExtResource("1_fgfuy")
+play_order_number = 4
+color = "Gold"
+special_ability_text = "You receive one gold for each noble (yellow)district in your city.When the King is called, you immediately receivethe Crown. You now call the characters, and youwill be the first player to choose your characterduring the next round. If there is no King duringthe next round, you keep the Crown. If you aremurdered, you skip your turn like any othercharacter. Nevertheless, after the last player hasplayed his turn, when it becomes known that youhad the murdered King’s character card, you takethe Crown (as the King’s heir)."
+is_face_down_and_not_in_deck = false
+is_face_up_and_not_in_deck = false
+is_in_deck = true
+has_been_revealed_by_player = false
+controled_by_player_number = 0
+was_assassinated = false
+will_be_assassinated = false
+assassinated_by_player_number = 0
+was_robbed_by_thief = false
+will_be_robbed_by_thief = false
+robbed_by_player_number = 0
+metadata/_custom_type_script = "uid://c7tji47b3d4p3"

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://bju75ixfd7vbd"]
+
+[ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_p638j"]
+[ext_resource type="Texture2D" uid="uid://blok7s17187lh" path="res://assets/avatars/Icon46.png" id="1_uhiq6"]
+
+[resource]
+script = ExtResource("1_p638j")
+character_name = "Magician"
+avatar_texture = ExtResource("1_uhiq6")
+play_order_number = 3
+color = "Gray"
+special_ability_text = "At any time during your turn, you have one oftwo options:• Exchange your entire hand of cards (not thecards in your city) with the hand of another player(this applies even if you have no cards in yourhand, in which case you simply take the otherplayer’s cards).• Place any number of cards from your handfacedown at the bottom of the District Deck, andthen draw an equal number of cards from the topof the District Deck."
+is_face_down_and_not_in_deck = false
+is_face_up_and_not_in_deck = false
+is_in_deck = true
+has_been_revealed_by_player = false
+controled_by_player_number = 0
+was_assassinated = false
+will_be_assassinated = false
+assassinated_by_player_number = 0
+was_robbed_by_thief = false
+will_be_robbed_by_thief = false
+robbed_by_player_number = 0
+metadata/_custom_type_script = "uid://c7tji47b3d4p3"

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://d3ypgi3oxgxgr"]
+
+[ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_4qv84"]
+[ext_resource type="Texture2D" uid="uid://dai8h1ujjpjkv" path="res://assets/avatars/Icon42.png" id="1_y6jya"]
+
+[resource]
+script = ExtResource("1_4qv84")
+character_name = "Merchant"
+avatar_texture = ExtResource("1_y6jya")
+play_order_number = 6
+color = "Green"
+special_ability_text = "You receive one gold for each trade (green)district in your city. After you take an action, youreceive one additional gold."
+is_face_down_and_not_in_deck = false
+is_face_up_and_not_in_deck = false
+is_in_deck = true
+has_been_revealed_by_player = false
+controled_by_player_number = 0
+was_assassinated = false
+will_be_assassinated = false
+assassinated_by_player_number = 0
+was_robbed_by_thief = false
+will_be_robbed_by_thief = false
+robbed_by_player_number = 0
+metadata/_custom_type_script = "uid://c7tji47b3d4p3"

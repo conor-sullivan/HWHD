@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DistrictData" load_steps=2 format=3 uid="uid://chjfkjgao5bke"]
+
+[ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_78k6s"]
+
+[resource]
+script = ExtResource("1_78k6s")
+district_name = "Wish Fountain"
+color = "Purple"
+cost = 6
+is_purple_foil = true
+ability_text = "Gain 1 bonus point for each other purple district in your city at the end of the game."
+is_in_deck = false
+is_visible = false
+metadata/_custom_type_script = "uid://bbdpyr8inju5f"

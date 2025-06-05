@@ -1,0 +1,38 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6bm185qllt7g"]
+
+[ext_resource type="Script" uid="uid://cd25gphxoimlu" path="res://scenes/character_deck/character_deck.gd" id="1_hmytp"]
+[ext_resource type="PackedScene" uid="uid://dgxfypihwmwi1" path="res://scenes/character_card/character_card.tscn" id="1_wvw2q"]
+[ext_resource type="Resource" uid="uid://cskaoin53a8ap" path="res://resources/characters/assassin.tres" id="3_u760n"]
+[ext_resource type="Resource" uid="uid://cx82gikqf7y86" path="res://resources/characters/thief.tres" id="4_ykgo1"]
+[ext_resource type="Resource" uid="uid://bju75ixfd7vbd" path="res://resources/characters/magician.tres" id="5_xqpwr"]
+[ext_resource type="Resource" uid="uid://bdijll6cmpfwb" path="res://resources/characters/bishop.tres" id="6_v1atw"]
+[ext_resource type="Resource" uid="uid://d3ypgi3oxgxgr" path="res://resources/characters/merchant.tres" id="7_mg3oh"]
+[ext_resource type="Resource" uid="uid://bpsi0508knj0v" path="res://resources/characters/architect.tres" id="8_8kb58"]
+[ext_resource type="Resource" uid="uid://b2qptckr8gwe" path="res://resources/characters/warlord.tres" id="9_1slw5"]
+
+[node name="CharacterDeck" type="Node2D" node_paths=PackedStringArray("cards_in_deck") groups=["character_deck"]]
+script = ExtResource("1_hmytp")
+cards_in_deck = [NodePath("AssassinCard"), NodePath("ThiefCard"), NodePath("MagicianCard"), NodePath("KingCard"), NodePath("BishopCard"), NodePath("MerchantCard"), NodePath("ArchitectCard"), NodePath("WarlordCard")]
+
+[node name="AssassinCard" parent="." instance=ExtResource("1_wvw2q")]
+character_resource = ExtResource("3_u760n")
+
+[node name="ThiefCard" parent="." instance=ExtResource("1_wvw2q")]
+character_resource = ExtResource("4_ykgo1")
+
+[node name="MagicianCard" parent="." instance=ExtResource("1_wvw2q")]
+character_resource = ExtResource("5_xqpwr")
+
+[node name="KingCard" parent="." instance=ExtResource("1_wvw2q")]
+
+[node name="BishopCard" parent="." instance=ExtResource("1_wvw2q")]
+character_resource = ExtResource("6_v1atw")
+
+[node name="MerchantCard" parent="." instance=ExtResource("1_wvw2q")]
+character_resource = ExtResource("7_mg3oh")
+
+[node name="ArchitectCard" parent="." instance=ExtResource("1_wvw2q")]
+character_resource = ExtResource("8_8kb58")
+
+[node name="WarlordCard" parent="." instance=ExtResource("1_wvw2q")]
+character_resource = ExtResource("9_1slw5")

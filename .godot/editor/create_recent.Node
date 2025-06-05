@@ -1,0 +1,14 @@
+Button
+AnimationPlayer
+Label
+Control
+Sprite2D
+Node
+Node2D
+Timer
+PlayerHand
+CollisionShape2D
+Area2D
+TextureRect
+MarginContainer
+Container

@@ -1,0 +1,51 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Citadels"
+run/main_scene="uid://dis6s6vd868qe"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameEvents="*res://singletons/game_events.gd"
+
+[display]
+
+window/canvas_textures/default_texture_filter=1
+
+[dotnet]
+
+project/assembly_name="Citadels"
+
+[global_group]
+
+player_tracker_container=""
+district_deck_container=""
+character_card_controller=""
+player_hand=""
+district_deck=""
+card_manager=""
+input_manager=""
+game_manager=""
+character_tracker_container=""
+character_deck=""
+game_ui=""
+
+[layer_names]
+
+2d_physics/layer_1="card"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

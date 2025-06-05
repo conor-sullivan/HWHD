@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dis6s6vd868qe"]
+
+[ext_resource type="Script" uid="uid://hstio5i80c13" path="res://scenes/game_manager/game_manager.gd" id="1_lycnq"]
+[ext_resource type="PackedScene" uid="uid://dlol5cuibkwyi" path="res://scenes/game_ui/game_ui.tscn" id="2_0drbn"]
+
+[node name="GameManager" type="Node" groups=["game_manager"]]
+script = ExtResource("1_lycnq")
+
+[node name="GameUI" parent="." instance=ExtResource("2_0drbn")]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 9.0
+offset_top = 293.0
+offset_right = 168.0
+offset_bottom = 324.0
+text = "Change Player Turn"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://ban6cy5xhg1qd"]
+
+[ext_resource type="Script" uid="uid://dhvb2kg2dt54q" path="res://scenes/character_tracker/character_tracker.gd" id="1_mnggx"]
+[ext_resource type="Resource" uid="uid://bdijll6cmpfwb" path="res://resources/characters/bishop.tres" id="2_4wa27"]
+[ext_resource type="Texture2D" uid="uid://cau5hfv844mhp" path="res://assets/pixelCardAssest.png" id="2_hcag2"]
+[ext_resource type="Texture2D" uid="uid://1g3eeli8ys5f" path="res://assets/avatars/Icon37.png" id="3_mnggx"]
+[ext_resource type="FontFile" uid="uid://bh5d7gn8wwhev" path="res://assets/MinimalPixel v2.ttf" id="5_mnggx"]
+
+[sub_resource type="Animation" id="Animation_mnggx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4wa27"]
+resource_name = "disable"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.180392)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyn6l"]
+_data = {
+&"RESET": SubResource("Animation_mnggx"),
+&"disable": SubResource("Animation_4wa27")
+}
+
+[node name="CharacterTracker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mnggx")
+character_resource = ExtResource("2_4wa27")
+
+[node name="CardBackgroundSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_hcag2")
+region_enabled = true
+region_rect = Rect2(119, 0, 100, 128)
+
+[node name="AvatarSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -6.3)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_mnggx")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -33.0
+offset_top = 17.0
+offset_right = 33.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_mnggx")
+theme_override_font_sizes/font_size = 11
+text = "Thief"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uyn6l")
+}
+
+[node name="PlayOrderLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -39.0
+offset_top = -34.0
+offset_right = 1.0
+offset_bottom = -11.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_mnggx")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

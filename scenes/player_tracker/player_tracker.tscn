@@ -1,0 +1,155 @@
+[gd_scene load_steps=15 format=3 uid="uid://24m63kakv5tc"]
+
+[ext_resource type="Script" uid="uid://hgw0d7erc2pm" path="res://scenes/player_tracker/player_tracker.gd" id="1_cchue"]
+[ext_resource type="Shader" uid="uid://xksgds2o8k7s" path="res://shaders/avatar_transparent_circle.gdshader" id="1_kxnk8"]
+[ext_resource type="Texture2D" uid="uid://c1wetkhkn0nn3" path="res://assets/avatars/Icon1.png" id="2_g1tpn"]
+[ext_resource type="Texture2D" uid="uid://beop8ow4liob0" path="res://assets/crown.png" id="2_m50m0"]
+[ext_resource type="Texture2D" uid="uid://5q72bhget1fr" path="res://assets/player_avatar_holder.png" id="3_rvofo"]
+[ext_resource type="Texture2D" uid="uid://ctp47e2qffd" path="res://assets/player_avatar_coins.png" id="4_g1tpn"]
+[ext_resource type="Texture2D" uid="uid://b388vldpqobki" path="res://assets/player_avatar_cards.png" id="4_rvofo"]
+[ext_resource type="Texture2D" uid="uid://b1lird4j2m826" path="res://assets/player_avatar_districts.png" id="6_2pxy5"]
+[ext_resource type="FontFile" uid="uid://bh5d7gn8wwhev" path="res://assets/MinimalPixel v2.ttf" id="9_mmfj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pxy5"]
+shader = ExtResource("1_kxnk8")
+shader_parameter/radius = 0.466
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_mmfj0"]
+resource_name = "scale_up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_h8edu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_luya0"]
+resource_name = "taking_turn"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1), Vector2(1, 1), Vector2(1, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_luya0"]
+_data = {
+&"RESET": SubResource("Animation_h8edu"),
+&"scale_up": SubResource("Animation_mmfj0"),
+&"taking_turn": SubResource("Animation_luya0")
+}
+
+[node name="PlayerTracker" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cchue")
+
+[node name="CharacterCardSlot" type="Node2D" parent="."]
+position = Vector2(0, 92.935)
+
+[node name="KingCrownSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-16, -37)
+rotation = -0.380482
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_m50m0")
+
+[node name="AvatarSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2pxy5")
+texture = ExtResource("2_g1tpn")
+
+[node name="AvatarHolderSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_rvofo")
+
+[node name="CardCountSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 35)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_rvofo")
+
+[node name="GoldCountSprite" type="Sprite2D" parent="."]
+position = Vector2(-25, 26)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_g1tpn")
+
+[node name="DistrictCountSprite" type="Sprite2D" parent="."]
+position = Vector2(25, 26)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("6_2pxy5")
+
+[node name="CardCountLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = -8.0
+offset_top = 25.0
+offset_right = 32.0
+offset_bottom = 80.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_mmfj0")
+theme_override_font_sizes/font_size = 36
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoldCountLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = -32.0
+offset_top = 15.0
+offset_right = 8.0
+offset_bottom = 70.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_mmfj0")
+theme_override_font_sizes/font_size = 36
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DistrictCountLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 58.0
+offset_bottom = 71.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_mmfj0")
+theme_override_font_sizes/font_size = 36
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_luya0")
+}

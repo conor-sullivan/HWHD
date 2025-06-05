@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2p1dkdjiugtg"]
+
+[ext_resource type="Script" uid="uid://xluji1fxpn4k" path="res://scenes/turn_action_ui/turn_action_ui.gd" id="1_c0bnb"]
+[ext_resource type="Texture2D" uid="uid://c6cyw6r35vqec" path="res://assets/MediavelFree.png" id="1_i55pe"]
+[ext_resource type="Theme" uid="uid://dnj4pv085gm6q" path="res://resources/theme/default_theme.tres" id="2_c0bnb"]
+
+[node name="TurnActionUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_c0bnb")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_i55pe")
+region_enabled = true
+region_rect = Rect2(3, 1, 71, 92)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -52.0
+offset_top = -27.0
+offset_right = 62.0
+offset_bottom = 41.0
+scale = Vector2(0.9, 1.05)
+
+[node name="GoldButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_c0bnb")
+text = "+2 GOLD"
+
+[node name="CardButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_c0bnb")
+text = "+1 CARD"
+
+[node name="AbilityButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_c0bnb")
+text = "ABILITY"
+
+[node name="EndTurnButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_c0bnb")
+text = " END TURN "
+
+[connection signal="pressed" from="VBoxContainer/GoldButton" to="." method="_on_gold_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CardButton" to="." method="_on_card_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AbilityButton" to="." method="_on_ability_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/EndTurnButton" to="." method="_on_end_turn_button_pressed"]

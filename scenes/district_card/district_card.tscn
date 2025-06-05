@@ -1,0 +1,392 @@
+[gd_scene load_steps=20 format=3 uid="uid://ni66brrlan8d"]
+
+[ext_resource type="Shader" uid="uid://brtxdn45y71gx" path="res://shaders/foil_card.gdshader" id="1_6er0u"]
+[ext_resource type="Script" uid="uid://dc6i2r1mfhuv7" path="res://scenes/district_card/district_card.gd" id="1_7soar"]
+[ext_resource type="Texture2D" uid="uid://cau5hfv844mhp" path="res://assets/pixelCardAssest.png" id="1_meh55"]
+[ext_resource type="Resource" uid="uid://contlwpmvss74" path="res://resources/districts/castle.tres" id="2_gfnm2"]
+[ext_resource type="FontFile" uid="uid://bh5d7gn8wwhev" path="res://assets/MinimalPixel v2.ttf" id="4_l77bo"]
+[ext_resource type="Texture2D" uid="uid://dhhrtd7nfc6g6" path="res://assets/cardBacks.png" id="6_nvit8"]
+[ext_resource type="PackedScene" uid="uid://dox0btimk4g0a" path="res://state_machines/state_machine.tscn" id="8_nwq6l"]
+[ext_resource type="Script" uid="uid://bdfomtuki86jm" path="res://state_machines/district_card_states/district_card_face_down_state.gd" id="9_6er0u"]
+[ext_resource type="Script" uid="uid://b4vgm5v6xk2qg" path="res://state_machines/district_card_states/district_card_face_up_state.gd" id="10_k1d51"]
+[ext_resource type="Script" uid="uid://bacj7pfilp22g" path="res://state_machines/district_card_states/distirct_card_highlighted_state.gd" id="11_57yf8"]
+[ext_resource type="Script" uid="uid://defh5ymsm147n" path="res://state_machines/district_card_states/district_card_dragging_state.gd" id="12_fk8pg"]
+[ext_resource type="Texture2D" uid="uid://bu76u4v7v0kgs" path="res://assets/cardSHEENfx/sheen__0011_Background.png" id="14_k1d51"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57yf8"]
+shader = ExtResource("1_6er0u")
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/speed = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvit8"]
+size = Vector2(97, 129)
+
+[sub_resource type="Animation" id="Animation_h1soo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front:visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Front:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardBack:visible")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardBack:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:z_as_relative")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_l77bo"]
+resource_name = "flip"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front:visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.120027, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Front:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardBack:visible")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardBack:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8depa"]
+resource_name = "is_dragging"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:z_as_relative")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_f5qq7"]
+resource_name = "is_highlighted"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f5qq7"]
+_data = {
+&"RESET": SubResource("Animation_h1soo"),
+&"flip": SubResource("Animation_l77bo"),
+&"is_dragging": SubResource("Animation_8depa"),
+&"is_highlighted": SubResource("Animation_f5qq7")
+}
+
+[node name="DistrictCard" type="Node2D"]
+z_as_relative = false
+script = ExtResource("1_7soar")
+district_resource = ExtResource("2_gfnm2")
+
+[node name="Front" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="CardFrameSprite" type="Sprite2D" parent="Front"]
+texture = ExtResource("1_meh55")
+region_enabled = true
+region_rect = Rect2(236, 0, 100, 128)
+
+[node name="CardNameFrameSprite" type="Sprite2D" parent="Front"]
+position = Vector2(0.400002, 36.5)
+scale = Vector2(0.9, 1.2)
+texture = ExtResource("1_meh55")
+region_enabled = true
+region_rect = Rect2(2, 219, 96, 29)
+
+[node name="CardAbilityFrameSprite" type="Sprite2D" parent="Front"]
+visible = false
+position = Vector2(1, -16)
+scale = Vector2(1.05, 0.9)
+texture = ExtResource("1_meh55")
+region_enabled = true
+region_rect = Rect2(243, 132, 86, 72)
+
+[node name="CardNameLabel" type="Label" parent="Front"]
+layout_mode = 1
+offset_left = -35.0
+offset_top = 18.0
+offset_right = 81.0
+offset_bottom = 105.0
+scale = Vector2(0.625952, 0.425493)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("4_l77bo")
+theme_override_font_sizes/font_size = 24
+text = "imperial treasure"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CardAbilityLabel" type="Label" parent="Front"]
+visible = false
+layout_mode = 1
+offset_left = -38.0
+offset_top = -42.0
+offset_right = 306.0
+offset_bottom = 170.0
+scale = Vector2(0.229, 0.251)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("4_l77bo")
+theme_override_font_sizes/font_size = 40
+text = "At the end of the game, you score one point for every card in your hand"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FoilCardFXSprite" type="Sprite2D" parent="Front"]
+visible = false
+modulate = Color(1, 1, 1, 0.431373)
+material = SubResource("ShaderMaterial_57yf8")
+texture = ExtResource("14_k1d51")
+region_rect = Rect2(236, 0, 100, 128)
+
+[node name="CardCostFrameSprite" type="Sprite2D" parent="Front"]
+position = Vector2(-41, -55)
+scale = Vector2(2, 2)
+texture = ExtResource("1_meh55")
+region_enabled = true
+region_rect = Rect2(411, 180, 19, 18)
+
+[node name="CardCostLabel" type="Label" parent="Front"]
+layout_mode = 1
+offset_left = -54.0
+offset_top = -74.0
+offset_right = -7.0
+offset_bottom = -19.0
+scale = Vector2(0.62, 0.740001)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("4_l77bo")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardBack" type="Control" parent="."]
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="CardBackSprite" type="Sprite2D" parent="CardBack"]
+texture = ExtResource("6_nvit8")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 128)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_nvit8")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f5qq7")
+}
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("stating_state") instance=ExtResource("8_nwq6l")]
+stating_state = NodePath("FaceDown")
+
+[node name="FaceDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("face_up_state")]
+script = ExtResource("9_6er0u")
+face_up_state = NodePath("../FaceUp")
+
+[node name="FaceUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("highlighted_state", "face_down_state")]
+script = ExtResource("10_k1d51")
+highlighted_state = NodePath("../Highlighted")
+face_down_state = NodePath("../FaceDown")
+
+[node name="Highlighted" type="Node" parent="StateMachine" node_paths=PackedStringArray("dragging_state", "face_up_state")]
+script = ExtResource("11_57yf8")
+dragging_state = NodePath("../Dragging")
+face_up_state = NodePath("../FaceUp")
+
+[node name="Dragging" type="Node" parent="StateMachine" node_paths=PackedStringArray("face_up_state")]
+script = ExtResource("12_fk8pg")
+face_up_state = NodePath("../FaceUp")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

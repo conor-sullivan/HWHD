@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://ce2lr0k8en6ve"]
+
+[ext_resource type="Script" uid="uid://da7eeltmvoqge" path="res://scenes/character_card_area_controller/character_card_controller.gd" id="1_2802s"]
+[ext_resource type="PackedScene" uid="uid://b6bm185qllt7g" path="res://scenes/character_deck/character_deck.tscn" id="1_euwhy"]
+[ext_resource type="Texture2D" uid="uid://bp6nm55fifpt5" path="res://assets/CardSlot.png" id="2_2n2ay"]
+[ext_resource type="Theme" uid="uid://dnj4pv085gm6q" path="res://resources/theme/default_theme.tres" id="4_20axk"]
+
+[sub_resource type="Animation" id="Animation_fxfnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_20axk"]
+resource_name = "destroy_scene"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmwnr"]
+_data = {
+&"RESET": SubResource("Animation_fxfnj"),
+&"destroy_scene": SubResource("Animation_20axk")
+}
+
+[node name="CharacterCardController" type="Node2D" groups=["character_card_controller"]]
+script = ExtResource("1_2802s")
+
+[node name="CharacterDeck" parent="." instance=ExtResource("1_euwhy")]
+
+[node name="CardSlots" type="Node2D" parent="."]
+position = Vector2(281, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardSlots"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_right = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 110
+
+[node name="FaceDownCardSlot" type="Control" parent="CardSlots/HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlotSprite" type="Sprite2D" parent="CardSlots/HBoxContainer/FaceDownCardSlot"]
+scale = Vector2(0.55, 0.5)
+texture = ExtResource("2_2n2ay")
+
+[node name="FaceUpCardSlot1" type="Control" parent="CardSlots/HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlotSprite" type="Sprite2D" parent="CardSlots/HBoxContainer/FaceUpCardSlot1"]
+scale = Vector2(0.55, 0.5)
+texture = ExtResource("2_2n2ay")
+
+[node name="FaceUpCardSlot2" type="Control" parent="CardSlots/HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlotSprite" type="Sprite2D" parent="CardSlots/HBoxContainer/FaceUpCardSlot2"]
+scale = Vector2(0.55, 0.5)
+texture = ExtResource("2_2n2ay")
+
+[node name="FaceUpCardSlot3" type="Control" parent="CardSlots/HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlotSprite" type="Sprite2D" parent="CardSlots/HBoxContainer/FaceUpCardSlot3"]
+scale = Vector2(0.55, 0.5)
+texture = ExtResource("2_2n2ay")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -54.0
+offset_top = 74.0
+offset_right = 55.0
+offset_bottom = 94.0
+theme = ExtResource("4_20axk")
+text = " GET CARDS "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bmwnr")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

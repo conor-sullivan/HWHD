@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DistrictData" load_steps=2 format=3 uid="uid://pt8rcrjy58u6"]
+
+[ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_olykd"]
+
+[resource]
+script = ExtResource("1_olykd")
+district_name = "School of Magic"
+color = "Purple"
+cost = 6
+is_purple_foil = true
+ability_text = "Counts as any district of any color during the income phase."
+is_in_deck = false
+is_visible = false
+metadata/_custom_type_script = "uid://bbdpyr8inju5f"

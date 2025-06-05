@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://bpsi0508knj0v"]
+
+[ext_resource type="Texture2D" uid="uid://cfnws13o7prjf" path="res://assets/avatars/Icon39.png" id="1_gdkor"]
+[ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_lovdk"]
+
+[resource]
+script = ExtResource("1_lovdk")
+character_name = "Architect"
+avatar_texture = ExtResource("1_gdkor")
+play_order_number = 7
+color = "Gray"
+special_ability_text = "After you take an action, you draw two additionaldistrict cards and put both in your hand. You maybuild up to three districts during your turn."
+is_face_down_and_not_in_deck = false
+is_face_up_and_not_in_deck = false
+is_in_deck = true
+has_been_revealed_by_player = false
+controled_by_player_number = 0
+was_assassinated = false
+will_be_assassinated = false
+assassinated_by_player_number = 0
+was_robbed_by_thief = false
+will_be_robbed_by_thief = false
+robbed_by_player_number = 0
+metadata/_custom_type_script = "uid://c7tji47b3d4p3"

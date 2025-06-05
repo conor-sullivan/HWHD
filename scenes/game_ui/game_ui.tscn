@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://dlol5cuibkwyi"]
+
+[ext_resource type="PackedScene" uid="uid://c4jeaaf8ftef3" path="res://scenes/character_tracker_container/character_tracker_container.tscn" id="1_1i64n"]
+[ext_resource type="Shader" uid="uid://cr41aeytfvcse" path="res://shaders/background_texture.gdshader" id="1_8qcbp"]
+[ext_resource type="PackedScene" uid="uid://dkfl6wnsnfwf5" path="res://scenes/player_tracker_container/player_tracker_container.tscn" id="2_najyh"]
+[ext_resource type="PackedScene" uid="uid://bq52os1fhi6w8" path="res://scenes/district_deck/district_deck.tscn" id="3_najyh"]
+[ext_resource type="PackedScene" uid="uid://b2p1dkdjiugtg" path="res://scenes/turn_action_ui/turn_action_ui.tscn" id="4_2cwxn"]
+[ext_resource type="PackedScene" uid="uid://ce2lr0k8en6ve" path="res://scenes/character_card_area_controller/character_card_controller.tscn" id="5_hk0ve"]
+[ext_resource type="PackedScene" uid="uid://cw1lpgjur4mty" path="res://scenes/player_hand/player_hand.tscn" id="7_t24f4"]
+[ext_resource type="PackedScene" uid="uid://be2vc3knmxvfh" path="res://scenes/input_manager/input_manager.tscn" id="8_falxo"]
+[ext_resource type="PackedScene" uid="uid://daedyb1df3yuc" path="res://scenes/card_manager/card_manager.tscn" id="9_pxslt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t24f4"]
+shader = ExtResource("1_8qcbp")
+shader_parameter/color_one = Color(0.54099, 0.54099, 0.54099, 1)
+shader_parameter/color_two = Color(0.509286, 0.509286, 0.509286, 1)
+shader_parameter/angle = 45.0
+shader_parameter/line_count = 80.0
+shader_parameter/speed = 3.0
+shader_parameter/blur = 2.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e13be"]
+
+[node name="GameUI" type="Control" groups=["game_ui"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_t24f4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_e13be")
+
+[node name="CharacterTrackerContainer" parent="." instance=ExtResource("1_1i64n")]
+layout_mode = 1
+
+[node name="PlayerTrackerContainer" parent="." instance=ExtResource("2_najyh")]
+layout_mode = 1
+
+[node name="DistrictDeckContainer" type="Control" parent="." groups=["district_deck_container"]]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="DistrictDeck" parent="DistrictDeckContainer" instance=ExtResource("3_najyh")]
+position = Vector2(-100, -100)
+
+[node name="TurnActionUI" parent="." instance=ExtResource("4_2cwxn")]
+visible = false
+layout_mode = 1
+offset_left = 1061.0
+offset_top = 108.0
+offset_right = 1061.0
+offset_bottom = 108.0
+
+[node name="CharacterCardController" parent="." instance=ExtResource("5_hk0ve")]
+position = Vector2(334, 251)
+
+[node name="PlayerHand" parent="." instance=ExtResource("7_t24f4")]
+
+[node name="InputManager" parent="." instance=ExtResource("8_falxo")]
+
+[node name="CardManager" parent="." instance=ExtResource("9_pxslt")]
