@@ -94,24 +94,9 @@ func draw_initial_district_cards() -> void:
 			computers.append(player)
 	
 	if not real_player:
-		print("no real player")
+		#print("no real player")
 		return
 		
-	#var district_deck_instance = DISTRICT_DECK_SCENE.instantiate()
-	#var district_deck_container = get_tree().get_first_node_in_group("district_deck_container")
-	#
-	#district_deck_container.add_child(district_deck_instance)
-	#real_player.district_deck_cards.shuffle()
-	#GameEvents.set_district_deck.emit(real_player.district_deck_cards)
-	#
-#
-	##real_player.district_deck_cards.shuffle()
-	#var starting_index = real_player.district_deck_cards.find(real_player.district_deck_cards[0])
-	#var ending_index = real_player.district_deck_cards.find(real_player.district_deck_cards[4])
-	#real_player.district_cards_in_hand = real_player.district_deck_cards.slice(starting_index, ending_index)
-	##var cards_in_hand = await district_deck_instance.draw_four_cards()
-	#real_player.district_deck_cards = real_player.district_deck_cards.slice(starting_index, ending_index)
-	#real_player.district_cards_in_hand_count = real_player.district_cards_in_hand.size()
 	GameEvents.requested_to_draw_cards_from_district_deck.emit(4)
 
 	# computers

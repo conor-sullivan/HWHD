@@ -17,8 +17,6 @@ var card_in_hand_test : DistrictCard
 
 
 func _ready() -> void:
-	#build_deck()
-	print("here")
 	GameEvents.requested_to_draw_cards_from_district_deck.connect(_on_requested_to_draw_cards_from_district_deck)
 	GameEvents.set_district_deck.connect(_on_set_district_deck)
 
@@ -28,7 +26,7 @@ func _on_set_district_deck(deck : Array[DistrictData]) -> void:
 		var new_card_instance = CARD_SCENE.instantiate()
 		new_card_instance.district_resource = card_resource
 		$CardsInDeck.add_child(new_card_instance)
-	print("set deck")
+
 	for district_resource in deck:
 		var card = district_card_scene.instantiate() as DistrictCard
 		card.district_resource = district_resource
@@ -42,16 +40,15 @@ func _on_set_district_deck(deck : Array[DistrictData]) -> void:
 
 func draw_card() -> DistrictCard:
 	var card = cards_in_deck[0]
-	print("drawing " , card.district_resource.district_name)
 	cards_in_deck.erase(card)
-	
+
 	# new
 	var new_card = CARD_SCENE.instantiate() as DistrictCard
-	var player_hand = get_tree().get_first_node_in_group("player_hand")
 
 	new_card.district_resource = card.district_resource
-	player_hand.add_child(new_card)
-	player_hand.add_card_to_hand(new_card, CARD_DRAW_SPEED)
+	GameEvents.requested_add_district_card_to_hand.emit(new_card)
+	#player_hand.add_child(new_card)
+	#player_hand.add_card_to_hand(new_card, CARD_DRAW_SPEED)
 	new_card.is_face_down = false
 	
 	GameData.current_player.district_cards_in_hand.append(new_card.district_resource)
@@ -147,7 +144,7 @@ func build_deck() -> void:
 	#var err = ResourceSaver.save(resource, "res://resources/district_decks/default_district_deck.tres")
 	#
 	#if err != OK:
-		#print("failed ", err)
+		##print("failed ", err)
 
 
 func _on_button_pressed() -> void:

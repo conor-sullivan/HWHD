@@ -1,0 +1,4 @@
+extends Node
+
+const CARD_DRAW_SPEED = 0.2
+const CHARACTER_TRACKER_VBOX_POSITION = Vector2(73.0, 196.0)

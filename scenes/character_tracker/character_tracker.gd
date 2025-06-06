@@ -42,9 +42,9 @@ func set_play_order_number(number : int) -> void:
 
 func get_card_background_region_x(color : String) -> float:
 	var result = CardBackgroundRegionX.get(color)
-	print(result)
+	#print(result)
 	if result != null:
 		return CardBackgroundRegionX.get(color)
 	else:
-		print("no background region found")
+		#print("no background region found")
 		return CardBackgroundRegionX.get("Gray")

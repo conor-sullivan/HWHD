@@ -4,13 +4,13 @@ class_name InputManager
 const CARD_COLLISION_MASK : int = 1
 const DECK_COLLISION_MASK : int = 4
 
-var card_manager : CardManager
-var deck : DistrictDeck
+#var card_manager : CardManager
+#var deck : DistrictDeck
 
 
-func _ready() -> void:
-	card_manager = get_tree().get_first_node_in_group("card_manager")
-	deck = get_tree().get_first_node_in_group("district_deck")
+#func _ready() -> void:
+	#card_manager = get_tree().get_first_node_in_group("card_manager")
+	#deck = get_tree().get_first_node_in_group("district_deck")
 
 
 func _input(event: InputEvent) -> void:
@@ -19,13 +19,12 @@ func _input(event: InputEvent) -> void:
 			GameEvents.left_mouse_button_pressed.emit()
 			raycast_at_cursor()
 		else: 
-			print("released")
+			#print("released")
 			GameEvents.left_mouse_button_released.emit()
 
 
 func raycast_at_cursor() -> void:
-	card_manager = get_tree().get_first_node_in_group("card_manager")
-	deck = get_tree().get_first_node_in_group("district_deck")
+	#card_manager = get_tree().get_first_node_in_group("card_manager")
 	var space_state = get_world_2d().direct_space_state
 	var paramters = PhysicsPointQueryParameters2D.new()
 	paramters.position = get_global_mouse_position()
@@ -36,7 +35,8 @@ func raycast_at_cursor() -> void:
 		if result_collision_mask == CARD_COLLISION_MASK:
 			var card_found = result[0].collider.get_parent()
 			if card_found:
-				card_manager.card_start_drag(card_found)
+				GameEvents.requested_start_drag_card.emit(card_found)
+				#card_manager.card_start_drag(card_found)
 		elif result_collision_mask == DECK_COLLISION_MASK:
 			#deck.draw_card()
 			pass

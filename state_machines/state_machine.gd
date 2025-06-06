@@ -23,7 +23,7 @@ func change_state(new_state : State) -> void:
 	
 	current_state = new_state
 	current_state.enter()
-	print(current_state)
+	#print(current_state)
 
 func _physics_process(delta: float) -> void:
 	var new_state = current_state.process_physics(delta)

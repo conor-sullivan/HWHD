@@ -41,7 +41,6 @@ func get_card_background_region_x(color : String) -> float:
 	if result != null:
 		return CardBackgroundRegionX.get(color)
 	else:
-		print("no background region found")
 		return CardBackgroundRegionX.get("Gray")
 
 
@@ -65,19 +64,15 @@ func play_waiting_to_pick() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
-			GameEvents.character_card_chosen_by_player
-	
+			GameEvents.character_card_chosen_by_player.emit(character_resource, GameData.current_player.player_id)
+
 
 func enable_collider() -> void:
 	$Area2D/CollisionShape2D.disabled = false
 
 
 func _on_area_2d_mouse_entered() -> void:
-	#scale = lerp(scale, Vector2(1.5, 1.5), 0.2)
-	scale = Vector2(1.5, 1.5)
-	print("mouse entered " , scale)
+	scale = Vector2(1.3, 1.3)
 
 func _on_area_2d_mouse_exited() -> void:
-	#scale = lerp(scale, Vector2(1, 1), 0.2)
 	scale = Vector2(1.0, 1.0)
-	print("mouse exited ", scale)

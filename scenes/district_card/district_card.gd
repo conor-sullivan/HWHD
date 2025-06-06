@@ -22,12 +22,9 @@ var is_face_down : bool = true
 var is_highlighted : bool = false
 var previous_position := Vector2.ZERO
 var velocity := Vector2.ZERO
-var card_manager : CardManager
 
 
 func _ready() -> void:
-	card_manager = get_tree().get_first_node_in_group("card_manager")
-	
 	if district_resource:
 		set_card_name(district_resource.district_name)
 		set_card_cost(district_resource.cost)
@@ -74,7 +71,7 @@ func get_card_background_region_x(color : String) -> float:
 	if result != null:
 		return CardBackgroundRegionX.get(color)
 	else:
-		print("no background region found")
+		#print("no background region found")
 		return CardBackgroundRegionX.get("Gray")
 
 
@@ -126,13 +123,13 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
-	if card_manager.card_being_dragged:
+	if GameData.card_being_dragged:
 		return
 	#play_is_highlighted_animation()
 	is_highlighted = true
 
 func _on_area_2d_mouse_exited() -> void:
-	if card_manager.card_being_dragged:
+	if GameData.card_being_dragged:
 		return
 	#play_is_highlighted_animation_backwards()
 	is_highlighted = false

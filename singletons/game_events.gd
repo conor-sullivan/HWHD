@@ -9,9 +9,15 @@ signal ended_turn()
 signal requested_to_play_top_card_of_character_deck_face_down
 signal requested_to_play_top_card_of_character_deck_face_up
 signal requested_to_shuffle_character_deck
-signal requested_move_pickable_cards_to_character_picker
+signal requested_move_pickable_cards_to_character_picker()
 signal request_make_character_picker_visible
 signal requested_to_draw_cards_from_district_deck(number_of_cards : int)
+signal requsted_add_character_card_to_pickable_cards(card_to_add : CharacterCard)
+signal requested_add_district_card_to_hand(card_to_add : DistrictCard)
+signal requested_start_drag_card(card_to_drag : DistrictCard)
+signal requested_move_character_card_to_tracker_container(card_to_move : CharacterCard, spacing : float)
+signal on_character_card_moved_to_tracker_container(card : CharacterCard)
+signal on_moved_pickable_card_to_character_picker(card : CharacterCard)
 
 signal set_district_deck(deck : Array[DistrictData])
 

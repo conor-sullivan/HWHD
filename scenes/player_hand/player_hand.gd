@@ -15,6 +15,12 @@ func _ready() -> void:
 	center_screen_x = get_viewport().size.x / 2
 	GameEvents.card_hovered.connect(_on_card_hovered)
 	GameEvents.card_hovered_off.connect(_on_card_hovered_off)
+	GameEvents.requested_add_district_card_to_hand.connect(_on_requested_add_district_card_to_hand)
+
+
+func _on_requested_add_district_card_to_hand(new_card : DistrictCard) -> void:
+	add_child(new_card)
+	add_card_to_hand(new_card, GameConstants.CARD_DRAW_SPEED)
 
 
 func _on_card_hovered(hovered_over_card : DistrictCard, card_doing_the_hovering : DistrictCard) -> void:

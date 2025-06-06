@@ -12,20 +12,25 @@ var center_screen : Vector2
 
 func _ready() -> void:
 	center_screen = Vector2(get_viewport().size.x / 2, get_viewport().size.y / 2)
+	
+	GameEvents.requested_move_character_card_to_tracker_container.connect(_on_requested_move_character_card_to_tracker_container)
 	GameEvents.requested_to_shuffle_character_deck.connect(_on_requested_to_shuffle_character_deck)
 	GameEvents.requested_to_play_top_card_of_character_deck_face_down.connect(_on_requested_to_play_top_card_of_character_deck_face_down)
 	GameEvents.requested_to_play_top_card_of_character_deck_face_up.connect(_on_requested_to_play_top_card_of_character_deck_face_up)
 	GameEvents.requested_move_pickable_cards_to_character_picker.connect(_on_requested_move_pickable_cards_to_character_picker)
 
 
+func _on_requested_move_character_card_to_tracker_container(card_to_move : CharacterCard, spacing : float) -> void:
+		animate_card_to_position(card_to_move, Vector2(GameConstants.CHARACTER_TRACKER_VBOX_POSITION.x, GameConstants.CHARACTER_TRACKER_VBOX_POSITION.y - spacing))
+		await get_tree().create_timer(DEFAULT_CARD_MOVE_SPEED).timeout
+		remove_child(card_to_move)
+		GameEvents.on_character_card_moved_to_tracker_container.emit(card_to_move)
+
+
 func _on_requested_move_pickable_cards_to_character_picker() -> void:
-	var character_picker = get_tree().get_first_node_in_group("character_picker") as CharacterPicker
 	for card in cards_in_deck:
-		print(card)
-		#animate_card_to_position(card, center_screen)
 		remove_child(card)
-		character_picker.add_to_pickable_cards(card)
-	
+		GameEvents.on_moved_pickable_card_to_character_picker.emit(card)	
 
 
 func _on_requested_to_shuffle_character_deck() -> void:
@@ -69,4 +74,4 @@ func play_top_card_face_up() -> CharacterCard:
 
 func animate_card_to_position(card : CharacterCard, new_position : Vector2, speed : float = DEFAULT_CARD_MOVE_SPEED) -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(card, "position", new_position, speed )
+	tween.tween_property(card, "global_position", new_position, speed )

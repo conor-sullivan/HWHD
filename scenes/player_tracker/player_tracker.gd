@@ -20,7 +20,7 @@ func _ready() -> void:
 func _on_player_data_changed() -> void:
 	for p in GameData.players:
 		if p == player:
-			print(p.district_cards_in_hand_count)
+			#print(p.district_cards_in_hand_count)
 			set_card_count(p.district_cards_in_hand_count)
 			set_gold_count(p.gold_count)
 			set_district_count(p.districts_built_count)

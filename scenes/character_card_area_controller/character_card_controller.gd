@@ -47,33 +47,28 @@ func animate_card_to_position(card : CharacterCard, new_position : Vector2, spee
 
 
 func move_cards_to_character_tracker_container() -> void:
-	var character_tracker_container = get_tree().get_first_node_in_group("character_tracker_container")
-	var character_dect = get_tree().get_first_node_in_group("character_deck")
-	
 	var i = 0
 	var vertical_space = 25
-	var vbox = character_tracker_container.find_child("VBoxContainer")
 
 	cards_slot_cards.reverse()
 
 	for card in cards_slot_cards:
-		character_dect.remove_child(card)
-		card.shrink_scale()
-		animate_card_to_position(card, Vector2(vbox.position.x, vbox.position.y - (i * vertical_space)))
-		vbox.add_child(card)
+		var spacing = i * vertical_space
+		GameEvents.requested_move_character_card_to_tracker_container.emit(card, spacing)
+
 		i += 1
 
 
 func move_pickable_cards_to_character_picker() -> void:
 	GameEvents.requested_move_pickable_cards_to_character_picker.emit()
-
+	print("emit requested_move_pickable_cards_to_character_picker")
 
 func _on_button_pressed() -> void:
 	GameEvents.requested_to_shuffle_character_deck.emit()
 
 
 func _on_timer_timeout() -> void:
+	move_cards_to_character_tracker_container()
 	GameEvents.request_make_character_picker_visible.emit()
 	move_pickable_cards_to_character_picker()
-	move_cards_to_character_tracker_container()
 	$AnimationPlayer.play("destroy_scene")

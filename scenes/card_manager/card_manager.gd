@@ -12,8 +12,8 @@ var window_size : Vector2
 
 func _ready() -> void:
 	window_size = get_viewport().size
-	player_hand = get_tree().get_first_node_in_group("player_hand")
-
+	
+	GameEvents.requested_start_drag_card.connect(card_start_drag)
 	GameEvents.connect("left_mouse_button_pressed", _on_left_mouse_button_pressed)
 	GameEvents.connect("left_mouse_button_released", _on_left_mouse_button_released)
 
@@ -75,9 +75,7 @@ func get_card_with_highest_z_index(cards : Array) -> DistrictCard:
 
 func card_start_drag(card : DistrictCard) -> void:
 	card_being_dragged = card
-	#card_being_dragged.scale = Vector2(1.0, 1.0)
 	card_being_dragged.is_being_dragged = true
-	#card_being_dragged.start_is_draggin_animation()
 
 
 func card_stop_drag(_delta = null) -> void:

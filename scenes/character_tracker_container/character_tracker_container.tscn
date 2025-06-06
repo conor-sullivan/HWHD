@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4jeaaf8ftef3"]
+[gd_scene load_steps=4 format=3 uid="uid://c4jeaaf8ftef3"]
 
+[ext_resource type="Script" uid="uid://ijgvw1jajppn" path="res://scenes/character_tracker_container/character_tracker_container.gd" id="1_5as7x"]
 [ext_resource type="Texture2D" uid="uid://cau5hfv844mhp" path="res://assets/pixelCardAssest.png" id="1_o0p8b"]
 [ext_resource type="FontFile" uid="uid://bh5d7gn8wwhev" path="res://assets/MinimalPixel v2.ttf" id="7_rdqqj"]
 
 [node name="CharacterTrackerContainer" type="Control" groups=["character_tracker_container"]]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_5as7x")
 
 [node name="OutOfPlayBorderSprite" type="Sprite2D" parent="."]
 position = Vector2(73, 157.86)
@@ -27,7 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = -20
+theme_override_constants/separation = -30
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
