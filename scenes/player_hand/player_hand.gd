@@ -16,6 +16,33 @@ func _ready() -> void:
 	GameEvents.card_hovered.connect(_on_card_hovered)
 	GameEvents.card_hovered_off.connect(_on_card_hovered_off)
 	GameEvents.requested_add_district_card_to_hand.connect(_on_requested_add_district_card_to_hand)
+	GameEvents.player_turn_changed.connect(_on_player_turn_changed)
+	GameEvents.initial_cards_drawn.connect(_on_initial_cards_drawn)
+
+
+func place_cards_back_in_hand() -> void:
+	for child in get_children():
+		child.queue_free()
+		
+	player_hand = []
+	
+	for card_resource in GameData.current_player.district_cards_in_hand:
+		var instance = GameConstants.DISTRICT_CARD_SCENE.instantiate()
+		instance.district_resource = card_resource
+		add_child(instance)
+		add_card_to_hand(instance)
+		
+		if GameData.current_player.is_computer == false:
+			instance.play_flip_animation()
+			instance.is_face_down = false
+
+
+func _on_initial_cards_drawn() -> void:
+	place_cards_back_in_hand()
+
+
+func _on_player_turn_changed() -> void:
+	place_cards_back_in_hand()
 
 
 func _on_requested_add_district_card_to_hand(new_card : DistrictCard) -> void:

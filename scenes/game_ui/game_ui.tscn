@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c4jeaaf8ftef3" path="res://scenes/character_tracker_container/character_tracker_container.tscn" id="1_1i64n"]
 [ext_resource type="Shader" uid="uid://cr41aeytfvcse" path="res://shaders/background_texture.gdshader" id="1_8qcbp"]
+[ext_resource type="Script" uid="uid://d3pp4cnb464u7" path="res://scenes/game_ui/game_ui.gd" id="1_pxslt"]
 [ext_resource type="PackedScene" uid="uid://dkfl6wnsnfwf5" path="res://scenes/player_tracker_container/player_tracker_container.tscn" id="2_najyh"]
 [ext_resource type="PackedScene" uid="uid://b2p1dkdjiugtg" path="res://scenes/turn_action_ui/turn_action_ui.tscn" id="4_2cwxn"]
 [ext_resource type="PackedScene" uid="uid://db8kvoxm0deh0" path="res://scenes/district_deck_container/district_deck_container.tscn" id="4_pxslt"]
-[ext_resource type="PackedScene" uid="uid://ce2lr0k8en6ve" path="res://scenes/character_card_area_controller/character_card_controller.tscn" id="5_hk0ve"]
 [ext_resource type="PackedScene" uid="uid://cw1lpgjur4mty" path="res://scenes/player_hand/player_hand.tscn" id="7_t24f4"]
 [ext_resource type="PackedScene" uid="uid://be2vc3knmxvfh" path="res://scenes/input_manager/input_manager.tscn" id="8_falxo"]
 [ext_resource type="PackedScene" uid="uid://daedyb1df3yuc" path="res://scenes/card_manager/card_manager.tscn" id="9_pxslt"]
@@ -30,6 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_pxslt")
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_t24f4")
@@ -57,9 +58,6 @@ offset_left = 1061.0
 offset_top = 108.0
 offset_right = 1061.0
 offset_bottom = 108.0
-
-[node name="CharacterCardController" parent="." instance=ExtResource("5_hk0ve")]
-position = Vector2(334, 251)
 
 [node name="PlayerHand" parent="." instance=ExtResource("7_t24f4")]
 

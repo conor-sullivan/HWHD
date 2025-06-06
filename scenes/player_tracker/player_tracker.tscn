@@ -10,11 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b1lird4j2m826" path="res://assets/player_avatar_districts.png" id="6_2pxy5"]
 [ext_resource type="FontFile" uid="uid://bh5d7gn8wwhev" path="res://assets/MinimalPixel v2.ttf" id="9_mmfj0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pxy5"]
-shader = ExtResource("1_kxnk8")
-shader_parameter/radius = 0.466
-shader_parameter/center = Vector2(0.5, 0.5)
-
 [sub_resource type="Animation" id="Animation_h8edu"]
 length = 0.001
 tracks/0/type = "value"
@@ -52,8 +47,8 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
+tracks/0/path = NodePath("Sprites:scale")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
@@ -69,46 +64,58 @@ _data = {
 &"taking_turn": SubResource("Animation_luya0")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pxy5"]
+shader = ExtResource("1_kxnk8")
+shader_parameter/radius = 0.466
+shader_parameter/center = Vector2(0.5, 0.5)
+
 [node name="PlayerTracker" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cchue")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_luya0")
+}
+
 [node name="CharacterCardSlot" type="Node2D" parent="."]
 position = Vector2(0, 92.935)
 
-[node name="KingCrownSprite" type="Sprite2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+scale = Vector2(1.08613, 1)
+
+[node name="KingCrownSprite" type="Sprite2D" parent="Sprites"]
 visible = false
 position = Vector2(-16, -37)
 rotation = -0.380482
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_m50m0")
 
-[node name="AvatarSprite" type="Sprite2D" parent="."]
+[node name="AvatarSprite" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_2pxy5")
 texture = ExtResource("2_g1tpn")
 
-[node name="AvatarHolderSprite" type="Sprite2D" parent="."]
+[node name="AvatarHolderSprite" type="Sprite2D" parent="Sprites"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_rvofo")
 
-[node name="CardCountSprite" type="Sprite2D" parent="."]
+[node name="CardCountSprite" type="Sprite2D" parent="Sprites"]
 position = Vector2(0, 35)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_rvofo")
 
-[node name="GoldCountSprite" type="Sprite2D" parent="."]
+[node name="GoldCountSprite" type="Sprite2D" parent="Sprites"]
 position = Vector2(-25, 26)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_g1tpn")
 
-[node name="DistrictCountSprite" type="Sprite2D" parent="."]
+[node name="DistrictCountSprite" type="Sprite2D" parent="Sprites"]
 position = Vector2(25, 26)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("6_2pxy5")
 
-[node name="CardCountLabel" type="Label" parent="."]
-layout_mode = 2
+[node name="CardCountLabel" type="Label" parent="Sprites"]
 offset_left = -8.0
 offset_top = 25.0
 offset_right = 32.0
@@ -121,8 +128,7 @@ text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GoldCountLabel" type="Label" parent="."]
-layout_mode = 2
+[node name="GoldCountLabel" type="Label" parent="Sprites"]
 offset_left = -32.0
 offset_top = 15.0
 offset_right = 8.0
@@ -135,8 +141,7 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DistrictCountLabel" type="Label" parent="."]
-layout_mode = 2
+[node name="DistrictCountLabel" type="Label" parent="Sprites"]
 offset_left = 18.0
 offset_top = 16.0
 offset_right = 58.0
@@ -149,7 +154,4 @@ text = "8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_luya0")
-}
+[node name="Node2D" type="Node2D" parent="."]

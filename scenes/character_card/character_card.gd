@@ -64,7 +64,8 @@ func play_waiting_to_pick() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
-			GameEvents.character_card_chosen_by_player.emit(character_resource, GameData.current_player.player_id)
+			GameEvents.character_card_chosen_by_player.emit(character_resource)
+			queue_free()
 
 
 func enable_collider() -> void:
@@ -72,7 +73,9 @@ func enable_collider() -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
+	GameEvents.on_character_card_hovered_on.emit(self)
 	scale = Vector2(1.3, 1.3)
 
 func _on_area_2d_mouse_exited() -> void:
+	GameEvents.on_character_card_hovered_off.emit(self)
 	scale = Vector2(1.0, 1.0)

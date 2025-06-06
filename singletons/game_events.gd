@@ -1,11 +1,15 @@
 extends Node
 
+signal initial_cards_drawn
+signal player_turn_changed
+signal character_card_chosen_by_player(card : CharacterData)
+signal ready_for_first_player_to_choose_character
+signal ready_to_exclude_characters
 signal drew_cards_from_district_deck(number_of_cards : int)
 signal gained_gold(amount : int)
 signal placed_card_on_bottom_of_district_deck(card : DistrictCard)
 signal activated_special_ability()
 signal ended_turn()
-
 signal requested_to_play_top_card_of_character_deck_face_down
 signal requested_to_play_top_card_of_character_deck_face_up
 signal requested_to_shuffle_character_deck
@@ -18,20 +22,14 @@ signal requested_start_drag_card(card_to_drag : DistrictCard)
 signal requested_move_character_card_to_tracker_container(card_to_move : CharacterCard, spacing : float)
 signal on_character_card_moved_to_tracker_container(card : CharacterCard)
 signal on_moved_pickable_card_to_character_picker(card : CharacterCard)
-
+signal on_character_card_hovered_on(card : CharacterCard)
+signal on_character_card_hovered_off(card : CharacterCard)
 signal set_district_deck(deck : Array[DistrictData])
-
 signal character_deck_shuffled
 signal played_top_card_of_character_deck(card : CharacterCard)
-
 signal character_deck_ready_to_begin_passing_around(cards_in_deck : Array[CharacterCard], cards_not_in_deck : Array[CharacterCard])
-
-signal character_card_chosen_by_player(card : CharacterData, player_id : int)
-
 signal player_data_changed()
-
 signal card_hovered(hovered_over_card : DistrictCard, card_doing_the_hovering : DistrictCard)
 signal card_hovered_off(hovered_over_card : DistrictCard, card_doing_the_hovering : DistrictCard)
-
 signal left_mouse_button_pressed
 signal left_mouse_button_released

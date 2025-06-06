@@ -8,6 +8,7 @@ var ready_to_begin_picking_cards : bool = true
 
 
 func _ready() -> void:
+	global_position = Vector2(333.0, 250.0)
 	GameEvents.character_deck_shuffled.connect(_on_character_deck_shuffled)
 	GameEvents.played_top_card_of_character_deck.connect(_on_played_top_card_of_character_deck)
 
@@ -61,7 +62,8 @@ func move_cards_to_character_tracker_container() -> void:
 
 func move_pickable_cards_to_character_picker() -> void:
 	GameEvents.requested_move_pickable_cards_to_character_picker.emit()
-	print("emit requested_move_pickable_cards_to_character_picker")
+	GameEvents.ready_for_first_player_to_choose_character.emit()
+
 
 func _on_button_pressed() -> void:
 	GameEvents.requested_to_shuffle_character_deck.emit()

@@ -47,7 +47,7 @@ func setup_players() -> void:
 	GameData.players.append(computer1)
 	
 	var computer2 = create_player(
-		1, 
+		2, 
 		"Computer 2", 
 		"res://assets/avatars/Icon36.png", 
 		2, 
@@ -57,7 +57,7 @@ func setup_players() -> void:
 	GameData.players.append(computer2)
 
 	var computer3 = create_player(
-		1, 
+		3, 
 		"Computer 3", 
 		"res://assets/avatars/Icon37.png", 
 		2, 
@@ -92,12 +92,12 @@ func draw_initial_district_cards() -> void:
 			real_player = player
 		else:
 			computers.append(player)
-	
-	if not real_player:
-		#print("no real player")
-		return
 		
-	GameEvents.requested_to_draw_cards_from_district_deck.emit(4)
+	#GameEvents.requested_to_draw_cards_from_district_deck.emit(4)
+	real_player.district_deck_cards.shuffle()
+	real_player.district_cards_in_hand = real_player.district_deck_cards.slice(0, 4)
+	real_player.district_deck_cards = real_player.district_deck_cards.slice(4, real_player.district_deck_cards.size())
+	real_player.district_cards_in_hand_count = real_player.district_cards_in_hand.size()
 
 	# computers
 	for computer in computers:
@@ -106,5 +106,6 @@ func draw_initial_district_cards() -> void:
 		computer.district_deck_cards = computer.district_deck_cards.slice(4, computer.district_deck_cards.size())
 		computer.district_cards_in_hand_count = computer.district_cards_in_hand.size()
 	
+	GameEvents.initial_cards_drawn.emit()
 	GameEvents.player_data_changed.emit()
 	

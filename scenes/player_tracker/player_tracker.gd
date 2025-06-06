@@ -9,6 +9,7 @@ class_name PlayerTracker
 
 func _ready() -> void:
 	GameEvents.player_data_changed.connect(_on_player_data_changed)
+	GameEvents.character_card_chosen_by_player.connect(_on_character_card_chosen_by_player)
 	
 	set_card_count(player.district_cards_in_hand_count)
 	set_gold_count(player.gold_count)
@@ -26,27 +27,35 @@ func _on_player_data_changed() -> void:
 			set_district_count(p.districts_built_count)
 			set_avatar_texture(p.avatar_texture)
 			set_king_crown(p.is_king)
+			set_player_taking_turn()
 
 
 func set_card_count(new_count : int) -> void:
-	$CardCountLabel.text = str(new_count)
+	$Sprites/CardCountLabel.text = str(new_count)
 
 
 func set_gold_count(new_count : int) -> void:
-	$GoldCountLabel.text = str(new_count)
+	$Sprites/GoldCountLabel.text = str(new_count)
 
 
 func set_district_count(new_count : int) -> void:
-	$DistrictCountLabel.text = str(new_count)
+	$Sprites/DistrictCountLabel.text = str(new_count)
+
+
+func set_player_taking_turn() -> void:
+	if player == GameData.current_player:
+		play_taking_turn()
+	else:
+		$AnimationPlayer.play("RESET")
 
 
 func set_avatar_texture(new_texture : Texture2D) -> void:
-	$AvatarSprite.texture = new_texture
+	$Sprites/AvatarSprite.texture = new_texture
 
 
 func set_king_crown(is_king : bool) -> void:
 	if is_king:
-		$KingCrownSprite.visible = true
+		$Sprites/KingCrownSprite.visible = true
 
 
 func scale_up() -> void:
@@ -55,3 +64,14 @@ func scale_up() -> void:
 
 func play_taking_turn() -> void:
 	$AnimationPlayer.play("taking_turn")
+
+
+func add_character_card_to_slot(card : CharacterCard) -> void:
+	$CharacterCardSlot.add_child(card)
+	card.scale = Vector2(0.5, 0.5)
+
+
+func _on_character_card_chosen_by_player(card : CharacterData) -> void:
+	if player == GameData.current_player:
+		var instance = GameConstants.CHARACTER_CARD_SCENE.instantiate()
+		add_character_card_to_slot(instance)

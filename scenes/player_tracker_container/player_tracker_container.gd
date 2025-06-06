@@ -9,6 +9,7 @@ func _ready() -> void:
 
 
 func _on_player_data_changed() -> void:
+	print("new data ", GameData.current_player.district_cards_in_hand_count)
 	if get_children().size() < GameData.players.size():
 		for child in get_children():
 			child.queue_free()

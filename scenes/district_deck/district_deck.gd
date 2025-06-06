@@ -39,7 +39,9 @@ func _on_set_district_deck(deck : Array[DistrictData]) -> void:
 
 
 func draw_card() -> DistrictCard:
-	var card = cards_in_deck[0]
+	
+	var card = cards_in_deck[0] as DistrictCard
+	print("drawing card, ", card.district_resource.district_name)
 	cards_in_deck.erase(card)
 
 	# new
@@ -47,8 +49,7 @@ func draw_card() -> DistrictCard:
 
 	new_card.district_resource = card.district_resource
 	GameEvents.requested_add_district_card_to_hand.emit(new_card)
-	#player_hand.add_child(new_card)
-	#player_hand.add_card_to_hand(new_card, CARD_DRAW_SPEED)
+
 	new_card.is_face_down = false
 	
 	GameData.current_player.district_cards_in_hand.append(new_card.district_resource)
