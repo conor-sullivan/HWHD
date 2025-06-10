@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dis6s6vd868qe"]
+[gd_scene load_steps=18 format=3 uid="uid://dis6s6vd868qe"]
 
 [ext_resource type="Script" uid="uid://hstio5i80c13" path="res://scenes/game_manager/game_manager.gd" id="1_lycnq"]
 [ext_resource type="PackedScene" uid="uid://dlol5cuibkwyi" path="res://scenes/game_ui/game_ui.tscn" id="2_0drbn"]
@@ -8,6 +8,15 @@
 [ext_resource type="Script" uid="uid://1qy7de086sak" path="res://state_machines/game_states/select_character_state.gd" id="6_w6g1p"]
 [ext_resource type="PackedScene" uid="uid://5sinjdd5t5t3" path="res://ai/ai_controller.tscn" id="7_80y8o"]
 [ext_resource type="Script" uid="uid://cybkwyxgtk3js" path="res://state_machines/game_states/player_turn_state.gd" id="7_kge46"]
+[ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="8_piong"]
+[ext_resource type="Resource" uid="uid://cskaoin53a8ap" path="res://resources/characters/assassin.tres" id="9_6odvu"]
+[ext_resource type="Resource" uid="uid://cx82gikqf7y86" path="res://resources/characters/thief.tres" id="10_vo7br"]
+[ext_resource type="Resource" uid="uid://bju75ixfd7vbd" path="res://resources/characters/magician.tres" id="11_evloh"]
+[ext_resource type="Resource" uid="uid://bpv8sb42yc1ad" path="res://resources/characters/king.tres" id="12_n0mu8"]
+[ext_resource type="Resource" uid="uid://bdijll6cmpfwb" path="res://resources/characters/bishop.tres" id="13_s4yf2"]
+[ext_resource type="Resource" uid="uid://d3ypgi3oxgxgr" path="res://resources/characters/merchant.tres" id="14_lfxlb"]
+[ext_resource type="Resource" uid="uid://bpsi0508knj0v" path="res://resources/characters/architect.tres" id="15_3tabc"]
+[ext_resource type="Resource" uid="uid://b2qptckr8gwe" path="res://resources/characters/warlord.tres" id="16_a7xfu"]
 
 [node name="GameManager" type="Node" groups=["game_manager"]]
 script = ExtResource("1_lycnq")
@@ -38,6 +47,7 @@ player_turn_state = NodePath("../PlayerTurn")
 
 [node name="PlayerTurn" type="Node" parent="StateMachine"]
 script = ExtResource("7_kge46")
+characters = Array[ExtResource("8_piong")]([ExtResource("9_6odvu"), ExtResource("10_vo7br"), ExtResource("11_evloh"), ExtResource("12_n0mu8"), ExtResource("13_s4yf2"), ExtResource("14_lfxlb"), ExtResource("15_3tabc"), ExtResource("16_a7xfu")])
 
 [node name="UnusedStates" type="Node" parent="."]
 

@@ -23,6 +23,9 @@ func process_frame(_delta : float) -> State:
 
 
 func _on_character_card_chosen_by_player(card : CharacterData) -> void:
+	var log = str(GameData.current_player.player_name) + " picked a character"
+	GameEvents.requested_new_log_item.emit(log)
+	
 	if get_parent().current_state != self:
 		return
 	GameData.current_player.has_chosen_character_card = true

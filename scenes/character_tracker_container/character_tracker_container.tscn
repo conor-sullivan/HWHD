@@ -1,20 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4jeaaf8ftef3"]
+[gd_scene load_steps=3 format=3 uid="uid://c4jeaaf8ftef3"]
 
 [ext_resource type="Script" uid="uid://ijgvw1jajppn" path="res://scenes/character_tracker_container/character_tracker_container.gd" id="1_5as7x"]
-[ext_resource type="Texture2D" uid="uid://cau5hfv844mhp" path="res://assets/pixelCardAssest.png" id="1_o0p8b"]
 [ext_resource type="FontFile" uid="uid://bh5d7gn8wwhev" path="res://assets/MinimalPixel v2.ttf" id="7_rdqqj"]
 
 [node name="CharacterTrackerContainer" type="Control" groups=["character_tracker_container"]]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_5as7x")
-
-[node name="OutOfPlayBorderSprite" type="Sprite2D" parent="."]
-position = Vector2(73, 157.86)
-scale = Vector2(1.065, 2.845)
-texture = ExtResource("1_o0p8b")
-region_enabled = true
-region_rect = Rect2(126, 132, 86, 72)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -33,10 +25,10 @@ theme_override_constants/separation = -30
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 11.0
-offset_right = 137.0
-offset_bottom = 34.0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 134.0
+offset_bottom = 43.0
 theme_override_fonts/font = ExtResource("7_rdqqj")
 text = "OUT OF PLAY
 THIS ROUND"

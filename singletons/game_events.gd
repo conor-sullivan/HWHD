@@ -1,5 +1,7 @@
 extends Node
 
+signal requested_new_log_item(new_log_text : String)
+signal requested_character_take_turn(character_resource : CharacterData)
 signal all_characters_picked
 signal requested_to_pick_random_character_card
 signal requested_ai_to_choose_character

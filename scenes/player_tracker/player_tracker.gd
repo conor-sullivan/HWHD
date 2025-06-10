@@ -75,3 +75,5 @@ func add_character_card_to_slot() -> void:
 	$CharacterCardSlot.add_child(card)
 	card.scale = Vector2(0.5, 0.5)
 	card.character_resource = player.current_character_card
+	card.is_controlled_by_player = true
+	card.set_character()

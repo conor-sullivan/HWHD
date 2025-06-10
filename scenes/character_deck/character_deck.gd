@@ -39,7 +39,8 @@ func _on_requested_to_shuffle_character_deck() -> void:
 
 
 func _on_requested_to_play_top_card_of_character_deck_face_down() -> void:
-	var card = await play_top_card_face_down()
+	var card = await play_top_card_face_down() as CharacterCard
+	card.is_face_down_card = true
 	GameEvents.played_top_card_of_character_deck.emit(card)
 
 

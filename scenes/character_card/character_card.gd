@@ -3,6 +3,8 @@ class_name CharacterCard
 
 @export var character_resource : CharacterData
 
+var is_controlled_by_player : bool = false
+var is_face_down_card : bool = false
 
 enum CardBackgroundRegionX {
 	Blue = 0,
@@ -14,10 +16,23 @@ enum CardBackgroundRegionX {
 
 
 func _ready() -> void:
+	GameEvents.requested_character_take_turn.connect(_on_requested_character_take_turn)
+	set_character()
+
+
+func set_character() -> void:
 	set_card_background(get_card_background_region_x(character_resource.color))
 	set_character_name(character_resource.character_name)
 	set_play_order_number(character_resource.play_order_number)
 	set_avatar_sprite(character_resource.avatar_texture)
+
+
+func _on_requested_character_take_turn(_character_resource : CharacterData) -> void:
+	if _character_resource != character_resource:
+		return
+	if is_controlled_by_player:
+		print("yes")
+		$AnimationPlayer.play("reveal_flip")
 
 
 func set_character_name(character_name : String) -> void:

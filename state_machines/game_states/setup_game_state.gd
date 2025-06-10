@@ -99,12 +99,19 @@ func draw_initial_district_cards() -> void:
 	real_player.district_deck_cards = real_player.district_deck_cards.slice(4, real_player.district_deck_cards.size())
 	real_player.district_cards_in_hand_count = real_player.district_cards_in_hand.size()
 
+	var log = str(real_player.player_name) + " drew 4 distrct cards and gained 2 gold"
+	GameEvents.requested_new_log_item.emit(log)
+	
 	# computers
 	for computer in computers:
 		computer.district_deck_cards.shuffle()
 		computer.district_cards_in_hand = computer.district_deck_cards.slice(0, 4)
 		computer.district_deck_cards = computer.district_deck_cards.slice(4, computer.district_deck_cards.size())
 		computer.district_cards_in_hand_count = computer.district_cards_in_hand.size()
+	
+		log = str(computer.player_name) + " drew 4 distrct cards and gained 2 gold"
+		GameEvents.requested_new_log_item.emit(log)
+
 	
 	GameEvents.initial_cards_drawn.emit()
 	GameEvents.player_data_changed.emit()
