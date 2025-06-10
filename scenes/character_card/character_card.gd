@@ -53,6 +53,12 @@ func play_reveal_flip_animation() -> void:
 	await $AnimationPlayer.animation_finished
 
 
+func play_hide_flip_animation() -> void:
+	$AnimationPlayer.play_backwards("reveal_flip")
+	await $AnimationPlayer.animation_finished
+
+
+
 func shrink_scale() -> void:
 	$AnimationPlayer.play("shrink_scale")
 

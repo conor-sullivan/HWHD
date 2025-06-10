@@ -10,6 +10,10 @@ var players_turn_id : int = 0
 var current_player : Player
 
 
+func _ready() -> void:
+	GameEvents.ready_to_change_turns.connect(change_turn)
+
+
 func get_default_district_deck_cards() -> Array[DistrictData]:
 	return GameData.default_district_deck_card_resources
 
@@ -57,10 +61,10 @@ func change_turn() -> void:
 	if players_turn_id == GameData.players.size():
 		players_turn_id = 0
 	
-	print("turn id ", players_turn_id)
+	print("changing turns - turn id ", players_turn_id)
 	set_current_player()
 	
-	GameEvents.player_turn_changed.emit()
+	
 	#var game_ui = get_tree().get_first_node_in_group("game_ui")
 	#game_ui.queue_free()
 	#var new_ui = GAMEUI_SCENE.instantiate()
@@ -86,9 +90,10 @@ func set_current_player() -> void:
 		print("player id ", player.player_id)
 		if player.player_id == players_turn_id:
 			GameData.current_player = player
-	
+	GameEvents.player_turn_changed.emit()
 	GameEvents.player_data_changed.emit()
 
 
 func _on_button_pressed() -> void:
 	change_turn()
+	GameEvents.player_turn_changed.emit()

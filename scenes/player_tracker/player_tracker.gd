@@ -9,7 +9,6 @@ class_name PlayerTracker
 
 func _ready() -> void:
 	GameEvents.player_data_changed.connect(_on_player_data_changed)
-	GameEvents.character_card_chosen_by_player.connect(_on_character_card_chosen_by_player)
 	
 	set_card_count(player.district_cards_in_hand_count)
 	set_gold_count(player.gold_count)
@@ -28,6 +27,7 @@ func _on_player_data_changed() -> void:
 			set_avatar_texture(p.avatar_texture)
 			set_king_crown(p.is_king)
 			set_player_taking_turn()
+			add_character_card_to_slot()
 
 
 func set_card_count(new_count : int) -> void:
@@ -66,12 +66,12 @@ func play_taking_turn() -> void:
 	$AnimationPlayer.play("taking_turn")
 
 
-func add_character_card_to_slot(card : CharacterCard) -> void:
+func add_character_card_to_slot() -> void:
+	if $CharacterCardSlot.get_children().size() > 0:
+		return
+	if not player.current_character_card:
+		return 
+	var card = GameConstants.CHARACTER_CARD_SCENE.instantiate()
 	$CharacterCardSlot.add_child(card)
 	card.scale = Vector2(0.5, 0.5)
-
-
-func _on_character_card_chosen_by_player(card : CharacterData) -> void:
-	if player == GameData.current_player:
-		var instance = GameConstants.CHARACTER_CARD_SCENE.instantiate()
-		add_character_card_to_slot(instance)
+	card.character_resource = player.current_character_card

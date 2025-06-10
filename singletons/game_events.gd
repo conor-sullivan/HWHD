@@ -1,5 +1,6 @@
 extends Node
 
+signal ready_to_change_turns
 signal initial_cards_drawn
 signal player_turn_changed
 signal character_card_chosen_by_player(card : CharacterData)
