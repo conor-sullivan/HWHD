@@ -51,13 +51,14 @@ func play_place_card_animation() -> void:
 func play_reveal_flip_animation() -> void:
 	$AnimationPlayer.play("reveal_flip")
 	await $AnimationPlayer.animation_finished
+	enable_collider()
 
 
 func play_hide_flip_animation() -> void:
 	$AnimationPlayer.play_backwards("reveal_flip")
 	await $AnimationPlayer.animation_finished
-
-
+	disable_collider()
+	
 
 func shrink_scale() -> void:
 	$AnimationPlayer.play("shrink_scale")
@@ -70,12 +71,21 @@ func play_waiting_to_pick() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
-			GameEvents.character_card_chosen_by_player.emit(character_resource)
-			queue_free()
+			set_card_as_picked()
+
+
+func set_card_as_picked() -> void:
+	$AnimationPlayer.play("picked")
+	await $AnimationPlayer.animation_finished
+	GameEvents.character_card_chosen_by_player.emit(character_resource)
 
 
 func enable_collider() -> void:
 	$Area2D/CollisionShape2D.disabled = false
+
+
+func disable_collider() -> void:
+	$Area2D/CollisionShape2D.disabled = true
 
 
 func _on_area_2d_mouse_entered() -> void:

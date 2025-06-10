@@ -1,5 +1,8 @@
 extends Node
 
+signal all_characters_picked
+signal requested_to_pick_random_character_card
+signal requested_ai_to_choose_character
 signal ready_to_change_turns
 signal initial_cards_drawn
 signal player_turn_changed

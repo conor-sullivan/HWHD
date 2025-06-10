@@ -1,6 +1,9 @@
+CharacterCard
+AnimationPlayer
+Timer
+Node
 Node2D
 RichTextLabel
-Node
 Label
 CollisionShape2D
 Area2D
@@ -8,7 +11,4 @@ Button
 ColorRect
 Control
 HBoxContainer
-AnimationPlayer
 Sprite2D
-Timer
-PlayerHand

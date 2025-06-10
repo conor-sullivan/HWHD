@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5sinjdd5t5t3"]
+
+[ext_resource type="Script" uid="uid://qxuh84xwn4vh" path="res://ai/ai_controller.gd" id="1_s8hi5"]
+
+[node name="AIController" type="Node"]
+script = ExtResource("1_s8hi5")
+
+[node name="Timer" type="Timer" parent="."]

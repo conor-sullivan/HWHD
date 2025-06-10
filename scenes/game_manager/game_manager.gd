@@ -87,7 +87,7 @@ func place_cards_back_in_hand() -> void:
 
 func set_current_player() -> void:
 	for player in GameData.players:
-		print("player id ", player.player_id)
+		#print("player id ", player.player_id)
 		if player.player_id == players_turn_id:
 			GameData.current_player = player
 	GameEvents.player_turn_changed.emit()

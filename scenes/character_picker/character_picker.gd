@@ -8,6 +8,8 @@ func _ready() -> void:
 	GameEvents.on_moved_pickable_card_to_character_picker.connect(add_to_pickable_cards)
 	GameEvents.on_character_card_hovered_on.connect(_on_character_card_hovered_on)
 	GameEvents.on_character_card_hovered_off.connect(_on_character_card_hovered_off)
+	GameEvents.requested_to_pick_random_character_card.connect(pick_random_card)
+	GameEvents.all_characters_picked.connect(_on_all_characters_picked)
 
 
 func add_to_pickable_cards(card : CharacterCard) -> void:
@@ -50,6 +52,7 @@ func update_ability_text(text : String) -> void:
 
 
 func _on_player_turn_changed() -> void:
+	update_ability_text("")
 	if GameData.current_player.is_computer:
 		for card in $HBoxContainer.get_children():
 			(card as CharacterCard).play_hide_flip_animation()
@@ -58,3 +61,20 @@ func _on_player_turn_changed() -> void:
 			(card as CharacterCard).play_reveal_flip_animation()
 	randomize_card_order()
 	set_title_label()
+	$AnimationPlayer.play("stack_and_unstack_cards")
+
+
+func pick_random_card() -> void:
+	var cards = $HBoxContainer.get_children()
+	var card : CharacterCard
+	if cards.size() > 1:
+		var random_index = randi_range(0, cards.size() - 1)
+		card = cards[random_index]
+	else: 
+		card = cards[0]
+	print("random card chosen : ", card.character_resource.character_name)
+	card.set_card_as_picked()
+
+
+func _on_all_characters_picked() -> void:
+	visible = false
