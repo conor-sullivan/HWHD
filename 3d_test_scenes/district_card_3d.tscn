@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjrs176fltjn5"]
+
+[ext_resource type="PackedScene" uid="uid://dxpc2iac0hjpw" path="res://addons/card_3d/scenes/card_3d.tscn" id="1_g2mgi"]
+[ext_resource type="Script" uid="uid://qtcd3q3flqsy" path="res://3d_test_scenes/district_card_3d.gd" id="2_hylqd"]
+
+[node name="DistrictCard3D" instance=ExtResource("1_g2mgi")]
+script = ExtResource("2_hylqd")
+id = ""
+front_material_path = ""
+damage = 0
+health = 0

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxwxealoer7he"]
+
+[ext_resource type="PackedScene" uid="uid://dxpc2iac0hjpw" path="res://addons/card_3d/scenes/card_3d.tscn" id="1_2yewe"]
+
+[node name="3DCharacterCard" instance=ExtResource("1_2yewe")]

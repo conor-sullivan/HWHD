@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterData3D" load_steps=2 format=3 uid="uid://doc5pd2anqrgr"]
+
+[sub_resource type="GDScript" id="GDScript_01ju5"]
+script/source = "class_name CharacterData3D
+extends Resource
+
+@export var character_name : String
+@export var front_texture : Texture
+@export var back_texture : Texture
+@export var ability : String
+"
+
+[resource]
+script = SubResource("GDScript_01ju5")
+character_name = "Assassin"
+ability = ""
+metadata/_custom_type_script = "uid://mgs0b7wfngb7"

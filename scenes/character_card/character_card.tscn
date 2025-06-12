@@ -241,6 +241,10 @@ size = Vector2(43, 102.981)
 [node name="CharacterCard" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 48.0
+offset_top = 64.0
+offset_right = 48.0
+offset_bottom = 64.0
 size_flags_horizontal = 0
 mouse_filter = 1
 script = ExtResource("1_2uesw")
