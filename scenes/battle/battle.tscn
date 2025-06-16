@@ -1,0 +1,237 @@
+[gd_scene load_steps=24 format=3 uid="uid://cs2ru0s186hhg"]
+
+[ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
+[ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="2_6ofp8"]
+[ext_resource type="Texture2D" uid="uid://dpfpj5ttarrql" path="res://assets/sprites/UI_avatar_player_test.png" id="3_mvulk"]
+[ext_resource type="Texture2D" uid="uid://b88ta1bgrnaq3" path="res://assets/sprites/ability_holder_test.png" id="4_w40i5"]
+[ext_resource type="Texture2D" uid="uid://bfnakpa755cne" path="res://assets/sprites/assassin_ability_avatar.png" id="5_fe4ja"]
+[ext_resource type="Texture2D" uid="uid://cya4nrcrt6217" path="res://assets/sprites/UI-Buttons-Test.png" id="6_sgdsx"]
+[ext_resource type="PackedScene" uid="uid://i0ct1ej7b2pm" path="res://assets/3D/create_a_battlefield__0614155941_texture.glb" id="7_5moxy"]
+[ext_resource type="Script" uid="uid://bnexkr8l0w1qr" path="res://addons/card_3d/scripts/drag_controller.gd" id="8_156m4"]
+[ext_resource type="PackedScene" uid="uid://d1uvcisduvvj" path="res://addons/card_3d/scenes/card_collection_3d.tscn" id="9_pyfix"]
+[ext_resource type="Script" uid="uid://c1o3okxoatrri" path="res://addons/card_3d/scenes/deck.gd" id="10_8eh2s"]
+[ext_resource type="Script" uid="uid://cntqyqc32apyx" path="res://addons/card_3d/scripts/card_layouts/pile_card_layout.gd" id="11_e48mi"]
+[ext_resource type="Script" uid="uid://ct2885umh1ou2" path="res://addons/card_3d/scenes/hand.gd" id="12_ueicy"]
+[ext_resource type="Script" uid="uid://dhlf23ahp2k1e" path="res://addons/card_3d/scripts/card_layouts/fan_card_layout.gd" id="13_n5ix6"]
+[ext_resource type="Script" uid="uid://cl6u4twl67b6w" path="res://addons/card_3d/scripts/card_layouts/line_card_layout.gd" id="14_tnndc"]
+[ext_resource type="PackedScene" uid="uid://cviptf2wh1pc0" path="res://addons/card_3d/example_solitaire/scenes/pile_marker.tscn" id="15_k6ux7"]
+[ext_resource type="Script" uid="uid://ccf6pfyo8xdm3" path="res://addons/card_3d/example_solitaire/scripts/stack_layout.gd" id="16_1oulw"]
+
+[sub_resource type="Environment" id="Environment_aua20"]
+background_mode = 1
+
+[sub_resource type="Resource" id="Resource_eiu4o"]
+script = ExtResource("11_e48mi")
+pile_y_offset = 0.0
+metadata/_custom_type_script = "uid://cntqyqc32apyx"
+
+[sub_resource type="Resource" id="Resource_qk52r"]
+script = ExtResource("13_n5ix6")
+metadata/_custom_type_script = "uid://dhlf23ahp2k1e"
+
+[sub_resource type="Resource" id="Resource_aua20"]
+script = ExtResource("14_tnndc")
+
+[sub_resource type="Resource" id="Resource_rns6f"]
+script = ExtResource("16_1oulw")
+distance = 0.8
+metadata/_custom_type_script = "uid://ccf6pfyo8xdm3"
+
+[sub_resource type="Resource" id="Resource_n1c4l"]
+script = ExtResource("11_e48mi")
+pile_y_offset = 0.0
+metadata/_custom_type_script = "uid://cntqyqc32apyx"
+
+[sub_resource type="Resource" id="Resource_x1qku"]
+script = ExtResource("14_tnndc")
+metadata/_custom_type_script = "uid://cl6u4twl67b6w"
+
+[node name="Battle" type="Node3D"]
+script = ExtResource("1_n6gaa")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aua20")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PlayerSprite2D" type="Sprite2D" parent="HUD"]
+position = Vector2(575.225, 587.565)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_6ofp8")
+
+[node name="PlayerAvatarSprite2D" type="Sprite2D" parent="HUD/PlayerSprite2D"]
+texture = ExtResource("3_mvulk")
+
+[node name="AbilityHolderSprite2D" type="Sprite2D" parent="HUD/PlayerSprite2D"]
+position = Vector2(-128.167, -10.4333)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_w40i5")
+
+[node name="AbilityAvatarSprite2D" type="Sprite2D" parent="HUD/PlayerSprite2D/AbilityHolderSprite2D"]
+texture = ExtResource("5_fe4ja")
+
+[node name="OpponentSprite2D" type="Sprite2D" parent="HUD"]
+position = Vector2(575.225, 61.195)
+rotation = 3.14159
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_6ofp8")
+
+[node name="OpponentAvatarSprite2D" type="Sprite2D" parent="HUD/OpponentSprite2D"]
+position = Vector2(5.63402e-05, -72.0334)
+rotation = 3.14159
+texture = ExtResource("3_mvulk")
+
+[node name="AbilityHolderSprite2D" type="Sprite2D" parent="HUD/OpponentSprite2D"]
+position = Vector2(-731.833, 287.967)
+rotation = 3.14159
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_w40i5")
+
+[node name="AbilityAvatarSprite2D" type="Sprite2D" parent="HUD/OpponentSprite2D/AbilityHolderSprite2D"]
+texture = ExtResource("5_fe4ja")
+
+[node name="GoldOrCardsSprite2D" type="Sprite2D" parent="HUD"]
+position = Vector2(106.875, 474.89)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_sgdsx")
+region_enabled = true
+region_rect = Rect2(231, 300, 671, 149)
+
+[node name="ActivateAbilitySprite2D" type="Sprite2D" parent="HUD"]
+position = Vector2(106.875, 432)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_sgdsx")
+region_enabled = true
+region_rect = Rect2(233, 509, 670, 144)
+
+[node name="EndTurnSprite2D" type="Sprite2D" parent="HUD"]
+position = Vector2(1084.69, 627.15)
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("6_sgdsx")
+region_enabled = true
+region_rect = Rect2(231, 699, 673, 151)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.1611, 2)
+light_color = Color(0.458824, 0.717647, 0.854902, 1)
+omni_range = 10.0
+omni_attenuation = -0.661
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.2416, 3)
+light_color = Color(0.407843, 0.235294, 0.647059, 1)
+omni_range = 10.0
+omni_attenuation = -1.678
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4497, -9.62667, 5)
+light_color = Color(0.407843, 0.235294, 0.647059, 1)
+omni_range = 4.0
+omni_attenuation = -2.863
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.009, -11.3485, 5)
+light_color = Color(0.407843, 0.235294, 0.647059, 1)
+omni_range = 4.292
+omni_attenuation = -2.186
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5659, 8.63938, 5)
+light_color = Color(0.407843, 0.235294, 0.647059, 1)
+omni_range = 5.303
+omni_attenuation = -2.017
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3697, 9.50205, 5)
+light_color = Color(0.407843, 0.235294, 0.647059, 1)
+omni_range = 4.0
+omni_attenuation = -2.694
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0983, -6.68405, 3)
+light_color = Color(0.858824, 0.533333, 0.388235, 1)
+omni_attenuation = -1.339
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4956, -6.684, 4)
+light_color = Color(0.858824, 0.533333, 0.388235, 1)
+omni_attenuation = -1.339
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -7.92664, 10)
+shadow_enabled = true
+shadow_opacity = 0.65
+shadow_blur = 5.0
+
+[node name="Battlefield" parent="." instance=ExtResource("7_5moxy")]
+transform = Transform3D(18.1242, 0.17192, -11.0808, 0, 19.9981, 0.251319, 14.1602, -0.220047, 14.1828, 0, 0, -2)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999391, 0, -0.0348995, 0, 1, 0, 0.0348995, 0, 0.99939, -0.45, 0.515, 14.855)
+
+[node name="PlayerDragController" type="Node3D" parent="."]
+script = ExtResource("8_156m4")
+
+[node name="DeckCardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.131, -8.391, -1.3)
+script = ExtResource("10_8eh2s")
+highlight_on_hover = false
+card_layout_strategy = SubResource("Resource_eiu4o")
+
+[node name="HandCardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35, -9.854, 0)
+script = ExtResource("12_ueicy")
+card_layout_strategy = SubResource("Resource_qk52r")
+
+[node name="InPlayCardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.993, 2)
+card_layout_strategy = SubResource("Resource_aua20")
+
+[node name="EmptyDeck" parent="PlayerDragController" instance=ExtResource("15_k6ux7")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -20.06, -11.2223, -0.465144)
+visible = false
+skeleton = NodePath("../..")
+
+[node name="OpponentDragController" type="Node3D" parent="."]
+transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("8_156m4")
+
+[node name="DeckCardCollection" parent="OpponentDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.414, -8.721, -1)
+script = ExtResource("10_8eh2s")
+highlight_on_hover = false
+card_layout_strategy = SubResource("Resource_eiu4o")
+
+[node name="HandCardCollection" parent="OpponentDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.77, -11.498, 0)
+script = ExtResource("12_ueicy")
+card_layout_strategy = SubResource("Resource_qk52r")
+
+[node name="InPlayCardCollection" parent="OpponentDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56442e-07, -2.24751, 2)
+card_layout_strategy = SubResource("Resource_aua20")
+
+[node name="OpponentEmptyDeck" parent="OpponentDragController" instance=ExtResource("15_k6ux7")]
+transform = Transform3D(-1, 3.82137e-15, 8.74228e-08, 8.74228e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, -20.0597, -9.83653, -0.488225)
+visible = false
+skeleton = NodePath("../..")
+
+[node name="CharacterDragController" type="Node3D" parent="."]
+script = ExtResource("8_156m4")
+
+[node name="OutOfPlayCharacterCollection" parent="CharacterDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.87, 2.31, 0)
+card_layout_strategy = SubResource("Resource_rns6f")
+
+[node name="CharacterDeckCollection" parent="CharacterDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.499, 0, 0)
+card_layout_strategy = SubResource("Resource_n1c4l")
+
+[node name="CharacterDrawCollection" parent="CharacterDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02539, 0, 0)
+card_layout_strategy = SubResource("Resource_x1qku")
+
+[connection signal="card_clicked" from="PlayerDragController/DeckCardCollection" to="." method="_on_deck_card_collection_card_clicked"]
+[connection signal="card_clicked" from="OpponentDragController/DeckCardCollection" to="." method="_on_opponent_deck_card_collection_card_clicked"]

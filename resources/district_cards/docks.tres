@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b3oo864iw0u0g"]
+
+[ext_resource type="Texture2D" uid="uid://dsi723phqmaob" path="res://assets/sprites/Docks.png" id="1_bhyoe"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_bhyoe")

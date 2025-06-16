@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b3bhspqbkd8po"]
+
+[ext_resource type="Texture2D" uid="uid://4dnm3b3awgdf" path="res://assets/sprites/Prison.png" id="1_g8r5t"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_g8r5t")

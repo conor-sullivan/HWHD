@@ -1,0 +1,114 @@
+class_name CardsDatabase
+extends Resource
+
+
+var district_database : Dictionary = {
+	"armoury": {
+		"id": "armoury",
+		"coin_cost": 4,
+		"color" : "red",
+		"front_material_path": "res://resources/district_cards/armoury.tres",
+		"back_material_path": "res://resources/district_cards/district_back.tres"
+	},
+	"barracks": {
+		"id": "barracks",
+		"coin_cost": 3,
+		"color": "red",
+		"front_material_path": "res://resources/district_cards/barracks.tres",
+		"back_material_path": "res://resources/district_cards/district_back.tres"
+	},
+	"bell_tower": {
+		"id": "bell_tower",
+		"coin_cost": 4,
+		"color": "purple",
+		"front_material_path": "res://resources/district_cards/bell_tower.tres",
+		"back_material_path": "res://resources/district_cards/district_back.tres"
+	},
+	"castle": {
+		"id": "castle",
+		"coin_cost": 4,
+		"color": "gold",
+		"front_material_path": "res://resources/district_cards/castle.tres",
+		"back_material_path": "res://resources/district_cards/district_back.tres"
+	},
+	"cathedral": {
+		"id": "cathedral",
+		"coin_cost": 5,
+		"color": "blue",
+		"front_material_path": "res://resources/district_cards/cathedral.tres",
+		"back_material_path": "res://resources/district_cards/district_back.tres"
+	},
+	"church": {
+		"id": "church",
+		"coin_cost": 3,
+		"color": "blue",
+		"front_material_path": "res://resources/district_cards/church.tres",
+		"back_material_path": "res://resources/district_cards/district_back.tres"
+	},
+	"docks": {
+		"id": "docks",
+		"coin_cost": 3,
+		"color": "green",
+		"front_material_path": "res://resources/district_cards/docks.tres",
+		"back_material_path": "res://resources/district_cards/district_back.tres"
+	},
+	"fortress": {
+		"id": "fortress",
+		"coin_cost": 5,
+		"color": "red",
+		"front_material_path": "res://resources/district_cards/fortress.tres",
+		"back_material_path": "res://resources/district_cards/district_back.tres"
+	}
+}
+
+
+var character_database: Dictionary = {
+	"assassin": {
+		"id": "assassin",
+		"turn_order": 1,
+		"front_material_path": "res://resources/character_cards/assassin.tres",
+		"back_material_path": "res://resources/character_cards/character_back.tres"
+	},
+	"thief": {
+		"id": "thief",
+		"turn_order": 2,
+		"front_material_path": "res://resources/character_cards/thief.tres",
+		"back_material_path": "res://resources/character_cards/character_back.tres"
+	},
+	"magician": {
+		"id": "magician",
+		"turn_order": 3,
+		"front_material_path": "res://resources/character_cards/magician.tres",
+		"back_material_path": "res://resources/character_cards/character_back.tres"
+	},
+		"king": {
+		"id": "king",
+		"turn_order": 4,
+		"front_material_path": "res://resources/character_cards/king.tres",
+		"back_material_path": "res://resources/character_cards/character_back.tres"
+	},
+		"bishop": {
+		"id": "bishop",
+		"turn_order": 5,
+		"front_material_path": "res://resources/character_cards/bishop.tres",
+		"back_material_path": "res://resources/character_cards/character_back.tres"
+	},
+		"merchant": {
+		"id": "merchant",
+		"turn_order": 6,
+		"front_material_path": "res://resources/character_cards/merchant.tres",
+		"back_material_path": "res://resources/character_cards/character_back.tres"
+	},
+		"architect": {
+		"id": "architect",
+		"turn_order": 7,
+		"front_material_path": "res://resources/character_cards/architect.tres",
+		"back_material_path": "res://resources/character_cards/character_back.tres"
+	},
+		"warlord": {
+		"id": "warlord",
+		"turn_order": 8,
+		"front_material_path": "res://resources/character_cards/warlord.tres",
+		"back_material_path": "res://resources/character_cards/character_back.tres"
+	},
+}

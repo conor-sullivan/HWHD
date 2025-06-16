@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dh33eyt81p8sg"]
+
+[ext_resource type="Texture2D" uid="uid://bhbqhnr2k1t6c" path="res://assets/sprites/School of Magic.png" id="1_cpitj"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_cpitj")

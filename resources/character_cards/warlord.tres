@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dm6gu2xiqd384"]
+
+[ext_resource type="Texture2D" uid="uid://68mtbxtb7576" path="res://assets/sprites/warlord.png" id="1_p84io"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_p84io")

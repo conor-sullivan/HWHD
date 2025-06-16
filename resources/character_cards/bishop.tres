@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://v54hmkydhpxe"]
+
+[ext_resource type="Texture2D" uid="uid://m555roosf0ic" path="res://assets/sprites/bishop.png" id="1_imy1w"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_imy1w")

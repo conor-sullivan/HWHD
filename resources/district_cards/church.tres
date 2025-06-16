@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b8g1l21n8y1x4"]
+
+[ext_resource type="Texture2D" uid="uid://64s5hbojcd5v" path="res://assets/sprites/Church.png" id="1_ampx4"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_ampx4")

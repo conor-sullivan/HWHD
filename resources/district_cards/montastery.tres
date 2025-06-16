@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cwsgjtnm4rro1"]
+
+[ext_resource type="Texture2D" uid="uid://hf758qlt4kg" path="res://assets/sprites/Montastery.png" id="1_yvjq6"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_yvjq6")

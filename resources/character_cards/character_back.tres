@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://csoj7y3el6gav"]
+
+[ext_resource type="Texture2D" uid="uid://baynwlm8ugl81" path="res://assets/sprites/character back.png" id="1_jyn6p"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_jyn6p")

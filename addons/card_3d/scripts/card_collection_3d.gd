@@ -41,7 +41,7 @@ signal card_added(card)
 		$DropZone.position.z = offset
 
 
-@export var cards: Array[Card3D] = []
+var cards: Array[Card3D] = []
 var card_indicies = {}
 
 var hover_disabled: bool = false # disable card hover animation (useful when dragging other cards around)

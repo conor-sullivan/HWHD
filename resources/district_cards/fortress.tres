@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bbuyrn1ni2xqi"]
+
+[ext_resource type="Texture2D" uid="uid://dvnwjykwrmjl3" path="res://assets/sprites/Fortress.png" id="1_4fdgw"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_4fdgw")

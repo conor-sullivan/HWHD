@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://coxsrwwdcup35"]
+
+[ext_resource type="Script" uid="uid://dj0jnglnyagx2" path="res://scenes/character_cards_manager/character_cards_manager.gd" id="1_3yr2w"]
+[ext_resource type="PackedScene" uid="uid://d1uvcisduvvj" path="res://addons/card_3d/scenes/card_collection_3d.tscn" id="2_5j6nj"]
+
+[node name="CharacterCardsManager" type="Node3D"]
+script = ExtResource("1_3yr2w")
+
+[node name="Deck" parent="." instance=ExtResource("2_5j6nj")]
+
+[node name="Line" parent="." instance=ExtResource("2_5j6nj")]

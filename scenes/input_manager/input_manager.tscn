@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://be2vc3knmxvfh"]
-
-[ext_resource type="Script" uid="uid://c2cnhqov0ja3" path="res://scenes/input_manager/input_manager.gd" id="1_p8v0m"]
-
-[node name="InputManager" type="Node2D" groups=["input_manager"]]
-script = ExtResource("1_p8v0m")

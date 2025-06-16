@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq6xe2g5g7uqv"]
+
+[ext_resource type="Texture2D" uid="uid://qjygnxdsa0po" path="res://assets/sprites/coin_cost.png" id="1_tl8q4"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("1_tl8q4")

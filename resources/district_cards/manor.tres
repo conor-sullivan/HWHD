@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c4nerqgn6eviy"]
+
+[ext_resource type="Texture2D" uid="uid://bc40hu5hvfhtq" path="res://assets/sprites/Manor.png" id="1_fipuw"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_fipuw")

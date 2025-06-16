@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://davrsbes8c6xs"]
+
+[ext_resource type="Texture2D" uid="uid://caw1v0xigbdmv" path="res://assets/sprites/thief.png" id="1_mkr7x"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_mkr7x")
