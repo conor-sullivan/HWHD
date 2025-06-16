@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://1def4a4ctktc"]
+
+[ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_30s0x"]
+[ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_mgxd1"]
+[ext_resource type="Material" uid="uid://d0sl8215yr8io" path="res://resources/district_cards/imperial_treasury.tres" id="2_av0mq"]
+
+[resource]
+script = ExtResource("1_30s0x")
+district_name = "Imperial Treasure"
+color = "Purple"
+cost = 6
+front_material = ExtResource("2_av0mq")
+back_material = ExtResource("1_mgxd1")
+is_purple_foil = true
+ability_text = "Gain 1 bonus point for each gold in your possession at the end of the game."
+is_in_deck = false
+is_visible = false
+metadata/_custom_type_script = "uid://bbdpyr8inju5f"

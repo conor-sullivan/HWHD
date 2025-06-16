@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://dxuxvnuurmng7"]
+
+[ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_ixcdb"]
+[ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_jkfmb"]
+[ext_resource type="Material" uid="uid://b8g1l21n8y1x4" path="res://resources/district_cards/church.tres" id="2_tedil"]
+
+[resource]
+script = ExtResource("1_ixcdb")
+district_name = "Church"
+color = "Blue"
+cost = 3
+front_material = ExtResource("2_tedil")
+back_material = ExtResource("1_jkfmb")
+is_purple_foil = false
+ability_text = ""
+is_in_deck = false
+is_visible = false
+metadata/_custom_type_script = "uid://bbdpyr8inju5f"

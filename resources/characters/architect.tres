@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bpsi0508knj0v"]
+
+[ext_resource type="Texture2D" uid="uid://sxy77ublaiks" path="res://assets/sprites/architect.png" id="1_csn5v"]
+[ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_lovdk"]
+[ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_o5tdf"]
+[ext_resource type="Material" uid="uid://b6u7o01o4pved" path="res://resources/character_cards/architect.tres" id="3_d62do"]
+
+[resource]
+script = ExtResource("1_lovdk")
+character_name = "Architect"
+avatar_texture = ExtResource("1_csn5v")
+front_material = ExtResource("3_d62do")
+back_material = ExtResource("2_o5tdf")
+play_order_number = 7
+color = "Gray"
+special_ability_text = "After you take an action, you draw two additional district cards and put both in your hand. You may build up to three districts during your turn."
+is_face_down_and_not_in_deck = false
+is_face_up_and_not_in_deck = false
+is_in_deck = true
+has_been_revealed_by_player = false
+controled_by_player_number = 0
+was_assassinated = false
+will_be_assassinated = false
+assassinated_by_player_number = 0
+was_robbed_by_thief = false
+will_be_robbed_by_thief = false
+robbed_by_player_number = 0
+metadata/_custom_type_script = "uid://c7tji47b3d4p3"

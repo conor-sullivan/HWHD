@@ -1,4 +1,4 @@
-class_name TestCard3D
+class_name NewCard3D
 extends Card3D
 
 @export var data: Dictionary:
@@ -6,11 +6,11 @@ extends Card3D
 		if data.has("id"):
 			id = data["id"]
 		
-		if data.has("front_material_path"):
-			front_material_path = data["front_material_path"]
+		if data.has("front_material"):
+			front_material = data["front_material"]
 			
-		if data.has("back_material_path"):
-			back_material_path = data["back_material_path"]
+		if data.has("back_material"):
+			back_material = data["back_material"]
 			
 		if data.has("coin_cost"):
 			coin_cost = data["coin_cost"]
@@ -23,20 +23,16 @@ var coin_cost : int :
 			$SubViewport/DistrictCoinCostContainer.create_coins(cost)
 
 
-var front_material_path : String :
-	set(path):
-		if path:
-			var material = load(path)
-			
+var front_material : Material :
+	set(material):
+		if material:
 			if material:
 				$CardMesh/CardFrontMesh.set_surface_override_material(0, material)
 
 
-var back_material_path : String:
-	set(path):
-		if path:
-			var material = load(path)
-			
+var back_material : Material:
+	set(material):
+		if material:
 			if material:
 				$CardMesh/CardBackMesh.set_surface_override_material(0, material)
 

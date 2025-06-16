@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://cx82gikqf7y86"]
+
+[ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_1sxed"]
+[ext_resource type="Texture2D" uid="uid://caw1v0xigbdmv" path="res://assets/sprites/thief.png" id="1_v8u3i"]
+[ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_gue4v"]
+[ext_resource type="Material" uid="uid://davrsbes8c6xs" path="res://resources/character_cards/thief.tres" id="3_1kujo"]
+
+[resource]
+script = ExtResource("1_1sxed")
+character_name = "Thief"
+avatar_texture = ExtResource("1_v8u3i")
+front_material = ExtResource("3_1kujo")
+back_material = ExtResource("2_gue4v")
+play_order_number = 2
+color = "Gray"
+special_ability_text = "You choose the title of a character from whom you wish to steal. When the player who has that character is called upon to take his turn, you first take all of his gold. You may not steal from the Assassin or the Assassin’s target."
+is_face_down_and_not_in_deck = false
+is_face_up_and_not_in_deck = false
+is_in_deck = true
+has_been_revealed_by_player = false
+controled_by_player_number = 0
+was_assassinated = false
+will_be_assassinated = false
+assassinated_by_player_number = 0
+was_robbed_by_thief = false
+will_be_robbed_by_thief = false
+robbed_by_player_number = 0
+metadata/_custom_type_script = "uid://c7tji47b3d4p3"

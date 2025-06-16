@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqoxycaki6bgf"]
+
+[ext_resource type="PackedScene" uid="uid://cs2ru0s186hhg" path="res://scenes/battle/battle.tscn" id="1_hyk8p"]
+[ext_resource type="PackedScene" uid="uid://bvpjgek8yxt2s" path="res://state_machine/state_machine.tscn" id="2_k2fmo"]
+[ext_resource type="Script" uid="uid://hh3t85utjpu4" path="res://scenes/main/initialize_battle_state.gd" id="3_l3cfh"]
+[ext_resource type="Script" uid="uid://ddc5oy8upuc7b" path="res://scenes/main/exclude_characters_state.gd" id="4_l3cfh"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Battle" parent="." instance=ExtResource("1_hyk8p")]
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("2_k2fmo")]
+starting_state = NodePath("InitializeBattle")
+
+[node name="InitializeBattle" type="Node" parent="StateMachine" node_paths=PackedStringArray("exclude_characters_state")]
+script = ExtResource("3_l3cfh")
+exclude_characters_state = NodePath("../ExcludeCharacters")
+
+[node name="ExcludeCharacters" type="Node" parent="StateMachine"]
+script = ExtResource("4_l3cfh")

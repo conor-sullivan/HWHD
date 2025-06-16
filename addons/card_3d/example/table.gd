@@ -37,7 +37,7 @@ func _input(event):
 
 
 func instantiate_face_card(rank, suit) -> FaceCard3D:
-	var scene = load("res://example/face_card_3d.tscn")
+	var scene = load("res:///addons/card_3d/example/face_card_3d.tscn")
 	var face_card_3d: FaceCard3D = scene.instantiate()
 	var card_data: Dictionary = card_database.get_card_data(rank, suit)
 	face_card_3d.rank = card_data["rank"]

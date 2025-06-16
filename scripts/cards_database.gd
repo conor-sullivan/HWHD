@@ -1,8 +1,67 @@
 class_name CardsDatabase
 extends Resource
 
+@export var district_resources : Array[DistrictData] = [
+	preload("res://resources/districts/armory.tres"),
+	preload("res://resources/districts/barracks.tres"),
+	preload("res://resources/districts/bell_tower.tres"),
+	preload("res://resources/districts/castle.tres"),
+	preload("res://resources/districts/cathedrel.tres"),
+	preload("res://resources/districts/church.tres"),
+	preload("res://resources/districts/docks.tres"),
+	preload("res://resources/districts/fortress.tres"),
+	preload("res://resources/districts/hospital.tres"),
+	preload("res://resources/districts/imperial_treasure.tres"),
+	preload("res://resources/districts/keep.tres"),
+	preload("res://resources/districts/lighthouse.tres"),
+	preload("res://resources/districts/manor.tres"),
+	preload("res://resources/districts/map_room.tres"),
+	preload("res://resources/districts/market.tres"),
+	preload("res://resources/districts/montastery.tres"),
+	preload("res://resources/districts/necropolis.tres"),
+	preload("res://resources/districts/palace.tres"),
+	preload("res://resources/districts/park.tres"),
+	preload("res://resources/districts/poor_house.tres"),
+	preload("res://resources/districts/prison.tres"),
+	preload("res://resources/districts/school_of_magic.tres"),
+	preload("res://resources/districts/tavern.tres"),
+	preload("res://resources/districts/temple.tres")
+]
 
-var district_database : Dictionary = {
+@export var character_resources : Array[CharacterData] = [
+	preload("res://resources/characters/architect.tres"),
+	preload("res://resources/characters/assassin.tres"),
+	preload("res://resources/characters/bishop.tres"),
+	preload("res://resources/characters/king.tres"),
+	preload("res://resources/characters/magician.tres"),
+	preload("res://resources/characters/merchant.tres"),
+	preload("res://resources/characters/thief.tres"),
+	preload("res://resources/characters/warlord.tres")
+]
+
+
+func get_district_database() -> Dictionary:
+	var result : Dictionary
+	for resource in district_resources:
+		result[resource.district_name] = []
+		print(resource.get_property_list())
+		for element in resource:
+			result[resource.district_name][element.name] = element
+	
+	return result
+
+
+func get_character_card_data(name : String) -> Dictionary:
+	var card_data : Dictionary
+	for resource in character_resources:
+		if resource.character_name == name:
+			for prop in resource.get_property_list():
+				if prop.name != "Reference" and prop.name != "script": # Exclude these properties
+					card_data[prop.name] = resource.get(prop.name)
+	return card_data
+
+
+var old_district_database : Dictionary = {
 	"armoury": {
 		"id": "armoury",
 		"coin_cost": 4,
@@ -62,7 +121,7 @@ var district_database : Dictionary = {
 }
 
 
-var character_database: Dictionary = {
+var old_character_database: Dictionary = {
 	"assassin": {
 		"id": "assassin",
 		"turn_order": 1,

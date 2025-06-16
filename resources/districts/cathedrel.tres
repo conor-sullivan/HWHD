@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://c7fyclwrr711x"]
+
+[ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_5vino"]
+[ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_kynrk"]
+[ext_resource type="Material" uid="uid://qscp1uf2ewsn" path="res://resources/district_cards/cathedral.tres" id="2_7d6wr"]
+
+[resource]
+script = ExtResource("1_kynrk")
+district_name = "Cathedrel"
+color = "Blue"
+cost = 5
+front_material = ExtResource("2_7d6wr")
+back_material = ExtResource("1_5vino")
+is_purple_foil = false
+ability_text = ""
+is_in_deck = false
+is_visible = false
+metadata/_custom_type_script = "uid://bbdpyr8inju5f"

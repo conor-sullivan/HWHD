@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://b0i64xm1e2qc7"]
+
+[ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_a41xa"]
+[ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_u1f67"]
+[ext_resource type="Material" uid="uid://2rqd80fkqvrw" path="res://resources/district_cards/park.tres" id="2_bl3jl"]
+
+[resource]
+script = ExtResource("1_u1f67")
+district_name = "Park"
+color = "Purple"
+cost = 4
+front_material = ExtResource("2_bl3jl")
+back_material = ExtResource("1_a41xa")
+is_purple_foil = true
+ability_text = "If you have no cards in your hand at the end of your turn, draw 2 cards."
+is_in_deck = false
+is_visible = false
+metadata/_custom_type_script = "uid://bbdpyr8inju5f"
