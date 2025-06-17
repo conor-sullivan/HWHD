@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqoxycaki6bgf"]
+[gd_scene load_steps=15 format=3 uid="uid://bqoxycaki6bgf"]
 
 [ext_resource type="PackedScene" uid="uid://cs2ru0s186hhg" path="res://scenes/battle/battle.tscn" id="1_hyk8p"]
 [ext_resource type="PackedScene" uid="uid://bvpjgek8yxt2s" path="res://state_machine/state_machine.tscn" id="2_k2fmo"]
 [ext_resource type="Script" uid="uid://hh3t85utjpu4" path="res://scenes/main/initialize_battle_state.gd" id="3_l3cfh"]
 [ext_resource type="Script" uid="uid://ddc5oy8upuc7b" path="res://scenes/main/exclude_characters_state.gd" id="4_l3cfh"]
+[ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="4_th5th"]
+[ext_resource type="Resource" uid="uid://cskaoin53a8ap" path="res://resources/characters/assassin.tres" id="5_7smn1"]
+[ext_resource type="Resource" uid="uid://cx82gikqf7y86" path="res://resources/characters/thief.tres" id="6_raeie"]
+[ext_resource type="Resource" uid="uid://bju75ixfd7vbd" path="res://resources/characters/magician.tres" id="7_hxu8e"]
+[ext_resource type="Resource" uid="uid://bpv8sb42yc1ad" path="res://resources/characters/king.tres" id="8_nvumn"]
+[ext_resource type="Resource" uid="uid://bdijll6cmpfwb" path="res://resources/characters/bishop.tres" id="9_ou6is"]
+[ext_resource type="Resource" uid="uid://d3ypgi3oxgxgr" path="res://resources/characters/merchant.tres" id="10_necax"]
+[ext_resource type="Resource" uid="uid://bpsi0508knj0v" path="res://resources/characters/architect.tres" id="11_r4lks"]
+[ext_resource type="Resource" uid="uid://b2qptckr8gwe" path="res://resources/characters/warlord.tres" id="12_pg34l"]
+[ext_resource type="Script" uid="uid://dx8nfmwnjt2v5" path="res://state_machine/select_character_state.gd" id="14_7smn1"]
 
 [node name="Main" type="Node3D"]
 
@@ -15,6 +25,11 @@ starting_state = NodePath("InitializeBattle")
 [node name="InitializeBattle" type="Node" parent="StateMachine" node_paths=PackedStringArray("exclude_characters_state")]
 script = ExtResource("3_l3cfh")
 exclude_characters_state = NodePath("../ExcludeCharacters")
+character_resources = Array[ExtResource("4_th5th")]([ExtResource("5_7smn1"), ExtResource("6_raeie"), ExtResource("7_hxu8e"), ExtResource("8_nvumn"), ExtResource("9_ou6is"), ExtResource("10_necax"), ExtResource("11_r4lks"), ExtResource("12_pg34l")])
 
-[node name="ExcludeCharacters" type="Node" parent="StateMachine"]
+[node name="ExcludeCharacters" type="Node" parent="StateMachine" node_paths=PackedStringArray("select_character_state")]
 script = ExtResource("4_l3cfh")
+select_character_state = NodePath("../SelectCharacter")
+
+[node name="SelectCharacter" type="Node" parent="StateMachine"]
+script = ExtResource("14_7smn1")

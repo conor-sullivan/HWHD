@@ -2,6 +2,7 @@ class_name InitializeBattleState
 extends State
 
 @export var exclude_characters_state : State
+@export var character_resources : Array[CharacterData]
 
 var players_ready : bool = false
 
@@ -13,7 +14,8 @@ func enter() -> void:
 	
 	GameData.current_battle = BattleData.new()
 	GameData.current_battle.players = [real_player, opponent_player]
-	
+	GameData.current_battle.character_cards = character_resources
+
 	await get_tree().create_timer(0.25).timeout
 	draw_initial_cards()
 
@@ -47,4 +49,6 @@ func draw_initial_cards() -> void:
 		GameEvents.requested_player_draw_district_cards.emit(player, 4)
 		await get_tree().create_timer(0.25).timeout
 	
+	await get_tree().create_timer(0.25).timeout
+
 	players_ready = true

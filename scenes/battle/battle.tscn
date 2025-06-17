@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=46 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
 [ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="2_6ofp8"]
@@ -29,7 +29,6 @@
 [ext_resource type="Script" uid="uid://cl6u4twl67b6w" path="res://addons/card_3d/scripts/card_layouts/line_card_layout.gd" id="14_tnndc"]
 [ext_resource type="PackedScene" uid="uid://cviptf2wh1pc0" path="res://addons/card_3d/example_solitaire/scenes/pile_marker.tscn" id="15_k6ux7"]
 [ext_resource type="Resource" uid="uid://dog3ox055j4i5" path="res://resources/districts/map_room.tres" id="15_xg1ve"]
-[ext_resource type="Script" uid="uid://ccf6pfyo8xdm3" path="res://addons/card_3d/example_solitaire/scripts/stack_layout.gd" id="16_1oulw"]
 [ext_resource type="Resource" uid="uid://cc2jgi37r8q3d" path="res://resources/districts/market.tres" id="16_dgo2i"]
 [ext_resource type="Resource" uid="uid://cndr42n76n8mb" path="res://resources/districts/montastery.tres" id="17_d046s"]
 [ext_resource type="Resource" uid="uid://b4v5oa452ab42" path="res://resources/districts/necropolis.tres" id="18_mdvv0"]
@@ -40,15 +39,7 @@
 [ext_resource type="Resource" uid="uid://pt8rcrjy58u6" path="res://resources/districts/school_of_magic.tres" id="23_1cukx"]
 [ext_resource type="Resource" uid="uid://dqepjibqn4jpu" path="res://resources/districts/tavern.tres" id="24_wlmsd"]
 [ext_resource type="Resource" uid="uid://cnxnaqnmd2mmp" path="res://resources/districts/temple.tres" id="25_ikd0n"]
-[ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="26_xg1ve"]
-[ext_resource type="Resource" uid="uid://bpsi0508knj0v" path="res://resources/characters/architect.tres" id="27_dgo2i"]
-[ext_resource type="Resource" uid="uid://cskaoin53a8ap" path="res://resources/characters/assassin.tres" id="28_d046s"]
-[ext_resource type="Resource" uid="uid://bdijll6cmpfwb" path="res://resources/characters/bishop.tres" id="29_mdvv0"]
-[ext_resource type="Resource" uid="uid://bpv8sb42yc1ad" path="res://resources/characters/king.tres" id="30_lq6ex"]
-[ext_resource type="Resource" uid="uid://bju75ixfd7vbd" path="res://resources/characters/magician.tres" id="31_03xte"]
-[ext_resource type="Resource" uid="uid://d3ypgi3oxgxgr" path="res://resources/characters/merchant.tres" id="32_36ceb"]
-[ext_resource type="Resource" uid="uid://cx82gikqf7y86" path="res://resources/characters/thief.tres" id="33_e1v6h"]
-[ext_resource type="Resource" uid="uid://b2qptckr8gwe" path="res://resources/characters/warlord.tres" id="34_1cukx"]
+[ext_resource type="PackedScene" uid="uid://bk46kcja2e1n" path="res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn" id="49_xg1ve"]
 
 [sub_resource type="Environment" id="Environment_aua20"]
 background_mode = 1
@@ -69,24 +60,9 @@ metadata/_custom_type_script = "uid://dhlf23ahp2k1e"
 [sub_resource type="Resource" id="Resource_aua20"]
 script = ExtResource("14_tnndc")
 
-[sub_resource type="Resource" id="Resource_rns6f"]
-script = ExtResource("16_1oulw")
-distance = 0.8
-metadata/_custom_type_script = "uid://ccf6pfyo8xdm3"
-
-[sub_resource type="Resource" id="Resource_n1c4l"]
-script = ExtResource("11_e48mi")
-pile_y_offset = 0.0
-metadata/_custom_type_script = "uid://cntqyqc32apyx"
-
-[sub_resource type="Resource" id="Resource_x1qku"]
-script = ExtResource("14_tnndc")
-metadata/_custom_type_script = "uid://cl6u4twl67b6w"
-
 [node name="Battle" type="Node3D"]
 script = ExtResource("1_n6gaa")
 district_resources = Array[ExtResource("2_fe4ja")]([ExtResource("3_sgdsx"), ExtResource("4_5moxy"), ExtResource("5_156m4"), ExtResource("6_ilhaa"), ExtResource("7_v3sqs"), ExtResource("8_m7fqn"), ExtResource("9_j021e"), ExtResource("10_eu6pb"), ExtResource("11_fagrh"), ExtResource("12_pqmvt"), ExtResource("13_t60p8"), ExtResource("14_kwbff"), ExtResource("15_xg1ve"), ExtResource("16_dgo2i"), ExtResource("17_d046s"), ExtResource("18_mdvv0"), ExtResource("19_lq6ex"), ExtResource("20_03xte"), ExtResource("21_36ceb"), ExtResource("22_e1v6h"), ExtResource("23_1cukx"), ExtResource("24_wlmsd"), ExtResource("25_ikd0n")])
-character_resources = Array[ExtResource("26_xg1ve")]([ExtResource("27_dgo2i"), ExtResource("28_d046s"), ExtResource("29_mdvv0"), ExtResource("30_lq6ex"), ExtResource("31_03xte"), ExtResource("32_36ceb"), ExtResource("33_e1v6h"), ExtResource("34_1cukx")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aua20")
@@ -153,10 +129,13 @@ region_rect = Rect2(231, 699, 673, 151)
 [node name="AcceptButton" type="Button" parent="HUD"]
 visible = false
 offset_left = 536.0
-offset_top = 359.2
+offset_top = 382.335
 offset_right = 603.0
-offset_bottom = 390.2
+offset_bottom = 413.335
 text = "ACCEPT"
+
+[node name="InBattleCharacterCardHandler" parent="HUD" instance=ExtResource("49_xg1ve")]
+mouse_filter = 1
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -225,7 +204,7 @@ highlight_on_hover = false
 card_layout_strategy = SubResource("Resource_eiu4o")
 
 [node name="HandCardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.252, 0)
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, -10.252, 0)
 script = ExtResource("12_ueicy")
 card_layout_strategy = SubResource("Resource_n6gaa")
 
@@ -248,7 +227,7 @@ highlight_on_hover = false
 card_layout_strategy = SubResource("Resource_eiu4o")
 
 [node name="HandCardCollection" parent="OpponentDragController" instance=ExtResource("9_pyfix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.498, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -11.498, 0)
 script = ExtResource("12_ueicy")
 card_layout_strategy = SubResource("Resource_qk52r")
 
@@ -260,21 +239,6 @@ card_layout_strategy = SubResource("Resource_aua20")
 transform = Transform3D(-1, 3.82137e-15, 8.74228e-08, 8.74228e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, -19.114, -8.721, -0.465)
 visible = false
 skeleton = NodePath("../..")
-
-[node name="CharacterDragController" type="Node3D" parent="."]
-script = ExtResource("8_156m4")
-
-[node name="OutOfPlayCharacterCollection" parent="CharacterDragController" instance=ExtResource("9_pyfix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.08, 2.31, -1.09)
-card_layout_strategy = SubResource("Resource_rns6f")
-
-[node name="CharacterDeckCollection" parent="CharacterDragController" instance=ExtResource("9_pyfix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.94139, 0, 0)
-card_layout_strategy = SubResource("Resource_n1c4l")
-
-[node name="CharacterDrawnCollection" parent="CharacterDragController" instance=ExtResource("9_pyfix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56137, 0, 0)
-card_layout_strategy = SubResource("Resource_x1qku")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.999743, -0.00256828, -0.0225415, 0, 0.993572, -0.113203, 0.0226873, 0.113174, 0.993316, 0, -2.59, 15.385)

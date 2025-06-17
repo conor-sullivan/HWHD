@@ -1,8 +1,16 @@
 extends Node
 
+signal character_choices_provided(characters : Array[CharacterData])
+signal players_character_card_selected(character : CharacterData)
+signal opponents_character_card_selected(character : CharacterData)
+signal all_character_cards_chosen(data : Dictionary)
 signal accepted_character_cards
 signal done_drawing_initial_character_cards
-signal requested_draw_character_card(facedown : bool)
+signal done_drawing_available_character_cards
+signal starting_excluded_characters_state
+signal starting_select_character_state(number_of_cards : int)
+signal requested_show_in_battle_character_card_handler_overlay
+signal requested_draw_character_card(face_down : bool)
 signal ready_to_exclude_characters
 signal player_data_changed
 signal requested_player_draw_district_cards(player : Player, count : int)

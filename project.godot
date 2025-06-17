@@ -27,3 +27,7 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="3d card plugin"
+
+[rendering]
+
+textures/default_filters/use_nearest_mipmap_filter=true
