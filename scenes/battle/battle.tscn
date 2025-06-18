@@ -1,16 +1,11 @@
-[gd_scene load_steps=46 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=41 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
-[ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="2_6ofp8"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="2_fe4ja"]
-[ext_resource type="Texture2D" uid="uid://dpfpj5ttarrql" path="res://assets/sprites/UI_avatar_player_test.png" id="3_mvulk"]
 [ext_resource type="Resource" uid="uid://h1sq56k5rsq4" path="res://resources/districts/armory.tres" id="3_sgdsx"]
 [ext_resource type="Resource" uid="uid://culfm22xp2n4" path="res://resources/districts/barracks.tres" id="4_5moxy"]
-[ext_resource type="Texture2D" uid="uid://b88ta1bgrnaq3" path="res://assets/sprites/ability_holder_test.png" id="4_w40i5"]
 [ext_resource type="Resource" uid="uid://contlwpmvss74" path="res://resources/districts/castle.tres" id="5_156m4"]
-[ext_resource type="Texture2D" uid="uid://bfnakpa755cne" path="res://assets/sprites/assassin_ability_avatar.png" id="5_fe4ja"]
 [ext_resource type="Resource" uid="uid://c7fyclwrr711x" path="res://resources/districts/cathedrel.tres" id="6_ilhaa"]
-[ext_resource type="Texture2D" uid="uid://cya4nrcrt6217" path="res://assets/sprites/UI-Buttons-Test.png" id="6_sgdsx"]
 [ext_resource type="PackedScene" uid="uid://i0ct1ej7b2pm" path="res://assets/3D/create_a_battlefield__0614155941_texture.glb" id="7_5moxy"]
 [ext_resource type="Resource" uid="uid://dxuxvnuurmng7" path="res://resources/districts/church.tres" id="7_v3sqs"]
 [ext_resource type="Script" uid="uid://bnexkr8l0w1qr" path="res://addons/card_3d/scripts/drag_controller.gd" id="8_156m4"]
@@ -39,7 +34,7 @@
 [ext_resource type="Resource" uid="uid://pt8rcrjy58u6" path="res://resources/districts/school_of_magic.tres" id="23_1cukx"]
 [ext_resource type="Resource" uid="uid://dqepjibqn4jpu" path="res://resources/districts/tavern.tres" id="24_wlmsd"]
 [ext_resource type="Resource" uid="uid://cnxnaqnmd2mmp" path="res://resources/districts/temple.tres" id="25_ikd0n"]
-[ext_resource type="PackedScene" uid="uid://bk46kcja2e1n" path="res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn" id="49_xg1ve"]
+[ext_resource type="PackedScene" uid="uid://mhn1iyf55w8g" path="res://scenes/hud/hud.tscn" id="26_1x3g8"]
 
 [sub_resource type="Environment" id="Environment_aua20"]
 background_mode = 1
@@ -67,67 +62,7 @@ district_resources = Array[ExtResource("2_fe4ja")]([ExtResource("3_sgdsx"), ExtR
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aua20")
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="PlayerSprite2D" type="Sprite2D" parent="HUD"]
-position = Vector2(567.9, 478.02)
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_6ofp8")
-
-[node name="PlayerAvatarSprite2D" type="Sprite2D" parent="HUD/PlayerSprite2D"]
-texture = ExtResource("3_mvulk")
-
-[node name="AbilityHolderSprite2D" type="Sprite2D" parent="HUD/PlayerSprite2D"]
-position = Vector2(-128.167, -10.4333)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("4_w40i5")
-
-[node name="AbilityAvatarSprite2D" type="Sprite2D" parent="HUD/PlayerSprite2D/AbilityHolderSprite2D"]
-texture = ExtResource("5_fe4ja")
-
-[node name="OpponentSprite2D" type="Sprite2D" parent="HUD"]
-position = Vector2(567.9, 111.715)
-rotation = 3.14159
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_6ofp8")
-
-[node name="OpponentAvatarSprite2D" type="Sprite2D" parent="HUD/OpponentSprite2D"]
-position = Vector2(5.63402e-05, -72.0334)
-rotation = 3.14159
-texture = ExtResource("3_mvulk")
-
-[node name="AbilityHolderSprite2D" type="Sprite2D" parent="HUD/OpponentSprite2D"]
-position = Vector2(-731.833, 287.967)
-rotation = 3.14159
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("4_w40i5")
-
-[node name="AbilityAvatarSprite2D" type="Sprite2D" parent="HUD/OpponentSprite2D/AbilityHolderSprite2D"]
-texture = ExtResource("5_fe4ja")
-
-[node name="GoldOrCardsSprite2D" type="Sprite2D" parent="HUD"]
-position = Vector2(106.875, 474.89)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("6_sgdsx")
-region_enabled = true
-region_rect = Rect2(231, 300, 671, 149)
-
-[node name="ActivateAbilitySprite2D" type="Sprite2D" parent="HUD"]
-position = Vector2(106.875, 432)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("6_sgdsx")
-region_enabled = true
-region_rect = Rect2(233, 509, 670, 144)
-
-[node name="EndTurnSprite2D" type="Sprite2D" parent="HUD"]
-position = Vector2(1084.69, 627.15)
-scale = Vector2(0.175, 0.175)
-texture = ExtResource("6_sgdsx")
-region_enabled = true
-region_rect = Rect2(231, 699, 673, 151)
-
-[node name="InBattleCharacterCardHandler" parent="HUD" instance=ExtResource("49_xg1ve")]
-visible = false
+[node name="HUD" parent="." instance=ExtResource("26_1x3g8")]
 
 [node name="Lights" type="Node3D" parent="."]
 

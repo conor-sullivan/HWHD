@@ -8,11 +8,12 @@ var players_ready : bool = false
 
 
 func enter() -> void:
-	var real_player = create_player(0, 'Real Player', '', 2, GameData.player_current_district_deck_build, false)
-	real_player.is_king = false
-	var opponent_player = create_player(1, "AI", '', 2, GameData.player_current_district_deck_build, true)
+	var real_player = create_player(0, 'Real Player', "", 2, GameData.player_current_district_deck_build, false)
+	real_player.is_king = true
+	var opponent_player = create_player(1, "AI", "", 2, GameData.player_current_district_deck_build, true)
 	
 	GameData.current_battle = BattleData.new()
+	GameData.current_battle.real_player = real_player
 	GameData.current_battle.players = [real_player, opponent_player]
 	GameData.current_battle.character_cards = character_resources
 
@@ -31,10 +32,10 @@ func process_frame(_delta : float) -> State:
 		return null
 
 
-func create_player(id : int, name : String, texture_location : String, gold : int, card_resources : Array[DistrictData], is_computer : bool) -> Player:
+func create_player(id : int, _name : String, texture_location : String, gold : int, card_resources : Array[DistrictData], is_computer : bool) -> Player:
 	var new_player = Player.new()
 	new_player.player_id = id
-	new_player.player_name = name
+	new_player.player_name = _name
 	if texture_location:
 		new_player.avatar_texture = load(texture_location)
 	new_player.gold_count = gold

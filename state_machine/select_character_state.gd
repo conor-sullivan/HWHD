@@ -12,13 +12,7 @@ func enter() -> void:
 	GameEvents.players_character_card_selected.connect(_on_players_character_card_selected)
 	GameEvents.opponents_character_card_selected.connect(_on_opponents_character_card_selected)
 	
-	var is_player_king : bool = false
-	for player in GameData.current_battle.players: 
-		if not player.is_computer:
-			if player.is_king:
-				is_player_king = true
-	
-	if is_player_king:
+	if GameData.current_battle.real_player.is_king:
 		number_of_cards = 3
 	else:
 		number_of_cards = 2

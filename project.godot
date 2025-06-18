@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="3d card plugin"
+config/name="High Walls Hidden Daggers"
 run/main_scene="uid://bqoxycaki6bgf"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"

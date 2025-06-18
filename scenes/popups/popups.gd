@@ -4,7 +4,7 @@ extends Control
 
 
 
-func item_popup(slot : Rect2i, card_data : CharacterData) -> void:
+func item_popup(_slot : Rect2i, card_data : CharacterData) -> void:
 	#var mouse_position = get_global_mouse_position()
 	#var correction : Vector2i
 	#var padding : int = 10

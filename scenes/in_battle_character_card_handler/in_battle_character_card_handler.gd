@@ -69,7 +69,10 @@ func _on_starting_select_character_state(number_of_cards : int) -> void:
 		if child is CharacterCard2D:
 			child.queue_free()
 	$Button.hide()
-	$Label.text = "Choose your character for this round"
+	if GameData.current_battle.real_player.is_king:
+		$Label.text = "King has first choice!\nChoose your character for this round"
+	else:
+		$Label.text = "You get second choice\nChoose your character for this round"
 	current_state = HandlerState.Picking
 	number_of_card_choices = number_of_cards
 

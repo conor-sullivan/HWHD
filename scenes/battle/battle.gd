@@ -94,7 +94,7 @@ func _on_deck_card_collection_card_clicked(_card: Variant) -> void:
 	player_draw_card()
 
 
-func _on_opponent_deck_card_collection_card_clicked(card: Variant) -> void:
+func _on_opponent_deck_card_collection_card_clicked(_card: Variant) -> void:
 	opponent_draw_card()
 
 
@@ -143,7 +143,7 @@ func _on_ready_to_exclude_characters() -> void:
 	pass
 
 
-func _on_requested_draw_character_card(face_down : bool) -> void:
+func _on_requested_draw_character_card(_face_down : bool) -> void:
 	pass
 	#var cards = character_deck_collection.cards
 	#var card_global_position = cards[cards.size() - 1].global_position

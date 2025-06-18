@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://mhn1iyf55w8g"]
+
+[ext_resource type="Script" uid="uid://dpx5mivcotmdn" path="res://scenes/hud/hud.gd" id="1_n56i7"]
+[ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="1_v7mo4"]
+[ext_resource type="Texture2D" uid="uid://dpfpj5ttarrql" path="res://assets/sprites/UI_avatar_player_test.png" id="2_n56i7"]
+[ext_resource type="Texture2D" uid="uid://b88ta1bgrnaq3" path="res://assets/sprites/ability_holder_test.png" id="3_mq0y1"]
+[ext_resource type="Texture2D" uid="uid://dkr136kfdr5is" path="res://assets/sprites/avatar_bishop.png" id="4_mq0y1"]
+[ext_resource type="Texture2D" uid="uid://cya4nrcrt6217" path="res://assets/sprites/UI-Buttons-Test.png" id="5_nhd55"]
+[ext_resource type="Texture2D" uid="uid://2m8mbu6jyvqr" path="res://assets/sprites/king_crown.png" id="6_go0ap"]
+[ext_resource type="Texture2D" uid="uid://bbkgg00xpdmv4" path="res://assets/sprites/avatar_warlord.png" id="6_mq0y1"]
+[ext_resource type="PackedScene" uid="uid://bk46kcja2e1n" path="res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn" id="6_q6mn5"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_n56i7")
+
+[node name="PlayerSprite2D" type="Sprite2D" parent="."]
+position = Vector2(567.9, 478.02)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_v7mo4")
+
+[node name="PlayerAvatarSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
+texture = ExtResource("2_n56i7")
+
+[node name="AbilityAvatarSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
+position = Vector2(-296.834, 134.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_mq0y1")
+
+[node name="AbilityHolderSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
+position = Vector2(-296.834, 134.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_mq0y1")
+
+[node name="CrownSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
+position = Vector2(9.16646, -375.167)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_go0ap")
+
+[node name="OpponentSprite2D" type="Sprite2D" parent="."]
+position = Vector2(567.9, 111.715)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_v7mo4")
+
+[node name="OpponentAvatarSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
+position = Vector2(0.833186, 2.375)
+texture = ExtResource("2_n56i7")
+
+[node name="AbilityAvatarSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
+position = Vector2(286.499, 153.958)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_mq0y1")
+
+[node name="AbilityHolderSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
+position = Vector2(286.499, 153.958)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_mq0y1")
+
+[node name="CrownSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
+position = Vector2(9.16622, -364.292)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_go0ap")
+
+[node name="GoldOrCardsSprite2D" type="Sprite2D" parent="."]
+position = Vector2(106.875, 474.89)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_nhd55")
+region_enabled = true
+region_rect = Rect2(231, 300, 671, 149)
+
+[node name="ActivateAbilitySprite2D" type="Sprite2D" parent="."]
+position = Vector2(106.875, 432)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_nhd55")
+region_enabled = true
+region_rect = Rect2(233, 509, 670, 144)
+
+[node name="EndTurnSprite2D" type="Sprite2D" parent="."]
+position = Vector2(1084.69, 627.15)
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("5_nhd55")
+region_enabled = true
+region_rect = Rect2(231, 699, 673, 151)
+
+[node name="InBattleCharacterCardHandler" parent="." instance=ExtResource("6_q6mn5")]
+visible = false

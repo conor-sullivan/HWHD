@@ -1,7 +1,7 @@
+Sprite2D
 CollisionShape2D
 Area2D
 Marker2D
-Sprite2D
 TextureRect
 Label
 VBoxContainer
@@ -12,4 +12,3 @@ PanelContainer
 HBoxContainer
 Button
 Container
-CanvasLayer
