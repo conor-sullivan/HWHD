@@ -22,24 +22,34 @@ var five_card_positions : Array[Vector2] = [
 ]
 
 var three_card_positions : Array[Vector2] = [
-	Vector2(351.0, 324.0),
+	Vector2(351.0 - 50, 324.0),
 	Vector2(576.0, 324.0),
-	Vector2(801.0, 324.0)
+	Vector2(801.0 + 50, 324.0)
 ]
 
 var two_card_positions : Array[Vector2] = [
-	Vector2(451.0, 324.0),
-	Vector2(701.0, 324.0)
+	Vector2(451.0 - 50, 324.0),
+	Vector2(701.0 + 50, 324.0)
 ]
 
 
 func _ready() -> void:
+	GameEvents.players_character_card_selected.connect(_on_players_character_card_selected)
 	GameEvents.starting_excluded_characters_state.connect(_on_starting_excluded_characters_state)
 	GameEvents.starting_select_character_state.connect(_on_starting_select_character_state)
 	GameEvents.requested_show_in_battle_character_card_handler_overlay.connect(_on_requested_show_in_battle_character_card_handler_overlay)
 	GameEvents.requested_draw_character_card.connect(_on_requested_draw_character_card)
 	GameEvents.done_drawing_initial_character_cards.connect(_on_done_drawing_initial_character_cards)
 	GameEvents.done_drawing_available_character_cards.connect(_on_done_drawing_available_character_cards)
+
+
+func _on_players_character_card_selected(_card : CharacterData) -> void:
+	await get_tree().create_timer(0.5).timeout
+	hide()
+	for child in get_children():
+		if child is CharacterCard2D:
+			child.queue_free()
+			deck = []
 
 
 func _on_done_drawing_available_character_cards() -> void:
@@ -101,6 +111,7 @@ func _on_requested_draw_character_card(face_down : bool) -> void:
 		card_number = (8 - deck.size())
 		pos = five_card_positions[card_number]
 	elif current_state == HandlerState.Picking:
+		instance.enable_collision()
 		instance.show_shader()
 		card_number = number_of_card_choices - deck.size()
 		match number_of_card_choices:

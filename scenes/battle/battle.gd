@@ -154,7 +154,8 @@ func _on_requested_draw_character_card(face_down : bool) -> void:
 
 
 func _on_done_drawing_initial_character_cards() -> void:
-	$HUD/AcceptButton.show()
+	#$HUD/AcceptButton.show()
+	pass
 
 
 func _on_accept_button_pressed() -> void:

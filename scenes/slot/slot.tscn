@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgsx8y8m6t43d"]
+
+[ext_resource type="Script" uid="uid://d36gxm4k3vmep" path="res://scenes/slot/slot.gd" id="1_bej84"]
+
+[node name="Slot" type="PanelContainer"]
+offset_left = 743.0
+offset_top = 553.0
+offset_right = 783.0
+offset_bottom = 593.0
+script = ExtResource("1_bej84")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+mouse_filter = 1
+
+[connection signal="mouse_entered" from="Panel" to="." method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_panel_mouse_exited"]

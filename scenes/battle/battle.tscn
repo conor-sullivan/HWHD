@@ -126,16 +126,8 @@ texture = ExtResource("6_sgdsx")
 region_enabled = true
 region_rect = Rect2(231, 699, 673, 151)
 
-[node name="AcceptButton" type="Button" parent="HUD"]
-visible = false
-offset_left = 536.0
-offset_top = 382.335
-offset_right = 603.0
-offset_bottom = 413.335
-text = "ACCEPT"
-
 [node name="InBattleCharacterCardHandler" parent="HUD" instance=ExtResource("49_xg1ve")]
-mouse_filter = 1
+visible = false
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -191,7 +183,7 @@ shadow_enabled = true
 shadow_opacity = 0.65
 shadow_blur = 5.0
 
-[node name="Battlefield" parent="." instance=ExtResource("7_5moxy")]
+[node name="BattlefieldMesh" parent="." instance=ExtResource("7_5moxy")]
 transform = Transform3D(25.5301, 0.141727, -9.1348, 0, 19.9981, 0.251319, 15.0384, -0.240604, 15.5078, 0, 0.995, -2)
 
 [node name="PlayerDragController" type="Node3D" parent="."]
@@ -243,6 +235,5 @@ skeleton = NodePath("../..")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.999743, -0.00256828, -0.0225415, 0, 0.993572, -0.113203, 0.0226873, 0.113174, 0.993316, 0, -2.59, 15.385)
 
-[connection signal="pressed" from="HUD/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="card_clicked" from="PlayerDragController/DeckCardCollection" to="." method="_on_deck_card_collection_card_clicked"]
 [connection signal="card_clicked" from="OpponentDragController/DeckCardCollection" to="." method="_on_opponent_deck_card_collection_card_clicked"]

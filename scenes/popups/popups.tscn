@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds6j7137b57sv"]
+
+[ext_resource type="Script" uid="uid://co56011ttnxx5" path="res://scenes/popups/popups.gd" id="1_cvg1u"]
+[ext_resource type="StyleBox" uid="uid://503a15onclud" path="res://resources/textures/popup_texture.tres" id="2_32ag8"]
+
+[node name="Popups" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cvg1u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ItemPopup" type="PopupPanel" parent="CanvasLayer"]
+auto_translate_mode = 1
+position = Vector2i(240, 480)
+size = Vector2i(678, 165)
+visible = true
+theme_override_styles/panel = ExtResource("2_32ag8")
+
+[node name="Title" type="Label" parent="CanvasLayer/ItemPopup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 668.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "TITLE"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="CanvasLayer/ItemPopup"]
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 668.0
+offset_bottom = 155.0
+theme_override_font_sizes/font_size = 18
+text = "here is a descriptoin of the thing we are trying to describe"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

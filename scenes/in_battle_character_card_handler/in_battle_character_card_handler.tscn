@@ -3,18 +3,18 @@
 [ext_resource type="Script" uid="uid://7vu7ltuasjuu" path="res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.gd" id="1_eosra"]
 [ext_resource type="Material" uid="uid://de6lgys43decm" path="res://shaders/darken_blur_shader.tres" id="1_h1t1m"]
 [ext_resource type="Texture2D" uid="uid://donx45apbk7uo" path="res://assets/sprites/confirm_button.webp" id="3_5ouc4"]
-[ext_resource type="Material" uid="uid://dheflxnta3eml" path="res://shaders/aura_outline.tres" id="3_x462p"]
+[ext_resource type="Material" uid="uid://bua05jgvie8w4" path="res://shaders/button_aura_outline.tres" id="3_x462p"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x462p"]
 
 [node name="InBattleCharacterCardHandler" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_eosra")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -39,6 +39,7 @@ offset_bottom = 94.91
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "These characters are excluded this round"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 visible = false
@@ -49,10 +50,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.49
-offset_top = 180.35
-offset_right = 317.51
-offset_bottom = 344.35
+offset_left = -127.385
+offset_top = 175.525
+offset_right = 308.615
+offset_bottom = 339.525
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)

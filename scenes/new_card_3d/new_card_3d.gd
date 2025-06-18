@@ -36,5 +36,15 @@ var back_material : Material:
 			if material:
 				$CardMesh/CardBackMesh.set_surface_override_material(0, material)
 
+
+
+func _ready() -> void:
+	GameEvents.starting_excluded_characters_state.connect(_on_starting_excluded_characters_state)
+
+
+func _on_starting_excluded_characters_state() -> void:
+	disable_collision()
+
+
 func _to_string():
 	return id

@@ -9,7 +9,7 @@ var players_ready : bool = false
 
 func enter() -> void:
 	var real_player = create_player(0, 'Real Player', '', 2, GameData.player_current_district_deck_build, false)
-	real_player.is_king = true
+	real_player.is_king = false
 	var opponent_player = create_player(1, "AI", '', 2, GameData.player_current_district_deck_build, true)
 	
 	GameData.current_battle = BattleData.new()

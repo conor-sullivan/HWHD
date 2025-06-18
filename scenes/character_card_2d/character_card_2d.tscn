@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://cd344h2l2ongq"]
 
 [ext_resource type="Script" uid="uid://8w5v73ll8tru" path="res://scenes/character_card_2d/character_card_2d.gd" id="1_2hhe1"]
-[ext_resource type="Texture2D" uid="uid://sxy77ublaiks" path="res://assets/sprites/architect.png" id="2_2hhe1"]
 [ext_resource type="Material" uid="uid://dheflxnta3eml" path="res://shaders/aura_outline.tres" id="2_hfpmk"]
+[ext_resource type="Texture2D" uid="uid://d3ton3u7tx0bb" path="res://assets/sprites/assassin.png" id="3_2hhe1"]
 [ext_resource type="Texture2D" uid="uid://baynwlm8ugl81" path="res://assets/sprites/character back.png" id="3_hfpmk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hhe1"]
-size = Vector2(196, 274)
+size = Vector2(206, 286)
 
 [node name="CharacterCard2D" type="Control"]
 layout_mode = 3
@@ -15,19 +15,34 @@ mouse_filter = 1
 script = ExtResource("1_2hhe1")
 shader_material = ExtResource("2_hfpmk")
 
-[node name="BackSprite" type="Sprite2D" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_left = -92.0
+offset_top = -144.0
+offset_right = 94.025
+offset_bottom = 141.755
+mouse_filter = 1
+
+[node name="BackSprite" type="Sprite2D" parent="Panel"]
+position = Vector2(91.16, 145.53)
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("3_hfpmk")
 
-[node name="FrontSprite" type="Sprite2D" parent="."]
+[node name="FrontSprite" type="Sprite2D" parent="Panel"]
+unique_name_in_owner = true
 visible = false
+position = Vector2(92, 146)
 scale = Vector2(0.14, 0.14)
-texture = ExtResource("2_2hhe1")
+texture = ExtResource("3_2hhe1")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="Panel"]
+position = Vector2(91.16, 145.53)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Area2D"]
+position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_2hhe1")
+disabled = true
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Panel" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_mouse_exited"]
+[connection signal="input_event" from="Panel/Area2D" to="." method="_on_area_2d_input_event"]
