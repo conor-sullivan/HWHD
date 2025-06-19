@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://cc2jgi37r8q3d"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://cc2jgi37r8q3d"]
 
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_r2reb"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_rv4cb"]
 [ext_resource type="Material" uid="uid://b6eoe8aby1417" path="res://resources/district_cards/market.tres" id="2_behra"]
+[ext_resource type="Texture2D" uid="uid://bx2qgqc33scqo" path="res://assets/sprites/Market.png" id="4_behra"]
 
 [resource]
 script = ExtResource("1_rv4cb")
 district_name = "Market"
 color = "Green"
 cost = 2
+sprite_texture = ExtResource("4_behra")
 front_material = ExtResource("2_behra")
 back_material = ExtResource("1_r2reb")
 is_purple_foil = false

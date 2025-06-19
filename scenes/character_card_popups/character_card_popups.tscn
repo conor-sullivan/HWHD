@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://ds6j7137b57sv"]
 
-[ext_resource type="Script" uid="uid://co56011ttnxx5" path="res://scenes/popups/popups.gd" id="1_cvg1u"]
-[ext_resource type="StyleBox" uid="uid://503a15onclud" path="res://resources/textures/popup_texture.tres" id="2_32ag8"]
+[ext_resource type="Script" uid="uid://co56011ttnxx5" path="res://scenes/character_card_popups/character_card_popups.gd" id="1_2jslt"]
+[ext_resource type="StyleBox" uid="uid://503a15onclud" path="res://resources/textures/popup_texture.tres" id="2_30ufy"]
 
-[node name="Popups" type="Control"]
+[node name="CharacterCardPopups" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_cvg1u")
+script = ExtResource("1_2jslt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -20,7 +20,7 @@ auto_translate_mode = 1
 position = Vector2i(240, 480)
 size = Vector2i(678, 165)
 visible = true
-theme_override_styles/panel = ExtResource("2_32ag8")
+theme_override_styles/panel = ExtResource("2_30ufy")
 
 [node name="Title" type="Label" parent="CanvasLayer/ItemPopup"]
 anchors_preset = 8

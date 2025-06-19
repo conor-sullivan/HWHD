@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://bot5w3cgjrvdh"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://bot5w3cgjrvdh"]
 
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_dgxb7"]
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_w77ne"]
 [ext_resource type="Material" uid="uid://d1ene6tlgh5p8" path="res://resources/district_cards/hospital.tres" id="2_khqn3"]
+[ext_resource type="Texture2D" uid="uid://cd7i71pfkjn0u" path="res://assets/sprites/Hospital.png" id="4_khqn3"]
 
 [resource]
 script = ExtResource("1_dgxb7")
 district_name = "Hospital"
 color = "Purple"
 cost = 6
+sprite_texture = ExtResource("4_khqn3")
 front_material = ExtResource("2_khqn3")
 back_material = ExtResource("1_w77ne")
 is_purple_foil = true

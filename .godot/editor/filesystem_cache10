@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1750275504
+::res://::1750348777
 icon.svg::CompressedTexture2D/CompressedTexture2D::1758710233743718504::1749647145::1750169664::1::::<><><>0<>0<>f44bde9b04e14c59f7e0fd0b09b659a8<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex::
 ::res://addons/::1749647179
 ::res://addons/card_3d/::1750084462
@@ -154,12 +154,12 @@ stack_layout.gd::GDScript/GDScript::4925450257490059208::1749647182::0::1::::Sta
 suit_discard.gd::GDScript/GDScript::5388959982433296948::1749647182::0::1::::SuitDiscard<>CardCollection3D<><>0<>0<><>::
 ::res://addons/card_3d/scenes/::1750264706
 card_3d.tscn::PackedScene/PackedScene::8804741191797276224::1750091875::0::1::::<><><>0<>0<><>::uid://v8rm0qh4w2o8::::res://addons/card_3d/scripts/card_3d.gd<>uid://klavkiejgxiy::::res://assets/sprites/district back.png<>uid://h7vdysdtgmgu::::res://addons/card_3d/example/materials/club-14.tres
-card_collection_3d.tscn::PackedScene::265492312274776759::1750264706::0::1::::<><><>0<>0<><>::uid://cgkkc3hpfyt3e::::res://addons/card_3d/scripts/card_collection_3d.gd
+card_collection_3d.tscn::PackedScene/PackedScene::265492312274776759::1750264706::0::1::::<><><>0<>0<><>::uid://cgkkc3hpfyt3e::::res://addons/card_3d/scripts/card_collection_3d.gd
 deck.gd::GDScript/GDScript::6628378228844876454::1750251808::0::1::::DeckCardCollection<>CardCollection3D<><>0<>0<><>::
 hand.gd::GDScript/GDScript::6164231794980797115::1749837285::0::1::::HandCardCollection<>CardCollection3D<><>0<>0<><>::
 ::res://addons/card_3d/scripts/::1750263882
 card_3d.gd::GDScript/GDScript::1543145138844863689::1750251808::0::1::::Card3D<>Node3D<><>0<>0<><>::
-card_collection_3d.gd::GDScript::5215230430427082808::1750263882::0::1::::CardCollection3D<>Node3D<><>0<>0<><>::
+card_collection_3d.gd::GDScript/GDScript::5215230430427082808::1750263882::0::1::::CardCollection3D<>Node3D<><>0<>0<><>::
 drag_controller.gd::GDScript/GDScript::3308548455186030329::1749839693::0::1::::DragController<>Node3D<><>0<>0<><>::
 ::res://addons/card_3d/scripts/card_layouts/::1750251808
 card_layout.gd::GDScript/GDScript::8613813903930111655::1750251808::0::1::::CardLayout<>Resource<><>0<>0<><>::
@@ -174,22 +174,22 @@ create_a_battlefield__0614154007_texture.glb::PackedScene/PackedScene::883123410
 create_a_battlefield__0614154007_texture_0.jpg::CompressedTexture2D/CompressedTexture2D::8212219958237585399::1749915677::1750084883::1::::<><><>0<>0<>d0d3dcd43e1f98bb899539bab570f07c<>res://.godot/imported/create_a_battlefield__0614154007_texture_0.jpg-a0587ce5d814b009baadb7bb7445eb17.s3tc.ctex::
 create_a_battlefield__0614155941_texture.glb::PackedScene/PackedScene::613276929263553438::1749916796::1750084884::1::::<><><>0<>0<>fe48f9fe89a2df7087288b89aa31fe1b<>res://.godot/imported/create_a_battlefield__0614155941_texture.glb-ad1efaa51d069df038d7494acd9452cb.scn::uid://02usdr1ki424::::res://assets/3D/create_a_battlefield__0614155941_texture_0.jpg
 create_a_battlefield__0614155941_texture_0.jpg::CompressedTexture2D/CompressedTexture2D::1811705959482799751::1749916796::1750084883::1::::<><><>0<>0<>98497477c9cef59982e9efc941054b2e<>res://.godot/imported/create_a_battlefield__0614155941_texture_0.jpg-5b4784b13ab2141c81845e486e9ef301.s3tc.ctex::
-::res://assets/sprites/::1750277916
+::res://assets/sprites/::1750278337
 ability_holder_test.png::CompressedTexture2D/CompressedTexture2D::4771931979942455092::1750277257::1750277259::1::::<><><>0<>0<>fa7055113d56a3faba9fcea29811bbfd<>res://.godot/imported/ability_holder_test.png-ed178e07c5e92e5037d0182eddf05832.ctex::
 architect.png::CompressedTexture2D/CompressedTexture2D::1312395938762747222::1749941391::1750174100::1::::<><><>0<>0<>ede03cc4fa22fd0af08ec9ff99bf5a98<>res://.godot/imported/architect.png-726ecad6df063cf5e2cfdf349f5dd88d.s3tc.ctex::
 Armoury.png::CompressedTexture2D/CompressedTexture2D::4698102041535842802::1750015493::1750084722::1::::<><><>0<>0<>e29cfb294e8a5c37529e2ae1c4ace6a3<>res://.godot/imported/Armoury.png-f1b4baca30cf1822afd099ad6c2d9726.s3tc.ctex::
 assassin.png::CompressedTexture2D/CompressedTexture2D::9164647606520989039::1749941391::1750084725::1::::<><><>0<>0<>2f154dbdabef5f94e7a0b67fe935ff0b<>res://.godot/imported/assassin.png-aa465fd1747d798d02419fc124955c9d.s3tc.ctex::
 assassin_ability_avatar.png::CompressedTexture2D/CompressedTexture2D::2764220459970546710::1749940968::1750084873::1::::<><><>0<>0<>3d8d39dd674de435f931e79630b2780b<>res://.godot/imported/assassin_ability_avatar.png-1fa40aa7a2d927baaeb5621d80ff0af2.ctex::
-avatar_architect.png::CompressedTexture2D::1261833865857601253::1750276751::1750277022::1::::<><><>0<>0<>4b97e7f5546f50304cafa75cf2998edc<>res://.godot/imported/avatar_architect.png-1b6f3a69f22eeff53b63c733bb02666a.ctex::
-avatar_assassin.png::CompressedTexture2D::1735726138114918200::1750275822::1750277022::1::::<><><>0<>0<>0edfb23732ec70e165af0e960ccd5ac7<>res://.godot/imported/avatar_assassin.png-2622fff35d1fb7fd00d698acce75c590.ctex::
-avatar_bishop.png::CompressedTexture2D::7897875197223696242::1750276467::1750277022::1::::<><><>0<>0<>7557e10a0bc567bfe069d4656131949c<>res://.godot/imported/avatar_bishop.png-57ccf8eb01a1db056d7dd9f20e764b62.ctex::
-avatar_king.png::CompressedTexture2D::3984976274198110642::1750276244::1750277022::1::::<><><>0<>0<>dedc4fc1d54cb6a1c7274640f6b3e163<>res://.godot/imported/avatar_king.png-4350098ae3a82451fda98f91d47743ad.ctex::
-avatar_magician.png::CompressedTexture2D::8423826775505037810::1750276039::1750277022::1::::<><><>0<>0<>8ea5532ae631b920f9794455b706261a<>res://.godot/imported/avatar_magician.png-46ed88713f20bf4197cec6133d7bb355.ctex::
-avatar_merchant.png::CompressedTexture2D::6831134022230386040::1750276663::1750277022::1::::<><><>0<>0<>1411178fb35bd57865e993acc96bd4b3<>res://.godot/imported/avatar_merchant.png-656b03ba80671b0f8056d3abda11352d.ctex::
-avatar_missing.png::CompressedTexture2D::7536285452596185332::1750276961::1750277022::1::::<><><>0<>0<>b16ddc50abee86334dc73cdfcbec57d8<>res://.godot/imported/avatar_missing.png-03b2d15f6b9744300e2a5760562922a6.ctex::
-avatar_thief.png::CompressedTexture2D::2260611855905927170::1750275938::1750277022::1::::<><><>0<>0<>2c8dcbb32c75a61aaf5fc9bc3f6d9e2b<>res://.godot/imported/avatar_thief.png-6850a38343369a7a2325257355ff9d41.ctex::
-avatar_unknown.png::CompressedTexture2D::5156090553740635036::1750277152::1750277153::1::::<><><>0<>0<>51586eb250bd2a55b262812bd911fff1<>res://.godot/imported/avatar_unknown.png-711564932bbf05dafe5ff6a18d1dc0ba.ctex::
-avatar_warlord.png::CompressedTexture2D::2477629674360815679::1750276871::1750277022::1::::<><><>0<>0<>db32aa16f28c59327583f36f8ce7655c<>res://.godot/imported/avatar_warlord.png-9b2820fd1d355ac27f05aa5943047832.ctex::
+avatar_architect.png::CompressedTexture2D/CompressedTexture2D::1261833865857601253::1750276751::1750277022::1::::<><><>0<>0<>4b97e7f5546f50304cafa75cf2998edc<>res://.godot/imported/avatar_architect.png-1b6f3a69f22eeff53b63c733bb02666a.ctex::
+avatar_assassin.png::CompressedTexture2D/CompressedTexture2D::1735726138114918200::1750275822::1750277022::1::::<><><>0<>0<>0edfb23732ec70e165af0e960ccd5ac7<>res://.godot/imported/avatar_assassin.png-2622fff35d1fb7fd00d698acce75c590.ctex::
+avatar_bishop.png::CompressedTexture2D/CompressedTexture2D::7897875197223696242::1750276467::1750277022::1::::<><><>0<>0<>7557e10a0bc567bfe069d4656131949c<>res://.godot/imported/avatar_bishop.png-57ccf8eb01a1db056d7dd9f20e764b62.ctex::
+avatar_king.png::CompressedTexture2D/CompressedTexture2D::3984976274198110642::1750276244::1750277022::1::::<><><>0<>0<>dedc4fc1d54cb6a1c7274640f6b3e163<>res://.godot/imported/avatar_king.png-4350098ae3a82451fda98f91d47743ad.ctex::
+avatar_magician.png::CompressedTexture2D/CompressedTexture2D::8423826775505037810::1750276039::1750277022::1::::<><><>0<>0<>8ea5532ae631b920f9794455b706261a<>res://.godot/imported/avatar_magician.png-46ed88713f20bf4197cec6133d7bb355.ctex::
+avatar_merchant.png::CompressedTexture2D/CompressedTexture2D::6831134022230386040::1750276663::1750277022::1::::<><><>0<>0<>1411178fb35bd57865e993acc96bd4b3<>res://.godot/imported/avatar_merchant.png-656b03ba80671b0f8056d3abda11352d.ctex::
+avatar_missing.png::CompressedTexture2D/CompressedTexture2D::7536285452596185332::1750276961::1750277022::1::::<><><>0<>0<>b16ddc50abee86334dc73cdfcbec57d8<>res://.godot/imported/avatar_missing.png-03b2d15f6b9744300e2a5760562922a6.ctex::
+avatar_thief.png::CompressedTexture2D/CompressedTexture2D::2260611855905927170::1750275938::1750277022::1::::<><><>0<>0<>2c8dcbb32c75a61aaf5fc9bc3f6d9e2b<>res://.godot/imported/avatar_thief.png-6850a38343369a7a2325257355ff9d41.ctex::
+avatar_unknown.png::CompressedTexture2D/CompressedTexture2D::5156090553740635036::1750277152::1750277153::1::::<><><>0<>0<>51586eb250bd2a55b262812bd911fff1<>res://.godot/imported/avatar_unknown.png-711564932bbf05dafe5ff6a18d1dc0ba.ctex::
+avatar_warlord.png::CompressedTexture2D/CompressedTexture2D::2477629674360815679::1750276871::1750277022::1::::<><><>0<>0<>db32aa16f28c59327583f36f8ce7655c<>res://.godot/imported/avatar_warlord.png-9b2820fd1d355ac27f05aa5943047832.ctex::
 Barracks.png::CompressedTexture2D/CompressedTexture2D::5679173124468495589::1750015493::1750084728::1::::<><><>0<>0<>e6eaee50070253155a99fb6be7f3b28c<>res://.godot/imported/Barracks.png-68c253911973dbdf9ba811821ee3e6c7.s3tc.ctex::
 Bell Tower.png::CompressedTexture2D/CompressedTexture2D::8949861796106852014::1750015493::1750084844::1::::<><><>0<>0<>26c1d3f97178a78c50b890eff926f37c<>res://.godot/imported/Bell Tower.png-772462f05f7375b7e7f1ae7d939270fe.s3tc.ctex::
 bishop.png::CompressedTexture2D/CompressedTexture2D::906073455062912638::1749941391::1750084844::1::::<><><>0<>0<>6be4efcc04a00d5fa36f94c2518a8217<>res://.godot/imported/bishop.png-0a4eeb88803e8373143a355ec2db13ef.s3tc.ctex::
@@ -206,7 +206,7 @@ Hospital.png::CompressedTexture2D/CompressedTexture2D::5050012256797380578::1750
 Imperial Treasury.png::CompressedTexture2D/CompressedTexture2D::3381551039715868069::1750015493::1750084844::1::::<><><>0<>0<>2f4e57e29e1572fa39be478f6dffc1b0<>res://.godot/imported/Imperial Treasury.png-6a15d98e6927716e4c5828269b1ee81e.s3tc.ctex::
 Keep.png::CompressedTexture2D/CompressedTexture2D::1445657309994791251::1750015493::1750084844::1::::<><><>0<>0<>3f78d99af056b66f46febcf2e864a66a<>res://.godot/imported/Keep.png-246d0a49a83bec525040ffca77a7fe80.s3tc.ctex::
 king(1).png::CompressedTexture2D/CompressedTexture2D::7471337845947075881::1749941391::1750084844::1::::<><><>0<>0<>ce42d7f8efb97706ca364d0e512849b1<>res://.godot/imported/king(1).png-0901eb609b7973146522c64d5f081a0f.s3tc.ctex::
-king_crown.png::CompressedTexture2D::1921896486404675509::1750277916::1750277916::1::::<><><>0<>0<>03d1fd354ecc8e7b877fc02a9445fb12<>res://.godot/imported/king_crown.png-57963a2d77e6082e4186987f8a57e3f5.ctex::
+king_crown.png::CompressedTexture2D/CompressedTexture2D::1921896486404675509::1750277916::1750277916::1::::<><><>0<>0<>03d1fd354ecc8e7b877fc02a9445fb12<>res://.godot/imported/king_crown.png-57963a2d77e6082e4186987f8a57e3f5.ctex::
 Lighthouse.png::CompressedTexture2D/CompressedTexture2D::1025770411832425534::1750015493::1750084844::1::::<><><>0<>0<>d6d5bd808b6b934e1aac4a464ee07ffa<>res://.godot/imported/Lighthouse.png-5742f78c7185e4f0c087d4e1d2fce692.s3tc.ctex::
 magician.png::CompressedTexture2D/CompressedTexture2D::4316137587067970477::1749941391::1750084844::1::::<><><>0<>0<>379c97b98e58bfed7f51bbf372721bf6<>res://.godot/imported/magician.png-1d4814642bfe55d1b6202c5282a64c8d.s3tc.ctex::
 Manor.png::CompressedTexture2D/CompressedTexture2D::2588196848370846858::1750015493::1750084844::1::::<><><>0<>0<>b4e1124303d505e9ee386aee742f18c3<>res://.godot/imported/Manor.png-7d93c5f12332a0fee7eabfc0a2305f02.s3tc.ctex::
@@ -531,26 +531,26 @@ panel-transparent-center-031.png::CompressedTexture2D/CompressedTexture2D::68770
 ::res://assets/sprites/kenney_fantasy-ui-borders/Vector/::1750259351
 fantasy-ui-borders.svg::CompressedTexture2D/CompressedTexture2D::922067368870664799::1750259350::1750259351::1::::<><><>0<>0<>239c4b1f6ca5e80819acb4f6e486d358<>res://.godot/imported/fantasy-ui-borders.svg-81df166102d787ba6e9d0ae534faa144.ctex::
 ::res://resources/::1750260897
-::res://resources/characters/::1750262538
-architect.tres::Resource/CharacterData::3476944134460286195::1750093001::0::1::::<><><>0<>0<><>::uid://sxy77ublaiks::::res://assets/sprites/architect.png<>uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://b6u7o01o4pved::::res://resources/character_cards/architect.tres
+::res://resources/characters/::1750348722
+architect.tres::Resource/CharacterData::3476944134460286195::1750348722::0::1::::<><><>0<>0<><>::uid://sxy77ublaiks::::res://assets/sprites/architect.png<>uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://b6u7o01o4pved::::res://resources/character_cards/architect.tres
 assassin.tres::Resource/CharacterData::6056909773195828179::1750262538::0::1::::<><><>0<>0<><>::uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://d3ton3u7tx0bb::::res://assets/sprites/assassin.png<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://bmb70sfacccgc::::res://resources/character_cards/assassin.tres
 bishop.tres::Resource/CharacterData::2614068959060819897::1750093001::0::1::::<><><>0<>0<><>::uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://m555roosf0ic::::res://assets/sprites/bishop.png<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://v54hmkydhpxe::::res://resources/character_cards/bishop.tres
 character_data.gd::GDScript/GDScript::7058669853110411782::1750251808::0::1::::CharacterData<>Resource<><>0<>0<><>::
 king.tres::Resource/CharacterData::3484641174732038939::1750093001::0::1::::<><><>0<>0<><>::uid://depf3whkwmpmv::::res://assets/sprites/king(1).png<>uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://dc88qbddcnvyu::::res://resources/character_cards/king.tres
 magician.tres::Resource/CharacterData::3061404805052032649::1750262360::0::1::::<><><>0<>0<><>::uid://b2q1fjylmhyhh::::res://assets/sprites/magician.png<>uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://7g6aungbv8jp::::res://resources/character_cards/magician.tres
-merchant.tres::Resource/CharacterData::9175016672804989977::1750093001::0::1::::<><><>0<>0<><>::uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://x2e0ntqrwjs8::::res://assets/sprites/merchant.png<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://b0558aqpnxyg7::::res://resources/character_cards/merchant.tres
+merchant.tres::Resource/CharacterData::9175016672804989977::1750348722::0::1::::<><><>0<>0<><>::uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://x2e0ntqrwjs8::::res://assets/sprites/merchant.png<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://b0558aqpnxyg7::::res://resources/character_cards/merchant.tres
 thief.tres::Resource/CharacterData::6456959746882823857::1750093001::0::1::::<><><>0<>0<><>::uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://caw1v0xigbdmv::::res://assets/sprites/thief.png<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://davrsbes8c6xs::::res://resources/character_cards/thief.tres
 warlord.tres::Resource/CharacterData::126926303302121440::1750093001::0::1::::<><><>0<>0<><>::uid://68mtbxtb7576::::res://assets/sprites/warlord.png<>uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://csoj7y3el6gav::::res://resources/character_cards/character_back.tres<>uid://dm6gu2xiqd384::::res://resources/character_cards/warlord.tres
 ::res://resources/character_cards/::1750275508
-architect.tres::StandardMaterial3D::4605531690360627943::1750275508::0::1::::<><><>0<>0<><>::uid://sxy77ublaiks::::res://assets/sprites/architect.png
-assassin.tres::StandardMaterial3D::3232739726866777158::1750275508::0::1::::<><><>0<>0<><>::uid://d3ton3u7tx0bb::::res://assets/sprites/assassin.png
-bishop.tres::StandardMaterial3D::1537670989191033398::1750275508::0::1::::<><><>0<>0<><>::uid://m555roosf0ic::::res://assets/sprites/bishop.png
-character_back.tres::StandardMaterial3D::6065746743780070613::1750275508::0::1::::<><><>0<>0<><>::uid://baynwlm8ugl81::::res://assets/sprites/character back.png
-king.tres::StandardMaterial3D::7369796495000390592::1750275508::0::1::::<><><>0<>0<><>::uid://depf3whkwmpmv::::res://assets/sprites/king(1).png
-magician.tres::StandardMaterial3D::2260312560541428349::1750275508::0::1::::<><><>0<>0<><>::uid://b2q1fjylmhyhh::::res://assets/sprites/magician.png
-merchant.tres::StandardMaterial3D::4204953573664265780::1750275508::0::1::::<><><>0<>0<><>::uid://x2e0ntqrwjs8::::res://assets/sprites/merchant.png
-thief.tres::StandardMaterial3D::7203678376646496252::1750275508::0::1::::<><><>0<>0<><>::uid://caw1v0xigbdmv::::res://assets/sprites/thief.png
-warlord.tres::StandardMaterial3D::8065925356992213191::1750275508::0::1::::<><><>0<>0<><>::uid://68mtbxtb7576::::res://assets/sprites/warlord.png
+architect.tres::StandardMaterial3D/StandardMaterial3D::4605531690360627943::1750275508::0::1::::<><><>0<>0<><>::uid://sxy77ublaiks::::res://assets/sprites/architect.png
+assassin.tres::StandardMaterial3D/StandardMaterial3D::3232739726866777158::1750275508::0::1::::<><><>0<>0<><>::uid://d3ton3u7tx0bb::::res://assets/sprites/assassin.png
+bishop.tres::StandardMaterial3D/StandardMaterial3D::1537670989191033398::1750275508::0::1::::<><><>0<>0<><>::uid://m555roosf0ic::::res://assets/sprites/bishop.png
+character_back.tres::StandardMaterial3D/StandardMaterial3D::6065746743780070613::1750275508::0::1::::<><><>0<>0<><>::uid://baynwlm8ugl81::::res://assets/sprites/character back.png
+king.tres::StandardMaterial3D/StandardMaterial3D::7369796495000390592::1750275508::0::1::::<><><>0<>0<><>::uid://depf3whkwmpmv::::res://assets/sprites/king(1).png
+magician.tres::StandardMaterial3D/StandardMaterial3D::2260312560541428349::1750275508::0::1::::<><><>0<>0<><>::uid://b2q1fjylmhyhh::::res://assets/sprites/magician.png
+merchant.tres::StandardMaterial3D/StandardMaterial3D::4204953573664265780::1750275508::0::1::::<><><>0<>0<><>::uid://x2e0ntqrwjs8::::res://assets/sprites/merchant.png
+thief.tres::StandardMaterial3D/StandardMaterial3D::7203678376646496252::1750275508::0::1::::<><><>0<>0<><>::uid://caw1v0xigbdmv::::res://assets/sprites/thief.png
+warlord.tres::StandardMaterial3D/StandardMaterial3D::8065925356992213191::1750275508::0::1::::<><><>0<>0<><>::uid://68mtbxtb7576::::res://assets/sprites/warlord.png
 ::res://resources/districts/::1750251808
 armory.tres::Resource/DistrictData::546118829728630637::1750093587::0::1::::<><><>0<>0<><>::uid://bbdpyr8inju5f::::res://resources/districts/district_data.gd<>uid://7kixd7vh6qac::::res://resources/district_cards/district_back.tres<>uid://cersyaiqt0bgl::::res://resources/district_cards/armoury.tres
 barracks.tres::Resource/DistrictData::182342731495250251::1750093587::0::1::::<><><>0<>0<><>::uid://bbdpyr8inju5f::::res://resources/districts/district_data.gd<>uid://7kixd7vh6qac::::res://resources/district_cards/district_back.tres<>uid://mjh7xk61q5jv::::res://resources/district_cards/barracks.tres
@@ -584,82 +584,85 @@ trading_post.tres::Resource/DistrictData::1931503348748473055::1750092966::0::1:
 watchtower.tres::Resource/DistrictData::3334611438961247187::1750092966::0::1::::<><><>0<>0<><>::uid://bbdpyr8inju5f::::res://resources/districts/district_data.gd
 wish_fountain.tres::Resource/DistrictData::5283064597540715180::1750092966::0::1::::<><><>0<>0<><>::uid://bbdpyr8inju5f::::res://resources/districts/district_data.gd
 ::res://resources/district_cards/::1750275508
-armoury.tres::StandardMaterial3D::5089826941792638163::1750275508::0::1::::<><><>0<>0<><>::uid://b762b3xf404lq::::res://assets/sprites/Armoury.png
-barracks.tres::StandardMaterial3D::861328912726252735::1750275508::0::1::::<><><>0<>0<><>::uid://cm6bffjmq4u4t::::res://assets/sprites/Barracks.png
-bell_tower.tres::StandardMaterial3D::1203215181635797019::1750275508::0::1::::<><><>0<>0<><>::uid://d0rm6fd7vh74m::::res://assets/sprites/Bell Tower.png
-castle.tres::StandardMaterial3D::8795228797252393487::1750275508::0::1::::<><><>0<>0<><>::uid://c4dx3egc0hdg2::::res://assets/sprites/Castle.png
-cathedral.tres::StandardMaterial3D::1160329915442334009::1750275508::0::1::::<><><>0<>0<><>::uid://bv1ct0yhwif0j::::res://assets/sprites/Cathedral.png
-church.tres::StandardMaterial3D::4716638534748512771::1750275508::0::1::::<><><>0<>0<><>::uid://64s5hbojcd5v::::res://assets/sprites/Church.png
-district_back.tres::StandardMaterial3D::2267213791128105290::1750275508::0::1::::<><><>0<>0<><>::uid://klavkiejgxiy::::res://assets/sprites/district back.png
-docks.tres::StandardMaterial3D::4381520236629508624::1750275508::0::1::::<><><>0<>0<><>::uid://dsi723phqmaob::::res://assets/sprites/Docks.png
-fortress.tres::StandardMaterial3D::2499385372306013564::1750275508::0::1::::<><><>0<>0<><>::uid://dvnwjykwrmjl3::::res://assets/sprites/Fortress.png
-hospital.tres::StandardMaterial3D::8993227618849224271::1750275508::0::1::::<><><>0<>0<><>::uid://cd7i71pfkjn0u::::res://assets/sprites/Hospital.png
-imperial_treasury.tres::StandardMaterial3D::8951870219413691498::1750275508::0::1::::<><><>0<>0<><>::uid://bogbwfho5se6h::::res://assets/sprites/Imperial Treasury.png
-keep.tres::StandardMaterial3D::556350178668724436::1750275508::0::1::::<><><>0<>0<><>::uid://uuj088cw15fb::::res://assets/sprites/Keep.png
+armoury.tres::StandardMaterial3D/StandardMaterial3D::5089826941792638163::1750275508::0::1::::<><><>0<>0<><>::uid://b762b3xf404lq::::res://assets/sprites/Armoury.png
+barracks.tres::StandardMaterial3D/StandardMaterial3D::861328912726252735::1750275508::0::1::::<><><>0<>0<><>::uid://cm6bffjmq4u4t::::res://assets/sprites/Barracks.png
+bell_tower.tres::StandardMaterial3D/StandardMaterial3D::1203215181635797019::1750275508::0::1::::<><><>0<>0<><>::uid://d0rm6fd7vh74m::::res://assets/sprites/Bell Tower.png
+castle.tres::StandardMaterial3D/StandardMaterial3D::8795228797252393487::1750275508::0::1::::<><><>0<>0<><>::uid://c4dx3egc0hdg2::::res://assets/sprites/Castle.png
+cathedral.tres::StandardMaterial3D/StandardMaterial3D::1160329915442334009::1750275508::0::1::::<><><>0<>0<><>::uid://bv1ct0yhwif0j::::res://assets/sprites/Cathedral.png
+church.tres::StandardMaterial3D/StandardMaterial3D::4716638534748512771::1750275508::0::1::::<><><>0<>0<><>::uid://64s5hbojcd5v::::res://assets/sprites/Church.png
+district_back.tres::StandardMaterial3D/StandardMaterial3D::2267213791128105290::1750275508::0::1::::<><><>0<>0<><>::uid://klavkiejgxiy::::res://assets/sprites/district back.png
+docks.tres::StandardMaterial3D/StandardMaterial3D::4381520236629508624::1750275508::0::1::::<><><>0<>0<><>::uid://dsi723phqmaob::::res://assets/sprites/Docks.png
+fortress.tres::StandardMaterial3D/StandardMaterial3D::2499385372306013564::1750275508::0::1::::<><><>0<>0<><>::uid://dvnwjykwrmjl3::::res://assets/sprites/Fortress.png
+hospital.tres::StandardMaterial3D/StandardMaterial3D::8993227618849224271::1750275508::0::1::::<><><>0<>0<><>::uid://cd7i71pfkjn0u::::res://assets/sprites/Hospital.png
+imperial_treasury.tres::StandardMaterial3D/StandardMaterial3D::8951870219413691498::1750275508::0::1::::<><><>0<>0<><>::uid://bogbwfho5se6h::::res://assets/sprites/Imperial Treasury.png
+keep.tres::StandardMaterial3D/StandardMaterial3D::556350178668724436::1750275508::0::1::::<><><>0<>0<><>::uid://uuj088cw15fb::::res://assets/sprites/Keep.png
 lighthouse.tres::StandardMaterial3D/StandardMaterial3D::5751466739510788651::1750084843::0::1::::<><><>0<>0<><>::uid://ou5j24vfa16i::::res://assets/sprites/Lighthouse.png
-manor.tres::StandardMaterial3D::6835428820434064940::1750275508::0::1::::<><><>0<>0<><>::uid://bc40hu5hvfhtq::::res://assets/sprites/Manor.png
-map_room.tres::StandardMaterial3D::8402540362939256663::1750275508::0::1::::<><><>0<>0<><>::uid://bwj3dxp7oy7yj::::res://assets/sprites/Map Room.png
-market.tres::StandardMaterial3D::4571391261911812728::1750275508::0::1::::<><><>0<>0<><>::uid://bx2qgqc33scqo::::res://assets/sprites/Market.png
-montastery.tres::StandardMaterial3D::6354536119708510674::1750275508::0::1::::<><><>0<>0<><>::uid://hf758qlt4kg::::res://assets/sprites/Montastery.png
-necropolis.tres::StandardMaterial3D::7604276146337179348::1750275508::0::1::::<><><>0<>0<><>::uid://bsb7i363w5pg2::::res://assets/sprites/Necropolis.png
-palace.tres::StandardMaterial3D::2329676025474807734::1750275508::0::1::::<><><>0<>0<><>::uid://bx7oikm0hcpgl::::res://assets/sprites/Palace.png
-park.tres::StandardMaterial3D::1931171801443728044::1750275508::0::1::::<><><>0<>0<><>::uid://55ydrdkn3w5e::::res://assets/sprites/Park.png
-poor_house.tres::StandardMaterial3D::4557900161176258987::1750275508::0::1::::<><><>0<>0<><>::uid://c0e1pih22e5wy::::res://assets/sprites/Poor House.png
-prison.tres::StandardMaterial3D::4354230659177799144::1750275508::0::1::::<><><>0<>0<><>::uid://4dnm3b3awgdf::::res://assets/sprites/Prison.png
-school_of_magic.tres::StandardMaterial3D::7710095044078713574::1750275508::0::1::::<><><>0<>0<><>::uid://bhbqhnr2k1t6c::::res://assets/sprites/School of Magic.png
-tavern.tres::StandardMaterial3D::8145580346333683661::1750275508::0::1::::<><><>0<>0<><>::uid://iaee06uv04a7::::res://assets/sprites/Tavern.png
-temple.tres::StandardMaterial3D::1968013003526814682::1750275508::0::1::::<><><>0<>0<><>::uid://susosypmb4fk::::res://assets/sprites/Temple.png
-::res://resources/textures/::1750278032
-button_aura_outline.gdshader::Shader::9098268145406826080::1750278032::0::1::::<><><>0<>0<><>::
-popup_texture.tres::StyleBoxTexture::2158976241394723447::1750275508::0::1::::<><><>0<>0<><>::uid://8frilthgcvdi::::res://assets/sprites/kenney_fantasy-ui-borders/PNG/Default/Transparent border/panel-transparent-border-001.png
-::res://scenes/::1750275129
-::res://scenes/battle/::1750278032
-battle.gd::GDScript::7511352314533740844::1750274156::0::1::::TestGame<>Node3D<><>0<>0<><>::
-battle.tscn::PackedScene::6093047999102406744::1750278032::0::1::::<><><>0<>0<><>::uid://dfas40y1xdc0k::::res://scenes/battle/battle.gd<>uid://bbdpyr8inju5f::::res://resources/districts/district_data.gd<>uid://h1sq56k5rsq4::::res://resources/districts/armory.tres<>uid://culfm22xp2n4::::res://resources/districts/barracks.tres<>uid://contlwpmvss74::::res://resources/districts/castle.tres<>uid://c7fyclwrr711x::::res://resources/districts/cathedrel.tres<>uid://i0ct1ej7b2pm::::res://assets/3D/create_a_battlefield__0614155941_texture.glb<>uid://dxuxvnuurmng7::::res://resources/districts/church.tres<>uid://bnexkr8l0w1qr::::res://addons/card_3d/scripts/drag_controller.gd<>uid://d3hh60bjd0hq3::::res://resources/districts/docks.tres<>uid://dbbcqtgqb0qqr::::res://resources/districts/fortress.tres<>uid://d1uvcisduvvj::::res://addons/card_3d/scenes/card_collection_3d.tscn<>uid://c1o3okxoatrri::::res://addons/card_3d/scenes/deck.gd<>uid://bot5w3cgjrvdh::::res://resources/districts/hospital.tres<>uid://cntqyqc32apyx::::res://addons/card_3d/scripts/card_layouts/pile_card_layout.gd<>uid://1def4a4ctktc::::res://resources/districts/imperial_treasure.tres<>uid://bdb80smbqigjr::::res://resources/districts/keep.tres<>uid://ct2885umh1ou2::::res://addons/card_3d/scenes/hand.gd<>uid://dhlf23ahp2k1e::::res://addons/card_3d/scripts/card_layouts/fan_card_layout.gd<>uid://bjo7nit74mm76::::res://resources/districts/lighthouse.tres<>uid://djtckypk5elsm::::res://resources/districts/manor.tres<>uid://cl6u4twl67b6w::::res://addons/card_3d/scripts/card_layouts/line_card_layout.gd<>uid://cviptf2wh1pc0::::res://addons/card_3d/example_solitaire/scenes/pile_marker.tscn<>uid://dog3ox055j4i5::::res://resources/districts/map_room.tres<>uid://cc2jgi37r8q3d::::res://resources/districts/market.tres<>uid://cndr42n76n8mb::::res://resources/districts/montastery.tres<>uid://b4v5oa452ab42::::res://resources/districts/necropolis.tres<>uid://by1gwrxeljrxg::::res://resources/districts/palace.tres<>uid://b0i64xm1e2qc7::::res://resources/districts/park.tres<>uid://dgqp4vmvxxl0d::::res://resources/districts/poor_house.tres<>uid://d17rqqkuypdqv::::res://resources/districts/prison.tres<>uid://pt8rcrjy58u6::::res://resources/districts/school_of_magic.tres<>uid://dqepjibqn4jpu::::res://resources/districts/tavern.tres<>uid://cnxnaqnmd2mmp::::res://resources/districts/temple.tres<>uid://mhn1iyf55w8g::::res://scenes/hud/hud.tscn
+manor.tres::StandardMaterial3D/StandardMaterial3D::6835428820434064940::1750275508::0::1::::<><><>0<>0<><>::uid://bc40hu5hvfhtq::::res://assets/sprites/Manor.png
+map_room.tres::StandardMaterial3D/StandardMaterial3D::8402540362939256663::1750275508::0::1::::<><><>0<>0<><>::uid://bwj3dxp7oy7yj::::res://assets/sprites/Map Room.png
+market.tres::StandardMaterial3D/StandardMaterial3D::4571391261911812728::1750275508::0::1::::<><><>0<>0<><>::uid://bx2qgqc33scqo::::res://assets/sprites/Market.png
+montastery.tres::StandardMaterial3D/StandardMaterial3D::6354536119708510674::1750275508::0::1::::<><><>0<>0<><>::uid://hf758qlt4kg::::res://assets/sprites/Montastery.png
+necropolis.tres::StandardMaterial3D/StandardMaterial3D::7604276146337179348::1750275508::0::1::::<><><>0<>0<><>::uid://bsb7i363w5pg2::::res://assets/sprites/Necropolis.png
+palace.tres::StandardMaterial3D/StandardMaterial3D::2329676025474807734::1750275508::0::1::::<><><>0<>0<><>::uid://bx7oikm0hcpgl::::res://assets/sprites/Palace.png
+park.tres::StandardMaterial3D/StandardMaterial3D::1931171801443728044::1750275508::0::1::::<><><>0<>0<><>::uid://55ydrdkn3w5e::::res://assets/sprites/Park.png
+poor_house.tres::StandardMaterial3D/StandardMaterial3D::4557900161176258987::1750275508::0::1::::<><><>0<>0<><>::uid://c0e1pih22e5wy::::res://assets/sprites/Poor House.png
+prison.tres::StandardMaterial3D/StandardMaterial3D::4354230659177799144::1750275508::0::1::::<><><>0<>0<><>::uid://4dnm3b3awgdf::::res://assets/sprites/Prison.png
+school_of_magic.tres::StandardMaterial3D/StandardMaterial3D::7710095044078713574::1750275508::0::1::::<><><>0<>0<><>::uid://bhbqhnr2k1t6c::::res://assets/sprites/School of Magic.png
+tavern.tres::StandardMaterial3D/StandardMaterial3D::8145580346333683661::1750275508::0::1::::<><><>0<>0<><>::uid://iaee06uv04a7::::res://assets/sprites/Tavern.png
+temple.tres::StandardMaterial3D/StandardMaterial3D::1968013003526814682::1750275508::0::1::::<><><>0<>0<><>::uid://susosypmb4fk::::res://assets/sprites/Temple.png
+::res://resources/textures/::1750348759
+button_aura_outline.gdshader::Shader::9098268145406826080::1750348785::0::1::::<><><>0<>0<><>::
+popup_texture.tres::StyleBoxTexture/StyleBoxTexture::2158976241394723447::1750275508::0::1::::<><><>0<>0<><>::uid://8frilthgcvdi::::res://assets/sprites/kenney_fantasy-ui-borders/PNG/Default/Transparent border/panel-transparent-border-001.png
+::res://scenes/::1750348759
+::res://scenes/battle/::1750348723
+battle.gd::GDScript/GDScript::7511352314533740844::1750274156::0::1::::TestGame<>Node3D<><>0<>0<><>::
+battle.tscn::PackedScene/PackedScene::6093047999102406744::1750348723::0::1::::<><><>0<>0<><>::uid://dfas40y1xdc0k::::res://scenes/battle/battle.gd<>uid://bbdpyr8inju5f::::res://resources/districts/district_data.gd<>uid://h1sq56k5rsq4::::res://resources/districts/armory.tres<>uid://culfm22xp2n4::::res://resources/districts/barracks.tres<>uid://contlwpmvss74::::res://resources/districts/castle.tres<>uid://c7fyclwrr711x::::res://resources/districts/cathedrel.tres<>uid://i0ct1ej7b2pm::::res://assets/3D/create_a_battlefield__0614155941_texture.glb<>uid://dxuxvnuurmng7::::res://resources/districts/church.tres<>uid://bnexkr8l0w1qr::::res://addons/card_3d/scripts/drag_controller.gd<>uid://d3hh60bjd0hq3::::res://resources/districts/docks.tres<>uid://dbbcqtgqb0qqr::::res://resources/districts/fortress.tres<>uid://d1uvcisduvvj::::res://addons/card_3d/scenes/card_collection_3d.tscn<>uid://c1o3okxoatrri::::res://addons/card_3d/scenes/deck.gd<>uid://bot5w3cgjrvdh::::res://resources/districts/hospital.tres<>uid://cntqyqc32apyx::::res://addons/card_3d/scripts/card_layouts/pile_card_layout.gd<>uid://1def4a4ctktc::::res://resources/districts/imperial_treasure.tres<>uid://bdb80smbqigjr::::res://resources/districts/keep.tres<>uid://ct2885umh1ou2::::res://addons/card_3d/scenes/hand.gd<>uid://dhlf23ahp2k1e::::res://addons/card_3d/scripts/card_layouts/fan_card_layout.gd<>uid://bjo7nit74mm76::::res://resources/districts/lighthouse.tres<>uid://djtckypk5elsm::::res://resources/districts/manor.tres<>uid://cl6u4twl67b6w::::res://addons/card_3d/scripts/card_layouts/line_card_layout.gd<>uid://cviptf2wh1pc0::::res://addons/card_3d/example_solitaire/scenes/pile_marker.tscn<>uid://dog3ox055j4i5::::res://resources/districts/map_room.tres<>uid://cc2jgi37r8q3d::::res://resources/districts/market.tres<>uid://cndr42n76n8mb::::res://resources/districts/montastery.tres<>uid://b4v5oa452ab42::::res://resources/districts/necropolis.tres<>uid://by1gwrxeljrxg::::res://resources/districts/palace.tres<>uid://b0i64xm1e2qc7::::res://resources/districts/park.tres<>uid://dgqp4vmvxxl0d::::res://resources/districts/poor_house.tres<>uid://d17rqqkuypdqv::::res://resources/districts/prison.tres<>uid://pt8rcrjy58u6::::res://resources/districts/school_of_magic.tres<>uid://dqepjibqn4jpu::::res://resources/districts/tavern.tres<>uid://cnxnaqnmd2mmp::::res://resources/districts/temple.tres<>uid://mhn1iyf55w8g::::res://scenes/hud/hud.tscn
 ::res://scenes/battlefield/::1750085820
 new_battlefield.tscn::PackedScene/PackedScene::7209854877261345342::1750085453::0::1::::<><><>0<>0<><>::uid://i0ct1ej7b2pm::::res://assets/3D/create_a_battlefield__0614155941_texture.glb<>uid://02usdr1ki424::::res://assets/3D/create_a_battlefield__0614155941_texture_0.jpg
-::res://scenes/character_card_2d/::1750277977
-character_card_2d.gd::GDScript::2363508886616917690::1750277977::0::1::::CharacterCard2D<>Control<><>0<>0<><>::
-character_card_2d.tscn::PackedScene::5043023466137048912::1750273907::0::1::::<><><>0<>0<><>::uid://8w5v73ll8tru::::res://scenes/character_card_2d/character_card_2d.gd<>uid://dheflxnta3eml::::res://shaders/aura_outline.tres<>uid://d3ton3u7tx0bb::::res://assets/sprites/assassin.png<>uid://baynwlm8ugl81::::res://assets/sprites/character back.png
+::res://scenes/character_card_2d/::1750348736
+character_card_2d.gd::GDScript/GDScript::2363508886616917690::1750348736::0::1::::CharacterCard2D<>Control<><>0<>0<><>::
+character_card_2d.tscn::PackedScene/PackedScene::5043023466137048912::1750273907::0::1::::<><><>0<>0<><>::uid://8w5v73ll8tru::::res://scenes/character_card_2d/character_card_2d.gd<>uid://dheflxnta3eml::::res://shaders/aura_outline.tres<>uid://d3ton3u7tx0bb::::res://assets/sprites/assassin.png<>uid://baynwlm8ugl81::::res://assets/sprites/character back.png
+::res://scenes/character_card_popups/::1750348777
+character_card_popups.tscn::PackedScene::8487261955597708025::1750348785::0::1::::<><><>0<>0<><>::uid://co56011ttnxx5::::res://scenes/character_card_popups/popups.gd<>uid://503a15onclud::::res://resources/textures/popup_texture.tres
+popups.gd::GDScript::5819344789225051904::1750348722::0::1::::CharacterCardPopupsHandler<>Control<><>0<>0<><>::
 ::res://scenes/district_coin_2d/::1750085800
 district_coin2D.tscn::PackedScene/PackedScene::3574842955058363045::1750085453::0::1::::<><><>0<>0<><>::uid://qjygnxdsa0po::::res://assets/sprites/coin_cost.png
 ::res://scenes/district_coin_cost_container/::1750085883
 district_coin_cost_container.gd::GDScript/GDScript::5866003504883808082::1750019054::0::1::::DistrictCoinCostContainer<>Node2D<><>0<>0<><>::
 district_coin_cost_container.tscn::PackedScene/PackedScene::6094085846695910909::1750085883::0::1::::<><><>0<>0<><>::uid://cptshrecel5pe::::res://scenes/district_coin_cost_container/district_coin_cost_container.gd<>uid://bq6xe2g5g7uqv::::res://scenes/district_coin_2d/district_coin2D.tscn
-::res://scenes/hud/::1750278032
-hud.gd::GDScript::8261418786041050651::1750275175::0::1::::HUD<>CanvasLayer<><>0<>0<><>::
-hud.tscn::PackedScene::857552977012878384::1750278032::0::1::::<><><>0<>0<><>::uid://dpx5mivcotmdn::::res://scenes/hud/hud.gd<>uid://d22ubd1nk1ird::::res://assets/sprites/UI_avatar_test.png<>uid://dpfpj5ttarrql::::res://assets/sprites/UI_avatar_player_test.png<>uid://b88ta1bgrnaq3::::res://assets/sprites/ability_holder_test.png<>uid://dkr136kfdr5is::::res://assets/sprites/avatar_bishop.png<>uid://cya4nrcrt6217::::res://assets/sprites/UI-Buttons-Test.png<>uid://2m8mbu6jyvqr::::res://assets/sprites/king_crown.png<>uid://bbkgg00xpdmv4::::res://assets/sprites/avatar_warlord.png<>uid://bk46kcja2e1n::::res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn
-::res://scenes/in_battle_character_card_handler/::1750277977
-in_battle_character_card_handler.gd::GDScript::2290667022530140080::1750277977::0::1::::InBattleCharacterCardHandler<>Control<><>0<>0<><>::
-in_battle_character_card_handler.tscn::PackedScene::92649302313005193::1750275045::0::1::::<><><>0<>0<><>::uid://7vu7ltuasjuu::::res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.gd<>uid://de6lgys43decm::::res://shaders/darken_blur_shader.tres<>uid://donx45apbk7uo::::res://assets/sprites/confirm_button.webp<>uid://bua05jgvie8w4::::res://shaders/button_aura_outline.tres
-::res://scenes/main/::1750278032
+::res://scenes/gold_coin_icon/::1750341068
+gold_coin_icon.tscn::PackedScene/PackedScene::3198318973505858991::1750341068::0::1::::<><><>0<>0<><>::uid://qjygnxdsa0po::::res://assets/sprites/coin_cost.png
+::res://scenes/hud/::1750348723
+hud.gd::GDScript/GDScript::8261418786041050651::1750342551::0::1::::HUD<>CanvasLayer<><>0<>0<><>::
+hud.tscn::PackedScene/PackedScene::857552977012878384::1750348723::0::1::::<><><>0<>0<><>::uid://dpx5mivcotmdn::::res://scenes/hud/hud.gd<>uid://d22ubd1nk1ird::::res://assets/sprites/UI_avatar_test.png<>uid://dpfpj5ttarrql::::res://assets/sprites/UI_avatar_player_test.png<>uid://b88ta1bgrnaq3::::res://assets/sprites/ability_holder_test.png<>uid://dkr136kfdr5is::::res://assets/sprites/avatar_bishop.png<>uid://cya4nrcrt6217::::res://assets/sprites/UI-Buttons-Test.png<>uid://2m8mbu6jyvqr::::res://assets/sprites/king_crown.png<>uid://bbkgg00xpdmv4::::res://assets/sprites/avatar_warlord.png<>uid://bk46kcja2e1n::::res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn<>uid://503a15onclud::::res://resources/textures/popup_texture.tres
+::res://scenes/in_battle_character_card_handler/::1750348736
+in_battle_character_card_handler.gd::GDScript/GDScript::2290667022530140080::1750348736::0::1::::InBattleCharacterCardHandler<>Control<><>0<>0<><>::
+in_battle_character_card_handler.tscn::PackedScene/PackedScene::92649302313005193::1750275045::0::1::::<><><>0<>0<><>::uid://7vu7ltuasjuu::::res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.gd<>uid://de6lgys43decm::::res://shaders/darken_blur_shader.tres<>uid://donx45apbk7uo::::res://assets/sprites/confirm_button.webp<>uid://bua05jgvie8w4::::res://shaders/button_aura_outline.tres
+::res://scenes/main/::1750348723
 exclude_characters_state.gd::GDScript/GDScript::7375805160867674521::1750251808::0::1::::ExcludeCharactersState<>State<><>0<>0<><>::
-initialize_battle_state.gd::GDScript::507508336175457017::1750275626::0::1::::InitializeBattleState<>State<><>0<>0<><>::
-main.tscn::PackedScene::3539782925858767245::1750278032::0::1::::<><><>0<>0<><>::uid://cs2ru0s186hhg::::res://scenes/battle/battle.tscn<>uid://bvpjgek8yxt2s::::res://state_machine/state_machine.tscn<>uid://hh3t85utjpu4::::res://scenes/main/initialize_battle_state.gd<>uid://ddc5oy8upuc7b::::res://scenes/main/exclude_characters_state.gd<>uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://cskaoin53a8ap::::res://resources/characters/assassin.tres<>uid://cx82gikqf7y86::::res://resources/characters/thief.tres<>uid://bju75ixfd7vbd::::res://resources/characters/magician.tres<>uid://bpv8sb42yc1ad::::res://resources/characters/king.tres<>uid://bdijll6cmpfwb::::res://resources/characters/bishop.tres<>uid://d3ypgi3oxgxgr::::res://resources/characters/merchant.tres<>uid://bpsi0508knj0v::::res://resources/characters/architect.tres<>uid://b2qptckr8gwe::::res://resources/characters/warlord.tres<>uid://dx8nfmwnjt2v5::::res://state_machine/select_character_state.gd
-::res://scenes/new_card_3d/::1750264706
-new_card_3d.gd::GDScript::8892508021520561977::1750264005::0::1::::NewCard3D<>Card3D<><>0<>0<><>::
-new_card_3d.tscn::PackedScene::3158628756111412340::1750264706::0::1::::<><><>0<>0<><>::uid://dxpc2iac0hjpw::::res://addons/card_3d/scenes/card_3d.tscn<>uid://dyxukp62ssst2::::res://scenes/new_card_3d/new_card_3d.gd<>uid://qjygnxdsa0po::::res://assets/sprites/coin_cost.png<>uid://cs3ax6j4fgap6::::res://scenes/district_coin_cost_container/district_coin_cost_container.tscn
-::res://scenes/popups/::1750274272
-popups.gd::GDScript::5819344789225051904::1750274272::0::1::::PopupsHandler<>Control<><>0<>0<><>::
-popups.tscn::PackedScene::8487261955597708025::1750273907::0::1::::<><><>0<>0<><>::uid://co56011ttnxx5::::res://scenes/popups/popups.gd<>uid://503a15onclud::::res://resources/textures/popup_texture.tres
+initialize_battle_state.gd::GDScript/GDScript::507508336175457017::1750342631::0::1::::InitializeBattleState<>State<><>0<>0<><>::
+main.tscn::PackedScene/PackedScene::3539782925858767245::1750348723::0::1::::<><><>0<>0<><>::uid://cs2ru0s186hhg::::res://scenes/battle/battle.tscn<>uid://bvpjgek8yxt2s::::res://state_machine/state_machine.tscn<>uid://hh3t85utjpu4::::res://scenes/main/initialize_battle_state.gd<>uid://ddc5oy8upuc7b::::res://scenes/main/exclude_characters_state.gd<>uid://c7tji47b3d4p3::::res://resources/characters/character_data.gd<>uid://cskaoin53a8ap::::res://resources/characters/assassin.tres<>uid://cx82gikqf7y86::::res://resources/characters/thief.tres<>uid://bju75ixfd7vbd::::res://resources/characters/magician.tres<>uid://bpv8sb42yc1ad::::res://resources/characters/king.tres<>uid://bdijll6cmpfwb::::res://resources/characters/bishop.tres<>uid://d3ypgi3oxgxgr::::res://resources/characters/merchant.tres<>uid://bpsi0508knj0v::::res://resources/characters/architect.tres<>uid://b2qptckr8gwe::::res://resources/characters/warlord.tres<>uid://dx8nfmwnjt2v5::::res://state_machine/select_character_state.gd<>uid://6p2ph8xk2c8d::::res://state_machine/take_turn_state.gd
+::res://scenes/new_card_3d/::1750348723
+new_card_3d.gd::GDScript/GDScript::8892508021520561977::1750339099::0::1::::NewCard3D<>Card3D<><>0<>0<><>::
+new_card_3d.tscn::PackedScene/PackedScene::3158628756111412340::1750348723::0::1::::<><><>0<>0<><>::uid://dxpc2iac0hjpw::::res://addons/card_3d/scenes/card_3d.tscn<>uid://dyxukp62ssst2::::res://scenes/new_card_3d/new_card_3d.gd<>uid://qjygnxdsa0po::::res://assets/sprites/coin_cost.png<>uid://cs3ax6j4fgap6::::res://scenes/district_coin_cost_container/district_coin_cost_container.tscn
 ::res://scenes/slot/::1750251809
 slot.gd::GDScript/GDScript::9188951434108615215::1750251809::0::1::::Slot<>PanelContainer<><>0<>0<><>::
 slot.tscn::PackedScene/PackedScene::5232589962946344567::1750251414::0::1::::<><><>0<>0<><>::uid://d36gxm4k3vmep::::res://scenes/slot/slot.gd
 ::res://scripts/::1750274625
-battle_data.gd::GDScript::8511032996242522342::1750274625::0::1::::BattleData<>Node<><>0<>0<><>::
+battle_data.gd::GDScript/GDScript::8511032996242522342::1750274625::0::1::::BattleData<>Node<><>0<>0<><>::
 cards_database.gd::GDScript/GDScript::4869743754623627429::1750251808::0::1::::CardsDatabase<>Resource<><>0<>0<><>::
 player.gd::GDScript/GDScript::920962326490974482::1750251808::0::1::::Player<>Node<><>0<>0<><>::
-::res://scripts/singletons/::1750274264
+::res://scripts/singletons/::1750342045
 game_data.gd::GDScript/GDScript::3995082138056763344::1750251808::0::1::::<>Node<><>0<>0<><>::
-game_events.gd::GDScript::6908731112120972768::1750274264::0::1::::<>Node<><>0<>0<><>::
-::res://shaders/::1750278032
-aura_outline.gdshader::Shader::5241715121265267971::1750278032::0::1::::<><><>0<>0<><>::
-aura_outline.tres::ShaderMaterial::7659165925242444467::1750275508::0::1::::<><><>0<>0<><>::uid://d2vjfaa47o1g3::::res://resources/textures/button_aura_outline.gdshader
-button_aura_outline.tres::ShaderMaterial::3791769538034065741::1750275508::0::1::::<><><>0<>0<><>::uid://d2vjfaa47o1g3::::res://resources/textures/button_aura_outline.gdshader
-darken_blur_shader.gdshader::Shader::6075670004041005742::1750278032::0::1::::<><><>0<>0<><>::
-darken_blur_shader.tres::ShaderMaterial::7504693027413196504::1750275508::0::1::::<><><>0<>0<><>::uid://cstdnrjqmvblm::::res://shaders/darken_blur_shader.gdshader
-::res://state_machine/::1750275031
-select_character_state.gd::GDScript::8842528835382874268::1750275031::0::1::::SelectCharacterState<>State<><>0<>0<><>::
-state.gd::GDScript::9013703884932820888::1750274156::0::1::::State<>Node<><>0<>0<><>::
+game_events.gd::GDScript/GDScript::6908731112120972768::1750342045::0::1::::<>Node<><>0<>0<><>::
+::res://shaders/::1750348759
+aura_outline.gdshader::Shader::5241715121265267971::1750348785::0::1::::<><><>0<>0<><>::
+aura_outline.tres::ShaderMaterial/ShaderMaterial::7659165925242444467::1750275508::0::1::::<><><>0<>0<><>::uid://d2vjfaa47o1g3::::res://resources/textures/button_aura_outline.gdshader
+button_aura_outline.tres::ShaderMaterial/ShaderMaterial::3791769538034065741::1750275508::0::1::::<><><>0<>0<><>::uid://d2vjfaa47o1g3::::res://resources/textures/button_aura_outline.gdshader
+darken_blur_shader.gdshader::Shader::6075670004041005742::1750348785::0::1::::<><><>0<>0<><>::
+darken_blur_shader.tres::ShaderMaterial/ShaderMaterial::7504693027413196504::1750275508::0::1::::<><><>0<>0<><>::uid://cstdnrjqmvblm::::res://shaders/darken_blur_shader.gdshader
+::res://state_machine/::1750335109
+select_character_state.gd::GDScript/GDScript::8842528835382874268::1750335066::0::1::::SelectCharacterState<>State<><>0<>0<><>::
+state.gd::GDScript/GDScript::9013703884932820888::1750274156::0::1::::State<>Node<><>0<>0<><>::
 state_machine.gd::GDScript/GDScript::7439671827096622658::1750097439::0::1::::StateMachine<>Node<><>0<>0<><>::
 state_machine.tscn::PackedScene/PackedScene::3891909461174817996::1750097454::0::1::::<><><>0<>0<><>::uid://dd83kqdkpijdi::::res://state_machine/state_machine.gd
+take_turn_state.gd::GDScript/GDScript::2208486384504608005::1750335109::0::1::::TakeTurnState<>State<><>0<>0<><>::

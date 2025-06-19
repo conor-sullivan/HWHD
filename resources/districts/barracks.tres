@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://culfm22xp2n4"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://culfm22xp2n4"]
 
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_8qjd8"]
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_up0kt"]
 [ext_resource type="Material" uid="uid://mjh7xk61q5jv" path="res://resources/district_cards/barracks.tres" id="2_svknu"]
+[ext_resource type="Texture2D" uid="uid://cm6bffjmq4u4t" path="res://assets/sprites/Barracks.png" id="4_svknu"]
 
 [resource]
 script = ExtResource("1_8qjd8")
 district_name = "Barracks"
 color = "Red"
 cost = 3
+sprite_texture = ExtResource("4_svknu")
 front_material = ExtResource("2_svknu")
 back_material = ExtResource("1_up0kt")
 is_purple_foil = false

@@ -3,14 +3,15 @@ extends State
 
 @export var exclude_characters_state : State
 @export var character_resources : Array[CharacterData]
+@export var initial_gold_count : int = 2
 
 var players_ready : bool = false
 
 
 func enter() -> void:
-	var real_player = create_player(0, 'Real Player', "", 2, GameData.player_current_district_deck_build, false)
+	var real_player = create_player(0, 'Real Player', "", 0, GameData.player_current_district_deck_build, false)
 	real_player.is_king = true
-	var opponent_player = create_player(1, "AI", "", 2, GameData.player_current_district_deck_build, true)
+	var opponent_player = create_player(1, "AI", "", 0, GameData.player_current_district_deck_build, true)
 	
 	GameData.current_battle = BattleData.new()
 	GameData.current_battle.real_player = real_player
@@ -18,7 +19,9 @@ func enter() -> void:
 	GameData.current_battle.character_cards = character_resources
 
 	await get_tree().create_timer(0.25).timeout
+	gain_initial_gold()
 	draw_initial_cards()
+
 
 
 func exit() -> void:
@@ -53,3 +56,10 @@ func draw_initial_cards() -> void:
 	await get_tree().create_timer(0.25).timeout
 
 	players_ready = true
+
+
+func gain_initial_gold() -> void:
+	for player in GameData.current_battle.players:
+		for i in initial_gold_count:
+			GameEvents.player_gained_gold.emit(player)
+			await get_tree().create_timer(0.05).timeout

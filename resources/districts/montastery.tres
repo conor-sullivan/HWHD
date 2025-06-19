@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://cndr42n76n8mb"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://cndr42n76n8mb"]
 
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_5cxi1"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_uattg"]
 [ext_resource type="Material" uid="uid://cwsgjtnm4rro1" path="res://resources/district_cards/montastery.tres" id="2_fmflx"]
+[ext_resource type="Texture2D" uid="uid://hf758qlt4kg" path="res://assets/sprites/Montastery.png" id="4_fmflx"]
 
 [resource]
 script = ExtResource("1_uattg")
 district_name = "Monastery"
 color = "Blue"
 cost = 4
+sprite_texture = ExtResource("4_fmflx")
 front_material = ExtResource("2_fmflx")
 back_material = ExtResource("1_5cxi1")
 is_purple_foil = false

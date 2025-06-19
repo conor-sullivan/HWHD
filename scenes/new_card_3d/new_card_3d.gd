@@ -14,9 +14,18 @@ extends Card3D
 			
 		if data.has("coin_cost"):
 			coin_cost = data["coin_cost"]
+			cost = coin_cost
+		
+		if data.has("sprite_texture"):
+			sprite_texture = data["sprite_texture"]
+
+var resource : Resource
 
 
+var sprite_texture = Texture
+var mouse_inside : bool = false
 var id : String
+var cost : int
 var coin_cost : int :
 	set(cost):
 		if cost > 0:
@@ -26,15 +35,13 @@ var coin_cost : int :
 var front_material : Material :
 	set(material):
 		if material:
-			if material:
-				$CardMesh/CardFrontMesh.set_surface_override_material(0, material)
+			$CardMesh/CardFrontMesh.set_surface_override_material(0, material)
 
 
 var back_material : Material:
 	set(material):
 		if material:
-			if material:
-				$CardMesh/CardBackMesh.set_surface_override_material(0, material)
+			$CardMesh/CardBackMesh.set_surface_override_material(0, material)
 
 
 
@@ -53,3 +60,31 @@ func _on_starting_excluded_characters_state() -> void:
 
 func _to_string():
 	return id
+
+
+func _on_static_body_3d_mouse_entered():
+	super()
+	
+	if face_down: 
+		return
+		
+	$PopupTimer.start()
+	mouse_inside = true
+
+func _on_static_body_3d_mouse_exited():
+	super()
+	
+	if face_down: 
+		return
+		
+	$PopupTimer.stop()
+	mouse_inside = false
+	DistrictCardPopups.hide_item_popup()
+
+
+func _on_popup_timer_timeout() -> void:
+	if face_down: 
+		return
+		
+	if mouse_inside:
+		DistrictCardPopups.item_popup(null, sprite_texture, (resource as DistrictData).cost)

@@ -1,6 +1,12 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal player_spent_gold(player : Player, count : int)
+
+@warning_ignore("unused_signal")
+signal player_gained_gold(player : Player)
+
+@warning_ignore("unused_signal")
 signal started_player_turn_state
 
 @warning_ignore("unused_signal")

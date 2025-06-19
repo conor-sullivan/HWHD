@@ -61,13 +61,16 @@ func instantiate_district_card(id : String) -> NewCard3D:
 	
 	for district_card in district_resources:
 		if district_card.district_name == id:
+			test_card.resource = district_card
 			card_data = {
 				"id" : id,
 				"front_material": district_card.front_material,
 				"back_material": district_card.back_material,
-				"coin_cost": district_card.cost
+				"coin_cost": district_card.cost,
+				'sprite_texture' : district_card.sprite_texture
 			}
 	test_card.data = card_data
+
 	
 	return test_card
 

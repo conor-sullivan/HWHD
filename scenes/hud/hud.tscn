@@ -45,7 +45,8 @@ offset_bottom = -760.0
 scale = Vector2(10, 10)
 theme_override_styles/panel = ExtResource("7_nhd55")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerSprite2D/PlayerGoldBox"]
+[node name="PlayerGoldBoxContainer" type="VBoxContainer" parent="PlayerSprite2D/PlayerGoldBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,7 +90,8 @@ offset_bottom = -649.292
 scale = Vector2(10, 10)
 theme_override_styles/panel = ExtResource("7_nhd55")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OpponentSprite2D/OpponentGoldBox"]
+[node name="OpponentGoldBoxContainer" type="VBoxContainer" parent="OpponentSprite2D/OpponentGoldBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

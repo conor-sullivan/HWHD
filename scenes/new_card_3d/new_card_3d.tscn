@@ -45,3 +45,8 @@ transparent_bg = true
 
 [node name="DistrictCoinCostContainer" parent="SubViewport" index="0" instance=ExtResource("4_l2ec8")]
 position = Vector2(130.11, 78.8)
+
+[node name="PopupTimer" type="Timer" parent="." index="3"]
+wait_time = 0.25
+
+[connection signal="timeout" from="PopupTimer" to="." method="_on_popup_timer_timeout"]

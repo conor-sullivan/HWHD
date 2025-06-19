@@ -51,14 +51,13 @@ func get_district_database() -> Dictionary:
 	return result
 
 
-func get_character_card_data(name : String) -> Dictionary:
-	var card_data : Dictionary
-	for resource in character_resources:
-		if resource.character_name == name:
-			for prop in resource.get_property_list():
-				if prop.name != "Reference" and prop.name != "script": # Exclude these properties
-					card_data[prop.name] = resource.get(prop.name)
-	return card_data
+func get_district_card(id : String) -> DistrictData:
+	var card : DistrictData
+	for resource in district_resources:
+		if resource.district_name == id:
+			card = resource
+	print(card.sprite_texture)
+	return card
 
 
 var old_district_database : Dictionary = {

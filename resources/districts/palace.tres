@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://by1gwrxeljrxg"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://by1gwrxeljrxg"]
 
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_facjv"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_ok5po"]
 [ext_resource type="Material" uid="uid://8gron43vn6jq" path="res://resources/district_cards/palace.tres" id="2_gsrpe"]
+[ext_resource type="Texture2D" uid="uid://bx7oikm0hcpgl" path="res://assets/sprites/Palace.png" id="4_gsrpe"]
 
 [resource]
 script = ExtResource("1_ok5po")
 district_name = "Palace"
 color = "Gold"
 cost = 6
+sprite_texture = ExtResource("4_gsrpe")
 front_material = ExtResource("2_gsrpe")
 back_material = ExtResource("1_facjv")
 is_purple_foil = false

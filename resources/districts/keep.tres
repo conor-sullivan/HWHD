@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://bdb80smbqigjr"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://bdb80smbqigjr"]
 
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_72v7n"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_v2ren"]
 [ext_resource type="Material" uid="uid://h6rahecma87q" path="res://resources/district_cards/keep.tres" id="2_ahjkf"]
+[ext_resource type="Texture2D" uid="uid://uuj088cw15fb" path="res://assets/sprites/Keep.png" id="4_ahjkf"]
 
 [resource]
 script = ExtResource("1_v2ren")
 district_name = "Keep"
 color = "Purple"
 cost = 5
+sprite_texture = ExtResource("4_ahjkf")
 front_material = ExtResource("2_ahjkf")
 back_material = ExtResource("1_72v7n")
 is_purple_foil = true

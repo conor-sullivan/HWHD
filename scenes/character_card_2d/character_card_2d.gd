@@ -59,7 +59,7 @@ func _on_mouse_entered() -> void:
 	size_tween.set_trans(Tween.TRANS_CUBIC)
 	size_tween.tween_property($".", "scale", Vector2.ONE * 1.1, 0.2)
 	
-	(Popups as PopupsHandler).item_popup(Rect2i (Vector2i(global_position), Vector2i(size) ), data)
+	(CharacterPopups as CharacterCardPopupsHandler).item_popup(Rect2i (Vector2i(global_position), Vector2i(size) ), data)
 
 
 func _on_mouse_exited() -> void:
@@ -69,7 +69,7 @@ func _on_mouse_exited() -> void:
 	size_tween.set_ease(Tween.EASE_IN_OUT)
 	size_tween.set_trans(Tween.TRANS_CUBIC)
 	size_tween.tween_property($".", "scale", Vector2.ONE, 0.2)
-	(Popups as PopupsHandler).hide_item_popup()
+	(CharacterPopups as CharacterCardPopupsHandler).hide_item_popup()
 
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

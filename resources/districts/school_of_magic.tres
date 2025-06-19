@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=4 format=3 uid="uid://pt8rcrjy58u6"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://pt8rcrjy58u6"]
 
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_luw6u"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_olykd"]
 [ext_resource type="Material" uid="uid://dh33eyt81p8sg" path="res://resources/district_cards/school_of_magic.tres" id="2_2sexx"]
+[ext_resource type="Texture2D" uid="uid://bhbqhnr2k1t6c" path="res://assets/sprites/School of Magic.png" id="4_2sexx"]
 
 [resource]
 script = ExtResource("1_olykd")
 district_name = "School of Magic"
 color = "Purple"
 cost = 6
+sprite_texture = ExtResource("4_2sexx")
 front_material = ExtResource("2_2sexx")
 back_material = ExtResource("1_luw6u")
 is_purple_foil = true
