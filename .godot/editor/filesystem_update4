@@ -44,3 +44,9 @@ res://shaders/aura_outline.gdshader
 res://scenes/battle/battle.tscn
 res://scenes/hud/hud.tscn
 res://scenes/main/initialize_battle_state.gd
+res://scenes/new_card_3d/new_card_3d.gd
+res://scenes/new_card_3d/new_card_3d.tscn
+res://scripts/singletons/game_events.gd
+res://state_machine/take_turn_state.gd
+res://state_machine/select_character_state.gd
+res://scenes/popups/popups.tscn

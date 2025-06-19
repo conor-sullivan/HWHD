@@ -39,7 +39,12 @@ var back_material : Material:
 
 
 func _ready() -> void:
+	GameEvents.started_player_turn_state.connect(_on_started_player_turn_state)
 	GameEvents.starting_excluded_characters_state.connect(_on_starting_excluded_characters_state)
+
+
+func _on_started_player_turn_state() -> void:
+	enable_collision()
 
 
 func _on_starting_excluded_characters_state() -> void:

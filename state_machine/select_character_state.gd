@@ -1,6 +1,9 @@
 class_name SelectCharacterState
 extends State
 
+@export var take_turn_state : State
+
+var character_selection_done : bool = false
 var number_of_cards : int
 var character_choices : Array[CharacterData]
 
@@ -24,11 +27,17 @@ func exit() -> void:
 	GameEvents.character_choices_provided.disconnect(_on_character_choices_provided)
 
 
+func process_frame(_delta : float) -> State:
+	if character_selection_done:
+		return take_turn_state
+	else:
+		return null
+
+
 func _on_opponents_character_card_selected(chosen_character : CharacterData) -> void:
 	for player in GameData.current_battle.players:
 		if player.is_computer:
 			player.current_character_card = chosen_character
-
 
 
 func _on_players_character_card_selected(chosen_character : CharacterData) -> void:
@@ -41,7 +50,7 @@ func _on_players_character_card_selected(chosen_character : CharacterData) -> vo
 				character_choices.shuffle()
 				player.current_character_card = character_choices[0]
 	
-	print('characters chosen')
+	character_selection_done = true
 	
 
 

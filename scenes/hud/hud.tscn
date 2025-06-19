@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://mhn1iyf55w8g"]
+[gd_scene load_steps=11 format=3 uid="uid://mhn1iyf55w8g"]
 
 [ext_resource type="Script" uid="uid://dpx5mivcotmdn" path="res://scenes/hud/hud.gd" id="1_n56i7"]
 [ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="1_v7mo4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://2m8mbu6jyvqr" path="res://assets/sprites/king_crown.png" id="6_go0ap"]
 [ext_resource type="Texture2D" uid="uid://bbkgg00xpdmv4" path="res://assets/sprites/avatar_warlord.png" id="6_mq0y1"]
 [ext_resource type="PackedScene" uid="uid://bk46kcja2e1n" path="res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn" id="6_q6mn5"]
+[ext_resource type="StyleBox" uid="uid://503a15onclud" path="res://resources/textures/popup_texture.tres" id="7_nhd55"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_n56i7")
@@ -23,18 +24,38 @@ texture = ExtResource("2_n56i7")
 
 [node name="AbilityAvatarSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
 position = Vector2(-296.834, 134.75)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.25, 2.25)
 texture = ExtResource("4_mq0y1")
 
 [node name="AbilityHolderSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
 position = Vector2(-296.834, 134.75)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.25, 2.25)
 texture = ExtResource("3_mq0y1")
 
 [node name="CrownSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
 position = Vector2(9.16646, -375.167)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_go0ap")
+
+[node name="PlayerGoldBox" type="Panel" parent="PlayerSprite2D"]
+offset_left = 4492.5
+offset_top = -1000.0
+offset_right = 4522.5
+offset_bottom = -760.0
+scale = Vector2(10, 10)
+theme_override_styles/panel = ExtResource("7_nhd55")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerSprite2D/PlayerGoldBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.1667
+offset_bottom = -22.1034
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 22
+alignment = 2
 
 [node name="OpponentSprite2D" type="Sprite2D" parent="."]
 position = Vector2(567.9, 111.715)
@@ -47,12 +68,12 @@ texture = ExtResource("2_n56i7")
 
 [node name="AbilityAvatarSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
 position = Vector2(286.499, 153.958)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.25, 2.25)
 texture = ExtResource("6_mq0y1")
 
 [node name="AbilityHolderSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
 position = Vector2(286.499, 153.958)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.25, 2.25)
 texture = ExtResource("3_mq0y1")
 
 [node name="CrownSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
@@ -60,22 +81,42 @@ position = Vector2(9.16622, -364.292)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_go0ap")
 
+[node name="OpponentGoldBox" type="Panel" parent="OpponentSprite2D"]
+offset_left = -4674.17
+offset_top = -889.292
+offset_right = -4644.17
+offset_bottom = -649.292
+scale = Vector2(10, 10)
+theme_override_styles/panel = ExtResource("7_nhd55")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpponentSprite2D/OpponentGoldBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.1667
+offset_bottom = -22.1034
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 22
+alignment = 2
+
 [node name="GoldOrCardsSprite2D" type="Sprite2D" parent="."]
-position = Vector2(106.875, 474.89)
+position = Vector2(104, 387)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_nhd55")
 region_enabled = true
 region_rect = Rect2(231, 300, 671, 149)
 
 [node name="ActivateAbilitySprite2D" type="Sprite2D" parent="."]
-position = Vector2(106.875, 432)
+position = Vector2(102, 430)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_nhd55")
 region_enabled = true
 region_rect = Rect2(233, 509, 670, 144)
 
 [node name="EndTurnSprite2D" type="Sprite2D" parent="."]
-position = Vector2(1084.69, 627.15)
+position = Vector2(98, 468)
 scale = Vector2(0.175, 0.175)
 texture = ExtResource("5_nhd55")
 region_enabled = true

@@ -1,6 +1,9 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal started_player_turn_state
+
+@warning_ignore("unused_signal")
 signal character_choices_provided(characters : Array[CharacterData])
 
 @warning_ignore("unused_signal")
