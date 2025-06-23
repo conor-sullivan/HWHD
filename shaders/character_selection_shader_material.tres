@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cwask7hx8vmeu"]
+
+[ext_resource type="Shader" uid="uid://dni2b6hbcx64f" path="res://shaders/character_selection_shader_visual.tres" id="1_fslry"]
+[ext_resource type="Texture2D" uid="uid://vg500xa5x5a5" path="res://assets/shader_textures/T_PerlinNoise_Tiled.png" id="2_00kc3"]
+
+[resource]
+shader = ExtResource("1_fslry")
+shader_parameter/AuraColor = Color(0.297458, 0.670493, 0, 1)
+shader_parameter/Intensity = 1.6
+shader_parameter/Speed = Vector2(0.19, 0.2)
+shader_parameter/Texture2DParameter = ExtResource("2_00kc3")

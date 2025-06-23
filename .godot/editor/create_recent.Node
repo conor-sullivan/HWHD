@@ -1,7 +1,9 @@
+Sprite2D
+Sprite3D
+Button
+TextureButton
 TextureRect
 Label
-Sprite3D
-Sprite2D
 Label3D
 Camera3D
 CharacterCard2D
@@ -10,5 +12,3 @@ GPUParticles3D
 CollisionShape2D
 Area2D
 HBoxContainer
-VBoxContainer
-Button

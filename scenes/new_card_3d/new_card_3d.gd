@@ -76,13 +76,12 @@ func is_in_hand() -> bool:
 
 
 func set_shader() -> void:
-	$CardMesh/CardFrontMesh.material_overlay = null
+	%Shader.hide()
 	if not GameData.current_battle: return
 	if not GameData.current_battle.real_player.can_play_district_card:
 		return
 	if player_can_afford() and is_in_hand():
-		$CardMesh/CardFrontMesh.material_overlay = aura_shader
-
+		%Shader.show()
 
 
 func _on_started_player_turn_state() -> void:

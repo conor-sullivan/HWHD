@@ -11,6 +11,7 @@ func enter() -> void:
 			current_player = player
 	
 	GameData.current_battle.current_players_turn = current_player
+	current_player.can_play_district_card = true
 	GameEvents.player_data_changed.emit()
 	
 	GameEvents.player_played_district_card.connect(_on_player_played_district_card)

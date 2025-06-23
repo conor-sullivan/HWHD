@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://blacfif807885"]
+[gd_scene load_steps=7 format=3 uid="uid://blacfif807885"]
 
 [ext_resource type="PackedScene" uid="uid://dxpc2iac0hjpw" path="res://addons/card_3d/scenes/card_3d.tscn" id="1_h5pcq"]
 [ext_resource type="Script" uid="uid://dyxukp62ssst2" path="res://scenes/new_card_3d/new_card_3d.gd" id="2_0qyik"]
 [ext_resource type="Material" uid="uid://cdqx5tjuprjss" path="res://shaders/3d_card_aura_material.tres" id="3_0qyik"]
 [ext_resource type="Material" uid="uid://cersyaiqt0bgl" path="res://resources/district_cards/armoury.tres" id="4_vyxdp"]
 [ext_resource type="Texture2D" uid="uid://bb1d5upu2qyq2" path="res://assets/sprites/district_value_back.png" id="6_vyxdp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o3bng"]
+size = Vector2(2.5, 3.5)
 
 [node name="NewCard3D" instance=ExtResource("1_h5pcq")]
 script = ExtResource("2_0qyik")
@@ -17,7 +20,15 @@ transform = Transform3D(-1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08
 [node name="CardFrontMesh" parent="CardMesh" index="1"]
 surface_material_override/0 = ExtResource("4_vyxdp")
 
-[node name="CostBackSprite3D" type="Sprite3D" parent="CardMesh" index="2"]
+[node name="Shader" type="MeshInstance3D" parent="CardMesh" index="2"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_o3bng")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_0qyik")
+
+[node name="CostBackSprite3D" type="Sprite3D" parent="CardMesh" index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.798727, 1.18935, 0.085)
 texture = ExtResource("6_vyxdp")
 

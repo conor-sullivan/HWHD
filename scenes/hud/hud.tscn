@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mhn1iyf55w8g"]
+[gd_scene load_steps=12 format=3 uid="uid://mhn1iyf55w8g"]
 
 [ext_resource type="Script" uid="uid://dpx5mivcotmdn" path="res://scenes/hud/hud.gd" id="1_n56i7"]
 [ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="1_v7mo4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b88ta1bgrnaq3" path="res://assets/sprites/ability_holder_test.png" id="3_mq0y1"]
 [ext_resource type="Texture2D" uid="uid://dkr136kfdr5is" path="res://assets/sprites/avatar_bishop.png" id="4_mq0y1"]
 [ext_resource type="Texture2D" uid="uid://cya4nrcrt6217" path="res://assets/sprites/UI-Buttons-Test.png" id="5_nhd55"]
+[ext_resource type="Material" uid="uid://rtl20485fdfs" path="res://shaders/character_ability_aura_material.tres" id="6_8nkf1"]
 [ext_resource type="Texture2D" uid="uid://2m8mbu6jyvqr" path="res://assets/sprites/king_crown.png" id="6_go0ap"]
 [ext_resource type="Texture2D" uid="uid://bbkgg00xpdmv4" path="res://assets/sprites/avatar_warlord.png" id="6_mq0y1"]
 [ext_resource type="PackedScene" uid="uid://bk46kcja2e1n" path="res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn" id="6_q6mn5"]
@@ -33,6 +34,18 @@ texture = ExtResource("4_mq0y1")
 [node name="AbilityHolderSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
 position = Vector2(-296.834, 134.75)
 scale = Vector2(2.25, 2.25)
+texture = ExtResource("3_mq0y1")
+
+[node name="PlayerAbilityShaderRim" type="Sprite2D" parent="PlayerSprite2D"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-290.833, 133.167)
+scale = Vector2(2.445, 2.445)
+texture = ExtResource("3_mq0y1")
+
+[node name="PlayerAbilityShader" type="Sprite2D" parent="PlayerSprite2D/PlayerAbilityShaderRim"]
+material = ExtResource("6_8nkf1")
+position = Vector2(-3.40832, 3.91006e-05)
+scale = Vector2(1.05, 1.05)
 texture = ExtResource("3_mq0y1")
 
 [node name="CrownSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
@@ -88,6 +101,12 @@ texture = ExtResource("6_mq0y1")
 [node name="AbilityHolderSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
 position = Vector2(286.499, 153.958)
 scale = Vector2(2.25, 2.25)
+texture = ExtResource("3_mq0y1")
+
+[node name="OpponentAbilityShader" type="Sprite2D" parent="OpponentSprite2D"]
+material = ExtResource("6_8nkf1")
+position = Vector2(286.499, 153.958)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_mq0y1")
 
 [node name="CrownSprite2D" type="Sprite2D" parent="OpponentSprite2D"]

@@ -17,7 +17,7 @@ script = ExtResource("1_2jslt")
 
 [node name="ItemPopup" type="PopupPanel" parent="CanvasLayer"]
 auto_translate_mode = 1
-position = Vector2i(240, 483)
+position = Vector2i(240, 473)
 size = Vector2i(678, 165)
 visible = true
 theme_override_styles/panel = ExtResource("2_30ufy")

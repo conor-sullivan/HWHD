@@ -28,7 +28,7 @@ func show_front() -> void:
 
 
 func show_shader() -> void:
-	%FrontSprite.material = shader_material
+	%Shader.show()
 
 
 func tween_selected() -> void:

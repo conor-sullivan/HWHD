@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cd344h2l2ongq"]
 
 [ext_resource type="Script" uid="uid://8w5v73ll8tru" path="res://scenes/character_card_2d/character_card_2d.gd" id="1_2hhe1"]
-[ext_resource type="Material" uid="uid://dheflxnta3eml" path="res://shaders/aura_outline.tres" id="2_hfpmk"]
 [ext_resource type="Texture2D" uid="uid://d3ton3u7tx0bb" path="res://assets/sprites/assassin.png" id="3_2hhe1"]
 [ext_resource type="Texture2D" uid="uid://baynwlm8ugl81" path="res://assets/sprites/character back.png" id="3_hfpmk"]
+[ext_resource type="Material" uid="uid://cwask7hx8vmeu" path="res://shaders/character_selection_shader_material.tres" id="5_ip5we"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hhe1"]
 size = Vector2(206, 286)
@@ -13,7 +13,7 @@ layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
 script = ExtResource("1_2hhe1")
-shader_material = ExtResource("2_hfpmk")
+shader_material = ExtResource("5_ip5we")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
@@ -30,7 +30,14 @@ texture = ExtResource("3_hfpmk")
 
 [node name="FrontSprite" type="Sprite2D" parent="Panel"]
 unique_name_in_owner = true
+position = Vector2(92, 146)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("3_2hhe1")
+
+[node name="Shader" type="Sprite2D" parent="Panel"]
+unique_name_in_owner = true
 visible = false
+material = ExtResource("5_ip5we")
 position = Vector2(92, 146)
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("3_2hhe1")

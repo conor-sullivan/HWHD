@@ -11,7 +11,7 @@ var district_deck_cards : Array
 var is_computer : bool = true
 var is_king : bool = false #- is king
 var is_winner : bool = false #- is winner
-var can_play_district_card : bool = true
+var can_play_district_card : bool = false
 var has_chosen_character_card : bool = false #- has chosen a character card
 var has_taken_turn : bool = false #- has taken turn
 var has_been_assassinated : bool = false #- has been assasinated
