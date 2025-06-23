@@ -33,7 +33,7 @@ var max_districts_to_play : int = 1
 var districts_played_this_turn : int = 0 :
 	set(number):
 		districts_played_this_turn = number
-		if number > max_districts_to_play:
+		if districts_played_this_turn >= max_districts_to_play:
 			can_play_district_card = false
 var districts_built_count : int = 0 #- districts built count
 var district_cards_in_play : Array #- districts built and what location they're in on the board

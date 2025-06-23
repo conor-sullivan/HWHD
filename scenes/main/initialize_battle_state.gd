@@ -3,7 +3,7 @@ extends State
 
 @export var exclude_characters_state : State
 @export var character_resources : Array[CharacterData]
-@export var initial_gold_count : int = 3
+@export var initial_gold_count : int = 6
 
 var players_ready : bool = false
 
