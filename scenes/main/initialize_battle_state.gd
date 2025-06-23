@@ -66,5 +66,5 @@ func gain_initial_gold() -> void:
 				GameData.current_battle.real_player.gold_count += 1
 			elif player == GameData.current_battle.opponent_player:
 				GameData.current_battle.opponent_player.gold_count += 1
-			GameEvents.player_gained_gold.emit(player)
+			GameEvents.player_gained_gold.emit(player, 1)
 			await get_tree().create_timer(0.05).timeout

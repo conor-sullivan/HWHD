@@ -67,3 +67,6 @@ res://scenes/battle/player_in_play_card_collection.gd
 res://scripts/singletons/game_events.gd
 res://state_machine/take_turn_state.gd
 res://scenes/hud/hud.tscn
+res://scenes/character_card_popups/character_card_popups.tscn
+res://scenes/character_card_popups/character_card_popups.gd
+res://scenes/character_card_2d/character_card_2d.tscn

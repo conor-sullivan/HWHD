@@ -16,5 +16,6 @@ func enter() -> void:
 
 
 func _on_player_played_district_card(card : DistrictData) -> void:
-	GameData.current_battle.current_players_turn.gold_count -= card.cost
+	var current_gold = GameData.current_battle.current_players_turn.gold_count
+	GameData.current_battle.current_players_turn.gold_count = current_gold - card.cost
 	GameEvents.player_spent_gold.emit(GameData.current_battle.current_players_turn, card.cost)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mhn1iyf55w8g"]
+[gd_scene load_steps=11 format=3 uid="uid://mhn1iyf55w8g"]
 
 [ext_resource type="Script" uid="uid://dpx5mivcotmdn" path="res://scenes/hud/hud.gd" id="1_n56i7"]
 [ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="1_v7mo4"]
@@ -11,9 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bk46kcja2e1n" path="res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn" id="6_q6mn5"]
 [ext_resource type="StyleBox" uid="uid://503a15onclud" path="res://resources/textures/popup_texture.tres" id="7_nhd55"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nhd55"]
-radius = 98.9656
-
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_n56i7")
 
@@ -25,8 +22,11 @@ texture = ExtResource("1_v7mo4")
 [node name="PlayerAvatarSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
 texture = ExtResource("2_n56i7")
 
-[node name="AbilityAvatarSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
-position = Vector2(-296.834, 134.75)
+[node name="AbilityAvatarSprite2D" type="TextureRect" parent="PlayerSprite2D"]
+offset_left = -515.834
+offset_top = -83.5
+offset_right = -323.834
+offset_bottom = 107.5
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("4_mq0y1")
 
@@ -70,9 +70,19 @@ texture = ExtResource("1_v7mo4")
 position = Vector2(0.833186, 2.375)
 texture = ExtResource("2_n56i7")
 
-[node name="AbilityAvatarSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
-position = Vector2(286.499, 153.958)
-scale = Vector2(2.25, 2.25)
+[node name="AbilityAvatarSprite2D" type="TextureRect" parent="OpponentSprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -427.834
+offset_top = -559.625
+offset_right = -246.834
+offset_bottom = -377.625
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.2, 2.2)
 texture = ExtResource("6_mq0y1")
 
 [node name="AbilityHolderSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
@@ -130,12 +140,7 @@ region_rect = Rect2(231, 699, 673, 151)
 [node name="InBattleCharacterCardHandler" parent="." instance=ExtResource("6_q6mn5")]
 visible = false
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(602.28, 130.19)
-scale = Vector2(0.27, 0.27)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_nhd55")
-
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_opponent_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_opponent_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="PlayerSprite2D/AbilityAvatarSprite2D" to="." method="_on_ability_avatar_sprite_2d_mouse_entered"]
+[connection signal="mouse_exited" from="PlayerSprite2D/AbilityAvatarSprite2D" to="." method="_on_ability_avatar_sprite_2d_mouse_exited"]
+[connection signal="mouse_entered" from="OpponentSprite2D/AbilityAvatarSprite2D" to="." method="_on_opponent_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="OpponentSprite2D/AbilityAvatarSprite2D" to="." method="_on_opponent_area_2d_mouse_exited"]

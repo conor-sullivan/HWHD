@@ -7,7 +7,7 @@ signal player_played_district_card(card : DistrictData)
 signal player_spent_gold(player : Player, count : int)
 
 @warning_ignore("unused_signal")
-signal player_gained_gold(player : Player)
+signal player_gained_gold(player : Player, count : int)
 
 @warning_ignore("unused_signal")
 signal started_player_turn_state

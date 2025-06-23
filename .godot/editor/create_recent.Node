@@ -1,5 +1,6 @@
-Sprite3D
+TextureRect
 Label
+Sprite3D
 Sprite2D
 Label3D
 Camera3D
@@ -11,4 +12,3 @@ Area2D
 HBoxContainer
 VBoxContainer
 Button
-Container
