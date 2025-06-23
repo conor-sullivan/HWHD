@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=45 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="2_fe4ja"]
@@ -35,6 +35,10 @@
 [ext_resource type="Resource" uid="uid://dqepjibqn4jpu" path="res://resources/districts/tavern.tres" id="24_wlmsd"]
 [ext_resource type="Resource" uid="uid://cnxnaqnmd2mmp" path="res://resources/districts/temple.tres" id="25_ikd0n"]
 [ext_resource type="PackedScene" uid="uid://mhn1iyf55w8g" path="res://scenes/hud/hud.tscn" id="26_1x3g8"]
+[ext_resource type="Script" uid="uid://dyeefwwpqamu" path="res://scenes/battle/player_drag_controller.gd" id="28_8h6bs"]
+[ext_resource type="Script" uid="uid://duoixss3p6duf" path="res://scenes/battle/player_in_play_card_collection.gd" id="34_dsauo"]
+[ext_resource type="Material" uid="uid://dytcu0poeovrw" path="res://shaders/in_play_dropzone_shader_material.tres" id="36_afkbo"]
+[ext_resource type="Texture2D" uid="uid://7tsfrcpr20dk" path="res://assets/sprites/in_play_dropzone_perimeter.png" id="37_8h6bs"]
 
 [sub_resource type="Environment" id="Environment_aua20"]
 background_mode = 1
@@ -122,7 +126,7 @@ shadow_blur = 5.0
 transform = Transform3D(25.5301, 0.141727, -9.1348, 0, 19.9981, 0.251319, 15.0384, -0.240604, 15.5078, 0, 0.995, -2)
 
 [node name="PlayerDragController" type="Node3D" parent="."]
-script = ExtResource("8_156m4")
+script = ExtResource("28_8h6bs")
 
 [node name="DeckCardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.901, -9.221, -1.235)
@@ -130,18 +134,25 @@ script = ExtResource("10_8eh2s")
 highlight_on_hover = false
 card_layout_strategy = SubResource("Resource_eiu4o")
 
-[node name="HandCardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
+[node name="HandCardCollection" parent="PlayerDragController" groups=["player_hand_collection"] instance=ExtResource("9_pyfix")]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, -10.252, 0)
 script = ExtResource("12_ueicy")
 card_layout_strategy = SubResource("Resource_n6gaa")
 
 [node name="InPlayCardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.423, 2)
+script = ExtResource("34_dsauo")
 
 [node name="EmptyDeck" parent="PlayerDragController" instance=ExtResource("15_k6ux7")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -16.901, -9.221, -1.07)
 visible = false
 skeleton = NodePath("../..")
+
+[node name="InPlayDropzoneShader" type="Sprite3D" parent="PlayerDragController"]
+transform = Transform3D(0.819, 0, 0, 0, 0.811, 0, 0, 0, 1, 0, -2.4574, -0.267111)
+visible = false
+material_override = ExtResource("36_afkbo")
+texture = ExtResource("37_8h6bs")
 
 [node name="OpponentDragController" type="Node3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0, 0)

@@ -53,6 +53,7 @@ var _preview_drop_index: int = -1
 # this will add card as child of this node
 func append_card(card: Card3D):
 	insert_card(card, cards.size())
+	GameEvents.player_data_changed.emit()
 
 
 func prepend_card(card: Card3D):
@@ -73,6 +74,8 @@ func insert_card(card: Card3D, index: int):
 	
 	apply_card_layout()
 	card_added.emit(card)
+	GameEvents.player_data_changed.emit()
+
 
 
 # remove and return card from the end of the list

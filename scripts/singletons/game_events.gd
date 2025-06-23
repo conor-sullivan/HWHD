@@ -1,6 +1,9 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal player_played_district_card(card : DistrictData)
+
+@warning_ignore("unused_signal")
 signal player_spent_gold(player : Player, count : int)
 
 @warning_ignore("unused_signal")

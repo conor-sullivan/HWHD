@@ -3,7 +3,7 @@ extends State
 
 @export var exclude_characters_state : State
 @export var character_resources : Array[CharacterData]
-@export var initial_gold_count : int = 2
+@export var initial_gold_count : int = 3
 
 var players_ready : bool = false
 
@@ -15,6 +15,7 @@ func enter() -> void:
 	
 	GameData.current_battle = BattleData.new()
 	GameData.current_battle.real_player = real_player
+	GameData.current_battle.opponent_player = opponent_player
 	GameData.current_battle.players = [real_player, opponent_player]
 	GameData.current_battle.character_cards = character_resources
 
@@ -61,5 +62,9 @@ func draw_initial_cards() -> void:
 func gain_initial_gold() -> void:
 	for player in GameData.current_battle.players:
 		for i in initial_gold_count:
+			if player == GameData.current_battle.real_player:
+				GameData.current_battle.real_player.gold_count += 1
+			elif player == GameData.current_battle.opponent_player:
+				GameData.current_battle.opponent_player.gold_count += 1
 			GameEvents.player_gained_gold.emit(player)
 			await get_tree().create_timer(0.05).timeout

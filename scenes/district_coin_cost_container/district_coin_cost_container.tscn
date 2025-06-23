@@ -16,3 +16,18 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 36
+
+[node name="Control" parent="VBoxContainer" instance=ExtResource("2_32sks")]
+layout_mode = 2
+
+[node name="Control2" parent="VBoxContainer" instance=ExtResource("2_32sks")]
+layout_mode = 2
+
+[node name="Control3" parent="VBoxContainer" instance=ExtResource("2_32sks")]
+layout_mode = 2
+
+[node name="Control4" parent="VBoxContainer" instance=ExtResource("2_32sks")]
+layout_mode = 2
+
+[node name="Control5" parent="VBoxContainer" instance=ExtResource("2_32sks")]
+layout_mode = 2

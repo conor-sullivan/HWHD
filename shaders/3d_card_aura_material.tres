@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cdqx5tjuprjss"]
+
+[ext_resource type="Shader" uid="uid://dwwaoj4cvlxme" path="res://shaders/3d_card_aura_visual.tres" id="1_2tqyc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2tqyc")
+shader_parameter/AuraColor = Color(0.297458, 0.670493, 0, 1)
+shader_parameter/Intensity = 4.37
+shader_parameter/Speed = Vector2(0.07, 0.07)

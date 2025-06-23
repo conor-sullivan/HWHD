@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://biqobgve80cjg" path="res://scenes/district_card_popups/district_card_popups.gd" id="1_3iodx"]
 [ext_resource type="Texture2D" uid="uid://bx7oikm0hcpgl" path="res://assets/sprites/Palace.png" id="3_2tetw"]
-[ext_resource type="PackedScene" uid="uid://cs3ax6j4fgap6" path="res://scenes/district_coin_cost_container/district_coin_cost_container.tscn" id="3_3iodx"]
+[ext_resource type="Texture2D" uid="uid://bb1d5upu2qyq2" path="res://assets/sprites/district_value_back.png" id="3_3iodx"]
 
 [node name="DistrictCardPopups" type="Control"]
 layout_mode = 3
@@ -25,5 +25,16 @@ position = Vector2(795.833, 274.167)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_2tetw")
 
-[node name="DistrictCoinCostContainer" parent="CanvasLayer" instance=ExtResource("3_3iodx")]
-position = Vector2(708.333, 145.833)
+[node name="CostSprite2D" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(728.333, 166.667)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_3iodx")
+
+[node name="Label" type="Label" parent="CanvasLayer/CostSprite2D"]
+offset_left = -19.838
+offset_top = -73.333
+offset_right = 49.162
+offset_bottom = 91.667
+theme_override_font_sizes/font_size = 80
+text = "8"

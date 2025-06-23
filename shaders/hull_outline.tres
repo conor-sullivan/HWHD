@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ceftvubgcapid"]
+
+[ext_resource type="Shader" uid="uid://b6umes6i1eiq8" path="res://shaders/hull_outline_3d.res" id="1_6grnf"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6grnf")
+shader_parameter/OutlineSize = 0.05
+shader_parameter/BaseColor = Color(0, 0, 0, 1)

@@ -11,6 +11,7 @@ var district_deck_cards : Array
 var is_computer : bool = true
 var is_king : bool = false #- is king
 var is_winner : bool = false #- is winner
+var can_play_district_card : bool = true
 var has_chosen_character_card : bool = false #- has chosen a character card
 var has_taken_turn : bool = false #- has taken turn
 var has_been_assassinated : bool = false #- has been assasinated
@@ -23,9 +24,19 @@ var stolen_from_player_id : int
 
 var game_over_rank : int #- game over rank
 
-var gold_count : int = 0 #- gold count
+var gold_count : int = 0 :
+	set(_count):
+		if _count:
+			gold_count = _count
+			GameEvents.player_data_changed.emit() #- gold count
 var points_count : int = 0 #- points (based on currently built districts and bonuses)
-
+var max_districts_to_play : int = 1
+var districts_played_this_turn : int = 0 :
+	set(number):
+		if number:
+			districts_played_this_turn = number
+			if number > max_districts_to_play:
+				can_play_district_card = false
 var districts_built_count : int = 0 #- districts built count
 var district_cards_in_play : Array #- districts built and what location they're in on the board
 var district_cards_in_hand_count : int = 0 #- cards in hand count
