@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://mhn1iyf55w8g"]
+[gd_scene load_steps=15 format=3 uid="uid://mhn1iyf55w8g"]
 
 [ext_resource type="Script" uid="uid://dpx5mivcotmdn" path="res://scenes/hud/hud.gd" id="1_n56i7"]
 [ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="1_v7mo4"]
@@ -6,12 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://cfpwb8f167v37" path="res://assets/sprites/avatar_unknown.png" id="3_8nkf1"]
 [ext_resource type="Texture2D" uid="uid://b88ta1bgrnaq3" path="res://assets/sprites/ability_holder_test.png" id="3_mq0y1"]
 [ext_resource type="Texture2D" uid="uid://dfmvrxrn8a6ea" path="res://assets/sprites/avatar_missing.png" id="4_nhd55"]
-[ext_resource type="Texture2D" uid="uid://cya4nrcrt6217" path="res://assets/sprites/UI-Buttons-Test.png" id="5_nhd55"]
 [ext_resource type="Material" uid="uid://rtl20485fdfs" path="res://shaders/character_ability_aura_material.tres" id="6_8nkf1"]
 [ext_resource type="Texture2D" uid="uid://2m8mbu6jyvqr" path="res://assets/sprites/king_crown.png" id="6_go0ap"]
 [ext_resource type="PackedScene" uid="uid://bk46kcja2e1n" path="res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn" id="6_q6mn5"]
 [ext_resource type="StyleBox" uid="uid://503a15onclud" path="res://resources/textures/popup_texture.tres" id="7_nhd55"]
 [ext_resource type="Material" uid="uid://cubndxalm6fcs" path="res://shaders/opponent_character_ability_aura_material.tres" id="9_q6mn5"]
+[ext_resource type="Texture2D" uid="uid://be2jtkfw4tn4x" path="res://assets/sprites/opponent_turn_button.png" id="11_8nkf1"]
+[ext_resource type="Texture2D" uid="uid://cja7ou0lw0yj4" path="res://assets/sprites/end_turn_button.png" id="12_558d4"]
+[ext_resource type="Material" uid="uid://bu8gr4o8edtpd" path="res://shaders/confirm_button_shader_material.tres" id="13_4m1a1"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_n56i7")
@@ -54,7 +56,9 @@ position = Vector2(-8.58307e-06, 3.91006e-05)
 scale = Vector2(1.05, 1.05)
 texture = ExtResource("3_mq0y1")
 
-[node name="CrownSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
+[node name="PlayerKingCrown" type="Sprite2D" parent="PlayerSprite2D"]
+unique_name_in_owner = true
+visible = false
 position = Vector2(9.16646, -375.167)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_go0ap")
@@ -110,7 +114,9 @@ position = Vector2(286.499, 153.958)
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("3_mq0y1")
 
-[node name="CrownSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
+[node name="OpponentKingCrown" type="Sprite2D" parent="OpponentSprite2D"]
+unique_name_in_owner = true
+visible = false
 position = Vector2(9.16622, -364.292)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_go0ap")
@@ -150,25 +156,25 @@ position = Vector2(-8.58307e-06, 3.91006e-05)
 scale = Vector2(1.05, 1.05)
 texture = ExtResource("3_mq0y1")
 
-[node name="GoldOrCardsSprite2D" type="Sprite2D" parent="."]
-position = Vector2(104, 387)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_nhd55")
-region_enabled = true
-region_rect = Rect2(231, 300, 671, 149)
+[node name="OpponentTurnIndicator" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1114.02, 284.41)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("11_8nkf1")
+region_rect = Rect2(231, 699, 673, 151)
 
-[node name="ActivateAbilitySprite2D" type="Sprite2D" parent="."]
-position = Vector2(102, 430)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_nhd55")
-region_enabled = true
-region_rect = Rect2(233, 509, 670, 144)
+[node name="EndTurnIndicator" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1114.02, 284.41)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_558d4")
+region_rect = Rect2(231, 699, 673, 151)
 
-[node name="EndTurnSprite2D" type="Sprite2D" parent="."]
-position = Vector2(98, 468)
-scale = Vector2(0.175, 0.175)
-texture = ExtResource("5_nhd55")
-region_enabled = true
+[node name="Shader" type="Sprite2D" parent="EndTurnIndicator"]
+material = ExtResource("13_4m1a1")
+texture = ExtResource("12_558d4")
 region_rect = Rect2(231, 699, 673, 151)
 
 [node name="InBattleCharacterCardHandler" parent="." instance=ExtResource("6_q6mn5")]

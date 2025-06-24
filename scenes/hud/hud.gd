@@ -16,14 +16,23 @@ func _ready() -> void:
 func update_character_avatars() -> void:
 	if not GameData.current_battle:
 		return
+		
 	var real_player = GameData.current_battle.real_player
 	var opponent = GameData.current_battle.opponent_player
+	
+	set_king_crowns(real_player, opponent)
+	set_ability_shader(real_player, opponent)
+	set_ability_avatar(real_player, opponent)
+
+
+func set_ability_avatar(real_player : Player, opponent : Player) -> void:
 	if real_player.character_avatar_visible:
-		print('yes')
 		%PlayerAbilityAvatar.texture = real_player.current_character_card.small_avatar
 	if opponent.character_avatar_visible:
 		%OpponentAbilityAvatar.texture = opponent.current_character_card.small_avatar
-	
+
+
+func set_ability_shader(real_player : Player, opponent : Player) -> void:
 	if real_player.can_use_character_ability:
 		%PlayerAbilityShader.show()
 	else:
@@ -35,8 +44,34 @@ func update_character_avatars() -> void:
 		%OpponentAbilityShader.hide()
 
 
+func set_king_crowns(real_player : Player, opponent : Player) -> void:
+	if real_player.is_king:
+		%PlayerKingCrown.show()
+	else:
+		%PlayerKingCrown.hide()
+	
+	if opponent.is_king:
+		%OpponentKingCrown.show()
+	else:
+		%OpponentKingCrown.hide()
+
+
+func set_turn_indicator() -> void:
+	if not GameData.current_battle:
+		return
+	if not GameData.current_battle.current_players_turn:
+		return
+	if GameData.current_battle.current_players_turn.is_computer:
+		%OpponentTurnIndicator.show()
+		%EndTurnIndicator.hide()
+	else:
+		%OpponentTurnIndicator.hide()
+		%EndTurnIndicator.show()
+
+
 func _on_player_data_changed() -> void:
 	update_character_avatars()
+	set_turn_indicator()
 
 	
 func _on_player_spent_gold(player: Player, count : int) -> void:
