@@ -84,6 +84,9 @@ func player_draw_card() -> void:
 	player_hand_collection.append_card(drawn_card)
 	drawn_card.global_position = card_global_position
 
+	GameData.current_battle.real_player.district_cards_in_hand += [(drawn_card as NewCard3D).resource]
+
+
 	if cards.size() == 0:
 		var timer = get_tree().create_timer(.1)
 		await timer.timeout
@@ -97,6 +100,8 @@ func opponent_draw_card() -> void:
 	(drawn_card as NewCard3D).face_down = true
 	opponent_hand_collection.append_card(drawn_card)
 	drawn_card.global_position = card_global_position
+	
+	GameData.current_battle.opponent_player.district_cards_in_hand += [(drawn_card as NewCard3D).resource]
 
 	if cards.size() == 0:
 		var timer = get_tree().create_timer(.1)

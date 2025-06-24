@@ -23,7 +23,8 @@ texture = ExtResource("1_v7mo4")
 [node name="PlayerAvatarSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
 texture = ExtResource("2_n56i7")
 
-[node name="AbilityAvatarSprite2D" type="TextureRect" parent="PlayerSprite2D"]
+[node name="PlayerAbilityAvatar" type="TextureRect" parent="PlayerSprite2D"]
+unique_name_in_owner = true
 offset_left = -556.114
 offset_top = -341.669
 offset_right = -364.114
@@ -36,13 +37,15 @@ position = Vector2(-337.114, -123.419)
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("3_mq0y1")
 
-[node name="PlayerAbilityShaderRim" type="Sprite2D" parent="PlayerSprite2D"]
+[node name="PlayerAbilityShader" type="Sprite2D" parent="PlayerSprite2D"]
+unique_name_in_owner = true
+visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(-331.114, -125.002)
 scale = Vector2(2.445, 2.445)
 texture = ExtResource("3_mq0y1")
 
-[node name="PlayerAbilityShader" type="Sprite2D" parent="PlayerSprite2D/PlayerAbilityShaderRim"]
+[node name="PlayerAbilityShader" type="Sprite2D" parent="PlayerSprite2D/PlayerAbilityShader"]
 material = ExtResource("6_8nkf1")
 position = Vector2(-8.58307e-06, 3.91006e-05)
 scale = Vector2(1.05, 1.05)
@@ -83,7 +86,8 @@ texture = ExtResource("1_v7mo4")
 position = Vector2(0.833186, 2.375)
 texture = ExtResource("2_n56i7")
 
-[node name="AbilityAvatarSprite2D" type="TextureRect" parent="OpponentSprite2D"]
+[node name="OpponentAbilityAvatar" type="TextureRect" parent="OpponentSprite2D"]
+unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -129,14 +133,15 @@ grow_vertical = 2
 theme_override_constants/separation = 22
 alignment = 2
 
-[node name="PlayerAbilityShaderRim" type="Sprite2D" parent="OpponentSprite2D"]
+[node name="OpponentAbilityShader" type="Sprite2D" parent="OpponentSprite2D"]
+unique_name_in_owner = true
 visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(284.167, 160.708)
 scale = Vector2(2.445, 2.445)
 texture = ExtResource("3_mq0y1")
 
-[node name="PlayerAbilityShader" type="Sprite2D" parent="OpponentSprite2D/PlayerAbilityShaderRim"]
+[node name="PlayerAbilityShader" type="Sprite2D" parent="OpponentSprite2D/OpponentAbilityShader"]
 material = ExtResource("6_8nkf1")
 position = Vector2(-8.58307e-06, 3.91006e-05)
 scale = Vector2(1.05, 1.05)
@@ -166,7 +171,7 @@ region_rect = Rect2(231, 699, 673, 151)
 [node name="InBattleCharacterCardHandler" parent="." instance=ExtResource("6_q6mn5")]
 visible = false
 
-[connection signal="mouse_entered" from="PlayerSprite2D/AbilityAvatarSprite2D" to="." method="_on_ability_avatar_sprite_2d_mouse_entered"]
-[connection signal="mouse_exited" from="PlayerSprite2D/AbilityAvatarSprite2D" to="." method="_on_ability_avatar_sprite_2d_mouse_exited"]
-[connection signal="mouse_entered" from="OpponentSprite2D/AbilityAvatarSprite2D" to="." method="_on_opponent_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="OpponentSprite2D/AbilityAvatarSprite2D" to="." method="_on_opponent_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_entered"]
+[connection signal="mouse_exited" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_exited"]
+[connection signal="mouse_entered" from="OpponentSprite2D/OpponentAbilityAvatar" to="." method="_on_opponent_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="OpponentSprite2D/OpponentAbilityAvatar" to="." method="_on_opponent_area_2d_mouse_exited"]

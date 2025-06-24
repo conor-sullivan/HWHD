@@ -60,3 +60,9 @@ res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.t
 res://shaders/confirm_button_shader_visual.tres
 res://shaders/confirm_button_shader_material.tres
 res://scenes/character_card_popups/character_card_popups.tscn
+res://scenes/hud/hud.gd
+res://scenes/battle/battle.gd
+res://addons/card_3d/scripts/card_collection_3d.gd
+res://addons/card_3d/scenes/hand.gd
+res://addons/card_3d/scenes/opponent_hand_card_collection_3d.gd
+res://addons/card_3d/scenes/player_hand_card_collection.gd
