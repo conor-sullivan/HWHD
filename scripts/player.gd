@@ -13,9 +13,18 @@ var can_play_district_card : bool = false :
 	set(value):
 		can_play_district_card = value
 		GameEvents.player_data_changed.emit() 
-var has_used_character_ability : bool = false
-var can_use_character_ability : bool = false
-var character_avatar_visible : bool = false
+var has_used_character_ability : bool = false :
+	set(value):
+		has_used_character_ability = value
+		GameEvents.player_data_changed.emit()
+var can_use_character_ability : bool = false :
+	set(value):
+		can_use_character_ability = value
+		GameEvents.player_data_changed.emit()
+var character_avatar_visible : bool = false :
+	set(value):
+		character_avatar_visible = value
+		GameEvents.player_data_changed.emit()
 var has_chosen_character_card : bool = false 
 var has_taken_turn : bool = false
 var has_been_assassinated : bool = false 
@@ -50,5 +59,4 @@ var district_cards_in_hand_count : int = 0
 var district_cards_in_hand : Array :
 	set(cards):
 		district_cards_in_hand = cards
-		GameEvents.player_data_changed.emit() 
-		print('new hand')
+		GameEvents.player_data_changed.emit()

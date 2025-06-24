@@ -24,6 +24,7 @@ func enter() -> void:
 
 
 func exit() -> void:
+	GameEvents.all_character_cards_chosen.emit()
 	GameEvents.character_choices_provided.disconnect(_on_character_choices_provided)
 
 

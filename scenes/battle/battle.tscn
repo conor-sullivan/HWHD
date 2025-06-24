@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=46 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="2_fe4ja"]
@@ -50,6 +50,10 @@ pile_y_offset = 0.0
 metadata/_custom_type_script = "uid://cntqyqc32apyx"
 
 [sub_resource type="Resource" id="Resource_n6gaa"]
+script = ExtResource("13_n5ix6")
+metadata/_custom_type_script = "uid://dhlf23ahp2k1e"
+
+[sub_resource type="Resource" id="Resource_ilhaa"]
 script = ExtResource("13_n5ix6")
 metadata/_custom_type_script = "uid://dhlf23ahp2k1e"
 
@@ -164,6 +168,7 @@ card_layout_strategy = SubResource("Resource_eiu4o")
 [node name="HandCardCollection" parent="OpponentDragController" instance=ExtResource("9_pyfix")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -11.498, 0)
 script = ExtResource("39_ilhaa")
+card_layout_strategy = SubResource("Resource_ilhaa")
 
 [node name="InPlayCardCollection" parent="OpponentDragController" instance=ExtResource("9_pyfix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56442e-07, -2.24751, 2)

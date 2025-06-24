@@ -4,6 +4,7 @@ class_name CharacterData
 
 @export var character_name : String
 @export var avatar_texture : Texture
+@export var small_avatar : Texture
 @export var front_material : Resource
 @export var back_material : Resource
 @export var play_order_number : int

@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bdijll6cmpfwb"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://bdijll6cmpfwb"]
 
 [ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_6clfr"]
 [ext_resource type="Texture2D" uid="uid://m555roosf0ic" path="res://assets/sprites/bishop.png" id="1_oxwtb"]
 [ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_l5cw7"]
 [ext_resource type="Material" uid="uid://v54hmkydhpxe" path="res://resources/character_cards/bishop.tres" id="3_pdgqs"]
+[ext_resource type="Texture2D" uid="uid://dkr136kfdr5is" path="res://assets/sprites/avatar_bishop.png" id="5_l5cw7"]
 
 [resource]
 script = ExtResource("1_6clfr")
 character_name = "Bishop"
 avatar_texture = ExtResource("1_oxwtb")
+small_avatar = ExtResource("5_l5cw7")
 front_material = ExtResource("3_pdgqs")
 back_material = ExtResource("2_l5cw7")
 play_order_number = 5

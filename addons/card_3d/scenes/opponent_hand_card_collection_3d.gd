@@ -18,5 +18,4 @@ func remove_card(index: int) -> Card3D:
 	removed_card.card_3d_mouse_exit.disconnect(_on_card_exit.bind(removed_card))
 
 	GameData.current_battle.opponent_player.district_cards_in_hand.erase(removed_card)
-	
 	return removed_card

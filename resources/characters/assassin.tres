@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://cskaoin53a8ap"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://cskaoin53a8ap"]
 
 [ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_cpkke"]
 [ext_resource type="Texture2D" uid="uid://d3ton3u7tx0bb" path="res://assets/sprites/assassin.png" id="1_psbqx"]
 [ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_a5s5l"]
 [ext_resource type="Material" uid="uid://bmb70sfacccgc" path="res://resources/character_cards/assassin.tres" id="3_05wa1"]
+[ext_resource type="Texture2D" uid="uid://yy2fkhtpa66o" path="res://assets/sprites/avatar_assassin.png" id="5_a5s5l"]
 
 [resource]
 script = ExtResource("1_cpkke")
 character_name = "Assassin"
 avatar_texture = ExtResource("1_psbqx")
+small_avatar = ExtResource("5_a5s5l")
 front_material = ExtResource("3_05wa1")
 back_material = ExtResource("2_a5s5l")
 play_order_number = 1

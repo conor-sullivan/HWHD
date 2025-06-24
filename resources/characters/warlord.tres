@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://b2qptckr8gwe"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://b2qptckr8gwe"]
 
 [ext_resource type="Texture2D" uid="uid://68mtbxtb7576" path="res://assets/sprites/warlord.png" id="1_iry1j"]
 [ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_mrccy"]
 [ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_jlgru"]
 [ext_resource type="Material" uid="uid://dm6gu2xiqd384" path="res://resources/character_cards/warlord.tres" id="3_jk7uu"]
+[ext_resource type="Texture2D" uid="uid://bbkgg00xpdmv4" path="res://assets/sprites/avatar_warlord.png" id="5_jlgru"]
 
 [resource]
 script = ExtResource("1_mrccy")
 character_name = "Warlord"
 avatar_texture = ExtResource("1_iry1j")
+small_avatar = ExtResource("5_jlgru")
 front_material = ExtResource("3_jk7uu")
 back_material = ExtResource("2_jlgru")
 play_order_number = 8

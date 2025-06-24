@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bju75ixfd7vbd"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://bju75ixfd7vbd"]
 
 [ext_resource type="Texture2D" uid="uid://b2q1fjylmhyhh" path="res://assets/sprites/magician.png" id="1_60of0"]
 [ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_p638j"]
 [ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_3v1nf"]
 [ext_resource type="Material" uid="uid://7g6aungbv8jp" path="res://resources/character_cards/magician.tres" id="3_8lovf"]
+[ext_resource type="Texture2D" uid="uid://dsatgw4wb5387" path="res://assets/sprites/avatar_magician.png" id="5_3v1nf"]
 
 [resource]
 script = ExtResource("1_p638j")
 character_name = "Magician"
 avatar_texture = ExtResource("1_60of0")
+small_avatar = ExtResource("5_3v1nf")
 front_material = ExtResource("3_8lovf")
 back_material = ExtResource("2_3v1nf")
 play_order_number = 3

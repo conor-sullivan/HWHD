@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bpv8sb42yc1ad"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://bpv8sb42yc1ad"]
 
 [ext_resource type="Texture2D" uid="uid://depf3whkwmpmv" path="res://assets/sprites/king(1).png" id="1_ic6rb"]
 [ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_w6ntu"]
 [ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_6ktt3"]
 [ext_resource type="Material" uid="uid://dc88qbddcnvyu" path="res://resources/character_cards/king.tres" id="3_vvog1"]
+[ext_resource type="Texture2D" uid="uid://bw1l8ho68dtkk" path="res://assets/sprites/avatar_king.png" id="5_6ktt3"]
 
 [resource]
 script = ExtResource("1_w6ntu")
 character_name = "King"
 avatar_texture = ExtResource("1_ic6rb")
+small_avatar = ExtResource("5_6ktt3")
 front_material = ExtResource("3_vvog1")
 back_material = ExtResource("2_6ktt3")
 play_order_number = 4

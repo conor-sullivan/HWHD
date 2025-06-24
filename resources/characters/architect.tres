@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bpsi0508knj0v"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://bpsi0508knj0v"]
 
 [ext_resource type="Texture2D" uid="uid://sxy77ublaiks" path="res://assets/sprites/architect.png" id="1_csn5v"]
 [ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_lovdk"]
 [ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_o5tdf"]
 [ext_resource type="Material" uid="uid://b6u7o01o4pved" path="res://resources/character_cards/architect.tres" id="3_d62do"]
+[ext_resource type="Texture2D" uid="uid://r8ihpv4odlr6" path="res://assets/sprites/avatar_architect.png" id="5_o5tdf"]
 
 [resource]
 script = ExtResource("1_lovdk")
 character_name = "Architect"
 avatar_texture = ExtResource("1_csn5v")
+small_avatar = ExtResource("5_o5tdf")
 front_material = ExtResource("3_d62do")
 back_material = ExtResource("2_o5tdf")
 play_order_number = 7

@@ -22,7 +22,7 @@ signal players_character_card_selected(character : CharacterData)
 signal opponents_character_card_selected(character : CharacterData)
 
 @warning_ignore("unused_signal")
-signal all_character_cards_chosen(data : Dictionary)
+signal all_character_cards_chosen()
 
 @warning_ignore("unused_signal")
 signal accepted_character_cards

@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://d3ypgi3oxgxgr"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://d3ypgi3oxgxgr"]
 
 [ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_4qv84"]
 [ext_resource type="Texture2D" uid="uid://x2e0ntqrwjs8" path="res://assets/sprites/merchant.png" id="1_wmdrq"]
 [ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_ho4li"]
 [ext_resource type="Material" uid="uid://b0558aqpnxyg7" path="res://resources/character_cards/merchant.tres" id="3_5sc2w"]
+[ext_resource type="Texture2D" uid="uid://c4lb1q42jo0oy" path="res://assets/sprites/avatar_merchant.png" id="5_ho4li"]
 
 [resource]
 script = ExtResource("1_4qv84")
 character_name = "Merchant"
 avatar_texture = ExtResource("1_wmdrq")
+small_avatar = ExtResource("5_ho4li")
 front_material = ExtResource("3_5sc2w")
 back_material = ExtResource("2_ho4li")
 play_order_number = 6

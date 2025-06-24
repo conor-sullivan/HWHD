@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://cx82gikqf7y86"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://cx82gikqf7y86"]
 
 [ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="1_1sxed"]
 [ext_resource type="Texture2D" uid="uid://caw1v0xigbdmv" path="res://assets/sprites/thief.png" id="1_v8u3i"]
 [ext_resource type="Material" uid="uid://csoj7y3el6gav" path="res://resources/character_cards/character_back.tres" id="2_gue4v"]
 [ext_resource type="Material" uid="uid://davrsbes8c6xs" path="res://resources/character_cards/thief.tres" id="3_1kujo"]
+[ext_resource type="Texture2D" uid="uid://7hb7gynfaaic" path="res://assets/sprites/avatar_thief.png" id="5_gue4v"]
 
 [resource]
 script = ExtResource("1_1sxed")
 character_name = "Thief"
 avatar_texture = ExtResource("1_v8u3i")
+small_avatar = ExtResource("5_gue4v")
 front_material = ExtResource("3_1kujo")
 back_material = ExtResource("2_gue4v")
 play_order_number = 2
