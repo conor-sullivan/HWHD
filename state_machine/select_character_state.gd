@@ -1,7 +1,7 @@
 class_name SelectCharacterState
 extends State
 
-@export var take_turn_state : State
+@export var initialize_turn_state : State
 
 var character_selection_done : bool = false
 var number_of_cards : int
@@ -30,7 +30,7 @@ func exit() -> void:
 
 func process_frame(_delta : float) -> State:
 	if character_selection_done:
-		return take_turn_state
+		return initialize_turn_state
 	else:
 		return null
 

@@ -81,7 +81,6 @@ func _on_ability_avatar_sprite_2d_mouse_exited() -> void:
 
 
 func _on_all_character_cards_chosen() -> void:
-	print('chosen')
 	# set avatars texture to ???
 	%PlayerAbilityAvatar.texture = unknown_avatar_texture
 	%OpponentAbilityAvatar.texture = unknown_avatar_texture

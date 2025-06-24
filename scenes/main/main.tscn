@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqoxycaki6bgf"]
+[gd_scene load_steps=18 format=3 uid="uid://bqoxycaki6bgf"]
 
 [ext_resource type="PackedScene" uid="uid://cs2ru0s186hhg" path="res://scenes/battle/battle.tscn" id="1_hyk8p"]
 [ext_resource type="PackedScene" uid="uid://bvpjgek8yxt2s" path="res://state_machine/state_machine.tscn" id="2_k2fmo"]
@@ -14,7 +14,9 @@
 [ext_resource type="Resource" uid="uid://bpsi0508knj0v" path="res://resources/characters/architect.tres" id="11_r4lks"]
 [ext_resource type="Resource" uid="uid://b2qptckr8gwe" path="res://resources/characters/warlord.tres" id="12_pg34l"]
 [ext_resource type="Script" uid="uid://dx8nfmwnjt2v5" path="res://state_machine/select_character_state.gd" id="14_7smn1"]
-[ext_resource type="Script" uid="uid://6p2ph8xk2c8d" path="res://state_machine/take_turn_state.gd" id="15_raeie"]
+[ext_resource type="Script" uid="uid://6p2ph8xk2c8d" path="res://state_machine/player_turn_state.gd" id="15_raeie"]
+[ext_resource type="Script" uid="uid://c8y87yiuq3qkx" path="res://state_machine/initialize_turn_state.gd" id="16_hxu8e"]
+[ext_resource type="Script" uid="uid://bin18t42utxx7" path="res://state_machine/opponent_turn_state.gd" id="17_nvumn"]
 
 [node name="Main" type="Node3D"]
 
@@ -32,9 +34,17 @@ character_resources = Array[ExtResource("4_th5th")]([ExtResource("5_7smn1"), Ext
 script = ExtResource("4_l3cfh")
 select_character_state = NodePath("../SelectCharacter")
 
-[node name="SelectCharacter" type="Node" parent="StateMachine" node_paths=PackedStringArray("take_turn_state")]
+[node name="SelectCharacter" type="Node" parent="StateMachine" node_paths=PackedStringArray("initialize_turn_state")]
 script = ExtResource("14_7smn1")
-take_turn_state = NodePath("../TakeTurn")
+initialize_turn_state = NodePath("../InitializeTurn")
 
-[node name="TakeTurn" type="Node" parent="StateMachine"]
+[node name="InitializeTurn" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_turn_state", "opponent_turn_state")]
+script = ExtResource("16_hxu8e")
+player_turn_state = NodePath("../PlayerTurn")
+opponent_turn_state = NodePath("../OpponentTurn")
+
+[node name="PlayerTurn" type="Node" parent="StateMachine"]
 script = ExtResource("15_raeie")
+
+[node name="OpponentTurn" type="Node" parent="StateMachine"]
+script = ExtResource("17_nvumn")

@@ -30,6 +30,7 @@ texture = ExtResource("3_hfpmk")
 
 [node name="FrontSprite" type="Sprite2D" parent="Panel"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(92, 146)
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("3_2hhe1")

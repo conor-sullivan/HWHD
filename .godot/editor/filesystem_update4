@@ -79,3 +79,6 @@ res://shaders/opponent_character_ability_aura_material.tres
 res://shaders/opponent_character_ability_aura_shader_visualtres.res
 res://scripts/singletons/game_events.gd
 res://state_machine/select_character_state.gd
+res://state_machine/initialize_turn_state.gd
+res://state_machine/player_turn_state.gd
+res://state_machine/opponent_turn_state.gd
