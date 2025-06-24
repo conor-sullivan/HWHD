@@ -1,10 +1,11 @@
+AnimationPlayer
+Label
 Node
 Sprite2D
 Sprite3D
 Button
 TextureButton
 TextureRect
-Label
 Label3D
 Camera3D
 CharacterCard2D

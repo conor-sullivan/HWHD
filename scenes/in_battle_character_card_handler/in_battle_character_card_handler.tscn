@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk46kcja2e1n"]
+[gd_scene load_steps=7 format=3 uid="uid://bk46kcja2e1n"]
 
 [ext_resource type="Script" uid="uid://7vu7ltuasjuu" path="res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.gd" id="1_eosra"]
 [ext_resource type="Material" uid="uid://de6lgys43decm" path="res://shaders/darken_blur_shader.tres" id="1_h1t1m"]
 [ext_resource type="Texture2D" uid="uid://donx45apbk7uo" path="res://assets/sprites/confirm_button.webp" id="3_5ouc4"]
 [ext_resource type="Material" uid="uid://bu8gr4o8edtpd" path="res://shaders/confirm_button_shader_material.tres" id="4_x462p"]
+[ext_resource type="StyleBox" uid="uid://503a15onclud" path="res://resources/textures/popup_texture.tres" id="5_jkhgi"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x462p"]
 
@@ -26,20 +27,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_x462p")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -399.0
-offset_top = 39.91
-offset_right = 399.0
-offset_bottom = 94.91
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
-text = "These characters are excluded this round"
-horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 visible = false
@@ -64,5 +51,38 @@ material = ExtResource("4_x462p")
 position = Vector2(218.77, 82.95)
 scale = Vector2(1.01, 1.01)
 texture = ExtResource("3_5ouc4")
+
+[node name="NotificationPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -443.67
+offset_top = 17.115
+offset_right = 456.33
+offset_bottom = 153.755
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_jkhgi")
+
+[node name="Notification" type="Label" parent="NotificationPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -11.5
+offset_right = 88.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "These characters are excluded this round"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

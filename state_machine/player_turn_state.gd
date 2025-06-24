@@ -13,7 +13,7 @@ func enter() -> void:
 	player = GameData.current_battle.real_player
 	player.can_play_district_card = true
 	player.can_use_character_ability = true
-	player.character_avatar_visible
+	player.character_avatar_visible = true
 
 
 func _on_player_played_district_card(card : DistrictData) -> void:

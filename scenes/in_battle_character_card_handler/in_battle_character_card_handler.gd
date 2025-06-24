@@ -44,7 +44,7 @@ func _ready() -> void:
 
 
 func _on_players_character_card_selected(_card : CharacterData) -> void:
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.4).timeout
 	hide()
 	for child in get_children():
 		if child is CharacterCard2D:
@@ -70,9 +70,9 @@ func _on_starting_select_character_state(number_of_cards : int) -> void:
 			child.queue_free()
 	$Button.hide()
 	if GameData.current_battle.real_player.is_king:
-		$Label.text = "King has first choice!\nChoose your character for this round"
+		%Notification.text = "King has first choice!\nChoose your character for this round"
 	else:
-		$Label.text = "You get second choice\nChoose your character for this round"
+		%Notification.text = "You get second choice\nChoose your character for this round"
 	current_state = HandlerState.Picking
 	number_of_card_choices = number_of_cards
 

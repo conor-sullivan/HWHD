@@ -7,6 +7,7 @@ extends CanvasLayer
 var gold_icon_scene : PackedScene = preload("res://scenes/gold_coin_icon/gold_coin_icon.tscn")
 
 func _ready() -> void:
+	GameEvents.started_player_turn_state.connect(_on_started_player_turn_state)
 	GameEvents.all_character_cards_chosen.connect(_on_all_character_cards_chosen)
 	GameEvents.player_data_changed.connect(_on_player_data_changed)
 	GameEvents.player_gained_gold.connect(_on_player_gained_gold)
@@ -119,3 +120,12 @@ func _on_all_character_cards_chosen() -> void:
 	# set avatars texture to ???
 	%PlayerAbilityAvatar.texture = unknown_avatar_texture
 	%OpponentAbilityAvatar.texture = unknown_avatar_texture
+
+
+func _on_started_player_turn_state() -> void:
+	await get_tree().create_timer(0.5).timeout
+	if GameData.current_battle.current_players_turn.is_computer:
+		%Notification.text = "Opponent has the initiative..."
+	else:
+		%Notification.text = "You have the initiative!"
+	$AnimationPlayer.play("show_notification")
