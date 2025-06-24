@@ -24,27 +24,27 @@ texture = ExtResource("1_v7mo4")
 texture = ExtResource("2_n56i7")
 
 [node name="AbilityAvatarSprite2D" type="TextureRect" parent="PlayerSprite2D"]
-offset_left = -515.834
-offset_top = -83.5
-offset_right = -323.834
-offset_bottom = 107.5
+offset_left = -556.114
+offset_top = -341.669
+offset_right = -364.114
+offset_bottom = -150.669
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("4_mq0y1")
 
 [node name="AbilityHolderSprite2D" type="Sprite2D" parent="PlayerSprite2D"]
-position = Vector2(-296.834, 134.75)
+position = Vector2(-337.114, -123.419)
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("3_mq0y1")
 
 [node name="PlayerAbilityShaderRim" type="Sprite2D" parent="PlayerSprite2D"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-290.833, 133.167)
+position = Vector2(-331.114, -125.002)
 scale = Vector2(2.445, 2.445)
 texture = ExtResource("3_mq0y1")
 
 [node name="PlayerAbilityShader" type="Sprite2D" parent="PlayerSprite2D/PlayerAbilityShaderRim"]
 material = ExtResource("6_8nkf1")
-position = Vector2(-3.40832, 3.91006e-05)
+position = Vector2(-8.58307e-06, 3.91006e-05)
 scale = Vector2(1.05, 1.05)
 texture = ExtResource("3_mq0y1")
 
@@ -103,12 +103,6 @@ position = Vector2(286.499, 153.958)
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("3_mq0y1")
 
-[node name="OpponentAbilityShader" type="Sprite2D" parent="OpponentSprite2D"]
-material = ExtResource("6_8nkf1")
-position = Vector2(286.499, 153.958)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("3_mq0y1")
-
 [node name="CrownSprite2D" type="Sprite2D" parent="OpponentSprite2D"]
 position = Vector2(9.16622, -364.292)
 scale = Vector2(0.5, 0.5)
@@ -134,6 +128,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 22
 alignment = 2
+
+[node name="PlayerAbilityShaderRim" type="Sprite2D" parent="OpponentSprite2D"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(284.167, 160.708)
+scale = Vector2(2.445, 2.445)
+texture = ExtResource("3_mq0y1")
+
+[node name="PlayerAbilityShader" type="Sprite2D" parent="OpponentSprite2D/PlayerAbilityShaderRim"]
+material = ExtResource("6_8nkf1")
+position = Vector2(-8.58307e-06, 3.91006e-05)
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("3_mq0y1")
 
 [node name="GoldOrCardsSprite2D" type="Sprite2D" parent="."]
 position = Vector2(104, 387)

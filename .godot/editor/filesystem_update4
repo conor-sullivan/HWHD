@@ -59,3 +59,4 @@ res://state_machine/take_turn_state.gd
 res://scenes/in_battle_character_card_handler/in_battle_character_card_handler.tscn
 res://shaders/confirm_button_shader_visual.tres
 res://shaders/confirm_button_shader_material.tres
+res://scenes/character_card_popups/character_card_popups.tscn
