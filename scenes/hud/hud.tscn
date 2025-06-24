@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://mhn1iyf55w8g"]
+[gd_scene load_steps=19 format=3 uid="uid://mhn1iyf55w8g"]
 
 [ext_resource type="Script" uid="uid://dpx5mivcotmdn" path="res://scenes/hud/hud.gd" id="1_n56i7"]
 [ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="1_v7mo4"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://be2jtkfw4tn4x" path="res://assets/sprites/opponent_turn_button.png" id="11_8nkf1"]
 [ext_resource type="Texture2D" uid="uid://cja7ou0lw0yj4" path="res://assets/sprites/end_turn_button.png" id="12_558d4"]
 [ext_resource type="Material" uid="uid://bu8gr4o8edtpd" path="res://shaders/confirm_button_shader_material.tres" id="13_4m1a1"]
+[ext_resource type="PackedScene" uid="uid://cxfoa1am0bepu" path="res://scenes/in_battle_action_selector/in_battle_action_selection.tscn" id="15_iioc1"]
 
 [sub_resource type="Animation" id="Animation_4m1a1"]
 resource_name = "show_notification"
@@ -305,6 +306,8 @@ grow_vertical = 2
 text = "Opponent has the initiative..."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InBattleActionSelection" parent="." instance=ExtResource("15_iioc1")]
 
 [connection signal="mouse_entered" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_entered"]
 [connection signal="mouse_exited" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_exited"]

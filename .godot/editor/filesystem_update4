@@ -82,3 +82,6 @@ res://state_machine/select_character_state.gd
 res://state_machine/initialize_turn_state.gd
 res://state_machine/player_turn_state.gd
 res://state_machine/opponent_turn_state.gd
+res://scenes/in_battle_action_selector/in_battle_action_selection.tscn
+res://shaders/action_button_shader_visual.tres
+res://scenes/in_battle_action_selector/in_battle_action_selection.gd

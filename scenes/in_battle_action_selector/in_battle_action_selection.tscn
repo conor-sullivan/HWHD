@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxfoa1am0bepu"]
+
+[ext_resource type="Material" uid="uid://de6lgys43decm" path="res://shaders/darken_blur_shader.tres" id="1_6eljc"]
+[ext_resource type="Script" uid="uid://b8cnuv6d4ijto" path="res://scenes/in_battle_action_selector/in_battle_action_selection.gd" id="1_fmlyl"]
+[ext_resource type="Texture2D" uid="uid://cffk2skmtva81" path="res://assets/sprites/action_button_template.png" id="2_avdmk"]
+[ext_resource type="Material" uid="uid://dw4brgw8trggx" path="res://shaders/action_button_shader_material.tres" id="3_6eljc"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uy4vl"]
+
+[node name="InBattleActionSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fmlyl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("1_6eljc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_uy4vl")
+
+[node name="CardOption" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 536.937
+offset_top = 58.6667
+offset_right = 1070.94
+offset_bottom = 591.667
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(267.159, 266.667)
+texture = ExtResource("2_avdmk")
+
+[node name="Label" type="Label" parent="CardOption"]
+offset_left = -65.2174
+offset_top = 89.8551
+offset_right = 600.783
+offset_bottom = 425.855
+theme_override_font_sizes/font_size = 65
+text = "Draw 2
+Discard 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shader" type="Sprite2D" parent="CardOption"]
+material = ExtResource("3_6eljc")
+position = Vector2(260.638, 256.075)
+scale = Vector2(1.43571, 1.39385)
+texture = ExtResource("2_avdmk")
+
+[node name="GoldOption" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 63.6667
+offset_top = 58.6667
+offset_right = 597.667
+offset_bottom = 591.667
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(266.667, 266.667)
+texture = ExtResource("2_avdmk")
+
+[node name="Label" type="Label" parent="GoldOption"]
+layout_mode = 0
+offset_left = -65.2174
+offset_top = 89.8551
+offset_right = 600.783
+offset_bottom = 425.855
+theme_override_font_sizes/font_size = 65
+text = "Gain
+2 
+Gold"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shader" type="Sprite2D" parent="GoldOption"]
+material = ExtResource("3_6eljc")
+position = Vector2(257.971, 258.249)
+scale = Vector2(1.41128, 1.40201)
+texture = ExtResource("2_avdmk")
+
+[connection signal="mouse_entered" from="CardOption" to="." method="_on_card_option_mouse_entered"]
+[connection signal="mouse_exited" from="CardOption" to="." method="_on_card_option_mouse_exited"]
+[connection signal="mouse_entered" from="GoldOption" to="." method="_on_gold_option_mouse_entered"]
+[connection signal="mouse_exited" from="GoldOption" to="." method="_on_gold_option_mouse_exited"]
