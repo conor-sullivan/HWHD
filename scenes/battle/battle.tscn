@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=50 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="2_fe4ja"]
@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://d3hh60bjd0hq3" path="res://resources/districts/docks.tres" id="8_m7fqn"]
 [ext_resource type="Resource" uid="uid://dbbcqtgqb0qqr" path="res://resources/districts/fortress.tres" id="9_j021e"]
 [ext_resource type="PackedScene" uid="uid://d1uvcisduvvj" path="res://addons/card_3d/scenes/card_collection_3d.tscn" id="9_pyfix"]
-[ext_resource type="Script" uid="uid://c1o3okxoatrri" path="res://addons/card_3d/scenes/deck.gd" id="10_8eh2s"]
+[ext_resource type="Script" uid="uid://c1o3okxoatrri" path="res://addons/card_3d/scenes/player_deck.gd" id="10_8eh2s"]
 [ext_resource type="Resource" uid="uid://bot5w3cgjrvdh" path="res://resources/districts/hospital.tres" id="10_eu6pb"]
 [ext_resource type="Script" uid="uid://cntqyqc32apyx" path="res://addons/card_3d/scripts/card_layouts/pile_card_layout.gd" id="11_e48mi"]
 [ext_resource type="Resource" uid="uid://1def4a4ctktc" path="res://resources/districts/imperial_treasure.tres" id="11_fagrh"]
@@ -36,10 +36,12 @@
 [ext_resource type="Resource" uid="uid://cnxnaqnmd2mmp" path="res://resources/districts/temple.tres" id="25_ikd0n"]
 [ext_resource type="PackedScene" uid="uid://mhn1iyf55w8g" path="res://scenes/hud/hud.tscn" id="26_1x3g8"]
 [ext_resource type="Script" uid="uid://dyeefwwpqamu" path="res://scenes/battle/player_drag_controller.gd" id="28_8h6bs"]
+[ext_resource type="Script" uid="uid://cmw3yia22xkjl" path="res://addons/card_3d/scenes/player_discard_collection.gd" id="32_j021e"]
 [ext_resource type="Script" uid="uid://duoixss3p6duf" path="res://scenes/battle/player_in_play_card_collection.gd" id="34_dsauo"]
 [ext_resource type="Material" uid="uid://dytcu0poeovrw" path="res://shaders/in_play_dropzone_shader_material.tres" id="36_afkbo"]
 [ext_resource type="Texture2D" uid="uid://7tsfrcpr20dk" path="res://assets/sprites/in_play_dropzone_perimeter.png" id="37_8h6bs"]
 [ext_resource type="Script" uid="uid://nuaoeiyylc3j" path="res://addons/card_3d/scenes/opponent_hand_card_collection_3d.gd" id="39_ilhaa"]
+[ext_resource type="Script" uid="uid://dgfxoqkfniay1" path="res://addons/card_3d/scenes/opponent_deck.gd" id="40_m7fqn"]
 
 [sub_resource type="Environment" id="Environment_aua20"]
 background_mode = 1
@@ -52,6 +54,14 @@ metadata/_custom_type_script = "uid://cntqyqc32apyx"
 [sub_resource type="Resource" id="Resource_n6gaa"]
 script = ExtResource("13_n5ix6")
 metadata/_custom_type_script = "uid://dhlf23ahp2k1e"
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v3sqs"]
+points = PackedVector3Array(-15, 15, 0, -15, -2, 0, 15, -2, 0, 15, 15, 0)
+
+[sub_resource type="Resource" id="Resource_m7fqn"]
+script = ExtResource("11_e48mi")
+pile_y_offset = 0.0
+metadata/_custom_type_script = "uid://cntqyqc32apyx"
 
 [sub_resource type="Resource" id="Resource_ilhaa"]
 script = ExtResource("13_n5ix6")
@@ -135,6 +145,14 @@ script = ExtResource("10_8eh2s")
 highlight_on_hover = false
 card_layout_strategy = SubResource("Resource_eiu4o")
 
+[node name="DiscardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -14.206, -9.201, -1.069)
+script = ExtResource("32_j021e")
+
+[node name="EmptyDeck" parent="PlayerDragController/DiscardCollection" instance=ExtResource("15_k6ux7")]
+transform = Transform3D(0.9, 0, 0, 0, -3.93403e-08, -0.9, 0, 0.9, -3.93403e-08, 0.13, 0.064, -0.1)
+skeleton = NodePath("../..")
+
 [node name="HandCardCollection" parent="PlayerDragController" groups=["player_hand_collection"] instance=ExtResource("9_pyfix")]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, -10.252, 0)
 script = ExtResource("12_ueicy")
@@ -143,6 +161,7 @@ card_layout_strategy = SubResource("Resource_n6gaa")
 [node name="InPlayCardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.423, 2)
 script = ExtResource("34_dsauo")
+dropzone_collision_shape = SubResource("ConvexPolygonShape3D_v3sqs")
 
 [node name="EmptyDeck" parent="PlayerDragController" instance=ExtResource("15_k6ux7")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -16.901, -9.221, -1.07)
@@ -161,9 +180,8 @@ script = ExtResource("8_156m4")
 
 [node name="DeckCardCollection" parent="OpponentDragController" instance=ExtResource("9_pyfix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.114, -8.721, -0.71)
-script = ExtResource("10_8eh2s")
-highlight_on_hover = false
-card_layout_strategy = SubResource("Resource_eiu4o")
+script = ExtResource("40_m7fqn")
+card_layout_strategy = SubResource("Resource_m7fqn")
 
 [node name="HandCardCollection" parent="OpponentDragController" instance=ExtResource("9_pyfix")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -11.498, 0)

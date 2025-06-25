@@ -1,8 +1,9 @@
-class_name DeckCardCollection
+class_name OpponentDeckCardCollection
 extends CardCollection3D
 
+
 func can_insert_card(_card: NewCard3D, _from_collection) -> bool:
-	return false
+	return true
 
 
 func can_select_card(_card: NewCard3D) -> bool:

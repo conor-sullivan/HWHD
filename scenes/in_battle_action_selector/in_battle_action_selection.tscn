@@ -8,6 +8,7 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uy4vl"]
 
 [node name="InBattleActionSelection" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,7 +85,9 @@ position = Vector2(257.971, 258.249)
 scale = Vector2(1.41128, 1.40201)
 texture = ExtResource("2_avdmk")
 
+[connection signal="gui_input" from="CardOption" to="." method="_on_card_option_gui_input"]
 [connection signal="mouse_entered" from="CardOption" to="." method="_on_card_option_mouse_entered"]
 [connection signal="mouse_exited" from="CardOption" to="." method="_on_card_option_mouse_exited"]
+[connection signal="gui_input" from="GoldOption" to="." method="_on_gold_option_gui_input"]
 [connection signal="mouse_entered" from="GoldOption" to="." method="_on_gold_option_mouse_entered"]
 [connection signal="mouse_exited" from="GoldOption" to="." method="_on_gold_option_mouse_exited"]

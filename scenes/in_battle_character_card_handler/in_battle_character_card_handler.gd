@@ -100,8 +100,10 @@ func _on_requested_show_in_battle_character_card_handler_overlay() -> void:
 
 func _on_requested_draw_character_card(face_down : bool) -> void:
 	deck.shuffle()
+	
 	var character_card = deck[0]
 	var instance = character_card_scene.instantiate() as CharacterCard2D
+	
 	instance.data = character_card
 	instance.global_position = Vector2.ZERO
 
@@ -110,13 +112,16 @@ func _on_requested_draw_character_card(face_down : bool) -> void:
 	
 	var card_number : int
 	var pos : Vector2
+	
 	if current_state == HandlerState.Excluding:
 		card_number = (8 - deck.size())
 		pos = five_card_positions[card_number]
 	elif current_state == HandlerState.Picking:
 		instance.enable_collision()
 		instance.show_shader()
+		
 		card_number = number_of_card_choices - deck.size()
+		
 		match number_of_card_choices:
 			2 : pos = two_card_positions[card_number]
 			3:  pos = three_card_positions[card_number]

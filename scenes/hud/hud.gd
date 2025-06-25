@@ -87,12 +87,14 @@ func _on_player_spent_gold(player: Player, count : int) -> void:
 
 
 func _on_player_gained_gold(player : Player, count : int) -> void:
-	var instance = gold_icon_scene.instantiate()
 	for c in count:
+		var instance = gold_icon_scene.instantiate()
 		if player.is_computer:
 			%OpponentGoldBoxContainer.add_child(instance)
 		elif not player.is_computer:
 			%PlayerGoldBoxContainer.add_child(instance)
+		if count > 1:
+			await get_tree().create_timer(0.1).timeout
 
 
 func _on_opponent_area_2d_mouse_entered() -> void:
@@ -129,3 +131,6 @@ func _on_started_player_turn_state() -> void:
 	else:
 		%Notification.text = "You have the initiative!"
 	$AnimationPlayer.play("show_notification")
+
+	
+	

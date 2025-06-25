@@ -85,3 +85,12 @@ res://state_machine/opponent_turn_state.gd
 res://scenes/in_battle_action_selector/in_battle_action_selection.tscn
 res://shaders/action_button_shader_visual.tres
 res://scenes/in_battle_action_selector/in_battle_action_selection.gd
+res://addons/card_3d/scenes/deck.gd
+res://addons/card_3d/scenes/card_collection_3d.tscn
+res://scenes/in_battle_district_card_selection/in_battle_district_card_selection.tscn
+res://scenes/in_battle_district_card_selection/in_battle_district_card_selection.gd
+res://addons/card_3d/scenes/opponent_deck.gd
+res://addons/card_3d/scenes/player_deck.gd
+res://scenes/battle/player_in_play_card_collection.gd
+res://scenes/battle/player_drag_controller.gd
+res://addons/card_3d/scenes/player_discard_collection.gd

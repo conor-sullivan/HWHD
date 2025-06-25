@@ -62,6 +62,10 @@ func player_can_afford() -> bool:
 		return true
 	else:
 		return false
+		
+
+func player_is_taking_action() -> bool:
+	return GameData.current_battle.real_player.is_picking_action
 
 
 func _on_player_data_changed() -> void:
@@ -69,6 +73,8 @@ func _on_player_data_changed() -> void:
 
 
 func is_in_hand() -> bool:
+	if get_parent() == null:
+		return false
 	if get_parent().is_in_group('player_hand_collection'):
 		return true
 	else:
@@ -78,8 +84,8 @@ func is_in_hand() -> bool:
 func set_shader() -> void:
 	%Shader.hide()
 	if not GameData.current_battle: return
-	if not GameData.current_battle.real_player.can_play_district_card:
-		return
+	if not GameData.current_battle.real_player.can_play_district_card: return
+	if player_is_taking_action(): return
 	if player_can_afford() and is_in_hand():
 		%Shader.show()
 

@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=3 uid="uid://ikqm8pjsxg2b"]
+
+[ext_resource type="Material" uid="uid://de6lgys43decm" path="res://shaders/darken_blur_shader.tres" id="1_bj08v"]
+[ext_resource type="Script" uid="uid://dwbttxuvp0kgj" path="res://scenes/in_battle_district_card_selection/in_battle_district_card_selection.gd" id="1_ofwc0"]
+[ext_resource type="Texture2D" uid="uid://donx45apbk7uo" path="res://assets/sprites/confirm_button.webp" id="2_ofwc0"]
+[ext_resource type="Material" uid="uid://bu8gr4o8edtpd" path="res://shaders/confirm_button_shader_material.tres" id="3_fph8n"]
+[ext_resource type="StyleBox" uid="uid://503a15onclud" path="res://resources/textures/popup_texture.tres" id="4_ap7mj"]
+[ext_resource type="Texture2D" uid="uid://55ydrdkn3w5e" path="res://assets/sprites/Park.png" id="6_ytwvd"]
+[ext_resource type="Material" uid="uid://cwask7hx8vmeu" path="res://shaders/character_selection_shader_material.tres" id="7_pk02c"]
+[ext_resource type="Texture2D" uid="uid://bsb7i363w5pg2" path="res://assets/sprites/Necropolis.png" id="8_x2uft"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ytwvd"]
+
+[node name="InBattleDistrictCardSelection" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ofwc0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("1_bj08v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_ytwvd")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.385
+offset_top = 175.525
+offset_right = 308.615
+offset_bottom = 339.525
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("2_ofwc0")
+flat = true
+
+[node name="Shader" type="Sprite2D" parent="Button"]
+material = ExtResource("3_fph8n")
+position = Vector2(218.77, 82.95)
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("2_ofwc0")
+
+[node name="NotificationPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -443.67
+offset_top = 17.115
+offset_right = 456.33
+offset_bottom = 153.755
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("4_ap7mj")
+
+[node name="Notification" type="Label" parent="NotificationPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -11.5
+offset_right = 88.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Pick One Card to Keep"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftCard" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 249.0
+offset_top = 207.0
+offset_right = 499.0
+offset_bottom = 557.0
+
+[node name="LeftCardSprite" type="Sprite2D" parent="LeftCard"]
+unique_name_in_owner = true
+position = Vector2(122.44, 173.2)
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("6_ytwvd")
+
+[node name="Shader" type="Sprite2D" parent="LeftCard/LeftCardSprite"]
+material = ExtResource("7_pk02c")
+scale = Vector2(1, 1)
+texture = ExtResource("8_x2uft")
+
+[node name="RightCard" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 657.0
+offset_top = 207.0
+offset_right = 907.0
+offset_bottom = 557.0
+
+[node name="RightCardSprite" type="Sprite2D" parent="RightCard"]
+unique_name_in_owner = true
+position = Vector2(125.44, 171.2)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("6_ytwvd")
+
+[node name="Shader" type="Sprite2D" parent="RightCard/RightCardSprite"]
+material = ExtResource("7_pk02c")
+scale = Vector2(1, 1)
+texture = ExtResource("8_x2uft")
+
+[connection signal="gui_input" from="LeftCard" to="." method="_on_left_card_gui_input"]
+[connection signal="mouse_entered" from="LeftCard" to="." method="_on_left_card_mouse_entered"]
+[connection signal="mouse_exited" from="LeftCard" to="." method="_on_left_card_mouse_exited"]
+[connection signal="gui_input" from="RightCard" to="." method="_on_right_card_gui_input"]
+[connection signal="mouse_entered" from="RightCard" to="." method="_on_right_card_mouse_entered"]
+[connection signal="mouse_exited" from="RightCard" to="." method="_on_right_card_mouse_exited"]

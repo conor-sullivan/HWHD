@@ -1,7 +1,8 @@
+Sprite2D
+Control
+TextureRect
 Label
 HBoxContainer
-TextureRect
-Sprite2D
 AnimationPlayer
 Node
 Sprite3D
@@ -11,4 +12,3 @@ Label3D
 Camera3D
 CharacterCard2D
 MeshInstance3D
-GPUParticles3D

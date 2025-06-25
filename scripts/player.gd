@@ -6,6 +6,10 @@ var avatar_texture : Texture2D
 var player_id : int 
 var current_character_card : CharacterData 
 var district_deck_cards : Array
+var is_picking_action : bool = false :
+	set(value):
+		is_picking_action = value
+		GameEvents.player_data_changed.emit()
 var is_computer : bool = true
 var is_king : bool = false 
 var is_winner : bool = false

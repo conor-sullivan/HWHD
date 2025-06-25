@@ -1,6 +1,30 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal requested_append_card_in_player_discard(player, card : NewCard3D)
+
+@warning_ignore("unused_signal")
+signal requested_append_card_in_player_hand(player : Player, card : NewCard3D)
+
+@warning_ignore("unused_signal")
+signal player_ready_to_choose_action
+
+@warning_ignore("unused_signal")
+signal player_picked_district_card_to_keep(player : Player, kept_card : DistrictData, discarded_card : DistrictData)
+
+@warning_ignore("unused_signal")
+signal requested_gain_card_action(player : Player)
+
+@warning_ignore("unused_signal")
+signal deck_cards_ready_for_gain_card_action(player : Player, cards : Array[DistrictData])
+
+@warning_ignore("unused_signal")
+signal requested_show_in_battle_action_selection
+
+@warning_ignore("unused_signal")
+signal in_battle_action_selected(action : Callable)
+
+@warning_ignore("unused_signal")
 signal player_played_district_card(card : DistrictData)
 
 @warning_ignore("unused_signal")

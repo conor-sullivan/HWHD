@@ -1,6 +1,17 @@
 class_name PlayerHandCardCollection
 extends CardCollection3D
 
+
+func _ready() -> void:
+	GameEvents.requested_append_card_in_player_hand.connect(_on_requested_append_card_in_player_hand)
+
+
+func _on_requested_append_card_in_player_hand(player : Player, card : NewCard3D) -> void:
+	if player.is_computer : return
+	
+	append_card(card)
+
+
 func remove_card(index: int) -> Card3D:
 	var removed_card = cards[index]
 	cards.remove_at(index)

@@ -1,4 +1,4 @@
-class_name PlayerInPlayerCardCollection
+class_name PlayerInPlayCardCollection
 extends CardCollection3D
 
 
