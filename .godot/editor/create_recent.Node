@@ -1,10 +1,10 @@
+Node
 Sprite2D
 Control
 TextureRect
 Label
 HBoxContainer
 AnimationPlayer
-Node
 Sprite3D
 Button
 TextureButton

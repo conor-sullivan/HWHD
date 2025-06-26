@@ -39,6 +39,7 @@ pivot_offset = Vector2(267.159, 266.667)
 texture = ExtResource("2_avdmk")
 
 [node name="Label" type="Label" parent="CardOption"]
+layout_mode = 0
 offset_left = -65.2174
 offset_top = 89.8551
 offset_right = 600.783

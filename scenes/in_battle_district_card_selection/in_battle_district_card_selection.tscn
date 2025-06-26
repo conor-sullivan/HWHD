@@ -103,7 +103,6 @@ texture = ExtResource("6_ytwvd")
 
 [node name="Shader" type="Sprite2D" parent="LeftCard/LeftCardSprite"]
 material = ExtResource("7_pk02c")
-scale = Vector2(1, 1)
 texture = ExtResource("8_x2uft")
 
 [node name="RightCard" type="Control" parent="."]
@@ -121,7 +120,6 @@ texture = ExtResource("6_ytwvd")
 
 [node name="Shader" type="Sprite2D" parent="RightCard/RightCardSprite"]
 material = ExtResource("7_pk02c")
-scale = Vector2(1, 1)
 texture = ExtResource("8_x2uft")
 
 [connection signal="gui_input" from="LeftCard" to="." method="_on_left_card_gui_input"]

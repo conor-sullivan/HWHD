@@ -28,6 +28,11 @@ func process_frame(_delta : float) -> State:
 		return null
 
 
+func reset_player_data() -> void:
+	for player in GameData.current_battle.players:
+		player.possible_character_targets = GameData.current_battle.character_cards
+
+
 func get_priority_player() -> Player:
 	var priority_number = 10
 	var priority_player : Player

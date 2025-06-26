@@ -5,6 +5,7 @@ enum HandlerState {
 	Excluding, Picking
 }
 
+var known_excluded_characters : Array[CharacterData]
 var current_state : HandlerState
 var number_of_card_choices : int
 var character_choices : Array[CharacterData]
@@ -53,7 +54,6 @@ func _on_players_character_card_selected(_card : CharacterData) -> void:
 
 
 func _on_done_drawing_available_character_cards() -> void:
-	print('done', deck.size())
 	if deck.size() == 1:
 		# player is not king and the last card will be the opponents
 		GameEvents.opponents_character_card_selected.emit(deck[0])
@@ -68,11 +68,16 @@ func _on_starting_select_character_state(number_of_cards : int) -> void:
 	for child in get_children():
 		if child is CharacterCard2D:
 			child.queue_free()
+			
 	$Button.hide()
+	
+	known_excluded_characters = []
+	
 	if GameData.current_battle.real_player.is_king:
 		%Notification.text = "King has first choice!\nChoose your character for this round"
 	else:
 		%Notification.text = "You get second choice\nChoose your character for this round"
+	
 	current_state = HandlerState.Picking
 	number_of_card_choices = number_of_cards
 
@@ -82,10 +87,14 @@ func _on_starting_excluded_characters_state() -> void:
 
 
 func _on_done_drawing_initial_character_cards() -> void:
+	update_known_excluded_characters_in_player_data()
+	
 	await get_tree().create_timer(0.5).timeout
 	var size_tween = create_tween()
+	
 	$Button.scale = Vector2.ZERO
 	$Button.show()
+	
 	size_tween.set_ease(Tween.EASE_OUT)
 	size_tween.set_trans(Tween.TRANS_SPRING)
 	size_tween.tween_property($Button, "scale", Vector2.ONE / 2, 0.5)
@@ -101,7 +110,7 @@ func _on_requested_show_in_battle_character_card_handler_overlay() -> void:
 func _on_requested_draw_character_card(face_down : bool) -> void:
 	deck.shuffle()
 	
-	var character_card = deck[0]
+	var character_card = deck[0] as CharacterData
 	var instance = character_card_scene.instantiate() as CharacterCard2D
 	
 	instance.data = character_card
@@ -109,6 +118,7 @@ func _on_requested_draw_character_card(face_down : bool) -> void:
 
 	if not face_down:
 		instance.show_front()
+		known_excluded_characters.append(character_card)
 	
 	var card_number : int
 	var pos : Vector2
@@ -130,6 +140,11 @@ func _on_requested_draw_character_card(face_down : bool) -> void:
 	add_child(instance)
 
 	deck.erase(character_card)
+
+
+func update_known_excluded_characters_in_player_data() -> void:
+	for player in GameData.current_battle.players:
+		player.known_excluded_characters = known_excluded_characters
 
 
 func _tween_card_position(card : CharacterCard2D, pos: Vector2, duration: float):

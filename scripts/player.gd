@@ -64,3 +64,11 @@ var district_cards_in_hand : Array :
 	set(cards):
 		district_cards_in_hand = cards
 		GameEvents.player_data_changed.emit()
+var known_excluded_characters : Array[CharacterData] : 
+	set(characters):
+		known_excluded_characters = characters
+		GameEvents.player_data_changed.emit()
+var possible_character_targets : Array[CharacterData] :
+	set(targets):
+		possible_character_targets = targets
+		GameEvents.player_data_changed.emit()

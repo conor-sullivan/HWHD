@@ -16,7 +16,7 @@ func _ready() -> void:
 	GameEvents.deck_cards_ready_for_gain_card_action.connect(_on_deck_cards_ready_for_gain_card_action)
 
 
-func _on_deck_cards_ready_for_gain_card_action(player : Player, cards : Array[DistrictData]) -> void:
+func _on_deck_cards_ready_for_gain_card_action(_player : Player, cards : Array[DistrictData]) -> void:
 	right_card_data = cards[0]
 	left_card_data = cards[1]
 	set_scales_to_default()

@@ -23,6 +23,15 @@ func enter() -> void:
 	draw_available_character_cards()
 
 
+func ai_pick_character() -> CharacterData:
+	var ai = AI.new()
+	ai.set_available_characters()
+	ai.set_game_state()
+	ai.set_player_states()
+	ai.difficulty = ai.Difficulty.BASIC
+	ai.choose_character()
+
+
 func exit() -> void:
 	GameEvents.all_character_cards_chosen.emit()
 	GameEvents.character_choices_provided.disconnect(_on_character_choices_provided)
@@ -46,17 +55,30 @@ func _on_players_character_card_selected(chosen_character : CharacterData) -> vo
 	for player in GameData.current_battle.players:
 		if not player.is_computer:
 			player.current_character_card = chosen_character
+			player.possible_character_targets = character_choices
 		elif player.is_computer:
 			if not player.current_character_card:
 				character_choices.shuffle()
 				player.current_character_card = character_choices[0]
+				player.possible_character_targets.erase(player.current_character_card)
+				# update 
+				for character in character_choices:
+					player.possible_character_targets.erase(character)
+				for character in player.known_excluded_characters:
+					player.possible_character_targets.erase(character)
 	
 	character_selection_done = true
 	
 
+func update_possible_character_targets_in_player_data() -> void:
+	pass
+
+
 
 func _on_character_choices_provided(characters : Array[CharacterData]) -> void:
 	character_choices = characters
+	for c in character_choices:
+		print(c.character_name)
 
 
 func draw_available_character_cards() -> void:

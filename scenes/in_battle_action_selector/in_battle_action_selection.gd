@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func _on_player_ready_to_choose_action() -> void:
 	show()
+	show_tween()
 
 
 func gain_2_gold() -> void:
@@ -21,50 +22,60 @@ func gain_card() -> void:
 	GameEvents.requested_gain_card_action.emit(GameData.current_battle.current_players_turn)
 
 
+func new_scale_tween() -> Tween:
+	var tween : Tween = create_tween()
+	
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	
+	return tween
+
+
+func show_tween() -> void:
+	%CardOption.scale = Vector2.ZERO
+	%GoldOption.scale = Vector2.ZERO
+	
+	var tween = new_scale_tween()
+	tween.tween_property(%CardOption, "scale", Vector2.ONE * default_scale, 0.2)
+	await get_tree().create_timer(0.1).timeout
+	var tween2 = new_scale_tween()
+	tween2.tween_property(%GoldOption, "scale", Vector2.ONE * default_scale, 0.2)
+
+
 func tween_selected(selected_option : TextureRect) -> void:
-	var size_tween : Tween = create_tween()
-	size_tween.set_ease(Tween.EASE_IN_OUT)
-	size_tween.set_trans(Tween.TRANS_CUBIC)
-	size_tween.tween_property(selected_option, "scale", Vector2.ONE * default_scale * 1.5, 0.2)
-	size_tween.set_ease(Tween.EASE_IN_OUT)
-	size_tween.set_trans(Tween.TRANS_CUBIC)
-	size_tween.tween_property(selected_option, "scale", Vector2.ZERO, 0.2)
+	var tween = new_scale_tween()
+	tween.tween_property(selected_option, "scale", Vector2.ONE * default_scale * 1.5, 0.2)
+	
+	await get_tree().create_timer(0.2).timeout
+	
+	var tween2 = new_scale_tween()
+	tween2.tween_property(selected_option, "scale", Vector2.ZERO, 0.2)
 
 
-func tween_not_selected(selected_option : TextureRect) -> void:
-	var size_tween : Tween = create_tween()
-	size_tween.set_ease(Tween.EASE_IN_OUT)
-	size_tween.set_trans(Tween.TRANS_CUBIC)
-	size_tween.tween_property(selected_option, "scale", Vector2.ZERO, 0.2)
+func tween_not_selected(not_selected_option : TextureRect) -> void:
+	var tween = new_scale_tween()
+	tween.tween_property(not_selected_option, "scale", Vector2.ZERO, 0.2)
 	
 	await get_tree().create_timer(0.5).timeout
 
 
 func _on_gold_option_mouse_entered() -> void:
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_SPRING)
+	var tween = new_scale_tween()
 	tween.tween_property(%GoldOption, "scale", Vector2.ONE * default_scale * scale_multiplier, 0.2)
 
 
 func _on_gold_option_mouse_exited() -> void:
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_SPRING)
+	var tween = new_scale_tween()
 	tween.tween_property(%GoldOption, "scale", Vector2.ONE * default_scale, 0.2)
 
 
 func _on_card_option_mouse_entered() -> void:
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_SPRING)
+	var tween = new_scale_tween()
 	tween.tween_property(%CardOption, "scale", Vector2.ONE * default_scale * scale_multiplier, 0.2)
 
 
 func _on_card_option_mouse_exited() -> void:
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_SPRING)
+	var tween = new_scale_tween()
 	tween.tween_property(%CardOption, "scale", Vector2.ONE * default_scale, 0.2)
 
 

@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cs2ru0s186hhg" path="res://scenes/battle/battle.tscn" id="1_hyk8p"]
 [ext_resource type="PackedScene" uid="uid://bvpjgek8yxt2s" path="res://state_machine/state_machine.tscn" id="2_k2fmo"]
-[ext_resource type="Script" uid="uid://hh3t85utjpu4" path="res://scenes/main/initialize_battle_state.gd" id="3_l3cfh"]
-[ext_resource type="Script" uid="uid://ddc5oy8upuc7b" path="res://scenes/main/exclude_characters_state.gd" id="4_l3cfh"]
+[ext_resource type="Script" uid="uid://hh3t85utjpu4" path="res://state_machine/initialize_battle_state.gd" id="3_l3cfh"]
+[ext_resource type="Script" uid="uid://ddc5oy8upuc7b" path="res://state_machine/exclude_characters_state.gd" id="4_l3cfh"]
 [ext_resource type="Script" uid="uid://c7tji47b3d4p3" path="res://resources/characters/character_data.gd" id="4_th5th"]
 [ext_resource type="Resource" uid="uid://cskaoin53a8ap" path="res://resources/characters/assassin.tres" id="5_7smn1"]
 [ext_resource type="Resource" uid="uid://cx82gikqf7y86" path="res://resources/characters/thief.tres" id="6_raeie"]

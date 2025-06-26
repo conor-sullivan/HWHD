@@ -27,10 +27,13 @@ func process_frame(_delta : float) -> State:
 
 func draw_excluded_character_cards() -> void:
 	GameEvents.requested_draw_character_card.emit(true)
+	
 	await get_tree().create_timer(0.05).timeout
+	
 	for i in 4:
 		GameEvents.requested_draw_character_card.emit(false)
 		await get_tree().create_timer(0.05).timeout
+		
 	GameEvents.done_drawing_initial_character_cards.emit()
 
 

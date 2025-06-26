@@ -23,7 +23,13 @@ func enter() -> void:
 	GameEvents.player_ready_to_choose_action.emit()
 
 
-func _on_player_picked_district_card_to_keep(player : Player, card_to_keep : DistrictData, card_to_discard : DistrictData) -> void:
+func update_possible_character_targets() -> void:
+	if player.is_king:
+		pass
+	pass
+
+
+func _on_player_picked_district_card_to_keep(_player : Player, card_to_keep : DistrictData, card_to_discard : DistrictData) -> void:
 	var _card_to_keep = preload("res://scenes/new_card_3d/new_card_3d.tscn").instantiate() as NewCard3D
 	
 	_card_to_keep.resource = card_to_keep
