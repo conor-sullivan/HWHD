@@ -5,7 +5,7 @@ var player_name : String
 var avatar_texture : Texture2D
 var player_id : int 
 var current_character_card : CharacterData 
-var district_deck_cards : Array
+var district_deck_cards : Array[DistrictData]
 var is_picking_action : bool = false :
 	set(value):
 		is_picking_action = value
@@ -54,13 +54,13 @@ var district_cards_in_play_count : int = 0 :
 	set(count):
 		district_cards_in_play_count = count
 		GameEvents.player_data_changed.emit() 
-var district_cards_in_play : Array :
+var district_cards_in_play : Array[DistrictData] :
 	set(cards):
 		district_cards_in_play = cards
 		district_cards_in_play_count = district_cards_in_play.size()
 		GameEvents.player_data_changed.emit() 
 var district_cards_in_hand_count : int = 0
-var district_cards_in_hand : Array :
+var district_cards_in_hand : Array[DistrictData] :
 	set(cards):
 		district_cards_in_hand = cards
 		GameEvents.player_data_changed.emit()

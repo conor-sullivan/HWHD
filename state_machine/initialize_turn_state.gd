@@ -9,6 +9,9 @@ var current_player : Player
 
 func enter() -> void:
 	print('initialize turn state')
+	
+	GameData.current_battle.round_number += 1
+	
 	for player in GameData.current_battle.players:
 		if player.is_king:
 			current_player = player
