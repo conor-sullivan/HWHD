@@ -102,7 +102,7 @@ func _on_done_drawing_initial_character_cards() -> void:
 
 
 func _on_requested_show_in_battle_character_card_handler_overlay() -> void:
-	deck = GameData.current_battle.character_cards
+	deck = GameData.current_battle.character_cards.duplicate()
 	show()
 
 

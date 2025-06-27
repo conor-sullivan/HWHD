@@ -74,27 +74,40 @@ func _on_opponents_character_card_selected(chosen_character : CharacterData) -> 
 
 
 func _on_players_character_card_selected(chosen_character : CharacterData) -> void:
-	character_choices.erase(chosen_character)
+	#update_possible_character_targets_in_player_data()
 	for player in GameData.current_battle.players:
 		if not player.is_computer:
 			player.current_character_card = chosen_character
-			player.possible_character_targets = character_choices
+			character_choices.erase(chosen_character)
+			update_kings_possible_character_targets(player, character_choices)
+			
 		elif player.is_computer:
 			if not player.current_character_card:
-				#character_choices.shuffle()
 				player.current_character_card = ai_pick_character()
-				player.possible_character_targets.erase(player.current_character_card)
-				# update 
-				for character in character_choices:
-					player.possible_character_targets.erase(character)
-				for character in player.known_excluded_characters:
-					player.possible_character_targets.erase(character)
+				update_non_kings_possible_character_targets(player, character_choices)
+				character_choices.erase(player.current_character_card)
+				
 	
 	character_selection_done = true
 	
 
-func update_possible_character_targets_in_player_data() -> void:
-	pass
+func update_kings_possible_character_targets(player : Player, characters : Array[CharacterData]) -> void:
+	player.possible_character_targets = characters.duplicate()
+	for c in characters:
+		print('real player possible targets', c.character_name)
+
+
+func update_non_kings_possible_character_targets(player : Player, character_choices) -> void:
+	# update 
+	player.possible_character_targets = GameData.current_battle.character_cards
+
+	for character in character_choices:
+		player.possible_character_targets.erase(character)
+	for character in player.known_excluded_characters:
+		player.possible_character_targets.erase(character)
+	
+	for c in player.possible_character_targets:
+		print('ai possible targets ', player.possible_character_targets)
 
 
 func _on_character_choices_provided(characters : Array[CharacterData]) -> void:

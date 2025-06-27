@@ -70,3 +70,4 @@ res://scenes/ai/ai.gd
 res://scenes/ai/ai.tscn
 res://scripts/singletons/game_events.gd
 res://scripts/battle_data.gd
+res://state_machine/initialize_battle_state.gd

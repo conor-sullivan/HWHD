@@ -33,7 +33,7 @@ func process_frame(_delta : float) -> State:
 
 func reset_player_data() -> void:
 	for player in GameData.current_battle.players:
-		player.possible_character_targets = GameData.current_battle.character_cards
+		player.possible_character_targets = GameData.current_battle.character_cards.duplicate()
 
 
 func get_priority_player() -> Player:
