@@ -10,7 +10,7 @@ var current_state : HandlerState
 var number_of_card_choices : int
 var character_choices : Array[CharacterData]
 var character_card_scene : PackedScene = preload("res://scenes/character_card_2d/character_card_2d.tscn")
-var deck : Array[CharacterData]
+#var deck : Array[CharacterData]
 var position_tween : Tween
 var move_tween_duration : float = 0.4
 
@@ -50,17 +50,15 @@ func _on_players_character_card_selected(_card : CharacterData) -> void:
 	for child in get_children():
 		if child is CharacterCard2D:
 			child.queue_free()
-			deck = []
+#			deck = []
 
 
 func _on_done_drawing_available_character_cards() -> void:
-	if deck.size() == 1:
-		# player is not king and the last card will be the opponents
-		GameEvents.opponents_character_card_selected.emit(deck[0])
 	for child in get_children():
 		if child is CharacterCard2D:
 			character_choices.append(child.data)
 	
+	print('here ', character_choices)
 	GameEvents.character_choices_provided.emit(character_choices)
 
 
@@ -102,15 +100,15 @@ func _on_done_drawing_initial_character_cards() -> void:
 
 
 func _on_requested_show_in_battle_character_card_handler_overlay() -> void:
-	deck = GameData.current_battle.character_cards.duplicate()
+#	deck = GameData.current_battle.character_cards
 	show()
 
 
 
 func _on_requested_draw_character_card(face_down : bool) -> void:
-	deck.shuffle()
+	GameData.current_battle.character_cards.shuffle()
 	
-	var character_card = deck[0] as CharacterData
+	var character_card = GameData.current_battle.character_cards[0] as CharacterData
 	var instance = character_card_scene.instantiate() as CharacterCard2D
 	
 	instance.data = character_card
@@ -124,13 +122,13 @@ func _on_requested_draw_character_card(face_down : bool) -> void:
 	var pos : Vector2
 	
 	if current_state == HandlerState.Excluding:
-		card_number = (8 - deck.size())
+		card_number = (8 - GameData.current_battle.character_cards.size())
 		pos = five_card_positions[card_number]
 	elif current_state == HandlerState.Picking:
 		instance.enable_collision()
 		instance.show_shader()
 		
-		card_number = number_of_card_choices - deck.size()
+		card_number = number_of_card_choices - GameData.current_battle.character_cards.size()
 		
 		match number_of_card_choices:
 			2 : pos = two_card_positions[card_number]
@@ -139,7 +137,7 @@ func _on_requested_draw_character_card(face_down : bool) -> void:
 	animate_to_position(instance, pos)
 	add_child(instance)
 
-	deck.erase(character_card)
+	GameData.current_battle.character_cards.erase(character_card)
 
 
 func update_known_excluded_characters_in_player_data() -> void:

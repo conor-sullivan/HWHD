@@ -6,4 +6,5 @@ var opponent_player : Player
 var players : Array[Player]
 var current_players_turn : Player
 var character_cards : Array[CharacterData]
+var original_character_cards : Array[CharacterData]
 var round_number : int

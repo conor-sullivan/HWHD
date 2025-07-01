@@ -6,6 +6,7 @@ extends State
 var character_selection_done : bool = false
 var number_of_cards : int
 var character_choices : Array[CharacterData]
+var original_character_choices : Array[CharacterData]
 
 
 func enter() -> void:
@@ -21,9 +22,33 @@ func enter() -> void:
 		number_of_cards = 3
 	else:
 		number_of_cards = 2
-		
+
+	if GameData.current_battle.opponent_player.is_king:
+		opponent_pick_character()
+
 	GameEvents.starting_select_character_state.emit(number_of_cards)
 	draw_available_character_cards()
+
+
+func opponent_pick_character() -> void:
+	var opponent_character = ai_pick_character()
+	GameData.current_battle.character_cards.erase(opponent_character)
+	var unselected_characters = GameData.current_battle.character_cards.duplicate()
+
+	print('over here')
+	for c in GameData.current_battle.character_cards:
+		print('these', c.character_name)
+
+	unselected_characters.erase(opponent_character)
+
+	GameData.current_battle.opponent_player.current_character_card = opponent_character
+	GameData.current_battle.opponent_player.unselected_characters = unselected_characters
+
+	character_choices.erase(opponent_character)
+
+	update_possible_character_targets(GameData.current_battle.opponent_player)
+
+	_on_opponents_character_card_selected(opponent_character)
 
 
 func ai_pick_character() -> CharacterData:
@@ -44,7 +69,7 @@ func ai_pick_character() -> CharacterData:
 		player_order.append(ai_player)
 		
 		
-	ai.set_available_characters(character_choices)
+	ai.set_available_characters(GameData.current_battle.character_cards)
 	ai.set_player_states(ai_player, player)
 	ai.set_game_state(player_order, crown_holder, GameData.current_battle.round_number)
 	
@@ -67,54 +92,88 @@ func process_frame(_delta : float) -> State:
 		return null
 
 
+
+
+
 func _on_opponents_character_card_selected(chosen_character : CharacterData) -> void:
-	for player in GameData.current_battle.players:
-		if player.is_computer:
-			player.current_character_card = chosen_character
+#j	for player in GameData.current_battle.players:
+#	if player.is_computer:
+	GameData.current_battle.opponent_player.current_character_card = chosen_character
+	update_possible_character_targets(GameData.current_battle.opponent_player)
+#		if player.is_king:
+			#update_kings_possible_character_targets(player, character_choices)
+		#else:
+			#update_non_kings_possible_character_targets(player, character_choices)
 
 
 func _on_players_character_card_selected(chosen_character : CharacterData) -> void:
 	#update_possible_character_targets_in_player_data()
-	for player in GameData.current_battle.players:
-		if not player.is_computer:
-			player.current_character_card = chosen_character
-			character_choices.erase(chosen_character)
-			update_kings_possible_character_targets(player, character_choices)
+#	for player in GameData.current_battle.players:
+	GameData.current_battle.real_player.current_character_card = chosen_character
+	character_choices.erase(chosen_character)
+	var unselected_characters = original_character_choices.duplicate()
+	unselected_characters.erase(chosen_character)
+	GameData.current_battle.real_player.unselected_characters = unselected_characters
+	update_possible_character_targets(GameData.current_battle.real_player)
+
+	if not GameData.current_battle.opponent_player.is_king:
+		opponent_pick_character()
+#		if player.is_king:
+			#update_kings_possible_character_targets(player, character_choices)
+		#else:
+			#update_non_kings_possible_character_targets(player, character_choices)
 			
-		elif player.is_computer:
-			if not player.current_character_card:
-				player.current_character_card = ai_pick_character()
-				update_non_kings_possible_character_targets(player, character_choices)
-				character_choices.erase(player.current_character_card)
+	#	elif player.is_computer:
+		#	if not player.current_character_card:
+			#	player.current_character_card = ai_pick_character()
+			#if player.is_king:
+				#update_kings_possible_character_targets(player, character_choices)
+			#else:
+				#update_non_kings_possible_character_targets(player, character_choices)
+
+#				character_choices.erase(player.current_character_card)
 				
 	
 	character_selection_done = true
 	
 
-func update_kings_possible_character_targets(player : Player, characters : Array[CharacterData]) -> void:
-	player.possible_character_targets = characters.duplicate()
-	for c in characters:
-		print('real player possible targets', c.character_name)
+#func update_kings_possible_character_targets(player : Player, _choices : Array[CharacterData]) -> void:
+	## King picks first, so non-king can pick from the remaining 2
+	#var non_king_choices : Array[CharacterData] = []
+	#for c in original_character_choices:
+		#if c != player.current_character_card:
+			#non_king_choices.append(c)
+	#player.possible_character_targets = non_king_choices
+	#for c in player.possible_character_targets:
+		#print('king possible targets (what non-king could pick):', c.character_name)
 
 
-func update_non_kings_possible_character_targets(player : Player, character_choices) -> void:
-	# update 
-	player.possible_character_targets = GameData.current_battle.character_cards
+#func update_non_kings_possible_character_targets(player : Player, _choices : Array[CharacterData]) -> void:
+	## Non-king picks from 2, but king could have picked from original 3
+	#player.possible_character_targets = original_character_choices.duplicate()
+	#for c in player.possible_character_targets:
+		#print('non-king possible targets (what king could have picked):', c.character_name)
 
-	for character in character_choices:
-		player.possible_character_targets.erase(character)
-	for character in player.known_excluded_characters:
-		player.possible_character_targets.erase(character)
-	
-	for c in player.possible_character_targets:
-		print('ai possible targets ', player.possible_character_targets)
+
+func update_possible_character_targets(player : Player) -> void:
+	if player.is_king:
+		player.possible_character_targets = player.unselected_characters
+	else:
+		var characters = GameData.current_battle.original_character_cards.duplicate() 
+		for c in player.unselected_characters:
+				characters.erase(c)
+		for c in player.known_excluded_characters:
+			characters.erase(c)
+		characters.erase(player.current_character_card)
+		player.possible_character_targets = characters
 
 
 func _on_character_choices_provided(characters : Array[CharacterData]) -> void:
-	character_choices = characters
-	for c in character_choices:
-		print(c.character_name)
-
+	original_character_choices = characters.duplicate() # Store the original 3
+#	for o in original_character_choices:
+		#print(o.character_name)
+	#character_choices = characters
+	
 
 func draw_available_character_cards() -> void:
 	for i in number_of_cards:

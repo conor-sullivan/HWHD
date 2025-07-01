@@ -64,6 +64,7 @@ var district_cards_in_hand : Array[DistrictData] :
 	set(cards):
 		district_cards_in_hand = cards
 		GameEvents.player_data_changed.emit()
+var unselected_characters : Array[CharacterData]
 var known_excluded_characters : Array[CharacterData] : 
 	set(characters):
 		known_excluded_characters = characters

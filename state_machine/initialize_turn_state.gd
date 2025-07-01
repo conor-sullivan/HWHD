@@ -11,6 +11,7 @@ func enter() -> void:
 	print('initialize turn state')
 	
 	GameData.current_battle.round_number += 1
+	GameData.current_battle.character_cards = GameData.current_battle.original_character_cards.duplicate()
 	
 	for player in GameData.current_battle.players:
 		if player.is_king:

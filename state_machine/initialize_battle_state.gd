@@ -10,14 +10,15 @@ var players_ready : bool = false
 
 func enter() -> void:
 	var real_player = create_player(0, 'Real Player', "", 0, GameData.player_current_district_deck_build, false)
-	real_player.is_king = false
+	real_player.is_king = true
 	var opponent_player = create_player(1, "AI", "", 0, GameData.player_current_district_deck_build, true)
-	opponent_player.is_king = true
+	opponent_player.is_king = false
 	GameData.current_battle = BattleData.new()
 	GameData.current_battle.real_player = real_player
 	GameData.current_battle.opponent_player = opponent_player
 	GameData.current_battle.players = [real_player, opponent_player]
 	GameData.current_battle.character_cards = character_resources.duplicate()
+	GameData.current_battle.original_character_cards = character_resources.duplicate()
 
 	await get_tree().create_timer(0.25).timeout
 	gain_initial_gold()
