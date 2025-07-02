@@ -66,3 +66,5 @@ res://scripts/ability.gd
 res://resources/characters/character_data.gd
 res://scenes/in_battle_character_target_picker/in_battle_character_target_picker.gd
 res://scripts/player.gd
+res://scenes/in_battle_action_selector/in_battle_action_selection.tscn
+res://state_machine/player_turn_state.gd

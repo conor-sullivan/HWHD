@@ -3,6 +3,7 @@ class_name InBattleCharacterTargetPicker extends Control
 
 func _ready() -> void:
 	GameEvents.requested_show_target_picker.connect(_on_requested_show_target_picker)
+	GameEvents.player_picked_target_character.connect(_on_player_picked_target_character)
 
 
 var choices : Array[CharacterData] :
@@ -42,3 +43,8 @@ func _on_requested_show_target_picker():
 	%Center.hide()
 	choices = GameData.current_battle.real_player.possible_character_targets.duplicate()
 	show()
+
+
+func _on_player_picked_target_character(_character : CharacterData) -> void:
+	await get_tree().create_timer(0.5).timeout
+	hide()

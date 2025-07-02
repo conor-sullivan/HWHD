@@ -81,6 +81,7 @@ func _on_player_picked_district_card_to_keep(_player : Player, card_to_keep : Di
 
 func _on_in_battle_action_selected(action : Callable) -> void:
 	action.call()
+	GameData.current_battle.real_player.is_picking_action = false
 
 
 func _on_player_played_district_card(card : DistrictData) -> void:

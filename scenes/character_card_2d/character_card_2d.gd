@@ -16,6 +16,7 @@ var data : CharacterData :
 
 func _ready() -> void:
 	GameEvents.players_character_card_selected.connect(_on_players_character_card_selected)
+	GameEvents.player_picked_target_character.connect(_on_player_picked_target_character)
 
 
 func enable_collision() -> void:
@@ -95,5 +96,10 @@ func reset_tween() -> void:
 	
 
 func _on_players_character_card_selected(_character : CharacterData) -> void:
+	if not is_selected_card:
+		tween_not_selected()
+
+
+func _on_player_picked_target_character(_character : CharacterData) -> void:
 	if not is_selected_card:
 		tween_not_selected()
