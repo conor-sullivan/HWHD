@@ -1,9 +1,10 @@
 class_name AssassinAbility extends Ability
 
 
-func do_ability() -> void:
+func player_do_ability() -> void:
 	GameEvents.requested_show_target_picker.emit()
 	GameEvents.player_picked_target_character.connect(
+
 	func(_target : CharacterData) -> void:
 		print('player selected : ', _target.character_name)
 		GameData.current_battle.real_player.will_assassinate_character =_target
@@ -12,3 +13,18 @@ func do_ability() -> void:
 			GameData.current_battle.opponent_player.will_be_assassinated = true
 		)
 	
+
+func opponent_do_ability() -> void:
+	# for now just pick randomly - implement ai smart choices later
+	var targets = GameData.current_battle.opponent_player.possible_character_targets
+	for t in targets:
+		if t.play_order_number == 1:
+			targets.erase(t)
+	var random_index = randi_range(0, targets.size() - 1)
+
+	var target = targets[random_index]
+
+	GameData.current_battle.opponent_player.will_assassinate_character = target
+
+	if GameData.current_battle.real_player.current_character_card == target:
+		GameData.current_battle.real_player.will_be_assassinated = true

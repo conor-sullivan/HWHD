@@ -142,5 +142,4 @@ func _on_player_ability_avatar_gui_input(event: InputEvent) -> void:
 				var character = GameData.current_battle.real_player.current_character_card
 				var ability = load(character.ability_function_path).new()
 				if ability:
-					print(ability)
-					ability.do_ability()
+					ability.player_do_ability()
