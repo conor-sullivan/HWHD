@@ -23,6 +23,11 @@ func enter() -> void:
 	GameEvents.player_ready_to_choose_action.emit()
 
 
+func exit() -> void:
+	for connection in get_incoming_connections():
+		disconnect(connection.signal, connection.callable)
+
+
 func update_possible_character_targets() -> void:
 	if player.is_king:
 		pass

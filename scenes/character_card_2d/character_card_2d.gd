@@ -78,7 +78,10 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			is_selected_card = true
 			tween_selected()
-			GameEvents.players_character_card_selected.emit(data)
+			if not is_target_for_ability:
+				GameEvents.players_character_card_selected.emit(data)
+			else:
+				GameEvents.player_picked_target_character.emit(data)
 			await get_tree().create_timer(0.5).timeout
 			if is_target_for_ability: return
 			call_deferred("queue_free")

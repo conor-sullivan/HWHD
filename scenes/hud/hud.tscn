@@ -314,6 +314,7 @@ vertical_alignment = 1
 
 [node name="InBattleCharacterTargetPicker" parent="." instance=ExtResource("17_nsgyl")]
 
+[connection signal="gui_input" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_player_ability_avatar_gui_input"]
 [connection signal="mouse_entered" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_entered"]
 [connection signal="mouse_exited" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_exited"]
 [connection signal="mouse_entered" from="OpponentSprite2D/OpponentAbilityAvatar" to="." method="_on_opponent_area_2d_mouse_entered"]

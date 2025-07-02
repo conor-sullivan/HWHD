@@ -32,6 +32,14 @@ var character_avatar_visible : bool = false :
 var has_chosen_character_card : bool = false 
 var has_taken_turn : bool = false
 var has_been_assassinated : bool = false 
+var will_assassinate_character : CharacterData :
+	set(value):
+		will_assassinate_character = value
+		GameEvents.player_data_changed.emit()
+var will_rob_character : CharacterData :
+	set(value):
+		will_rob_character = value
+		GameEvents.player_data_changed.emit()
 var will_be_assassinated : bool = false 
 var has_been_stolen_from : bool = false
 var will_be_stolen_from : bool = false 

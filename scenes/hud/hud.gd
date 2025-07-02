@@ -132,5 +132,15 @@ func _on_started_player_turn_state() -> void:
 		%Notification.text = "You have the initiative!"
 	$AnimationPlayer.play("show_notification")
 
-	
-	
+
+func _on_player_ability_avatar_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var button = event.button_index
+		var pressed = event.pressed
+		if button == 1 and pressed == true:
+			if GameData.current_battle.real_player.character_avatar_visible:
+				var character = GameData.current_battle.real_player.current_character_card
+				var ability = load(character.ability_function_path).new()
+				if ability:
+					print(ability)
+					ability.do_ability()

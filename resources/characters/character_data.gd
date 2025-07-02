@@ -21,3 +21,4 @@ class_name CharacterData
 @export var was_robbed_by_thief : bool#- has been stolen from
 @export var will_be_robbed_by_thief : bool#- will be stolen from
 @export var robbed_by_player_number: int
+@export var ability_function_path : String

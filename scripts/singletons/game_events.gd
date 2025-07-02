@@ -2,6 +2,12 @@ extends Node
 
 
 @warning_ignore("unused_signal")
+signal player_picked_target_character(character : CharacterData)
+
+@warning_ignore("unused_signal")
+signal requested_show_target_picker
+
+@warning_ignore("unused_signal")
 signal requested_append_card_in_player_discard(player, card : NewCard3D)
 
 @warning_ignore("unused_signal")
