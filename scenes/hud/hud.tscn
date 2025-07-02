@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://mhn1iyf55w8g"]
+[gd_scene load_steps=21 format=3 uid="uid://mhn1iyf55w8g"]
 
 [ext_resource type="Script" uid="uid://dpx5mivcotmdn" path="res://scenes/hud/hud.gd" id="1_n56i7"]
 [ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="1_v7mo4"]
@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://bu8gr4o8edtpd" path="res://shaders/confirm_button_shader_material.tres" id="13_4m1a1"]
 [ext_resource type="PackedScene" uid="uid://cxfoa1am0bepu" path="res://scenes/in_battle_action_selector/in_battle_action_selection.tscn" id="15_iioc1"]
 [ext_resource type="PackedScene" uid="uid://ikqm8pjsxg2b" path="res://scenes/in_battle_district_card_selection/in_battle_district_card_selection.tscn" id="16_567j1"]
+[ext_resource type="PackedScene" uid="uid://vo8te4cc3oul" path="res://scenes/in_battle_character_target_picker/in_battle_character_target_picker.tscn" id="17_nsgyl"]
 
 [sub_resource type="Animation" id="Animation_iioc1"]
 length = 0.001
@@ -310,6 +311,9 @@ vertical_alignment = 1
 [node name="InBattleActionSelection" parent="." instance=ExtResource("15_iioc1")]
 
 [node name="InBattleDistrictCardSelection" parent="." instance=ExtResource("16_567j1")]
+
+[node name="InBattleCharacterTargetPicker" parent="." instance=ExtResource("17_nsgyl")]
+visible = false
 
 [connection signal="mouse_entered" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_entered"]
 [connection signal="mouse_exited" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_exited"]

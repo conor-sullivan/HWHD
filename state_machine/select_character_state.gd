@@ -33,7 +33,7 @@ func enter() -> void:
 func opponent_pick_character(_choices : Array[CharacterData]) -> void:
 	var opponent_character = ai_pick_character(_choices)
 	GameData.current_battle.character_cards.erase(opponent_character)
-	var unselected_characters = _choices #GameData.current_battle.character_cards.duplicate()
+	var unselected_characters = _choices 
 
 	unselected_characters.erase(opponent_character)
 
@@ -77,7 +77,8 @@ func ai_pick_character(_choices : Array[CharacterData]) -> CharacterData:
 func exit() -> void:
 	GameEvents.all_character_cards_chosen.emit()
 	GameEvents.character_choices_provided.disconnect(_on_character_choices_provided)
-
+	GameEvents.players_character_card_selected.disconnect(_on_players_character_card_selected)
+	GameEvents.opponents_character_card_selected.disconnect(_on_opponents_character_card_selected)
 
 func process_frame(_delta : float) -> State:
 	if character_selection_done:
@@ -86,23 +87,12 @@ func process_frame(_delta : float) -> State:
 		return null
 
 
-
-
-
 func _on_opponents_character_card_selected(chosen_character : CharacterData) -> void:
-#j	for player in GameData.current_battle.players:
-#	if player.is_computer:
 	GameData.current_battle.opponent_player.current_character_card = chosen_character
 	update_possible_character_targets(GameData.current_battle.opponent_player)
-#		if player.is_king:
-			#update_kings_possible_character_targets(player, character_choices)
-		#else:
-			#update_non_kings_possible_character_targets(player, character_choices)
 
 
 func _on_players_character_card_selected(chosen_character : CharacterData) -> void:
-	#update_possible_character_targets_in_player_data()
-#	for player in GameData.current_battle.players:
 	GameData.current_battle.real_player.current_character_card = chosen_character
 	character_choices.erase(chosen_character)
 	var unselected_characters = original_character_choices.duplicate()
@@ -112,46 +102,12 @@ func _on_players_character_card_selected(chosen_character : CharacterData) -> vo
 	for c in unselected_characters:
 		print('unselected: ', c.character_name)
 		GameData.current_battle.real_player.unselected_characters += [c]
-	#GameData.current_battle.real_player.unselected_characters = unselected_characters.duplicate()
 	update_possible_character_targets(GameData.current_battle.real_player)
 
 	if not GameData.current_battle.opponent_player.is_king:
 		opponent_pick_character(GameData.current_battle.real_player.unselected_characters)
-#		if player.is_king:
-			#update_kings_possible_character_targets(player, character_choices)
-		#else:
-			#update_non_kings_possible_character_targets(player, character_choices)
-			
-	#	elif player.is_computer:
-		#	if not player.current_character_card:
-			#	player.current_character_card = ai_pick_character()
-			#if player.is_king:
-				#update_kings_possible_character_targets(player, character_choices)
-			#else:
-				#update_non_kings_possible_character_targets(player, character_choices)
-
-#				character_choices.erase(player.current_character_card)
-				
 	
 	character_selection_done = true
-	
-
-#func update_kings_possible_character_targets(player : Player, _choices : Array[CharacterData]) -> void:
-	## King picks first, so non-king can pick from the remaining 2
-	#var non_king_choices : Array[CharacterData] = []
-	#for c in original_character_choices:
-		#if c != player.current_character_card:
-			#non_king_choices.append(c)
-	#player.possible_character_targets = non_king_choices
-	#for c in player.possible_character_targets:
-		#print('king possible targets (what non-king could pick):', c.character_name)
-
-
-#func update_non_kings_possible_character_targets(player : Player, _choices : Array[CharacterData]) -> void:
-	## Non-king picks from 2, but king could have picked from original 3
-	#player.possible_character_targets = original_character_choices.duplicate()
-	#for c in player.possible_character_targets:
-		#print('non-king possible targets (what king could have picked):', c.character_name)
 
 
 func update_possible_character_targets(player : Player) -> void:
@@ -169,10 +125,7 @@ func update_possible_character_targets(player : Player) -> void:
 
 func _on_character_choices_provided(characters : Array[CharacterData]) -> void:
 	original_character_choices = characters.duplicate() # Store the original 3
-#	for o in original_character_choices:
-		#print(o.character_name)
-	#character_choices = characters
-	
+
 
 func draw_available_character_cards() -> void:
 	for i in number_of_cards:

@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://vo8te4cc3oul"]
+
+[ext_resource type="Material" uid="uid://de6lgys43decm" path="res://shaders/darken_blur_shader.tres" id="1_3r86u"]
+[ext_resource type="Script" uid="uid://dg7gne3nyu5jh" path="res://scenes/in_battle_character_target_picker/in_battle_character_target_picker.gd" id="1_q81iu"]
+[ext_resource type="PackedScene" uid="uid://cd344h2l2ongq" path="res://scenes/character_card_2d/character_card_2d.tscn" id="3_q81iu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tb31k"]
+
+[node name="InBattleCharacterTargetPicker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_q81iu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("1_3r86u")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_tb31k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Left" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(215, 280)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="LeftCharacterCard" parent="HBoxContainer/Left" instance=ExtResource("3_q81iu")]
+unique_name_in_owner = true
+offset_left = 110.0
+offset_top = 140.0
+offset_right = 110.0
+offset_bottom = 140.0
+is_target_for_ability = true
+is_face_up = true
+
+[node name="Right" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(215, 280)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="RightCharacterCard" parent="HBoxContainer/Right" instance=ExtResource("3_q81iu")]
+unique_name_in_owner = true
+offset_left = 110.0
+offset_top = 140.0
+offset_right = 110.0
+offset_bottom = 140.0
+is_target_for_ability = true
+is_face_up = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 110.0
+offset_right = 552.0
+offset_bottom = 118.0
+text = "test"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

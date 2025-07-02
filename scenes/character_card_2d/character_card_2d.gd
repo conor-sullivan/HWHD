@@ -2,9 +2,9 @@ class_name CharacterCard2D
 extends Control
 
 @export var shader_material : Material
-
-var is_selected_card : bool = false
-var is_face_up : bool = false
+@export var is_target_for_ability : bool = false
+@export var is_selected_card : bool = false
+@export var is_face_up : bool = false 
 
 
 var data : CharacterData : 
@@ -48,6 +48,7 @@ func tween_not_selected() -> void:
 	size_tween.tween_property($".", "scale", Vector2.ZERO, 0.2)
 	
 	await get_tree().create_timer(0.5).timeout
+	if is_target_for_ability: return
 	call_deferred("queue_free")
 
 
@@ -79,8 +80,16 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			tween_selected()
 			GameEvents.players_character_card_selected.emit(data)
 			await get_tree().create_timer(0.5).timeout
+			if is_target_for_ability: return
 			call_deferred("queue_free")
 
+
+func reset_tween() -> void:
+	var size_tween : Tween = create_tween()
+	size_tween.set_ease(Tween.EASE_IN_OUT)
+	size_tween.set_trans(Tween.TRANS_CUBIC)
+	size_tween.tween_property($".", "scale", Vector2.ONE, 0.2)
+	
 
 func _on_players_character_card_selected(_character : CharacterData) -> void:
 	if not is_selected_card:
