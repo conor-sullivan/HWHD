@@ -52,7 +52,25 @@ offset_bottom = 140.0
 is_target_for_ability = true
 is_face_up = true
 
+[node name="Center" type="Control" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(215, 280)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="CenterCharacterCard" parent="HBoxContainer/Center" instance=ExtResource("3_q81iu")]
+unique_name_in_owner = true
+offset_left = 110.0
+offset_top = 140.0
+offset_right = 110.0
+offset_bottom = 140.0
+is_target_for_ability = true
+is_face_up = true
+
 [node name="Right" type="Control" parent="HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(215, 280)
 layout_mode = 2
 size_flags_horizontal = 4

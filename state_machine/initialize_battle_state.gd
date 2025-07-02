@@ -4,6 +4,7 @@ extends State
 @export var exclude_characters_state : State
 @export var character_resources : Array[CharacterData]
 @export var initial_gold_count : int = 6
+@export var face_down_character_card_count : int = 2
 
 var players_ready : bool = false
 
@@ -19,6 +20,7 @@ func enter() -> void:
 	GameData.current_battle.players = [real_player, opponent_player]
 	GameData.current_battle.character_cards = character_resources.duplicate()
 	GameData.current_battle.original_character_cards = character_resources.duplicate()
+	GameData.current_battle.face_down_character_card_count = face_down_character_card_count
 
 	await get_tree().create_timer(0.25).timeout
 	gain_initial_gold()

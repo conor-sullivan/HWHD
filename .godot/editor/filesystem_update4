@@ -62,3 +62,5 @@ res://state_machine/initialize_battle_state.gd
 res://scenes/in_battle_character_target_picker/in_battle_character_target_picker.tscn
 res://scenes/in_battle_character_target_picker/in_battle_character_target_picker.gd
 res://scenes/character_card_2d/character_card_2d.tscn
+res://state_machine/exclude_characters_state.gd
+res://scripts/battle_data.gd

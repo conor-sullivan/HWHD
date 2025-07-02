@@ -313,7 +313,6 @@ vertical_alignment = 1
 [node name="InBattleDistrictCardSelection" parent="." instance=ExtResource("16_567j1")]
 
 [node name="InBattleCharacterTargetPicker" parent="." instance=ExtResource("17_nsgyl")]
-visible = false
 
 [connection signal="mouse_entered" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_entered"]
 [connection signal="mouse_exited" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_exited"]

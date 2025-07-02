@@ -26,11 +26,14 @@ func process_frame(_delta : float) -> State:
 
 
 func draw_excluded_character_cards() -> void:
-	GameEvents.requested_draw_character_card.emit(true)
+	for i in GameData.current_battle.face_down_character_card_count:
+		GameEvents.requested_draw_character_card.emit(true)
+		await get_tree().create_timer(0.05).timeout
 	
-	await get_tree().create_timer(0.05).timeout
-	
-	for i in 4:
+	var total_card_count = 5
+	var card_count = total_card_count - GameData.current_battle.face_down_character_card_count
+
+	for i in card_count:
 		GameEvents.requested_draw_character_card.emit(false)
 		await get_tree().create_timer(0.05).timeout
 		
