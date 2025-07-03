@@ -13,6 +13,7 @@ func enter() -> void:
 	GameEvents.player_picked_district_card_to_keep.connect(_on_player_picked_district_card_to_keep)
 	
 	player = GameData.current_battle.real_player
+	GameData.current_battle.current_players_turn = player 
 	player.can_play_district_card = true
 	player.can_use_character_ability = true
 	player.character_avatar_visible = true

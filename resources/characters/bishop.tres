@@ -27,4 +27,5 @@ assassinated_by_player_number = 0
 was_robbed_by_thief = false
 will_be_robbed_by_thief = false
 robbed_by_player_number = 0
+ability_function_path = "res://resources/characters/abilities/bishop_ability.gd"
 metadata/_custom_type_script = "uid://c7tji47b3d4p3"

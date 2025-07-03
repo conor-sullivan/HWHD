@@ -68,3 +68,7 @@ res://resources/characters/thief.tres
 res://resources/characters/abilities/king_ability.gd
 res://resources/characters/king.tres
 res://state_machine/initialize_battle_state.gd
+res://resources/characters/bishop.tres
+res://state_machine/opponent_turn_state.gd
+res://state_machine/player_turn_state.gd
+res://resources/characters/abilities/bishop_ability.gd

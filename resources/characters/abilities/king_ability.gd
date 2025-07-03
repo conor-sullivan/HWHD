@@ -18,3 +18,4 @@ func gain_gold_for_districts() -> void:
 	for d in GameData.current_battle.current_players_turn.district_cards_in_play:
 		if d.color == 'Gold':
 			GameData.current_battle.current_players_turn.gold_count += 1
+			GameEvents.player_gained_gold.emit(GameData.current_battle.current_players_turn, 1)

@@ -2,6 +2,7 @@ class_name OpponentTurnState
 extends State
 
 var player : Player
+@export var player_turn_state : State
 
 
 func enter() -> void:
@@ -14,6 +15,10 @@ func enter() -> void:
 	player.can_play_district_card = true
 	player.can_use_character_ability = true
 	player.character_avatar_visible = true
+
+
+func process_frame(_delta :  float) -> State:
+	return player_turn_state
 
 
 func _on_player_played_district_card(card : DistrictData) -> void:
