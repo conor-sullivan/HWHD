@@ -13,6 +13,10 @@ var is_picking_action : bool = false :
 var is_computer : bool = true
 var is_king : bool = false 
 var is_winner : bool = false
+var in_play_districts_can_be_targeted : bool = true :
+	set(value):
+		in_play_districts_can_be_targeted = value
+		GameEvents.player_data_changed.emit() 
 var can_play_district_card : bool = false :
 	set(value):
 		can_play_district_card = value
