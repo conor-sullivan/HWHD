@@ -64,3 +64,4 @@ res://scenes/in_battle_notification_manager/in_battle_notification.tscn
 res://scripts/player.gd
 res://resources/characters/abilities/assassin_ability.gd
 res://scenes/hud/hud.gd
+res://resources/characters/thief.tres

@@ -41,8 +41,8 @@ var will_rob_character : CharacterData :
 		will_rob_character = value
 		GameEvents.player_data_changed.emit()
 var will_be_assassinated : bool = false 
-var has_been_stolen_from : bool = false
-var will_be_stolen_from : bool = false 
+var has_been_robbed : bool = false
+var will_be_robbed : bool = false 
 var assassinated_by_player_id : int
 var stolen_from_player_id : int
 var game_over_rank : int 
