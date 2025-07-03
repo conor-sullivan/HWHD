@@ -65,3 +65,6 @@ res://scripts/player.gd
 res://resources/characters/abilities/assassin_ability.gd
 res://scenes/hud/hud.gd
 res://resources/characters/thief.tres
+res://resources/characters/abilities/king_ability.gd
+res://resources/characters/king.tres
+res://state_machine/initialize_battle_state.gd
