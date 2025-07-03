@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=51 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="2_fe4ja"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://7tsfrcpr20dk" path="res://assets/sprites/in_play_dropzone_perimeter.png" id="37_8h6bs"]
 [ext_resource type="Script" uid="uid://nuaoeiyylc3j" path="res://addons/card_3d/scenes/opponent_hand_card_collection_3d.gd" id="39_ilhaa"]
 [ext_resource type="Script" uid="uid://dgfxoqkfniay1" path="res://addons/card_3d/scenes/opponent_deck.gd" id="40_m7fqn"]
+[ext_resource type="Script" uid="uid://v6c5meq14gs2" path="res://scenes/in_battle_notification_manager/in_battle_notification_manager.gd" id="43_j021e"]
 
 [sub_resource type="Environment" id="Environment_aua20"]
 background_mode = 1
@@ -199,6 +200,13 @@ skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.999743, -0.00256828, -0.0225415, 0, 0.993572, -0.113203, 0.0226873, 0.113174, 0.993316, 0, -2.59, 15.385)
+
+[node name="NotificationManager" type="CanvasLayer" parent="."]
+script = ExtResource("43_j021e")
+
+[node name="NotificationVBox" type="VBoxContainer" parent="NotificationManager"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="card_clicked" from="PlayerDragController/DeckCardCollection" to="." method="_on_deck_card_collection_card_clicked"]
 [connection signal="card_clicked" from="OpponentDragController/DeckCardCollection" to="." method="_on_opponent_deck_card_collection_card_clicked"]

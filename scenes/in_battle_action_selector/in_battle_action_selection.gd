@@ -16,6 +16,7 @@ func _on_player_ready_to_choose_action() -> void:
 
 func gain_2_gold() -> void:
 	GameEvents.player_gained_gold.emit(GameData.current_battle.current_players_turn, 2)
+	GameData.current_battle.current_players_turn.gold_count += 2
 
 
 func gain_card() -> void:

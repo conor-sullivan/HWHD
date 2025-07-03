@@ -68,3 +68,7 @@ res://scenes/in_battle_character_target_picker/in_battle_character_target_picker
 res://scripts/player.gd
 res://scenes/in_battle_action_selector/in_battle_action_selection.tscn
 res://state_machine/player_turn_state.gd
+res://scenes/in_battle_notification_manager/in_battle_notification_manager.gd
+res://scripts/singletons/game_events.gd
+res://scenes/in_battle_notification_manager/in_battle_notification.tscn
+res://scenes/in_battle_action_selector/in_battle_action_selection.gd

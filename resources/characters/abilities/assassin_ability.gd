@@ -6,7 +6,7 @@ func player_do_ability() -> void:
 	GameEvents.player_picked_target_character.connect(
 
 	func(_target : CharacterData) -> void:
-		print('player selected : ', _target.character_name)
+		GameEvents.requested_new_in_battle_notification.emit(GameData.current_battle.real_player.player_name, null, ' chooses to assassinate ' , _target.character_name)
 		GameData.current_battle.real_player.will_assassinate_character =_target
 
 		if GameData.current_battle.opponent_player.current_character_card == _target:

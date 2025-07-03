@@ -48,6 +48,9 @@ var stolen_from_player_id : int
 var game_over_rank : int 
 var gold_count : int = 0 :
 	set(_count):
+		var previous_count = gold_count
+		var difference = _count - previous_count
+		GameEvents.requested_new_in_battle_notification.emit(player_name, null, 'gained ' + str(difference) + ' gold', '')
 		gold_count = _count
 		GameEvents.player_data_changed.emit() 
 var points_count : int = 0 #-

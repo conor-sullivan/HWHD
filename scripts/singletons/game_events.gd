@@ -2,6 +2,9 @@ extends Node
 
 
 @warning_ignore("unused_signal")
+signal requested_new_in_battle_notification(attacker_name : String, icon_texture : Texture, action : String, target_name : String)
+
+@warning_ignore("unused_signal")
 signal player_picked_target_character(character : CharacterData)
 
 @warning_ignore("unused_signal")
