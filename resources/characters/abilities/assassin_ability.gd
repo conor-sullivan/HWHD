@@ -8,6 +8,7 @@ func player_do_ability() -> void:
 	func(_target : CharacterData) -> void:
 		GameEvents.requested_new_in_battle_notification.emit(GameData.current_battle.real_player.player_name, null, ' chooses to assassinate ' , _target.character_name)
 		GameData.current_battle.real_player.will_assassinate_character =_target
+		GameData.current_battle.real_player.can_use_character_ability = false
 
 		if GameData.current_battle.opponent_player.current_character_card == _target:
 			GameData.current_battle.opponent_player.will_be_assassinated = true

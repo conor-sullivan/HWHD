@@ -134,6 +134,8 @@ func _on_started_player_turn_state() -> void:
 
 
 func _on_player_ability_avatar_gui_input(event: InputEvent) -> void:
+	if not GameData.current_battle.real_player.can_use_character_ability:
+		return
 	if event is InputEventMouseButton:
 		var button = event.button_index
 		var pressed = event.pressed
