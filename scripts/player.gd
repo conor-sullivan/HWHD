@@ -58,10 +58,12 @@ var gold_count : int = 0 :
 		if difference < 0:
 			action = 'lost '
 			difference *= -1
-		GameEvents.requested_new_in_battle_notification.emit(player_name, null, action + str(difference) + ' gold', '')
+		if difference != 0:
+			GameEvents.requested_new_in_battle_notification.emit(player_name, null, action + str(difference) + ' gold', '')
 		gold_count = _count
 		GameEvents.player_data_changed.emit() 
 var points_count : int = 0 #-
+var district_cards_targetable_by_warlord_count : int = 0
 var max_districts_to_play : int = 1
 var districts_played_this_turn : int = 0 :
 	set(number):
@@ -78,10 +80,15 @@ var district_cards_in_play : Array[DistrictData] :
 		district_cards_in_play = cards
 		district_cards_in_play_count = district_cards_in_play.size()
 		GameEvents.player_data_changed.emit() 
-var district_cards_in_hand_count : int = 0
+var district_cards_in_hand_count : int = 0 : 
+	set(value):
+		print('new ', value)
+		var previous_count = district_cards_in_hand_count
+		GameEvents.requested_new_in_battle_notification.emit(player_name, null, 'gained ' + str(value - previous_count) + ' cards', '')
 var district_cards_in_hand : Array[DistrictData] :
 	set(cards):
 		district_cards_in_hand = cards
+		district_cards_in_hand_count += cards.size()
 		GameEvents.player_data_changed.emit()
 var unselected_characters : Array[CharacterData]
 var known_excluded_characters : Array[CharacterData] : 

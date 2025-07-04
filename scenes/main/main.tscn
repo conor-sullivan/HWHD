@@ -43,8 +43,9 @@ script = ExtResource("16_hxu8e")
 player_turn_state = NodePath("../PlayerTurn")
 opponent_turn_state = NodePath("../OpponentTurn")
 
-[node name="PlayerTurn" type="Node" parent="StateMachine"]
+[node name="PlayerTurn" type="Node" parent="StateMachine" node_paths=PackedStringArray("opponent_turn_state")]
 script = ExtResource("15_raeie")
+opponent_turn_state = NodePath("../OpponentTurn")
 
 [node name="OpponentTurn" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_turn_state")]
 script = ExtResource("17_nvumn")

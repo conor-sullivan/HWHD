@@ -1,12 +1,15 @@
 class_name PlayerTurnState
 extends State
 
+@export var opponent_turn_state : State
+
 var player : Player
+var is_turn_ended : bool = false
 
 
 func enter() -> void:
 	print('player turn state')
-
+	GameEvents.end_player_turn.connect(_on_end_player_turn)
 	GameEvents.in_battle_action_selected.connect(_on_in_battle_action_selected)
 	GameEvents.player_played_district_card.connect(_on_player_played_district_card)
 	GameEvents.started_player_turn_state.emit()
@@ -29,10 +32,23 @@ func exit() -> void:
 		disconnect(connection.signal, connection.callable)
 
 
+func process_frame(_delta : float) -> State:
+	if not is_turn_ended:
+		return null
+	else:
+		return opponent_turn_state
+
+
 func update_possible_character_targets() -> void:
 	if player.is_king:
 		pass
 	pass
+
+
+func _on_end_player_turn(player : Player) ->  void:
+	if player.is_computer:
+		is_turn_ended = true
+	
 
 
 func _on_player_picked_district_card_to_keep(_player : Player, card_to_keep : DistrictData, card_to_discard : DistrictData) -> void:

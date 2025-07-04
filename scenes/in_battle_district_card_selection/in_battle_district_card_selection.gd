@@ -6,10 +6,12 @@ var right_card_data : DistrictData :
 	set(data):
 		right_card_data = data
 		set_sprites(null, right_card_data)
+		set_costs(null, right_card_data)
 var left_card_data : DistrictData : 
 	set(data):
 		left_card_data = data
 		set_sprites(left_card_data, null)
+		set_costs(left_card_data, null)
 
 
 func _ready() -> void:
@@ -29,6 +31,13 @@ func set_scales_to_default() -> void:
 	
 	tween = new_tween_scale()
 	tween.tween_property(%RightCardSprite, "scale", default_scale, 0.2)
+
+
+func set_costs(left_card : DistrictData, right_card : DistrictData) -> void:
+	if left_card:
+		%LeftCost.text = str(left_card.cost)
+	if right_card:
+		%RightCost.text = str(right_card.cost)
 
 
 func set_sprites(left_card : DistrictData, right_card : DistrictData) -> void:

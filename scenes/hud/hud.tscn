@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://mhn1iyf55w8g"]
+[gd_scene load_steps=22 format=3 uid="uid://mhn1iyf55w8g"]
 
 [ext_resource type="Script" uid="uid://dpx5mivcotmdn" path="res://scenes/hud/hud.gd" id="1_n56i7"]
 [ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="1_v7mo4"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cxfoa1am0bepu" path="res://scenes/in_battle_action_selector/in_battle_action_selection.tscn" id="15_iioc1"]
 [ext_resource type="PackedScene" uid="uid://ikqm8pjsxg2b" path="res://scenes/in_battle_district_card_selection/in_battle_district_card_selection.tscn" id="16_567j1"]
 [ext_resource type="PackedScene" uid="uid://vo8te4cc3oul" path="res://scenes/in_battle_character_target_picker/in_battle_character_target_picker.tscn" id="17_nsgyl"]
+[ext_resource type="PackedScene" uid="uid://hsxcvoia2648" path="res://scenes/warlord_ability_display/warlord_ability_display.tscn" id="18_jjjd2"]
 
 [sub_resource type="Animation" id="Animation_iioc1"]
 length = 0.001
@@ -113,6 +114,24 @@ root_node = NodePath("../NotificationPanel")
 libraries = {
 &"": SubResource("AnimationLibrary_567j1")
 }
+
+[node name="EndTurn" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EndTurnIndicator" type="Sprite2D" parent="EndTurn"]
+unique_name_in_owner = true
+position = Vector2(1114.02, 284.41)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_558d4")
+region_rect = Rect2(231, 699, 673, 151)
+
+[node name="Shader" type="Sprite2D" parent="EndTurn/EndTurnIndicator"]
+material = ExtResource("13_4m1a1")
+texture = ExtResource("12_558d4")
+region_rect = Rect2(231, 699, 673, 151)
 
 [node name="PlayerSprite2D" type="Sprite2D" parent="."]
 position = Vector2(567.9, 478.02)
@@ -258,19 +277,6 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("11_8nkf1")
 region_rect = Rect2(231, 699, 673, 151)
 
-[node name="EndTurnIndicator" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(1114.02, 284.41)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("12_558d4")
-region_rect = Rect2(231, 699, 673, 151)
-
-[node name="Shader" type="Sprite2D" parent="EndTurnIndicator"]
-material = ExtResource("13_4m1a1")
-texture = ExtResource("12_558d4")
-region_rect = Rect2(231, 699, 673, 151)
-
 [node name="NotificationPanel" type="Panel" parent="."]
 visible = false
 anchors_preset = 8
@@ -314,6 +320,10 @@ vertical_alignment = 1
 
 [node name="InBattleCharacterTargetPicker" parent="." instance=ExtResource("17_nsgyl")]
 
+[node name="WarlordAbilityDisplay" parent="." instance=ExtResource("18_jjjd2")]
+visible = false
+
+[connection signal="gui_input" from="EndTurn" to="." method="_on_end_turn_gui_input"]
 [connection signal="gui_input" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_player_ability_avatar_gui_input"]
 [connection signal="mouse_entered" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_entered"]
 [connection signal="mouse_exited" from="PlayerSprite2D/PlayerAbilityAvatar" to="." method="_on_ability_avatar_sprite_2d_mouse_exited"]

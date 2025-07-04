@@ -22,6 +22,8 @@ func process_frame(_delta :  float) -> State:
 
 
 func _on_player_played_district_card(card : DistrictData) -> void:
+	if not GameData.current_battle.current_players_turn.is_computer:
+		return
 	var current_gold = player.gold_count
 	player.gold_count = current_gold - card.cost
 	

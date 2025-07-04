@@ -1,5 +1,16 @@
 extends Node
 
+@warning_ignore("unused_signal")
+signal district_card_destroyed_by_warlord(card_owner : Player, card : DistrictData)
+
+@warning_ignore("unused_signal")
+signal district_card_selected_by_warlord(warlord_player : Player, card : DistrictData)
+
+@warning_ignore("unused_signal")
+signal warlord_ability_activated
+
+@warning_ignore("unused_signal")
+signal end_player_turn(player : Player)
 
 @warning_ignore("unused_signal")
 signal requested_new_in_battle_notification(attacker_name : String, icon_texture : Texture, action : String, target_name : String)

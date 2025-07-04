@@ -1,6 +1,9 @@
 class_name CharacterCardPopupsHandler
 extends Control
 
+func _ready() -> void:
+	hide_item_popup()
+
 
 func item_popup(_slot, card_data : CharacterData) -> void:
 	print('pop', card_data.character_name)

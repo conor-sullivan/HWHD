@@ -23,8 +23,8 @@ func enter() -> void:
 	GameData.current_battle.face_down_character_card_count = face_down_character_card_count
 
 	await get_tree().create_timer(0.25).timeout
-	gain_initial_gold()
 	draw_initial_cards()
+	gain_initial_gold()
 
 
 
@@ -64,10 +64,9 @@ func draw_initial_cards() -> void:
 
 func gain_initial_gold() -> void:
 	for player in GameData.current_battle.players:
-		for i in initial_gold_count:
-			if player == GameData.current_battle.real_player:
-				GameData.current_battle.real_player.gold_count += 1
-			elif player == GameData.current_battle.opponent_player:
-				GameData.current_battle.opponent_player.gold_count += 1
-			GameEvents.player_gained_gold.emit(player, 1)
-			await get_tree().create_timer(0.05).timeout
+		if player == GameData.current_battle.real_player:
+			GameData.current_battle.real_player.gold_count += initial_gold_count
+		elif player == GameData.current_battle.opponent_player:
+			GameData.current_battle.opponent_player.gold_count += initial_gold_count
+	
+		GameEvents.player_gained_gold.emit(player, initial_gold_count)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://hsxcvoia2648"]
+
+[ext_resource type="Script" uid="uid://dupis01euehbm" path="res://scenes/warlord_ability_display/warlord_ability_display.gd" id="1_l86e2"]
+[ext_resource type="Texture2D" uid="uid://b5d2dicwjsn46" path="res://assets/sprites/in_play_cards_vinette.png" id="1_tx4nc"]
+
+[node name="WarlordAbilityDisplay" type="CanvasLayer"]
+script = ExtResource("1_l86e2")
+
+[node name="Vignette" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tx4nc")

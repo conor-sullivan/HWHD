@@ -145,3 +145,11 @@ func _on_player_ability_avatar_gui_input(event: InputEvent) -> void:
 				var ability = load(character.ability_function_path).new()
 				if ability:
 					ability.player_do_ability()
+
+
+func _on_end_turn_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var button = event.button_index
+		var pressed = event.pressed
+		if button == 1 and pressed == false:
+			GameEvents.end_player_turn.emit(GameData.current_battle.real_player)

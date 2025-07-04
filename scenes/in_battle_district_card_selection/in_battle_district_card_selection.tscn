@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ikqm8pjsxg2b"]
+[gd_scene load_steps=11 format=3 uid="uid://ikqm8pjsxg2b"]
 
 [ext_resource type="Material" uid="uid://de6lgys43decm" path="res://shaders/darken_blur_shader.tres" id="1_bj08v"]
 [ext_resource type="Script" uid="uid://dwbttxuvp0kgj" path="res://scenes/in_battle_district_card_selection/in_battle_district_card_selection.gd" id="1_ofwc0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://55ydrdkn3w5e" path="res://assets/sprites/Park.png" id="6_ytwvd"]
 [ext_resource type="Material" uid="uid://cwask7hx8vmeu" path="res://shaders/character_selection_shader_material.tres" id="7_pk02c"]
 [ext_resource type="Texture2D" uid="uid://bsb7i363w5pg2" path="res://assets/sprites/Necropolis.png" id="8_x2uft"]
+[ext_resource type="Texture2D" uid="uid://bb1d5upu2qyq2" path="res://assets/sprites/district_value_back.png" id="9_pk02c"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ytwvd"]
 
@@ -105,6 +106,21 @@ texture = ExtResource("6_ytwvd")
 material = ExtResource("7_pk02c")
 texture = ExtResource("8_x2uft")
 
+[node name="LeftCostSprite2D" type="Sprite2D" parent="LeftCard"]
+visible = false
+position = Vector2(728.333, 166.667)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_pk02c")
+
+[node name="LeftCost" type="Label" parent="LeftCard/LeftCostSprite2D"]
+unique_name_in_owner = true
+offset_left = -19.838
+offset_top = -73.333
+offset_right = 49.162
+offset_bottom = 91.667
+theme_override_font_sizes/font_size = 80
+text = "8"
+
 [node name="RightCard" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 657.0
@@ -121,6 +137,21 @@ texture = ExtResource("6_ytwvd")
 [node name="Shader" type="Sprite2D" parent="RightCard/RightCardSprite"]
 material = ExtResource("7_pk02c")
 texture = ExtResource("8_x2uft")
+
+[node name="RightCostSprite2D" type="Sprite2D" parent="RightCard"]
+visible = false
+position = Vector2(728.333, 166.667)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_pk02c")
+
+[node name="RightCost" type="Label" parent="RightCard/RightCostSprite2D"]
+unique_name_in_owner = true
+offset_left = -19.838
+offset_top = -73.333
+offset_right = 49.162
+offset_bottom = 91.667
+theme_override_font_sizes/font_size = 80
+text = "8"
 
 [connection signal="gui_input" from="LeftCard" to="." method="_on_left_card_gui_input"]
 [connection signal="mouse_entered" from="LeftCard" to="." method="_on_left_card_mouse_entered"]

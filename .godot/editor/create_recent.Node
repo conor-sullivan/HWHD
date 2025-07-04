@@ -1,7 +1,9 @@
-VBoxContainer
+GPUParticles3D
+Polygon2D
 CanvasLayer
-Node
 Control
+VBoxContainer
+Node
 Label
 HBoxContainer
 Button
@@ -11,4 +13,3 @@ AnimationPlayer
 Sprite3D
 TextureButton
 Label3D
-Camera3D

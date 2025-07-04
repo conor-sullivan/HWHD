@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=52 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="2_fe4ja"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://7tsfrcpr20dk" path="res://assets/sprites/in_play_dropzone_perimeter.png" id="37_8h6bs"]
 [ext_resource type="Script" uid="uid://nuaoeiyylc3j" path="res://addons/card_3d/scenes/opponent_hand_card_collection_3d.gd" id="39_ilhaa"]
 [ext_resource type="Script" uid="uid://dgfxoqkfniay1" path="res://addons/card_3d/scenes/opponent_deck.gd" id="40_m7fqn"]
+[ext_resource type="Script" uid="uid://dpy5ktgmscey3" path="res://addons/card_3d/scenes/opponent_discard_collection.gd" id="43_eu6pb"]
 [ext_resource type="Script" uid="uid://v6c5meq14gs2" path="res://scenes/in_battle_notification_manager/in_battle_notification_manager.gd" id="43_j021e"]
 
 [sub_resource type="Environment" id="Environment_aua20"]
@@ -196,6 +197,14 @@ card_layout_strategy = SubResource("Resource_aua20")
 [node name="OpponentEmptyDeck" parent="OpponentDragController" instance=ExtResource("15_k6ux7")]
 transform = Transform3D(-1, 3.82137e-15, 8.74228e-08, 8.74228e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, -19.114, -8.721, -0.465)
 visible = false
+skeleton = NodePath("../..")
+
+[node name="DiscardCollection" parent="OpponentDragController" instance=ExtResource("9_pyfix")]
+transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -17.141, -8.911, -1.069)
+script = ExtResource("43_eu6pb")
+
+[node name="EmptyDeck" parent="OpponentDragController/DiscardCollection" instance=ExtResource("15_k6ux7")]
+transform = Transform3D(0.9, 0, 0, 0, -3.93403e-08, -0.9, 0, 0.9, -3.93403e-08, 0.13, 0.064, -0.1)
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="."]

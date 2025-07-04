@@ -1,7 +1,8 @@
-class_name NewCard3D
-extends Card3D
+class_name NewCard3D extends Card3D
 
+enum Type {CHARACTER, DISTRICT}
 
+@export var card_type : Type
 @export var aura_shader : ShaderMaterial = preload("res://shaders/3d_card_aura_material.tres")
 @export var data: Dictionary:
 	set(data):
@@ -21,9 +22,18 @@ extends Card3D
 		if data.has("sprite_texture"):
 			sprite_texture = data["sprite_texture"]
 
-var resource : Resource
+var resource : Resource :
+	set(value):
+		resource = value
+		if resource is CharacterData:
+			card_type = Type.CHARACTER
+		elif resource is DistrictData:
+			card_type = Type.DISTRICT
 #var is_in_hand: bool = false
 var is_real_players : bool = false
+var is_targetable_by_warlord : bool = false
+var is_in_play : bool = false
+var player_owner : Player 
 var sprite_texture = Texture
 var mouse_inside : bool = false
 var id : String
@@ -50,7 +60,7 @@ func _ready() -> void:
 	GameEvents.player_data_changed.connect(_on_player_data_changed)
 	GameEvents.started_player_turn_state.connect(_on_started_player_turn_state)
 	GameEvents.starting_excluded_characters_state.connect(_on_starting_excluded_characters_state)
-
+	GameEvents.warlord_ability_activated.connect(_on_warlord_ability_activated)
 
 
 func player_can_afford() -> bool:
@@ -82,6 +92,8 @@ func is_in_hand() -> bool:
 
 
 func set_shader() -> void:
+	if is_targetable_by_warlord:
+		return
 	%Shader.hide()
 	if not GameData.current_battle: return
 	if not GameData.current_battle.real_player.can_play_district_card: return
@@ -128,3 +140,41 @@ func _on_popup_timer_timeout() -> void:
 		
 	if mouse_inside:
 		DistrictCardPopups.item_popup(null, sprite_texture, (resource as DistrictData).cost)
+
+
+func _on_warlord_ability_activated() -> void:
+	if not player_owner:
+		return
+	if not is_in_play:
+		return
+	if card_type != Type.DISTRICT:
+		return
+	if not player_owner.in_play_districts_can_be_targeted:
+		return
+
+	if GameData.current_battle.current_players_turn.gold_count >= (cost - 1):
+		is_targetable_by_warlord = true
+	else:
+		is_targetable_by_warlord = false
+
+	if is_targetable_by_warlord:
+		%Shader.show()
+
+
+func _on_static_body_3d_input_event(_camera, event, _event_position, _normal, _shape_idx):
+	if event is InputEventMouseButton:
+		var button = event.button_index
+		var pressed = event.pressed
+		if button == 1 and pressed == true:
+			card_3d_mouse_down.emit()
+			if is_targetable_by_warlord:
+				disable_collision()
+				GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
+				%ExplosionParticles.show()
+				%ExplosionParticles.emitting = true
+				await %ExplosionParticles.finished
+				GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
+				call_deferred("queue_free")
+		elif button == 1 and pressed == false:
+			card_3d_mouse_up.emit()
+		

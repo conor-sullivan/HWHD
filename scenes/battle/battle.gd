@@ -6,14 +6,16 @@ extends Node3D
 
 @onready var player_deck_collection = $PlayerDragController/DeckCardCollection
 @onready var player_hand_collection = $PlayerDragController/HandCardCollection
+@onready var player_discard_collection = $PlayerDragController/DiscardCollection
 @onready var opponent_deck_collection = $OpponentDragController/DeckCardCollection
 @onready var opponent_hand_collection = $OpponentDragController/HandCardCollection
-
+@onready var opponent_discard_collection = $OpponentDragController/DiscardCollection
 
 @export var district_resources : Array[DistrictData]
 
 
 func _ready() -> void:
+	GameEvents.district_card_destroyed_by_warlord.connect(_on_district_card_destroyed_by_warlord)
 	GameEvents.done_drawing_initial_character_cards.connect(_on_done_drawing_initial_character_cards)
 	GameEvents.ready_to_exclude_characters.connect(_on_ready_to_exclude_characters)
 	GameEvents.requested_player_draw_district_cards.connect(_on_requested_player_draw_district_cards)
@@ -80,6 +82,7 @@ func player_draw_card() -> void:
 	var card_global_position = cards[cards.size() - 1].global_position
 	var drawn_card = player_deck_collection.remove_card(cards.size() - 1)
 	(drawn_card as NewCard3D).face_down = false
+	(drawn_card as NewCard3D).player_owner = GameData.current_battle.real_player
 	#(drawn_card as NewCard3D).is_in_hand = true
 	player_hand_collection.append_card(drawn_card)
 	drawn_card.global_position = card_global_position
@@ -98,6 +101,7 @@ func opponent_draw_card() -> void:
 	var card_global_position = cards[cards.size() - 1].global_position
 	var drawn_card = opponent_deck_collection.remove_card(cards.size() - 1)
 	(drawn_card as NewCard3D).face_down = true
+	(drawn_card as NewCard3D).player_owner = GameData.current_battle.opponent_player
 	opponent_hand_collection.append_card(drawn_card)
 	drawn_card.global_position = card_global_position
 	
@@ -134,3 +138,14 @@ func _on_done_drawing_initial_character_cards() -> void:
 
 func _on_accept_button_pressed() -> void:
 	GameEvents.accepted_character_cards.emit()
+
+
+func _on_district_card_destroyed_by_warlord(card_owner : Player, card : DistrictData) -> void:
+	var instance = instantiate_district_card(card.district_name)
+	(instance as NewCard3D).face_down = false
+	instance.global_position = Vector3.ZERO
+	(instance as NewCard3D).player_owner = GameData.current_battle.opponent_player
+	if card_owner.is_computer:
+		opponent_hand_collection.append_card(instance)
+	else:
+		player_discard_collection.append_card(instance)

@@ -4,6 +4,13 @@ extends CardCollection3D
 
 func _ready() -> void:
 	GameEvents.requested_gain_card_action.connect(_on_requested_gain_card_action)
+	GameEvents.requested_player_draw_district_cards.connect(_on_requested_player_draw_district_cards)
+
+
+func _on_requested_player_draw_district_cards(player : Player, count : int) -> void:
+	if player.is_computer:
+		return
+	
 
 
 func _on_requested_gain_card_action(player : Player) -> void:
