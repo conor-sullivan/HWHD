@@ -1,4 +1,3 @@
-res://scenes/new_card_3d/new_card_3d.gd
 res://scenes/main/main.tscn
 res://shaders/3d_card_aura_material.tres
 res://resources/textures/popup_texture.tres
@@ -53,6 +52,7 @@ res://resources/textures/button_aura_outline.gdshader
 res://shaders/hull_outline_3d.res
 res://shaders/fire_outline_shader.gdshader
 res://shaders/3d_card_aura_visual.tres
+res://shaders/card_destroy_shader.gdshader
 res://resources/district_cards/bell_tower.tres
 res://shaders/character_ability_aura_shader_visualtres.res
 res://shaders/opponent_character_ability_aura_shader_visualtres.res
@@ -60,20 +60,9 @@ res://scenes/battle/battle.tscn
 res://scenes/in_battle_district_card_selection/in_battle_district_card_selection.tscn
 res://scenes/district_card_popups/district_card_popups.tscn
 res://scenes/hud/hud.tscn
-res://resources/characters/abilities/warlord_ability.gd
-res://scripts/singletons/game_events.gd
-res://resources/characters/warlord.tres
-res://addons/card_3d/scenes/player_deck.gd
-res://scenes/battle/battle.gd
-res://scenes/battle/player_in_play_card_collection.gd
 res://scenes/warlord_ability_display/warlord_ability_display.tscn
-res://scenes/warlord_ability_display/warlord_ability_display.gd
 res://scenes/new_card_3d/new_card_3d.tscn
-res://shaders/card_destroy_shader.gdshader
-res://addons/card_3d/scenes/player_discard_collection.gd
-res://addons/card_3d/scenes/opponent_discard_collection.gd
-res://scenes/district_card_popups/district_card_popups.gd
-res://scripts/player.gd
-res://scenes/character_card_popups/character_card_popups.tscn
-res://scenes/character_card_popups/character_card_popups.gd
-res://state_machine/opponent_turn_state.gd
+res://scenes/in_battle_district_card_selection/in_battle_district_card_selection.gd
+res://scenes/warlord_ability_display/warlord_ability_display.gd
+res://scenes/new_card_3d/new_card_3d.gd
+res://scripts/singletons/game_events.gd

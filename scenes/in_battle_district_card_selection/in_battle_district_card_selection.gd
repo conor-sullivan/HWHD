@@ -5,13 +5,17 @@ var default_scale = Vector2(0.24, 0.24)
 var right_card_data : DistrictData :
 	set(data):
 		right_card_data = data
-		set_sprites(null, right_card_data)
-		set_costs(null, right_card_data)
+		if right_card_data:
+			set_sprites(null, right_card_data)
+			set_costs(null, right_card_data)
+			%RightCardSprite.show()
 var left_card_data : DistrictData : 
 	set(data):
 		left_card_data = data
-		set_sprites(left_card_data, null)
-		set_costs(left_card_data, null)
+		if left_card_data:
+			set_sprites(left_card_data, null)
+			set_costs(left_card_data, null)
+			%LeftCardSprite.show()
 
 
 func _ready() -> void:
@@ -19,6 +23,8 @@ func _ready() -> void:
 
 
 func _on_deck_cards_ready_for_gain_card_action(_player : Player, cards : Array[DistrictData]) -> void:
+	%RightCardSprite.hide()
+	%LeftCardSprite.hide()
 	right_card_data = cards[0]
 	left_card_data = cards[1]
 	set_scales_to_default()
@@ -36,9 +42,10 @@ func set_scales_to_default() -> void:
 func set_costs(left_card : DistrictData, right_card : DistrictData) -> void:
 	if left_card:
 		%LeftCost.text = str(left_card.cost)
+#		%LeftCostSprite2D.show()
 	if right_card:
 		%RightCost.text = str(right_card.cost)
-
+#		%RightCostSprite2D.show()
 
 func set_sprites(left_card : DistrictData, right_card : DistrictData) -> void:
 	if left_card:

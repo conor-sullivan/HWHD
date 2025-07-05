@@ -38,7 +38,7 @@ material = SubResource("StandardMaterial3D_vyxdp")
 [node name="NewCard3D" instance=ExtResource("1_h5pcq")]
 script = ExtResource("2_0qyik")
 card_type = 0
-aura_shader = null
+aura_shader = ExtResource("3_0qyik")
 data = {}
 
 [node name="CardBackMesh" parent="CardMesh" index="0"]

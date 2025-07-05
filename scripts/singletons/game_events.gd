@@ -1,6 +1,9 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal warlord_ability_done
+
+@warning_ignore("unused_signal")
 signal district_card_destroyed_by_warlord(card_owner : Player, card : DistrictData)
 
 @warning_ignore("unused_signal")

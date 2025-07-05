@@ -15,3 +15,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_tx4nc")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.39
+offset_top = 446.805
+offset_right = -22.39
+offset_bottom = 477.805
+grow_horizontal = 2
+text = "DONE"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

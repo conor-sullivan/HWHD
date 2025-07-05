@@ -106,13 +106,13 @@ texture = ExtResource("6_ytwvd")
 material = ExtResource("7_pk02c")
 texture = ExtResource("8_x2uft")
 
-[node name="LeftCostSprite2D" type="Sprite2D" parent="LeftCard"]
-visible = false
-position = Vector2(728.333, 166.667)
-scale = Vector2(0.5, 0.5)
+[node name="LeftCostSprite2D" type="Sprite2D" parent="LeftCard/LeftCardSprite"]
+unique_name_in_owner = true
+position = Vector2(-350, -550)
+scale = Vector2(2.22222, 2.22222)
 texture = ExtResource("9_pk02c")
 
-[node name="LeftCost" type="Label" parent="LeftCard/LeftCostSprite2D"]
+[node name="LeftCost" type="Label" parent="LeftCard/LeftCardSprite/LeftCostSprite2D"]
 unique_name_in_owner = true
 offset_left = -19.838
 offset_top = -73.333
@@ -138,13 +138,14 @@ texture = ExtResource("6_ytwvd")
 material = ExtResource("7_pk02c")
 texture = ExtResource("8_x2uft")
 
-[node name="RightCostSprite2D" type="Sprite2D" parent="RightCard"]
-visible = false
-position = Vector2(728.333, 166.667)
-scale = Vector2(0.5, 0.5)
+[node name="RightCostSprite2D" type="Sprite2D" parent="RightCard/RightCardSprite"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-350, -550)
+scale = Vector2(2.08333, 2.08333)
 texture = ExtResource("9_pk02c")
 
-[node name="RightCost" type="Label" parent="RightCard/RightCostSprite2D"]
+[node name="RightCost" type="Label" parent="RightCard/RightCardSprite/RightCostSprite2D"]
 unique_name_in_owner = true
 offset_left = -19.838
 offset_top = -73.333

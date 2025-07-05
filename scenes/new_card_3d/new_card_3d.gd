@@ -57,6 +57,7 @@ var back_material : Material:
 
 
 func _ready() -> void:
+	GameEvents.warlord_ability_done.connect(_on_warlord_ability_done)
 	GameEvents.player_data_changed.connect(_on_player_data_changed)
 	GameEvents.started_player_turn_state.connect(_on_started_player_turn_state)
 	GameEvents.starting_excluded_characters_state.connect(_on_starting_excluded_characters_state)
@@ -178,3 +179,7 @@ func _on_static_body_3d_input_event(_camera, event, _event_position, _normal, _s
 		elif button == 1 and pressed == false:
 			card_3d_mouse_up.emit()
 		
+
+func _on_warlord_ability_done() -> void:
+	is_targetable_by_warlord = false
+	%Shader.hide()
