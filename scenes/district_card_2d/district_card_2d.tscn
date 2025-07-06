@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://lglroni8dlfy"]
+
+[ext_resource type="Texture2D" uid="uid://dsi723phqmaob" path="res://assets/sprites/Docks.png" id="1_44nss"]
+[ext_resource type="Script" uid="uid://vfka25s16k3u" path="res://scenes/district_card_2d/district_card_2d.gd" id="1_su1fc"]
+[ext_resource type="Texture2D" uid="uid://bb1d5upu2qyq2" path="res://assets/sprites/district_value_back.png" id="2_su1fc"]
+[ext_resource type="Material" uid="uid://crr1e55hueen2" path="res://shaders/district_card2d_shader_material.tres" id="4_3purx"]
+
+[sub_resource type="Animation" id="Animation_hlp5b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shader:material:shader_parameter/AuraColor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.368338, 0.621362, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shader:material:shader_parameter/Intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.445]
+}
+
+[sub_resource type="Animation" id="Animation_7u5xx"]
+resource_name = "card_selected"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shader:material:shader_parameter/AuraColor")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0.368338, 0.621362, 1), Color(1, 1, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shader:material:shader_parameter/Intensity")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.445, 4.37]
+}
+
+[sub_resource type="Animation" id="Animation_fk7ao"]
+resource_name = "card_unselected"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shader:material:shader_parameter/AuraColor")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 0, 1), Color(0, 0.368338, 0.621362, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shader:material:shader_parameter/Intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.37, 0.445]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rpnl"]
+_data = {
+&"RESET": SubResource("Animation_hlp5b"),
+&"card_selected": SubResource("Animation_7u5xx"),
+&"card_unselected": SubResource("Animation_fk7ao")
+}
+
+[node name="DistrictCard2D" type="Control"]
+custom_minimum_size = Vector2(110, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -54.0
+offset_top = -78.0
+offset_right = 56.0
+offset_bottom = 72.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+script = ExtResource("1_su1fc")
+
+[node name="CardSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(54.35, 76.75)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_44nss")
+
+[node name="CostBack" type="Sprite2D" parent="."]
+position = Vector2(17.35, 19.75)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_su1fc")
+
+[node name="CostLabel" type="Label" parent="CostBack"]
+unique_name_in_owner = true
+offset_left = -20.0
+offset_top = -70.0
+offset_right = 37.0
+offset_bottom = 67.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 80
+text = "5"
+
+[node name="Shader" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = ExtResource("4_3purx")
+position = Vector2(54.35, 76.75)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_44nss")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4rpnl")
+}
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://mhn1iyf55w8g"]
+[gd_scene load_steps=24 format=3 uid="uid://mhn1iyf55w8g"]
 
 [ext_resource type="Script" uid="uid://dpx5mivcotmdn" path="res://scenes/hud/hud.gd" id="1_n56i7"]
 [ext_resource type="Texture2D" uid="uid://d22ubd1nk1ird" path="res://assets/sprites/UI_avatar_test.png" id="1_v7mo4"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://ikqm8pjsxg2b" path="res://scenes/in_battle_district_card_selection/in_battle_district_card_selection.tscn" id="16_567j1"]
 [ext_resource type="PackedScene" uid="uid://vo8te4cc3oul" path="res://scenes/in_battle_character_target_picker/in_battle_character_target_picker.tscn" id="17_nsgyl"]
 [ext_resource type="PackedScene" uid="uid://hsxcvoia2648" path="res://scenes/warlord_ability_display/warlord_ability_display.tscn" id="18_jjjd2"]
+[ext_resource type="PackedScene" uid="uid://3j1r001w2cyv" path="res://scenes/magician_ability_display/magician_ability_display.tscn" id="19_8vblv"]
+[ext_resource type="PackedScene" uid="uid://dtil1j8rf85mw" path="res://scenes/magician_ability_discard_display/magician_ability_discard_display.tscn" id="20_ccb21"]
 
 [sub_resource type="Animation" id="Animation_iioc1"]
 length = 0.001
@@ -317,10 +319,17 @@ vertical_alignment = 1
 [node name="InBattleActionSelection" parent="." instance=ExtResource("15_iioc1")]
 
 [node name="InBattleDistrictCardSelection" parent="." instance=ExtResource("16_567j1")]
+visible = false
 
 [node name="InBattleCharacterTargetPicker" parent="." instance=ExtResource("17_nsgyl")]
 
 [node name="WarlordAbilityDisplay" parent="." instance=ExtResource("18_jjjd2")]
+visible = false
+
+[node name="MagicianAbilityDisplay" parent="." instance=ExtResource("19_8vblv")]
+visible = false
+
+[node name="MagicianAbilityDiscardDisplay" parent="." instance=ExtResource("20_ccb21")]
 visible = false
 
 [connection signal="gui_input" from="EndTurn" to="." method="_on_end_turn_gui_input"]

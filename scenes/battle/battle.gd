@@ -15,6 +15,8 @@ extends Node3D
 
 
 func _ready() -> void:
+	GameEvents.requested_player_discard_cards.connect(_on_requested_player_discard_cards)
+	GameEvents.requested_players_exchange_hands.connect(_on_requested_players_exchange_hands)
 	GameEvents.district_card_destroyed_by_warlord.connect(_on_district_card_destroyed_by_warlord)
 	GameEvents.done_drawing_initial_character_cards.connect(_on_done_drawing_initial_character_cards)
 	GameEvents.ready_to_exclude_characters.connect(_on_ready_to_exclude_characters)
@@ -66,6 +68,19 @@ func instantiate_district_card(id : String) -> NewCard3D:
 	
 	
 	return test_card
+
+
+func _on_requested_player_discard_cards(player : Player, cards_to_discard : Array[DistrictData]) -> void:
+	if player.is_computer:
+		for card in cards_to_discard:
+			for c in opponent_hand_collection:
+				if card.data == c.data:
+					opponent_discard_collection.append_card(c)	
+	else:
+		for card in cards_to_discard:
+			for c in player_hand_collection:
+				if card.data == c.data:
+					player_discard_collection.append_card(c)	
 
 
 # clicking on deck adds card to hand
@@ -149,3 +164,17 @@ func _on_district_card_destroyed_by_warlord(card_owner : Player, card : District
 		opponent_hand_collection.append_card(instance)
 	else:
 		player_discard_collection.append_card(instance)
+
+
+func _on_requested_players_exchange_hands() -> void:
+	opponent_hand_collection.remove_all()
+	player_hand_collection.remove_all()
+
+	for c in GameData.current_battle.real_player.district_cards_in_hand:
+		var instance = instantiate_district_card(c.district_name)
+		player_hand_collection.append_card(instance)
+	
+	for c in GameData.current_battle.opponent_player.district_cards_in_hand:
+		var instance = instantiate_district_card(c.district_name)
+		opponent_hand_collection.append_card(instance)
+		instance.face_down = true

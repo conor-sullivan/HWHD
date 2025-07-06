@@ -13,7 +13,6 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ytwvd"]
 
 [node name="InBattleDistrictCardSelection" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

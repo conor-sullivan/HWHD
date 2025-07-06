@@ -1,5 +1,24 @@
 extends Node
 
+
+@warning_ignore("unused_signal")
+signal requested_show_magician_discard_display
+
+@warning_ignore("unused_signal")
+signal requested_discard_magician_ability
+
+@warning_ignore("unused_signal")
+signal requested_player_discard_cards(cards_to_discard : Array[DistrictData])
+
+@warning_ignore("unused_signal")
+signal done_selecting_magician_discards(cards_to_discard : Array[DistrictData])
+
+@warning_ignore("unused_signal")
+signal requested_players_exchange_hands
+
+@warning_ignore("unused_signal")
+signal starting_magician_ability(first_option : Callable, second_option : Callable)
+
 @warning_ignore("unused_signal")
 signal warlord_ability_done
 
