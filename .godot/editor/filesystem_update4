@@ -74,3 +74,4 @@ res://scripts/singletons/game_events.gd
 res://resources/characters/abilities/magician_ability.gd
 res://scenes/battle/battle.gd
 res://scenes/magician_ability_display/magician_ability_display.gd
+res://scenes/ai/ai.gd

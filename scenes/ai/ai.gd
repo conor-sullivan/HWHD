@@ -362,3 +362,243 @@ func set_game_state(player_order: Array[Player], _crown_holder: Player, _round: 
 	player_turn_order = player_order
 	crown_holder = _crown_holder
 	round_number = _round
+
+func magician_ability_advanced() -> Dictionary:
+	var ai_hand = ai_player_state.district_cards_in_hand
+	var human_hand = human_player_state.district_cards_in_hand
+
+	# Count unique/purple cards in both hands
+	var ai_unique = 0
+	var human_unique = 0
+	for card in ai_hand:
+		if card.is_purple_foil:
+			ai_unique += 1
+	for card in human_hand:
+		if card.is_purple_foil:
+			human_unique += 1
+
+	# Exchange if human has more cards or more unique cards
+	if human_hand.size() - ai_hand.size() >= 2 or human_unique > ai_unique:
+		return { "action": "exchange", "cards_to_discard": [] }
+
+	# Otherwise, discard low-importance cards
+	var ai_gold = ai_player_state.gold_count
+	var color_focus = get_ai_color_focus()
+	var cards_to_discard = []
+	for card in ai_hand:
+		# Discard if too expensive, not matching color focus, or duplicate
+		var is_duplicate = ai_hand.count(card) > 1
+		var not_focus = color_focus != "" and card.color != color_focus
+		if card.cost > ai_gold or is_duplicate or not_focus:
+			cards_to_discard.append(card)
+	return { "action": "discard_draw", "cards_to_discard": cards_to_discard }
+
+func magician_ability_intermediate() -> Dictionary:
+	var ai_hand = ai_player_state.district_cards_in_hand
+	var human_hand = human_player_state.district_cards_in_hand
+	if human_hand.size() - ai_hand.size() >= 2:
+		return { "action": "exchange", "cards_to_discard": [] }
+	else:
+		var ai_gold = ai_player_state.gold_count
+		var cards_to_discard = []
+		for card in ai_hand:
+			if card.cost > ai_gold:
+				cards_to_discard.append(card)
+		# If nothing to discard, discard nothing
+		return { "action": "discard_draw", "cards_to_discard": cards_to_discard }
+
+func magician_ability_basic() -> Dictionary:
+	var action = ["exchange", "discard_draw"].pick_random()
+	if action == "exchange":
+		return { "action": "exchange", "cards_to_discard": [] }
+	else:
+		var hand = ai_player_state.district_cards_in_hand.duplicate()
+		var num_to_discard = randi_range(1, hand.size())
+		hand.shuffle()
+		var cards_to_discard = hand.slice(0, num_to_discard)
+		return { "action": "discard_draw", "cards_to_discard": cards_to_discard }
+
+func use_magician_ability() -> Dictionary:
+	# Returns a dictionary with { "action": "exchange" or "discard_draw", "cards_to_discard": Array }
+	match difficulty:
+		Difficulty.BASIC:
+			return magician_ability_basic()
+		Difficulty.INTERMEDIATE:
+			return magician_ability_intermediate()
+		Difficulty.ADVANCED:
+			return magician_ability_advanced()
+	
+	return {}
+
+# Helper to determine AI's color focus (most built color)
+func get_ai_color_focus() -> String:
+	var color_counts = { "Gold": 0, "Blue": 0, "Green": 0, "Red": 0 }
+	for d in ai_player_state.district_cards_in_play:
+		if d.color in color_counts:
+			color_counts[d.color] += 1
+	var max_color = ""
+	var max_count = 0
+	for color in color_counts.keys():
+		if color_counts[color] > max_count:
+			max_count = color_counts[color]
+			max_color = color
+	return max_color
+
+# BASIC: Play a random card the AI can afford
+func choose_district_card_to_play_basic() -> DistrictData:
+	var affordable = []
+	var gold = ai_player_state.gold_count
+	for card in ai_player_state.district_cards_in_hand:
+		if card.cost <= gold and not ai_player_state.district_cards_in_play.has(card):
+			affordable.append(card)
+	if affordable.is_empty():
+		return null
+	return affordable[randi() % affordable.size()]
+
+# INTERMEDIATE: Prefer cards that match AI's color focus or are unique, and can be afforded
+func choose_district_card_to_play_intermediate() -> DistrictData:
+	var gold = ai_player_state.gold_count
+	var color_focus = get_ai_color_focus()
+	var best_card = null
+	var best_score = -1000
+	for card in ai_player_state.district_cards_in_hand:
+		if card.cost > gold or ai_player_state.district_cards_in_play.has(card):
+			continue
+		var score = 0
+		if card.color == color_focus:
+			score += 5
+		if card.is_purple_foil:
+			score += 4
+		score += 10 - card.cost # Prefer cheaper cards if all else equal
+		if score > best_score:
+			best_score = score
+			best_card = card
+	return best_card
+
+# ADVANCED: Evaluate based on color focus, uniqueness, cost, and synergy with built districts
+func choose_district_card_to_play_advanced() -> DistrictData:
+	var gold = ai_player_state.gold_count
+	var color_focus = get_ai_color_focus()
+	var built_colors = []
+	for d in ai_player_state.district_cards_in_play:
+		built_colors.append(d.color)
+	var best_card = null
+	var best_score = -1000
+	for card in ai_player_state.district_cards_in_hand:
+		if card.cost > gold or ai_player_state.district_cards_in_play.has(card):
+			continue
+		var score = 0
+		if card.color == color_focus:
+			score += 6
+		if card.is_purple_foil:
+			score += 5
+		if not built_colors.has(card.color):
+			score += 3 # Diversity bonus
+		score += 12 - card.cost # Prefer cheaper cards
+		if ai_player_state.district_cards_in_play.count(card) > 0:
+			score -= 10 # Avoid duplicates
+		if score > best_score:
+			best_score = score
+			best_card = card
+	return best_card
+
+# Main function to choose which card to play, based on difficulty
+func choose_district_card_to_play() -> DistrictData:
+	match difficulty:
+		Difficulty.BASIC:
+			return choose_district_card_to_play_basic()
+		Difficulty.INTERMEDIATE:
+			return choose_district_card_to_play_intermediate()
+		Difficulty.ADVANCED:
+			return choose_district_card_to_play_advanced()
+	return null
+
+# BASIC: Randomly guess from the possible character targets
+func guess_opponent_character_basic() -> CharacterData:
+	var possible = human_player_state.possible_character_targets
+	if possible.is_empty():
+		return null
+	return possible[randi() % possible.size()]
+
+# INTERMEDIATE: Guess based on the opponent's gold, hand size, and built districts
+func guess_opponent_character_intermediate() -> CharacterData:
+	var possible = human_player_state.possible_character_targets
+	if possible.is_empty():
+		return null
+	var best_guess = null
+	var best_score = -1000
+	for character in possible:
+		var score = 0
+		match character.character_name:
+			"King":
+				if human_player_state.district_cards_in_play.count({ "color": "Gold" }) > 1:
+					score += 3
+			"Bishop":
+				if human_player_state.district_cards_in_play.count({ "color": "Blue" }) > 1:
+					score += 3
+			"Merchant":
+				if human_player_state.gold_count > 3:
+					score += 2
+				if human_player_state.district_cards_in_play.count({ "color": "Green" }) > 1:
+					score += 2
+			"Warlord":
+				if human_player_state.district_cards_in_play.count({ "color": "Red" }) > 1:
+					score += 3
+			"Architect":
+				if human_player_state.district_cards_in_hand.size() > 3:
+					score += 2
+			"Magician", "Wizard":
+				if human_player_state.district_cards_in_hand.size() < 2:
+					score += 2
+			"Thief":
+				if human_player_state.gold_count > 2:
+					score += 2
+			"Assassin":
+				score += 1 # Always a possibility
+			_:
+				score += 0
+		if score > best_score:
+			best_score = score
+			best_guess = character
+	return best_guess
+
+# ADVANCED: Use a scoring system similar to your character selection logic, but for the opponent
+func guess_opponent_character_advanced() -> CharacterData:
+	var possible = human_player_state.possible_character_targets
+	if possible.is_empty():
+		return null
+	var best_guess = null
+	var best_score = -1000
+	for character in possible:
+		var score = 0
+		match character.character_name:
+			"King":
+				score += human_player_state.district_cards_in_play.count({ "color": "Gold" }) * 2
+				if not crown_holder.is_computer:
+					score += 2
+			"Bishop":
+				score += human_player_state.district_cards_in_play.count({ "color": "Blue" }) * 2
+				if human_player_state.district_cards_in_play.count({ "color": "Red" }) > 1:
+					score += 1 # Defensive pick
+			"Merchant":
+				score += human_player_state.gold_count
+				score += human_player_state.district_cards_in_play.count({ "color": "Green" }) * 2
+			"Warlord":
+				score += human_player_state.district_cards_in_play.count({ "color": "Red" }) * 2
+				if ai_player_state.district_cards_in_play.size() > 0:
+					score += 1 # If AI has targets
+			"Architect":
+				score += human_player_state.district_cards_in_hand.size()
+			"Magician":
+				score += 2 if human_player_state.district_cards_in_hand.size() < 2 else 0
+				score += 2 if ai_player_state.district_cards_in_hand.size() > 3 else 0
+			"Thief":
+				score += human_player_state.gold_count * 0.7
+			"Assassin":
+				score += 1
+			_:
+				score += 0
+		if score > best_score:
+			best_score = score
+			best_guess = character
+	return best_guess
