@@ -8,28 +8,39 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
+	print('discards accepted')
 	var cards_to_discard : Array[DistrictData]
 
-	for c in get_children():
-		if not c is DistrictCard2D:
-			return
-		
-		if (c as DistrictCard2D).is_selected:
+	for c in %CardsContainer.get_children():
+		if not (c as DistrictCard2D).is_selected:
 			cards_to_discard.append(c.data)
 
+	print('cards to discard: ', cards_to_discard)
+	var number_of_cards_to_draw = cards_to_discard.size() 
+
+
+	print('over here')
+
+	hide()
+
 	GameEvents.done_selecting_magician_discards.emit(cards_to_discard)
+	GameEvents.requested_player_discard_cards.emit(GameData.current_battle.current_players_turn, cards_to_discard)
+
+	await get_tree().create_timer(0.2).timeout
+
+	GameEvents.requested_player_draw_district_cards.emit(GameData.current_battle.current_players_turn, number_of_cards_to_draw)
+
+	GameData.current_battle.current_players_turn.can_use_character_ability = false
 
 
 func _on_requested_show_magician_discard_display() -> void:
-	for c in get_children():
-		if not c is DistrictCard2D:
-			return
+	for c in %CardsContainer.get_children():
 		c.queue_free()	
 	
 	for c in GameData.current_battle.current_players_turn.district_cards_in_hand:
 		var instance = district_card_scene.instantiate() as DistrictCard2D
-		instance.data = c.data
+		instance.data = c
 
-		add_child(instance)
-
+		%CardsContainer.add_child(instance)
+	print('show')
 	show()

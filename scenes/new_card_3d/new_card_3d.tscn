@@ -62,11 +62,11 @@ mesh = SubResource("PlaneMesh_o3bng")
 skeleton = NodePath("../..")
 
 [node name="CostBackSprite3D" type="Sprite3D" parent="CardMesh" index="4"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.798727, 1.18935, 0.085)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.799, 1.189, 0.001)
 texture = ExtResource("6_vyxdp")
 
 [node name="CostLabel" type="Label3D" parent="CardMesh/CostBackSprite3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0374532, 0.162897, 0.130214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037, 0.163, 0.01)
 text = "8"
 font_size = 150
 

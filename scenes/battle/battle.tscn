@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=53 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="2_fe4ja"]
@@ -49,6 +49,11 @@
 background_mode = 1
 
 [sub_resource type="Resource" id="Resource_eiu4o"]
+script = ExtResource("11_e48mi")
+pile_y_offset = 0.0
+metadata/_custom_type_script = "uid://cntqyqc32apyx"
+
+[sub_resource type="Resource" id="Resource_eu6pb"]
 script = ExtResource("11_e48mi")
 pile_y_offset = 0.0
 metadata/_custom_type_script = "uid://cntqyqc32apyx"
@@ -150,6 +155,7 @@ card_layout_strategy = SubResource("Resource_eiu4o")
 [node name="DiscardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
 transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -14.206, -9.201, -1.069)
 script = ExtResource("32_j021e")
+card_layout_strategy = SubResource("Resource_eu6pb")
 
 [node name="EmptyDeck" parent="PlayerDragController/DiscardCollection" instance=ExtResource("15_k6ux7")]
 transform = Transform3D(0.9, 0, 0, 0, -3.93403e-08, -0.9, 0, 0.9, -3.93403e-08, 0.13, 0.064, -0.1)

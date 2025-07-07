@@ -5,7 +5,7 @@ var data : DistrictData :
 	set(value):
 		data = value
 		%CardSprite.texture = data.sprite_texture
-		%CostLabel.text = data.cost
+		%CostLabel.text = str(data.cost)
 
 @export var is_selected : bool = false
 

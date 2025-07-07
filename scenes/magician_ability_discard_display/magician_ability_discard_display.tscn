@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtil1j8rf85mw"]
+[gd_scene load_steps=5 format=3 uid="uid://dtil1j8rf85mw"]
 
 [ext_resource type="Script" uid="uid://dfsruxciwiyb2" path="res://scenes/magician_ability_discard_display/magician_ability_discard_display.gd" id="1_bae0o"]
 [ext_resource type="Material" uid="uid://de6lgys43decm" path="res://shaders/darken_blur_shader.tres" id="2_m1doh"]
 [ext_resource type="StyleBox" uid="uid://503a15onclud" path="res://resources/textures/popup_texture.tres" id="3_w0o7g"]
-[ext_resource type="PackedScene" uid="uid://lglroni8dlfy" path="res://scenes/district_card_2d/district_card_2d.tscn" id="4_v8ekx"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4jv11"]
 
@@ -69,6 +68,20 @@ text = "The rest will be discarded"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CardsContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+theme_override_constants/separation = 20
+alignment = 1
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -82,43 +95,7 @@ offset_right = 41.0
 offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 text = "CONFIRM"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 0
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="DistrictCard2D" parent="HBoxContainer" instance=ExtResource("4_v8ekx")]
-layout_mode = 2
-
-[node name="DistrictCard2D2" parent="HBoxContainer" instance=ExtResource("4_v8ekx")]
-layout_mode = 2
-
-[node name="DistrictCard2D3" parent="HBoxContainer" instance=ExtResource("4_v8ekx")]
-layout_mode = 2
-
-[node name="DistrictCard2D4" parent="HBoxContainer" instance=ExtResource("4_v8ekx")]
-layout_mode = 2
-
-[node name="DistrictCard2D5" parent="HBoxContainer" instance=ExtResource("4_v8ekx")]
-layout_mode = 2
-
-[node name="DistrictCard2D6" parent="HBoxContainer" instance=ExtResource("4_v8ekx")]
-layout_mode = 2
-
-[node name="DistrictCard2D7" parent="HBoxContainer" instance=ExtResource("4_v8ekx")]
-layout_mode = 2
-
-[node name="DistrictCard2D8" parent="HBoxContainer" instance=ExtResource("4_v8ekx")]
-layout_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

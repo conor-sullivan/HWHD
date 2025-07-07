@@ -26,7 +26,7 @@ func exchange_hands() -> void:
 
 
 func discard() -> void:
-	GameEvents.requested_discard_magician_ability.emit()
+	GameEvents.requested_show_magician_discard_display.emit()
 
 
 func new_scale_tween() -> Tween:
@@ -96,7 +96,7 @@ func _on_exchange_hands_option_gui_input(event: InputEvent) -> void:
 			
 			hide()
 			
-			GameEvents.in_battle_action_selected.emit(discard)
+			GameEvents.in_battle_action_selected.emit(exchange_hands)
 
 
 func _on_discard_option_gui_input(event: InputEvent) -> void:
@@ -109,4 +109,4 @@ func _on_discard_option_gui_input(event: InputEvent) -> void:
 			
 			hide()
 			
-			GameEvents.in_battle_action_selected.emit(exchange_hands)
+			GameEvents.in_battle_action_selected.emit(discard)

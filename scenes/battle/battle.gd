@@ -71,16 +71,21 @@ func instantiate_district_card(id : String) -> NewCard3D:
 
 
 func _on_requested_player_discard_cards(player : Player, cards_to_discard : Array[DistrictData]) -> void:
+	print('player to discard cards...')
+	
 	if player.is_computer:
-		for card in cards_to_discard:
-			for c in opponent_hand_collection:
-				if card.data == c.data:
-					opponent_discard_collection.append_card(c)	
+		_discard_cards_from_collection(cards_to_discard, opponent_hand_collection, opponent_discard_collection)
 	else:
-		for card in cards_to_discard:
-			for c in player_hand_collection:
-				if card.data == c.data:
-					player_discard_collection.append_card(c)	
+		_discard_cards_from_collection(cards_to_discard, player_hand_collection, player_discard_collection)
+
+
+func _discard_cards_from_collection(cards_to_discard: Array[DistrictData], hand_collection, discard_collection) -> void:
+	for card in cards_to_discard:
+		for c in hand_collection.get_children():
+			if c is NewCard3D and card == c.resource:
+				var card_index = hand_collection.cards.find(c)
+				hand_collection.remove_card(card_index)
+				discard_collection.append_card(c)
 
 
 # clicking on deck adds card to hand
