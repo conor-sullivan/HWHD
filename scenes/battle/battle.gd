@@ -10,11 +10,13 @@ extends Node3D
 @onready var opponent_deck_collection = $OpponentDragController/DeckCardCollection
 @onready var opponent_hand_collection = $OpponentDragController/HandCardCollection
 @onready var opponent_discard_collection = $OpponentDragController/DiscardCollection
+@onready var opponent_in_play_card_collection = $OpponentDragController/InPlayCardCollection
 
 @export var district_resources : Array[DistrictData]
 
 
 func _ready() -> void:
+	GameEvents.requested_opponent_play_card_from_hand.connect(_on_requested_opponent_play_card_from_hand)
 	GameEvents.requested_player_discard_cards.connect(_on_requested_player_discard_cards)
 	GameEvents.requested_players_exchange_hands.connect(_on_requested_players_exchange_hands)
 	GameEvents.district_card_destroyed_by_warlord.connect(_on_district_card_destroyed_by_warlord)
@@ -68,6 +70,14 @@ func instantiate_district_card(id : String) -> NewCard3D:
 	
 	
 	return test_card
+
+
+func _on_requested_opponent_play_card_from_hand(card_data : DistrictData) -> void:
+	for c in opponent_hand_collection.cards:
+		if c.resource == card_data:
+			opponent_hand_collection.remove_card(c)
+			opponent_in_play_card_collection.append_card(c)
+			c.face_down = false
 
 
 func _on_requested_player_discard_cards(player : Player, cards_to_discard : Array[DistrictData]) -> void:

@@ -67,7 +67,7 @@ func ai_pick_character(_choices : Array[CharacterData]) -> CharacterData:
 	ai.set_player_states(ai_player, player)
 	ai.set_game_state(player_order, crown_holder, GameData.current_battle.round_number)
 	
-	ai.difficulty = ai.Difficulty.ADVANCED
+	ai.difficulty = GameData.current_battle.difficulty 
 	
 	var result = ai.choose_character()
 	print(result.character_name)

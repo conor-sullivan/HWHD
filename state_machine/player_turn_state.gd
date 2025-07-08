@@ -2,6 +2,7 @@ class_name PlayerTurnState
 extends State
 
 @export var opponent_turn_state : State
+@export var end_of_round_state : State
 
 var player : Player
 var is_turn_ended : bool = false
@@ -29,14 +30,18 @@ func enter() -> void:
 
 func exit() -> void:
 	for connection in get_incoming_connections():
-		disconnect(connection.signal, connection.callable)
+		disconnect(connection.signal.get_name(), connection.callable)
+	GameData.current_battle.current_players_turn.has_taken_turn = true
 
 
 func process_frame(_delta : float) -> State:
 	if not is_turn_ended:
 		return null
 	else:
-		return opponent_turn_state
+		if GameData.current_battle.opponent_player.has_taken_turn:
+			return end_of_round_state
+		else:
+			return opponent_turn_state
 
 
 func update_possible_character_targets() -> void:
@@ -45,11 +50,9 @@ func update_possible_character_targets() -> void:
 	pass
 
 
-func _on_end_player_turn(player : Player) ->  void:
-	if player.is_computer:
-		is_turn_ended = true
+func _on_end_player_turn(_player : Player) ->  void:
+	is_turn_ended = true
 	
-
 
 func _on_player_picked_district_card_to_keep(_player : Player, card_to_keep : DistrictData, card_to_discard : DistrictData) -> void:
 	var _card_to_keep = preload("res://scenes/new_card_3d/new_card_3d.tscn").instantiate() as NewCard3D

@@ -1,3 +1,4 @@
+Node
 Control
 AnimationPlayer
 Sprite2D
@@ -9,6 +10,5 @@ VBoxContainer
 CanvasLayer
 GPUParticles3D
 Polygon2D
-Node
 Sprite3D
 TextureButton

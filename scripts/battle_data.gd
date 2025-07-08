@@ -9,3 +9,4 @@ var character_cards : Array[CharacterData]
 var original_character_cards : Array[CharacterData]
 var round_number : int
 var face_down_character_card_count : int
+var difficulty = AI.Difficulty.BASIC

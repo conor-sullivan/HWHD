@@ -26,6 +26,9 @@ func opponent_do_ability() -> void:
 	var target = targets[random_index]
 
 	GameData.current_battle.opponent_player.will_assassinate_character = target
+	GameEvents.requested_new_in_battle_notification.emit(GameData.current_battle.opponent_player.player_name, null, ' chooses to assassinate ' , target.character_name)
 
 	if GameData.current_battle.real_player.current_character_card == target:
 		GameData.current_battle.real_player.will_be_assassinated = true
+	
+	GameEvents.done_with_opponent_ability.emit()

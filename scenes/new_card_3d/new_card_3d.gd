@@ -57,6 +57,7 @@ var back_material : Material:
 
 
 func _ready() -> void:
+	GameEvents.requested_district_destroyed_by_opponent.connect(_on_requested_district_destroyed_by_opponent)
 	GameEvents.warlord_ability_done.connect(_on_warlord_ability_done)
 	GameEvents.player_data_changed.connect(_on_player_data_changed)
 	GameEvents.started_player_turn_state.connect(_on_started_player_turn_state)
@@ -183,3 +184,13 @@ func _on_static_body_3d_input_event(_camera, event, _event_position, _normal, _s
 func _on_warlord_ability_done() -> void:
 	is_targetable_by_warlord = false
 	%Shader.hide()
+
+
+func _on_requested_district_destroyed_by_opponent(_card : DistrictData) -> void:
+	disable_collision()
+#	GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
+	%ExplosionParticles.show()
+	%ExplosionParticles.emitting = true
+	await %ExplosionParticles.finished
+	GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
+	call_deferred("queue_free")

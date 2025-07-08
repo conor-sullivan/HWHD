@@ -14,6 +14,7 @@ func opponent_do_ability() -> void:
 	GameEvents.player_gained_gold.emit(GameData.current_battle.opponent_player, 1)
 	gain_gold_for_districts()
 
+	GameEvents.done_with_opponent_ability.emit()
 	GameData.current_battle.opponent_player.can_use_character_ability = false
 
 func gain_gold_for_districts() -> void:

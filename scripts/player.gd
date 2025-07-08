@@ -16,6 +16,15 @@ var is_winner : bool = false
 var in_play_districts_can_be_targeted : bool = true :
 	set(value):
 		in_play_districts_can_be_targeted = value
+
+		if in_play_districts_can_be_targeted:
+			for d in district_cards_in_play:
+				d.is_protected = false
+
+		else:
+			for d in district_cards_in_play:
+				d.is_protected = true
+
 		GameEvents.player_data_changed.emit() 
 var can_play_district_card : bool = false :
 	set(value):

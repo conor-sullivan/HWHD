@@ -14,7 +14,7 @@ func _on_requested_player_draw_district_cards(player : Player, count : int) -> v
 
 
 func _on_requested_gain_card_action(player : Player) -> void:
-	if player.is_computer:
+	if GameData.current_battle.current_players_turn != player:
 		return
 	
 	var cards_to_select_from : Array[DistrictData] = [

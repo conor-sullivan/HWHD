@@ -384,7 +384,7 @@ func magician_ability_advanced() -> Dictionary:
 	# Otherwise, discard low-importance cards
 	var ai_gold = ai_player_state.gold_count
 	var color_focus = get_ai_color_focus()
-	var cards_to_discard = []
+	var cards_to_discard : Array[DistrictData] = []
 	for card in ai_hand:
 		# Discard if too expensive, not matching color focus, or duplicate
 		var is_duplicate = ai_hand.count(card) > 1
@@ -400,7 +400,7 @@ func magician_ability_intermediate() -> Dictionary:
 		return { "action": "exchange", "cards_to_discard": [] }
 	else:
 		var ai_gold = ai_player_state.gold_count
-		var cards_to_discard = []
+		var cards_to_discard : Array[DistrictData] = []
 		for card in ai_hand:
 			if card.cost > ai_gold:
 				cards_to_discard.append(card)
@@ -415,7 +415,7 @@ func magician_ability_basic() -> Dictionary:
 		var hand = ai_player_state.district_cards_in_hand.duplicate()
 		var num_to_discard = randi_range(1, hand.size())
 		hand.shuffle()
-		var cards_to_discard = hand.slice(0, num_to_discard)
+		var cards_to_discard : Array[DistrictData] = hand.slice(0, num_to_discard)
 		return { "action": "discard_draw", "cards_to_discard": cards_to_discard }
 
 func use_magician_ability() -> Dictionary:
@@ -547,7 +547,7 @@ func guess_opponent_character_intermediate() -> CharacterData:
 			"Architect":
 				if human_player_state.district_cards_in_hand.size() > 3:
 					score += 2
-			"Magician", "Wizard":
+			"Magician":
 				if human_player_state.district_cards_in_hand.size() < 2:
 					score += 2
 			"Thief":
@@ -602,3 +602,142 @@ func guess_opponent_character_advanced() -> CharacterData:
 			best_score = score
 			best_guess = character
 	return best_guess
+
+
+func choose_gain_gold_or_card() -> String:
+	match difficulty:
+		Difficulty.BASIC:
+			# Random choice for basic AI
+			return ["gold", "card"].pick_random()
+		Difficulty.INTERMEDIATE:
+			# Prefer gold if can't afford to build, otherwise prefer card if hand is small
+			var affordable = false
+			for card in ai_player_state.district_cards_in_hand:
+				if card.cost <= ai_player_state.gold_count and not ai_player_state.district_cards_in_play.has(card):
+					affordable = true
+					break
+			if not affordable:
+				return "gold"
+			elif ai_player_state.district_cards_in_hand.size() < 2:
+				return "card"
+			else:
+				return "gold"
+		Difficulty.ADVANCED:
+			# Advanced: prefer gold if can't build, prefer card if hand is empty or all cards are expensive, else weigh options
+			var can_build = false
+			var cheapest = 999
+			for card in ai_player_state.district_cards_in_hand:
+				if card.cost <= ai_player_state.gold_count and not ai_player_state.district_cards_in_play.has(card):
+					can_build = true
+				if card.cost < cheapest:
+					cheapest = card.cost
+			if not can_build:
+				return "gold"
+			elif ai_player_state.district_cards_in_hand.is_empty():
+				return "card"
+			elif ai_player_state.gold_count > cheapest + 2:
+				return "card"
+			else:
+				return "gold"
+	return "gold"
+
+
+func choose_between_two_district_cards(card_a: DistrictData, card_b: DistrictData) -> DistrictData:
+	match difficulty:
+		Difficulty.BASIC:
+			# Random choice
+			return [card_a, card_b].pick_random()
+		Difficulty.INTERMEDIATE:
+			# Prefer the card that matches AI's color focus, otherwise cheaper card
+			var color_focus = get_ai_color_focus()
+			var a_score = 0
+			var b_score = 0
+			if card_a.color == color_focus:
+				a_score += 2
+			if card_b.color == color_focus:
+				b_score += 2
+			a_score += 10 - card_a.cost
+			b_score += 10 - card_b.cost
+			return card_a if a_score >= b_score else card_b
+		Difficulty.ADVANCED:
+			# Prefer unique, color focus, and synergy; avoid duplicates and high cost
+			var color_focus = get_ai_color_focus()
+			var built_colors = []
+			for d in ai_player_state.district_cards_in_play:
+				built_colors.append(d.color)
+			var a_score = 0
+			var b_score = 0
+			if card_a.color == color_focus:
+				a_score += 3
+			if card_b.color == color_focus:
+				b_score += 3
+			if not built_colors.has(card_a.color):
+				a_score += 2
+			if not built_colors.has(card_b.color):
+				b_score += 2
+			if card_a.is_purple_foil:
+				a_score += 2
+			if card_b.is_purple_foil:
+				b_score += 2
+			a_score += 12 - card_a.cost
+			b_score += 12 - card_b.cost
+			if ai_player_state.district_cards_in_hand.has(card_a):
+				a_score -= 5 # Avoid duplicates
+			if ai_player_state.district_cards_in_hand.has(card_b):
+				b_score -= 5
+			return card_a if a_score >= b_score else card_b
+	return card_a
+
+
+
+func choose_warlord_target() -> DistrictData:
+	match difficulty:
+		Difficulty.BASIC:
+			# Pick a random valid target from the opponent's districts that can be destroyed
+			var possible_targets = []
+			for d in human_player_state.district_cards_in_play:
+				if d.cost > 1 and d.cost - 1 <= ai_player_state.gold_count and not d.is_protected:
+					possible_targets.append(d)
+			if possible_targets.is_empty():
+				return null
+			return possible_targets[randi() % possible_targets.size()]
+		Difficulty.INTERMEDIATE:
+			# Prefer highest cost district the AI can afford to destroy
+			var best_target = null
+			var best_cost = -1
+			for d in human_player_state.district_cards_in_play:
+				if d.cost > 1 and d.cost - 1 <= ai_player_state.gold_count and not d.is_protected:
+					if d.cost > best_cost:
+						best_cost = d.cost
+						best_target = d
+			return best_target
+		Difficulty.ADVANCED:
+			# Prefer unique (purple) or high-value districts, avoid duplicates, and consider color strategy
+			var best_target = null
+			var best_score = -1000
+			for d in human_player_state.district_cards_in_play:
+				if d.cost > 1 and d.cost - 1 <= ai_player_state.gold_count and not d.is_protected:
+					var score = d.cost * 2
+					if d.is_purple_foil:
+						score += 5
+					# Penalize if opponent has duplicates (less valuable to destroy)
+					if human_player_state.district_cards_in_play.count(d) > 1:
+						score -= 3
+					# Bonus if district matches opponent's color focus
+					var opp_color_focus = ""
+					var color_counts = { "Gold": 0, "Blue": 0, "Green": 0, "Red": 0 }
+					for dd in human_player_state.district_cards_in_play:
+						if dd.color in color_counts:
+							color_counts[dd.color] += 1
+					var max_count = 0
+					for color in color_counts.keys():
+						if color_counts[color] > max_count:
+							max_count = color_counts[color]
+							opp_color_focus = color
+					if d.color == opp_color_focus:
+						score += 3
+					if score > best_score:
+						best_score = score
+						best_target = d
+			return best_target
+	return null

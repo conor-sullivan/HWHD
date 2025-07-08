@@ -19,3 +19,10 @@ func remove_card(index: int) -> Card3D:
 
 	GameData.current_battle.opponent_player.district_cards_in_hand.erase(removed_card)
 	return removed_card
+
+
+func _on_requested_append_card_in_player_hand(player : Player, card : NewCard3D) -> void:
+	if player != GameData.current_battle.current_players_turn:
+		return
+	
+	append_card(card)

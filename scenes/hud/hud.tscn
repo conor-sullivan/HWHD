@@ -118,14 +118,18 @@ libraries = {
 }
 
 [node name="EndTurn" type="Control" parent="."]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1087.0
+offset_top = 287.0
+offset_right = 1137.0
+offset_bottom = 337.0
+mouse_filter = 1
 
 [node name="EndTurnIndicator" type="Sprite2D" parent="EndTurn"]
 unique_name_in_owner = true
-position = Vector2(1114.02, 284.41)
+position = Vector2(25.25, 22)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_558d4")
 region_rect = Rect2(231, 699, 673, 151)

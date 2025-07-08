@@ -2,6 +2,15 @@ extends Node
 
 
 @warning_ignore("unused_signal")
+signal requested_opponent_play_card_from_hand(card : DistrictData)
+
+@warning_ignore("unused_signal")
+signal requested_district_destroyed_by_opponent(card : DistrictData)
+
+@warning_ignore("unused_signal")
+signal done_with_opponent_ability
+
+@warning_ignore("unused_signal")
 signal requested_show_magician_discard_display
 
 @warning_ignore("unused_signal")

@@ -12,3 +12,4 @@ class_name DistrictData
 @export var ability_text : String
 @export var is_in_deck : bool
 @export var is_visible : bool
+@export var is_protected : bool = false

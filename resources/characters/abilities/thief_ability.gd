@@ -29,3 +29,6 @@ func opponent_do_ability() -> void:
 
 	if GameData.current_battle.real_player.current_character_card == target:
 		GameData.current_battle.real_player.will_be_robbed = true
+
+	GameEvents.requested_new_in_battle_notification.emit(GameData.current_battle.real_player.player_name, null, ' chooses to rob ' , target.character_name)
+	GameEvents.done_with_opponent_ability.emit()
