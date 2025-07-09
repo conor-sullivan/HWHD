@@ -23,6 +23,8 @@ func _ready() -> void:
 
 
 func _on_deck_cards_ready_for_gain_card_action(_player : Player, cards : Array[DistrictData]) -> void:
+	if _player != GameData.current_battle.real_player:
+		return
 	%RightCardSprite.hide()
 	%LeftCardSprite.hide()
 	right_card_data = cards[0]

@@ -1,6 +1,11 @@
 class_name OpponentHandCardCollection
 extends CardCollection3D
 
+
+func _ready() -> void:
+	GameEvents.requested_append_card_in_player_hand.connect(_on_requested_append_card_in_player_hand)
+
+
 func remove_card(index: int) -> Card3D:
 	var removed_card = cards[index]
 	cards.remove_at(index)
@@ -22,7 +27,8 @@ func remove_card(index: int) -> Card3D:
 
 
 func _on_requested_append_card_in_player_hand(player : Player, card : NewCard3D) -> void:
-	if player != GameData.current_battle.current_players_turn:
+	if player != GameData.current_battle.opponent_player:
 		return
 	
+	card.face_down = true
 	append_card(card)

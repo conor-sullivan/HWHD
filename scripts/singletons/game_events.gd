@@ -1,5 +1,10 @@
 extends Node
 
+@warning_ignore("unused_signal")
+signal opponent_deck_cards_ready_for_gain_card_action(cards_to_select_from : Array[DistrictData])
+
+@warning_ignore("unused_signal")
+signal requested_opponent_gain_card_action
 
 @warning_ignore("unused_signal")
 signal requested_opponent_play_card_from_hand(card : DistrictData)

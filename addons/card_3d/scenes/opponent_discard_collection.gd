@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 
 func _on_requested_append_card_in_player_discard(player : Player, card : NewCard3D) -> void:
-	if player != GameData.current_battle.current_players_turn:
+	if player != GameData.current_battle.opponent_player:
 		return
 
 	append_card(card)
