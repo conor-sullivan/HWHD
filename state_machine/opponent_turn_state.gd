@@ -3,36 +3,28 @@ class_name OpponentTurnState extends State
 @export var player_turn_state : State
 @export var end_of_round_state : State
 
-var ready_to_start_turn : bool = false
 var player : Player
 var ai = AI.new()
 var has_picked_action : bool = false
 var has_used_ability : bool = false
 var has_played_district_card : bool = false
 var can_play_district_card : bool = false
-
+var ready_to_take_next_action : bool = false
 
 func enter() -> void:
 	print('opponent turn state')
 
 	GameEvents.done_with_opponent_ability.connect(_on_done_with_opponent_ability)
-	GameEvents.opponent_deck_cards_ready_for_gain_card_action.connect(_on_opponent_deck_cards_ready_for_gain_card_action)
+#	GameEvents.opponent_deck_cards_ready_for_gain_card_action.connect(_on_opponent_deck_cards_ready_for_gain_card_action)
 	GameEvents.started_player_turn_state.emit()
 	
-	ready_to_start_turn = false
+	$Timer.start()
 	player = GameData.current_battle.opponent_player
 	player.can_play_district_card = true
 	player.can_use_character_ability = true
 	player.character_avatar_visible = true
 
 	GameData.current_battle.current_players_turn = player
-
-	use_start_turn_timer()
-
-
-func use_start_turn_timer() -> void:
-	await get_tree().create_timer(2.5).timeout
-	ready_to_start_turn = true
 
 
 func setup_ai() -> void:
@@ -62,25 +54,33 @@ func setup_ai() -> void:
 func gold_or_card() -> void:
 	var result = ai.choose_gain_gold_or_card()
 
-	if result == 'gold':
-		player.gold_count += 2
-		GameEvents.player_gained_gold.emit(player, 2)
-	elif result == 'card':
-		_on_opponent_deck_cards_ready_for_gain_card_action([player.district_cards_in_hand[0], player.district_cards_in_hand[1]])
+	#if result == 'gold':
+		#player.gold_count += 2
+		#GameEvents.player_gained_gold.emit(player, 2)
+	#elif result == 'card':
+	var card1 = player.district_deck_cards[player.district_deck_cards.size() - 1]
+	var card2 = player.district_deck_cards[player.district_deck_cards.size() - 2]
+	_on_opponent_deck_cards_ready_for_gain_card_action([card1, card2])
 
+	ready_to_take_next_action = false
+	$Timer.start()
 	GameEvents.requested_opponent_gain_card_action.emit()
-		
+
 
 # use special ability
 func use_character_ability() -> void:
 	var ability = load(player.current_character_card.ability_function_path).new()
 
 	if ability:
-		ability.player_do_ability()
+		ability.opponent_do_ability()
 
+	ready_to_take_next_action = false
+	$Timer.start()
 
 # play district card
 func play_district_card() -> void:
+	for c in player.district_cards_in_hand:
+		print(c.district_name)
 	setup_ai()
 	var card = ai.choose_district_card_to_play()
 
@@ -93,14 +93,15 @@ func play_district_card() -> void:
 	player.districts_played_this_turn += 1
 	player.district_cards_in_play += [card]
 
-	has_played_district_card = true
+	ready_to_take_next_action = false
+	$Timer.start()
 
 
 func process_frame(_delta :  float) -> State:
 	if not player:
 		return null
 
-	if not ready_to_start_turn:
+	if not ready_to_take_next_action:
 		return null
 
 	if not has_picked_action:
@@ -112,9 +113,12 @@ func process_frame(_delta :  float) -> State:
 		use_character_ability()
 		has_used_ability = true
 		return null
-	##if not has_played_district_card:
-		##play_district_card()
-		##return null
+
+	if not has_played_district_card: 
+		play_district_card()
+		has_played_district_card = true
+
+		return null
 	
 	#if has_picked_action and has_used_ability and has_played_district_card:
 		#if GameData.current_battle.real_player.has_taken_turn:
@@ -181,3 +185,7 @@ func _on_opponent_deck_cards_ready_for_gain_card_action(cards : Array[DistrictDa
 
 func _on_done_with_opponent_ability() -> void:
 	has_used_ability = true
+
+
+func _on_timer_timeout() -> void:
+	ready_to_take_next_action = true

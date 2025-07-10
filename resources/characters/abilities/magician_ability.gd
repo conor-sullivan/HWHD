@@ -9,7 +9,7 @@ func player_do_ability() -> void:
 	GameEvents.starting_magician_ability.emit()
 
 
-func ai_do_ability() -> void:
+func opponent_do_ability() -> void:
 	var ai = AI.new()
 	var ai_player = GameData.current_battle.opponent_player
 	var player = GameData.current_battle.real_player

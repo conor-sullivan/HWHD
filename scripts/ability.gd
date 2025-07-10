@@ -5,5 +5,5 @@ func player_do_ability() -> void:
     return
 
 
-func ai_do_ability() -> void:
+func opponent_do_ability() -> void:
     return

@@ -12,6 +12,8 @@ func _on_requested_append_card_in_player_hand(player : Player, card : NewCard3D)
 	
 	append_card(card)
 
+	update_game_data()
+
 
 func remove_card(index: int) -> Card3D:
 	var removed_card = cards[index]
@@ -31,3 +33,14 @@ func remove_card(index: int) -> Card3D:
 	
 	GameData.current_battle.real_player.district_cards_in_hand.erase(removed_card.resource)
 	return removed_card
+
+	update_game_data()
+
+
+func update_game_data() -> void:
+	var new_hand_data : Array[DistrictData]
+
+	for c in cards:
+		new_hand_data.append(c.resource)
+	
+	GameData.current_battle.real_player.district_cards_in_hand = new_hand_data

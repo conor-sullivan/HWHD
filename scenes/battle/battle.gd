@@ -16,6 +16,7 @@ extends Node3D
 
 
 func _ready() -> void:
+	GameEvents.requested_new_in_battle_notification.connect(_on_requested_new_in_battle_notification)
 	GameEvents.requested_opponent_play_card_from_hand.connect(_on_requested_opponent_play_card_from_hand)
 	GameEvents.requested_player_discard_cards.connect(_on_requested_player_discard_cards)
 	GameEvents.requested_players_exchange_hands.connect(_on_requested_players_exchange_hands)
@@ -29,23 +30,23 @@ func _ready() -> void:
 	var character_deck : Array[NewCard3D]
 	
 	for card_id in district_resources:
-		for duplicate_card in duplicate_cards:
-			GameData.player_current_district_deck_build.push_back(card_id)
-			var player_card = instantiate_district_card(card_id.district_name)
-			player_card.is_real_players = true
-			player_deck.push_back(player_card)
-			opponent_deck.push_back(instantiate_district_card(card_id.district_name))
+#		for duplicate_card in duplicate_cards:
+		GameData.player_current_district_deck_build.push_back(card_id)
+		var player_card = instantiate_district_card(card_id.district_name)
+		player_card.is_real_players = true
+		player_deck.push_back(player_card)
+		opponent_deck.push_back(instantiate_district_card(card_id.district_name))
 
 	player_deck.shuffle()
 	opponent_deck.shuffle()
 	character_deck.shuffle()
 	
 	for card in player_deck:
-		card.face_down = true
+#		card.face_down = true
 		player_deck_collection.append_card(card)
 		
 	for card in opponent_deck:
-		card.face_down = true
+#		card.face_down = true
 		opponent_deck_collection.append_card(card)
 	
 
@@ -72,10 +73,15 @@ func instantiate_district_card(id : String) -> NewCard3D:
 	return test_card
 
 
+func _on_requested_new_in_battle_notification(_name, texture, action, target) -> void:
+	print(_name, texture, action, target)
+
+
 func _on_requested_opponent_play_card_from_hand(card_data : DistrictData) -> void:
 	for c in opponent_hand_collection.cards:
 		if c.resource == card_data:
-			opponent_hand_collection.remove_card(c)
+			var card_index = opponent_hand_collection.cards.find(c)
+			opponent_hand_collection.remove_card(card_index)
 			opponent_in_play_card_collection.append_card(c)
 			c.face_down = false
 
@@ -125,12 +131,18 @@ func player_draw_card() -> void:
 		await timer.timeout
 		$PlayerDragController/EmptyDeck.visible = true
 
+	var new_deck_data : Array[DistrictData]
+	for c in player_deck_collection.cards:
+		new_deck_data.push_back(c.resource)
+
+	GameData.current_battle.real_player.district_deck_cards = new_deck_data
+
 
 func opponent_draw_card() -> void:
 	var cards = opponent_deck_collection.cards
 	var card_global_position = cards[cards.size() - 1].global_position
 	var drawn_card = opponent_deck_collection.remove_card(cards.size() - 1)
-	(drawn_card as NewCard3D).face_down = true
+	(drawn_card as NewCard3D).face_down = false
 	(drawn_card as NewCard3D).player_owner = GameData.current_battle.opponent_player
 	opponent_hand_collection.append_card(drawn_card)
 	drawn_card.global_position = card_global_position
@@ -141,6 +153,12 @@ func opponent_draw_card() -> void:
 		var timer = get_tree().create_timer(.1)
 		await timer.timeout
 		$OpponentDragController/OpponentEmptyDeck.visible = true
+	
+	var new_deck_data : Array[DistrictData]
+	for c in opponent_deck_collection.cards:
+		new_deck_data.push_back(c.resource)
+
+	GameData.current_battle.opponent_player.district_deck_cards = new_deck_data
 
 
 func _on_requested_player_draw_district_cards(player : Player, count : int) -> void:
@@ -192,4 +210,4 @@ func _on_requested_players_exchange_hands() -> void:
 	for c in GameData.current_battle.opponent_player.district_cards_in_hand:
 		var instance = instantiate_district_card(c.district_name)
 		opponent_hand_collection.append_card(instance)
-		instance.face_down = true
+# 		instance.face_down = true

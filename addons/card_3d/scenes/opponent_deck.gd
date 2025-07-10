@@ -18,6 +18,17 @@ func _on_requested_opponent_gain_card_action() -> void:
 		remove_card(cards.size() -1)
 		remove_card(cards.size() -2)
 
+	update_game_data()
+
+
+func update_game_data() -> void:
+	var new_deck_data : Array[DistrictData]
+
+	for c in cards:
+		new_deck_data.push_back(c.resource)
+	
+	GameData.current_battle.opponent_player.district_deck_cards = new_deck_data
+
 
 func can_insert_card(_card: NewCard3D, _from_collection) -> bool:
 	return true
