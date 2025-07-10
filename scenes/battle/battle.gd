@@ -16,6 +16,7 @@ extends Node3D
 
 
 func _ready() -> void:
+	GameEvents.requested_player_rob_player.connect(_on_requested_player_rob_player)
 	GameEvents.requested_new_in_battle_notification.connect(_on_requested_new_in_battle_notification)
 	GameEvents.requested_opponent_play_card_from_hand.connect(_on_requested_opponent_play_card_from_hand)
 	GameEvents.requested_player_discard_cards.connect(_on_requested_player_discard_cards)
@@ -71,6 +72,14 @@ func instantiate_district_card(id : String) -> NewCard3D:
 	
 	
 	return test_card
+
+
+func _on_requested_player_rob_player(robbing_player : Player, robbed_player : Player) -> void:
+	GameEvents.player_spent_gold.emit(robbed_player, robbed_player.gold_count)
+	GameEvents.player_gained_gold.emit(robbing_player, robbed_player.gold_count)
+
+	robbing_player.gold_count += robbed_player.gold_count
+	robbed_player.gold_count = 0
 
 
 func _on_requested_new_in_battle_notification(_name, texture, action, target) -> void:

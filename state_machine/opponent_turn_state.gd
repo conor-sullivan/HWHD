@@ -10,6 +10,8 @@ var has_used_ability : bool = false
 var has_played_district_card : bool = false
 var can_play_district_card : bool = false
 var ready_to_take_next_action : bool = false
+var is_turn_ended : bool = false
+
 
 func enter() -> void:
 	print('opponent turn state')
@@ -18,13 +20,34 @@ func enter() -> void:
 #	GameEvents.opponent_deck_cards_ready_for_gain_card_action.connect(_on_opponent_deck_cards_ready_for_gain_card_action)
 	GameEvents.started_player_turn_state.emit()
 	
-	$Timer.start()
 	player = GameData.current_battle.opponent_player
+
+	if player.will_be_assassinated:
+		GameEvents.requested_new_in_battle_notification.emit(player.player_name, null, 'was assassinated and skips thier turn', '')
+		is_turn_ended = true
+		return
+
+
+	if player.will_be_robbed:
+		GameEvents.requested_player_rob_player.emit(GameData.current_battle.real_player, player)
+
+	$Timer.start()
 	player.can_play_district_card = true
 	player.can_use_character_ability = true
 	player.character_avatar_visible = true
 
 	GameData.current_battle.current_players_turn = player
+
+
+func exit() -> void:
+	# Loop through all signals defined in GameEvents
+	for signal_info in GameEvents.get_signal_list():
+		var signal_name = signal_info.name
+		# Check if this signal is connected to any method in this script
+		for method in self.get_method_list():
+			var method_name = method.name
+			if GameEvents.is_connected(signal_name, Callable(self, method_name)):
+				GameEvents.disconnect(signal_name, Callable(self, method_name))
 
 
 func setup_ai() -> void:
@@ -54,13 +77,13 @@ func setup_ai() -> void:
 func gold_or_card() -> void:
 	var result = ai.choose_gain_gold_or_card()
 
-	#if result == 'gold':
-		#player.gold_count += 2
-		#GameEvents.player_gained_gold.emit(player, 2)
-	#elif result == 'card':
-	var card1 = player.district_deck_cards[player.district_deck_cards.size() - 1]
-	var card2 = player.district_deck_cards[player.district_deck_cards.size() - 2]
-	_on_opponent_deck_cards_ready_for_gain_card_action([card1, card2])
+	if result == 'gold':
+		player.gold_count += 2
+		GameEvents.player_gained_gold.emit(player, 2)
+	elif result == 'card':
+		var card1 = player.district_deck_cards[player.district_deck_cards.size() - 1]
+		var card2 = player.district_deck_cards[player.district_deck_cards.size() - 2]
+		_on_opponent_deck_cards_ready_for_gain_card_action([card1, card2])
 
 	ready_to_take_next_action = false
 	$Timer.start()
@@ -83,6 +106,8 @@ func play_district_card() -> void:
 		print(c.district_name)
 	setup_ai()
 	var card = ai.choose_district_card_to_play()
+	if not card:
+		return
 
 	var current_gold = player.gold_count
 	player.gold_count = current_gold - card.cost
@@ -98,6 +123,12 @@ func play_district_card() -> void:
 
 
 func process_frame(_delta :  float) -> State:
+	if is_turn_ended:
+		if GameData.current_battle.real_player.has_taken_turn:
+			return end_of_round_state
+		else:
+			return player_turn_state
+		
 	if not player:
 		return null
 
@@ -120,11 +151,11 @@ func process_frame(_delta :  float) -> State:
 
 		return null
 	
-	#if has_picked_action and has_used_ability and has_played_district_card:
-		#if GameData.current_battle.real_player.has_taken_turn:
-			#return end_of_round_state
-		#else:
-			#return player_turn_state
+	if has_picked_action and has_used_ability and has_played_district_card:
+		if GameData.current_battle.real_player.has_taken_turn:
+			return end_of_round_state
+		else:
+			return player_turn_state
 
 	return null
 

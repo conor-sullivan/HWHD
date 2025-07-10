@@ -18,20 +18,36 @@ func enter() -> void:
 	
 	player = GameData.current_battle.real_player
 	GameData.current_battle.current_players_turn = player 
+	
+	if player.will_be_assassinated:
+		GameEvents.requested_new_in_battle_notification.emit(player.player_name, null, 'was assassinated and skips thier turn', '')
+		is_turn_ended = true
+		return
+
+	if player.will_be_robbed:
+		GameEvents.requested_player_rob_player.emit(GameData.current_battle.opponent_player, player)
+
 	player.can_play_district_card = true
 	player.can_use_character_ability = true
 	player.character_avatar_visible = true
 	player.is_picking_action = true
-	
+
+
 	await get_tree().create_timer(3).timeout
 	
 	GameEvents.player_ready_to_choose_action.emit()
 
 
 func exit() -> void:
-	for connection in get_incoming_connections():
-		disconnect(connection.signal.get_name(), connection.callable)
-	GameData.current_battle.current_players_turn.has_taken_turn = true
+	# Loop through all signals defined in GameEvents
+	for signal_info in GameEvents.get_signal_list():
+		var signal_name = signal_info.name
+		# Check if this signal is connected to any method in this script
+		for method in self.get_method_list():
+			var method_name = method.name
+			if GameEvents.is_connected(signal_name, Callable(self, method_name)):
+				GameEvents.disconnect(signal_name, Callable(self, method_name))
+	GameData.current_battle.real_player.has_taken_turn = true
 
 
 func process_frame(_delta : float) -> State:

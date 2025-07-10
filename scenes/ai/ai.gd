@@ -104,7 +104,7 @@ func choose_character_intermediate():
 				score += human_gold * 0.7
 				if human_gold > 3:
 					score += 4
-			"Magician", "Wizard":
+			"Magician":
 				if ai_hand < 2:
 					score += 8
 				if human_hand > 3:
@@ -272,7 +272,7 @@ func choose_character_advanced():
 				if human_gold > ai_gold:
 					score += 2
 				score += human_hand_high_cost * 1.5
-			"Magician", "Wizard":
+			"Magician":
 				if ai_hand.size() < 2:
 					score += 10
 				if human_hand.size() > 3:
