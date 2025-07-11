@@ -27,9 +27,9 @@ func update_character_avatars() -> void:
 
 
 func set_ability_avatar(real_player : Player, opponent : Player) -> void:
-	if real_player.character_avatar_visible:
+	if real_player.character_avatar_visible and real_player.current_character_card:
 		%PlayerAbilityAvatar.texture = real_player.current_character_card.small_avatar
-	if opponent.character_avatar_visible:
+	if opponent.character_avatar_visible and opponent.current_character_card:
 		%OpponentAbilityAvatar.texture = opponent.current_character_card.small_avatar
 
 

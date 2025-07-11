@@ -58,17 +58,18 @@ func _on_done_drawing_available_character_cards() -> void:
 		if child is CharacterCard2D:
 			character_choices.append(child.data)
 	
-	print('here ', character_choices)
 	GameEvents.character_choices_provided.emit(character_choices)
 
 
 func _on_starting_select_character_state(number_of_cards : int) -> void:
+	#GameData.current_battle.character_cards = GameData.current_battle.original_character_cards.duplicate()
 	for child in get_children():
 		if child is CharacterCard2D:
 			child.queue_free()
 			
 	$Button.hide()
 	
+	character_choices = []
 	known_excluded_characters = []
 	
 	if GameData.current_battle.real_player.is_king:
@@ -81,6 +82,8 @@ func _on_starting_select_character_state(number_of_cards : int) -> void:
 
 
 func _on_starting_excluded_characters_state() -> void:
+	print('starting exclude characters in handler')
+	print(GameData.current_battle.character_cards.size())
 	current_state = HandlerState.Excluding
 
 

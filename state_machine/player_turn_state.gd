@@ -16,6 +16,8 @@ func enter() -> void:
 	GameEvents.started_player_turn_state.emit()
 	GameEvents.player_picked_district_card_to_keep.connect(_on_player_picked_district_card_to_keep)
 	
+	is_turn_ended = false
+
 	player = GameData.current_battle.real_player
 	GameData.current_battle.current_players_turn = player 
 	
@@ -27,6 +29,9 @@ func enter() -> void:
 	if player.will_be_robbed:
 		GameEvents.requested_player_rob_player.emit(GameData.current_battle.opponent_player, player)
 
+	player.has_taken_turn = false
+	player.will_be_assassinated = false
+	player.will_be_robbed = false
 	player.can_play_district_card = true
 	player.can_use_character_ability = true
 	player.character_avatar_visible = true

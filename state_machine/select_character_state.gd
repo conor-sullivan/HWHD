@@ -12,7 +12,9 @@ var original_character_choices : Array[CharacterData]
 func enter() -> void:
 	print("select character state")
 	
+	character_selection_done = false
 	character_choices = []
+	original_character_choices = []
 	
 	GameEvents.character_choices_provided.connect(_on_character_choices_provided)
 	GameEvents.players_character_card_selected.connect(_on_players_character_card_selected)

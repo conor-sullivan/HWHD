@@ -57,7 +57,8 @@ end_of_round_state = NodePath("../EndOfRound")
 [node name="Timer" type="Timer" parent="StateMachine/OpponentTurn"]
 wait_time = 2.0
 
-[node name="EndOfRound" type="Node" parent="StateMachine"]
+[node name="EndOfRound" type="Node" parent="StateMachine" node_paths=PackedStringArray("exclude_characters_state")]
 script = ExtResource("18_ou6is")
+exclude_characters_state = NodePath("../ExcludeCharacters")
 
 [connection signal="timeout" from="StateMachine/OpponentTurn/Timer" to="StateMachine/OpponentTurn" method="_on_timer_timeout"]

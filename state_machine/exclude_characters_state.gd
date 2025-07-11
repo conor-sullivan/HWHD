@@ -11,6 +11,9 @@ func enter() -> void:
 	GameEvents.accepted_character_cards.connect(_on_accepted_character_cards)
 	GameEvents.starting_excluded_characters_state.emit()
 	GameEvents.requested_show_in_battle_character_card_handler_overlay.emit()
+
+	excluded_cards_accepted = false
+
 	draw_excluded_character_cards()
 
 

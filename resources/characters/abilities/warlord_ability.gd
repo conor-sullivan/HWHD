@@ -10,6 +10,7 @@ func player_do_ability() -> void:
 
 
 func opponent_do_ability() -> void:
+	GameEvents.warlord_ability_activated.emit()
 	gain_gold_for_districts()
 	update_player_data()
 	setup_ai()

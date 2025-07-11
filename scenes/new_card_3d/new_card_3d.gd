@@ -145,6 +145,8 @@ func _on_popup_timer_timeout() -> void:
 
 
 func _on_warlord_ability_activated() -> void:
+	is_targetable_by_warlord = false
+
 	if not player_owner:
 		return
 	if not is_in_play:
@@ -156,8 +158,6 @@ func _on_warlord_ability_activated() -> void:
 
 	if GameData.current_battle.current_players_turn.gold_count >= (cost - 1):
 		is_targetable_by_warlord = true
-	else:
-		is_targetable_by_warlord = false
 
 	if is_targetable_by_warlord:
 		%Shader.show()

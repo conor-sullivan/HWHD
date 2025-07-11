@@ -20,6 +20,12 @@ func enter() -> void:
 #	GameEvents.opponent_deck_cards_ready_for_gain_card_action.connect(_on_opponent_deck_cards_ready_for_gain_card_action)
 	GameEvents.started_player_turn_state.emit()
 	
+	is_turn_ended = false
+	has_picked_action = false
+	has_used_ability = false
+	has_played_district_card = false
+	can_play_district_card = false
+
 	player = GameData.current_battle.opponent_player
 
 	if player.will_be_assassinated:
@@ -32,6 +38,7 @@ func enter() -> void:
 		GameEvents.requested_player_rob_player.emit(GameData.current_battle.real_player, player)
 
 	$Timer.start()
+	player.has_taken_turn = false
 	player.can_play_district_card = true
 	player.can_use_character_ability = true
 	player.character_avatar_visible = true
@@ -48,6 +55,8 @@ func exit() -> void:
 			var method_name = method.name
 			if GameEvents.is_connected(signal_name, Callable(self, method_name)):
 				GameEvents.disconnect(signal_name, Callable(self, method_name))
+
+	GameData.current_battle.opponent_player.has_taken_turn = true
 
 
 func setup_ai() -> void:

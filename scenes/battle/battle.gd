@@ -2,7 +2,7 @@ class_name Battle
 extends Node3D
 
 
-@export var duplicate_cards = 1
+@export var duplicate_cards = 2
 
 @onready var player_deck_collection = $PlayerDragController/DeckCardCollection
 @onready var player_hand_collection = $PlayerDragController/HandCardCollection
@@ -31,12 +31,12 @@ func _ready() -> void:
 	var character_deck : Array[NewCard3D]
 	
 	for card_id in district_resources:
-#		for duplicate_card in duplicate_cards:
-		GameData.player_current_district_deck_build.push_back(card_id)
-		var player_card = instantiate_district_card(card_id.district_name)
-		player_card.is_real_players = true
-		player_deck.push_back(player_card)
-		opponent_deck.push_back(instantiate_district_card(card_id.district_name))
+		for duplicate_card in duplicate_cards:
+			GameData.player_current_district_deck_build.push_back(card_id)
+			var player_card = instantiate_district_card(card_id.district_name)
+			player_card.is_real_players = true
+			player_deck.push_back(player_card)
+			opponent_deck.push_back(instantiate_district_card(card_id.district_name))
 
 	player_deck.shuffle()
 	opponent_deck.shuffle()
@@ -93,6 +93,7 @@ func _on_requested_opponent_play_card_from_hand(card_data : DistrictData) -> voi
 			opponent_hand_collection.remove_card(card_index)
 			opponent_in_play_card_collection.append_card(c)
 			c.face_down = false
+			break
 
 
 func _on_requested_player_discard_cards(player : Player, cards_to_discard : Array[DistrictData]) -> void:
@@ -200,7 +201,7 @@ func _on_accept_button_pressed() -> void:
 func _on_district_card_destroyed_by_warlord(card_owner : Player, card : DistrictData) -> void:
 	var instance = instantiate_district_card(card.district_name)
 	(instance as NewCard3D).face_down = false
-	instance.global_position = Vector3.ZERO
+#	instance.global_position = Vector3.ZERO
 	(instance as NewCard3D).player_owner = GameData.current_battle.opponent_player
 	if card_owner.is_computer:
 		opponent_hand_collection.append_card(instance)
