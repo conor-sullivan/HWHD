@@ -24,6 +24,7 @@ func process_frame(_delta : float) -> State:
 func reset_data() -> void:
 	for player in GameData.current_battle.players:
 		player.current_character_card = null
+		player.district_cards_targetable_by_warlord_count = true
 		player.has_taken_turn = false
 		player.has_been_assassinated = false
 		player.has_been_robbed = false

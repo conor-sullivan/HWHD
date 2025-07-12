@@ -94,7 +94,7 @@ func _on_player_picked_district_card_to_keep(_player : Player, card_to_keep : Di
 	
 	GameEvents.requested_append_card_in_player_hand.emit(player, _card_to_keep)
 	_card_to_keep.global_position = Vector3(0, 0, -1)
-	GameData.current_battle.real_player.district_cards_in_hand += [_card_to_keep.resource]
+#	GameData.current_battle.real_player.district_cards_in_hand += [_card_to_keep.resource]
 	
 
 

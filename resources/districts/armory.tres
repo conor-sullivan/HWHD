@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_phqnc")
 district_name = "Armory"
-color = "Purple"
+color = "Red"
 cost = 4
 sprite_texture = ExtResource("4_aigjp")
 front_material = ExtResource("2_aigjp")
@@ -17,4 +17,5 @@ is_purple_foil = true
 ability_text = "Allows the Warlord to destory a district for 1 less."
 is_in_deck = false
 is_visible = false
+is_protected = false
 metadata/_custom_type_script = "uid://bbdpyr8inju5f"

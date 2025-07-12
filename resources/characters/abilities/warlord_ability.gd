@@ -10,13 +10,14 @@ func player_do_ability() -> void:
 
 
 func opponent_do_ability() -> void:
-	GameEvents.warlord_ability_activated.emit()
 	gain_gold_for_districts()
 	update_player_data()
+	GameEvents.warlord_ability_activated.emit()
 	setup_ai()
 
 	var district_to_destroy = ai.choose_warlord_target()
 	if district_to_destroy:
+		print('opponent warlord ability chooses to destroy ', district_to_destroy.district_name)
 		destroy_district(GameData.current_battle.opponent_player, district_to_destroy)
 	else:
 		choose_no_target()
@@ -67,9 +68,10 @@ func setup_ai() -> void:
 
 
 func destroy_district(_warlord_player : Player, _card : DistrictData) -> void:
-	GameEvents.player_spent_gold.emit(_warlord_player, _card.cost)
+	var ability_cost = _card.cost - 1
+	GameEvents.player_spent_gold.emit(_warlord_player, ability_cost)
 	GameEvents.warlord_ability_done.emit()
-	_warlord_player.gold_count -= _card.cost
+	_warlord_player.gold_count -= ability_cost
 	GameEvents.requested_district_destroyed_by_opponent.emit(_card)
 	GameEvents.requested_new_in_battle_notification.emit(_warlord_player.player_name, null, ' destroyed ', _card.district_name)
 

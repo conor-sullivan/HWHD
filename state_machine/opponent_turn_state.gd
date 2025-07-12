@@ -197,7 +197,7 @@ func _on_opponent_deck_cards_ready_for_gain_card_action(cards : Array[DistrictDa
 	
 	GameEvents.requested_append_card_in_player_hand.emit(GameData.current_battle.opponent_player, _card_to_keep)
 	_card_to_keep.global_position = Vector3(0, 0, -1)
-	GameData.current_battle.opponent_player.district_cards_in_hand += [_card_to_keep.resource]
+#	GameData.current_battle.opponent_player.district_cards_in_hand += [_card_to_keep.resource]
 
 
 	var _card_to_discard = preload("res://scenes/new_card_3d/new_card_3d.tscn").instantiate() as NewCard3D
