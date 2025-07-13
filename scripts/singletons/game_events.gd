@@ -2,6 +2,9 @@ extends Node
 
 
 @warning_ignore("unused_signal")
+signal player_turn_ended
+
+@warning_ignore("unused_signal")
 signal requested_player_rob_player(robbing_player : Player, robbed_player : Player)
 
 @warning_ignore("unused_signal")

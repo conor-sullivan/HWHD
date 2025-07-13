@@ -1,6 +1,5 @@
 class_name InBattleCharacterTargetPicker extends Control
 
-
 func _ready() -> void:
 	GameEvents.requested_show_target_picker.connect(_on_requested_show_target_picker)
 	GameEvents.player_picked_target_character.connect(_on_player_picked_target_character)
@@ -14,7 +13,7 @@ var choices : Array[CharacterData] :
 		for c in choices:
 			if c.play_order_number == 1:
 				choices.erase(c)
-
+		
 		%LeftCharacterCard.data = choices[0]
 		%LeftCharacterCard.show_front()
 		%LeftCharacterCard.reset_tween()
@@ -39,6 +38,9 @@ var choices : Array[CharacterData] :
 
 
 func _on_requested_show_target_picker():
+	%LeftCharacterCard.disable_collision()
+	%CenterCharacterCard.disable_collision()
+	%RightCharacterCard.disable_collision()
 	%Right.hide()
 	%Center.hide()
 	choices = GameData.current_battle.real_player.possible_character_targets.duplicate()

@@ -199,6 +199,8 @@ func _on_accept_button_pressed() -> void:
 
 
 func _on_district_card_destroyed_by_warlord(card_owner : Player, card : DistrictData) -> void:
+	if not card_owner:
+		return
 	var instance = instantiate_district_card(card.district_name)
 	(instance as NewCard3D).face_down = false
 #	instance.global_position = Vector3.ZERO

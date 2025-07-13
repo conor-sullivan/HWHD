@@ -57,12 +57,17 @@ var back_material : Material:
 
 
 func _ready() -> void:
+	GameEvents.player_turn_ended.connect(_on_player_turn_ended)
 	GameEvents.requested_district_destroyed_by_opponent.connect(_on_requested_district_destroyed_by_opponent)
 	GameEvents.warlord_ability_done.connect(_on_warlord_ability_done)
 	GameEvents.player_data_changed.connect(_on_player_data_changed)
 	GameEvents.started_player_turn_state.connect(_on_started_player_turn_state)
 	GameEvents.starting_excluded_characters_state.connect(_on_starting_excluded_characters_state)
 	GameEvents.warlord_ability_activated.connect(_on_warlord_ability_activated)
+
+
+func _on_player_turn_ended() -> void:
+	$%Shader.hide()
 
 
 func player_can_afford() -> bool:
@@ -187,7 +192,12 @@ func _on_warlord_ability_done() -> void:
 
 
 func _on_requested_district_destroyed_by_opponent(_card : DistrictData) -> void:
+	if not is_targetable_by_warlord:
+		return
+	if _card != resource:
+		return
 	disable_collision()
+	print('ready to destroy', resource)
 #	GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
 	%ExplosionParticles.show()
 	%ExplosionParticles.emitting = true

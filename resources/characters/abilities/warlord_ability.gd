@@ -70,9 +70,9 @@ func setup_ai() -> void:
 func destroy_district(_warlord_player : Player, _card : DistrictData) -> void:
 	var ability_cost = _card.cost - 1
 	GameEvents.player_spent_gold.emit(_warlord_player, ability_cost)
-	GameEvents.warlord_ability_done.emit()
 	_warlord_player.gold_count -= ability_cost
 	GameEvents.requested_district_destroyed_by_opponent.emit(_card)
+	GameEvents.warlord_ability_done.emit()
 	GameEvents.requested_new_in_battle_notification.emit(_warlord_player.player_name, null, ' destroyed ', _card.district_name)
 
 

@@ -23,6 +23,10 @@ func enable_collision() -> void:
 	$Panel/Area2D/CollisionShape2D.disabled = false
 
 
+func disable_collision() -> void:
+	$Panel/Area2D/CollisionShape2D.disabled = true
+
+
 func show_front() -> void:
 	is_face_up = true
 	%FrontSprite.show()
