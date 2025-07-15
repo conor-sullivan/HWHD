@@ -88,16 +88,18 @@ var district_cards_in_play : Array[DistrictData] :
 	set(cards):
 		district_cards_in_play = cards
 		district_cards_in_play_count = district_cards_in_play.size()
+		district_cards_in_hand_count = district_cards_in_hand.size()
 		GameEvents.player_data_changed.emit() 
 var district_cards_in_hand_count : int = 0 : 
 	set(value):
-		print('new ', value)
+		print('hand : previous, new', district_cards_in_hand_count, value)
 		var previous_count = district_cards_in_hand_count
+		district_cards_in_hand_count = value
 		GameEvents.requested_new_in_battle_notification.emit(player_name, null, 'gained ' + str(value - previous_count) + ' cards', '')
 var district_cards_in_hand : Array[DistrictData] :
 	set(cards):
 		district_cards_in_hand = cards
-		district_cards_in_hand_count += cards.size()
+		district_cards_in_hand_count = cards.size()
 		GameEvents.player_data_changed.emit()
 var unselected_characters : Array[CharacterData]
 var known_excluded_characters : Array[CharacterData] : 

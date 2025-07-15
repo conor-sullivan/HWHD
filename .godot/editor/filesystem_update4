@@ -66,3 +66,4 @@ res://scenes/character_card_2d/character_card_2d.tscn
 res://scenes/new_card_3d/new_card_3d.gd
 res://resources/district_cards/bell_tower.tres
 res://state_machine/player_turn_state.gd
+res://scripts/player.gd
