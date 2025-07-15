@@ -67,7 +67,7 @@ func _ready() -> void:
 
 
 func _on_player_turn_ended() -> void:
-	$%Shader.hide()
+	%Shader.hide()
 
 
 func player_can_afford() -> bool:

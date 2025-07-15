@@ -145,6 +145,7 @@ func _on_player_ability_avatar_gui_input(event: InputEvent) -> void:
 				var ability = load(character.ability_function_path).new()
 				if ability:
 					ability.player_do_ability()
+					print('doing ability')
 
 
 func _on_end_turn_gui_input(event: InputEvent) -> void:

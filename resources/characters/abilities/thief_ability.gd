@@ -1,24 +1,21 @@
 class_name ThiefAbility extends Ability
 
 
-var is_signal_connected : bool = false
-
-
 func player_do_ability() -> void:
 	GameEvents.requested_show_target_picker.emit()
-	if not is_signal_connected:
-		GameEvents.player_picked_target_character.connect(
+	GameEvents.player_picked_target_character.connect(
 
-		func(_target : CharacterData) -> void:
-			GameEvents.requested_new_in_battle_notification.emit(GameData.current_battle.real_player.player_name, null, ' chooses to rob ' , _target.character_name)
-			GameData.current_battle.real_player.will_rob_character =_target
-			GameData.current_battle.real_player.can_use_character_ability = false
+	func(_target : CharacterData) -> void:
+		if GameData.current_battle.real_player.current_character_card.character_name != 'Thief':
+			return
+		print('player do ability - thief')
+		GameEvents.requested_new_in_battle_notification.emit(GameData.current_battle.real_player.player_name, null, ' chooses to rob ' , _target.character_name)
+		GameData.current_battle.real_player.will_rob_character =_target
+		GameData.current_battle.real_player.can_use_character_ability = false
 
-			is_signal_connected = true
-
-			if GameData.current_battle.opponent_player.current_character_card == _target:
-				GameData.current_battle.opponent_player.will_be_robbed = true
-			)
+		if GameData.current_battle.opponent_player.current_character_card == _target:
+			GameData.current_battle.opponent_player.will_be_robbed = true
+		)
 
 	
 

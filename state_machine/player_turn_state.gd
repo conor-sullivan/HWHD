@@ -53,6 +53,7 @@ func exit() -> void:
 			if GameEvents.is_connected(signal_name, Callable(self, method_name)):
 				GameEvents.disconnect(signal_name, Callable(self, method_name))
 	GameData.current_battle.real_player.has_taken_turn = true
+	GameData.current_battle.real_player.can_play_district_card = false
 
 
 func process_frame(_delta : float) -> State:
