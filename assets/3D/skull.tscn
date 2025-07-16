@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5icbvohav8i2"]
+
+[ext_resource type="PackedScene" uid="uid://bxdubijp5r22c" path="res://assets/3D/skull_candle.glb" id="1_pqmfl"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_pqmfl")]
+
+[node name="Skull_LP" parent="Sketchfab_model/Collada visual scene group" index="0"]
+transform = Transform3D(0.358368, -0.933581, -4.08081e-08, 0, -4.37114e-08, 1, -0.933581, -0.358368, -1.56648e-08, 0.67917, 3.24084, -0.185173)
+
+[node name="defaultMaterial" parent="Sketchfab_model/Collada visual scene group/Skull_LP" index="0"]
+transform = Transform3D(0.0574769, -0.998347, 5.0602e-08, 0.998347, 0.0574769, 3.22672e-08, -3.51223e-08, 4.86637e-08, 1, 0, 0, 0)

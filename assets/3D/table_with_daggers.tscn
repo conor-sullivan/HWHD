@@ -4,17 +4,23 @@
 
 [node name="Sketchfab_Scene" instance=ExtResource("1_qppl3")]
 
+[node name="defaultMaterial" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="0"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 1.185)
+
 [node name="defaultMaterial2" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="1"]
 visible = false
 
 [node name="defaultMaterial3" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.87324, -0.0679193, 2.96885e-09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.023, -0.068, 0)
 
 [node name="defaultMaterial4" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="3"]
 visible = false
 
 [node name="defaultMaterial5" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="4"]
 visible = false
+
+[node name="defaultMaterial6" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68, 0.16, -1.025)
 
 [node name="defaultMaterial7" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="6"]
 visible = false
