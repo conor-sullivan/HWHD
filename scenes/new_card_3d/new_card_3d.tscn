@@ -1,39 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://blacfif807885"]
+[gd_scene load_steps=8 format=3 uid="uid://blacfif807885"]
 
 [ext_resource type="PackedScene" uid="uid://dxpc2iac0hjpw" path="res://addons/card_3d/scenes/card_3d.tscn" id="1_h5pcq"]
 [ext_resource type="Script" uid="uid://dyxukp62ssst2" path="res://scenes/new_card_3d/new_card_3d.gd" id="2_0qyik"]
 [ext_resource type="Material" uid="uid://cdqx5tjuprjss" path="res://shaders/3d_card_aura_material.tres" id="3_0qyik"]
 [ext_resource type="Material" uid="uid://cersyaiqt0bgl" path="res://resources/district_cards/armoury.tres" id="4_vyxdp"]
+[ext_resource type="PackedScene" uid="uid://ckl0uqd3uf4fb" path="res://scenes/vfx_explosion/vfx_explosion.tscn" id="6_l2ec8"]
 [ext_resource type="Texture2D" uid="uid://bb1d5upu2qyq2" path="res://assets/sprites/district_value_back.png" id="6_vyxdp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_o3bng"]
 size = Vector2(2.5, 3.5)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0qyik"]
-lifetime_randomness = 0.43
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 1.0
-emission_ring_radius = 1.0
-emission_ring_inner_radius = 0.0
-emission_ring_cone_angle = 90.0
-angle_min = -200.5
-angle_max = 234.0
-inherit_velocity_ratio = 0.366
-gravity = Vector3(0, 0, 10.165)
-radial_accel_min = -22.31
-radial_accel_max = 100.0
-tangential_accel_min = 17.72
-tangential_accel_max = 27.85
-scale_min = 0.1
-scale_max = 0.5
-turbulence_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vyxdp"]
-albedo_color = Color(0.994577, 2.55093e-06, 9.62615e-07, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_l2ec8"]
-material = SubResource("StandardMaterial3D_vyxdp")
 
 [node name="NewCard3D" instance=ExtResource("1_h5pcq")]
 script = ExtResource("2_0qyik")
@@ -73,16 +48,7 @@ font_size = 150
 [node name="PopupTimer" type="Timer" parent="." index="2"]
 wait_time = 0.5
 
-[node name="ExplosionParticles" type="GPUParticles3D" parent="." index="3"]
+[node name="ExplosionParticles" parent="." index="3" instance=ExtResource("6_l2ec8")]
 unique_name_in_owner = true
-visible = false
-emitting = false
-amount = 200
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_0qyik")
-draw_pass_1 = SubResource("SphereMesh_l2ec8")
 
 [connection signal="timeout" from="PopupTimer" to="." method="_on_popup_timer_timeout"]

@@ -177,9 +177,8 @@ func _on_static_body_3d_input_event(_camera, event, _event_position, _normal, _s
 			if is_targetable_by_warlord:
 				disable_collision()
 				GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
-				%ExplosionParticles.show()
-				%ExplosionParticles.emitting = true
-				await %ExplosionParticles.finished
+				%ExplosionParticles.start()
+				await get_tree().create_timer(0.5).timeout
 				GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
 				call_deferred("queue_free")
 		elif button == 1 and pressed == false:

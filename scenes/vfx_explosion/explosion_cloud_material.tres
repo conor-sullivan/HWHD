@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ba44moia4uwtt"]
+
+[ext_resource type="Shader" uid="uid://b1vjwgybtgfms" path="res://scenes/vfx_explosion/vfx_explosion_cloud_shader_visual.tres" id="1_nseh6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nseh6")
+shader_parameter/bright_color = Color(0.818669, 0.209574, 0, 1)

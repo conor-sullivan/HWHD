@@ -1,7 +1,11 @@
+Decal
+GPUParticles3D
+OmniLight3D
+AnimationPlayer
+MeshInstance3D
 Timer
 Node
 Control
-AnimationPlayer
 Sprite2D
 Label
 TextureRect
@@ -9,6 +13,3 @@ HBoxContainer
 Button
 VBoxContainer
 CanvasLayer
-GPUParticles3D
-Polygon2D
-Sprite3D
