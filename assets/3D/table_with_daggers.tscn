@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvrxax5xj8sk1"]
+
+[ext_resource type="PackedScene" uid="uid://denx8wlplyopx" path="res://assets/3D/set_of_daggers.glb" id="1_qppl3"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_qppl3")]
+
+[node name="defaultMaterial2" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="1"]
+visible = false
+
+[node name="defaultMaterial3" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.87324, -0.0679193, 2.96885e-09)
+
+[node name="defaultMaterial4" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="3"]
+visible = false
+
+[node name="defaultMaterial5" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="4"]
+visible = false
+
+[node name="defaultMaterial7" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="6"]
+visible = false
+
+[node name="defaultMaterial8" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="7"]
+visible = false
+
+[node name="defaultMaterial9" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="8"]
+visible = false
+
+[node name="defaultMaterial10" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="9"]
+visible = false
+
+[node name="defaultMaterial11" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="10"]
+visible = false
+
+[node name="defaultMaterial12" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="11"]
+visible = false
+
+[node name="defaultMaterial13" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="12"]
+visible = false
+
+[node name="defaultMaterial14" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="13"]
+visible = false

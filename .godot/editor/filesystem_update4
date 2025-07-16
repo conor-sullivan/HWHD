@@ -52,4 +52,7 @@ res://scenes/vfx_explosion/explosion_cloud_material.tres
 res://scenes/vfx_explosion/vfx_explosion_streaks_shader_visual.tres
 res://scenes/vfx_explosion/vfx_explosion.tscn
 res://scenes/new_card_3d/new_card_3d.tscn
-res://resources/district_cards/bell_tower.tres
+res://scenes/battle/battle.tscn
+res://assets/3D/building_brutalist_dualcorner/without_antennas.tscn
+res://assets/3D/table_with_daggers.tscn
+res://scenes/hud/hud.tscn

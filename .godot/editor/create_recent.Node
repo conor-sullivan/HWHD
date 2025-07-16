@@ -1,8 +1,8 @@
+MeshInstance3D
 Decal
 GPUParticles3D
 OmniLight3D
 AnimationPlayer
-MeshInstance3D
 Timer
 Node
 Control
@@ -12,4 +12,3 @@ TextureRect
 HBoxContainer
 Button
 VBoxContainer
-CanvasLayer
