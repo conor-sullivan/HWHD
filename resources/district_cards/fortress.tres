@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://dvnwjykwrmjl3" path="res://assets/sprites/Fortress.png" id="1_4fdgw"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_4fdgw")
 texture_filter = 0

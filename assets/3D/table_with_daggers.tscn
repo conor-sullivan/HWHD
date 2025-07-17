@@ -20,7 +20,7 @@ visible = false
 visible = false
 
 [node name="defaultMaterial6" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68, 0.16, -1.025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.645, 0.05, -0.715)
 
 [node name="defaultMaterial7" parent="Sketchfab_model/Collada visual scene group/defaultobject" index="6"]
 visible = false

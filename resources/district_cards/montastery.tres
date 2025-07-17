@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://hf758qlt4kg" path="res://assets/sprites/Montastery.png" id="1_yvjq6"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_yvjq6")
 texture_filter = 0

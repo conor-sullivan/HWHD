@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://bv1ct0yhwif0j" path="res://assets/sprites/Cathedral.png" id="1_gncux"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_gncux")
 texture_filter = 0

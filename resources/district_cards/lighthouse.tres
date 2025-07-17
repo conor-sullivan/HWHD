@@ -3,5 +3,4 @@
 [ext_resource type="Texture2D" uid="uid://ou5j24vfa16i" path="res://assets/sprites/Lighthouse.png" id="1_ontlo"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_ontlo")

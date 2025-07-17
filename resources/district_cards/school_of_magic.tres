@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://bhbqhnr2k1t6c" path="res://assets/sprites/School of Magic.png" id="1_cpitj"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_cpitj")
 texture_filter = 0

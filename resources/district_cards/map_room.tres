@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://bwj3dxp7oy7yj" path="res://assets/sprites/Map Room.png" id="1_0ev0x"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_0ev0x")
 texture_filter = 0

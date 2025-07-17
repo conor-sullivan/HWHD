@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://susosypmb4fk" path="res://assets/sprites/Temple.png" id="1_8cne6"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_8cne6")
 texture_filter = 0

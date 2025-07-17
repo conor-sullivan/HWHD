@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://cd7i71pfkjn0u" path="res://assets/sprites/Hospital.png" id="1_dibvf"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_dibvf")
 texture_filter = 0

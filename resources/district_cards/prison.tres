@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://4dnm3b3awgdf" path="res://assets/sprites/Prison.png" id="1_g8r5t"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_g8r5t")
 texture_filter = 0

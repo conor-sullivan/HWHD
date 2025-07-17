@@ -199,7 +199,6 @@ func _on_requested_district_destroyed_by_opponent(_card : DistrictData) -> void:
 	print('ready to destroy', resource)
 #	GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
 	%ExplosionParticles.show()
-	%ExplosionParticles.emitting = true
-	await %ExplosionParticles.finished
+	await get_tree().create_timer(0.5).timeout
 	GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
 	call_deferred("queue_free")

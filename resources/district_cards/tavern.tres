@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://iaee06uv04a7" path="res://assets/sprites/Tavern.png" id="1_b0dj6"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_b0dj6")
 texture_filter = 0

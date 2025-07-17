@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxjnl7e1y15lt"]
+
+[ext_resource type="PackedScene" uid="uid://bt7qc1p282fs8" path="res://assets/3D/skeleton_key.glb" id="1_hj72u"]
+
+[node name="SkeletonKey" instance=ExtResource("1_hj72u")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(0.406737, 0.913545, 0, 3.99323e-08, -1.7779e-08, 1, 0.913545, -0.406737, -4.37114e-08, 0, 0, 0)

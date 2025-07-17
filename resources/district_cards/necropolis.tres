@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://bsb7i363w5pg2" path="res://assets/sprites/Necropolis.png" id="1_2qb1a"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_2qb1a")
 texture_filter = 0

@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://64s5hbojcd5v" path="res://assets/sprites/Church.png" id="1_ampx4"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_ampx4")
 texture_filter = 0

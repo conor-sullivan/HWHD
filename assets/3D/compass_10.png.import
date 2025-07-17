@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bsyprxmpbucgn"
+path.s3tc="res://.godot/imported/compass_10.png-39c6959895ff79f2526ac4c287d46fb7.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "fc30141e9eb8b3386fcf7ba011de2b63"
+}
+
+[deps]
+
+source_file="res://assets/3D/compass_10.png"
+dest_files=["res://.godot/imported/compass_10.png-39c6959895ff79f2526ac4c287d46fb7.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://assets/3D/compass_11.jpg"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

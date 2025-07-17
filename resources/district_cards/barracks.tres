@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://cm6bffjmq4u4t" path="res://assets/sprites/Barracks.png" id="1_elna1"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_elna1")
 texture_filter = 0

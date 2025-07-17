@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://uuj088cw15fb" path="res://assets/sprites/Keep.png" id="1_51rip"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_51rip")
 texture_filter = 0

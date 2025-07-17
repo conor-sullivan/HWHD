@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://c4dx3egc0hdg2" path="res://assets/sprites/Castle.png" id="1_qhkv3"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_qhkv3")
 texture_filter = 0

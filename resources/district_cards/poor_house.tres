@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://c0e1pih22e5wy" path="res://assets/sprites/Poor House.png" id="1_dar4h"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_dar4h")
 texture_filter = 0

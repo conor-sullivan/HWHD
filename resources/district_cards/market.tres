@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://bx2qgqc33scqo" path="res://assets/sprites/Market.png" id="1_5vo5x"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_5vo5x")
 texture_filter = 0

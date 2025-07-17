@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://d0rm6fd7vh74m" path="res://assets/sprites/Bell Tower.png" id="1_edi6e"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_edi6e")
 texture_filter = 0

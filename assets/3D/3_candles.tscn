@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crlue4tly67v7"]
+
+[ext_resource type="PackedScene" uid="uid://ey43rq7ewbim" path="res://assets/3D/candles.glb" id="1_hf8lq"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_hf8lq")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(-0.382684, -0.92388, 0, -4.03841e-08, 1.67276e-08, 1, -0.92388, 0.382684, -4.37114e-08, 0, 0, 0)
