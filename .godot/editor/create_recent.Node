@@ -1,8 +1,8 @@
+AnimationPlayer
 MeshInstance3D
 Decal
 GPUParticles3D
 OmniLight3D
-AnimationPlayer
 Timer
 Node
 Control

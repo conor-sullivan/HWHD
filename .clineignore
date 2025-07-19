@@ -1,0 +1,5 @@
+# include all gdscript files
+!**/*.gd
+
+# ignore all other files
+**

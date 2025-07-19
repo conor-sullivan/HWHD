@@ -6,6 +6,7 @@ func _ready() -> void:
 
 
 func item_popup(_slot, card_data : CharacterData) -> void:
+	if not card_data: return
 	print('pop', card_data.character_name)
 	$CanvasLayer/ItemPopup/Title.text = card_data.character_name
 	$CanvasLayer/ItemPopup/Description.text = card_data.special_ability_text
