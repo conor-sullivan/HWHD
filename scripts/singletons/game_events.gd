@@ -1,5 +1,7 @@
 extends Node
 
+@warning_ignore("unused_signal")
+signal requested_camera_shake(strength : float, duration : float)
 
 @warning_ignore("unused_signal")
 signal player_turn_ended

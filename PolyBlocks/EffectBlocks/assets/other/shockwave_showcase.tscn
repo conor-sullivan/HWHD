@@ -3,11 +3,11 @@
 [ext_resource type="Material" uid="uid://cgmjb14xh3alj" path="res://PolyBlocks/EffectBlocks/source_files/materials/shockwave.material" id="1_ojmr8"]
 [ext_resource type="Texture2D" uid="uid://10fvhd41hy3r" path="res://PolyBlocks/EffectBlocks/source_files/textures/checkerboard.png" id="2_ygjei"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4ng1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxep0"]
 albedo_texture = ExtResource("2_ygjei")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_15hae"]
-material = SubResource("StandardMaterial3D_p4ng1")
+material = SubResource("StandardMaterial3D_fxep0")
 
 [sub_resource type="Curve" id="Curve_wcuhi"]
 _data = [Vector2(0, 0), 0.0, 0.226867, 0, 0, Vector2(1, 1), 1.39194, 0.0, 0, 0]
@@ -32,7 +32,6 @@ ring_segments = 3
 
 [node name="checkerboard" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-visible = false
 mesh = SubResource("PlaneMesh_15hae")
 
 [node name="Shockwave" type="GPUParticles3D" parent="."]
