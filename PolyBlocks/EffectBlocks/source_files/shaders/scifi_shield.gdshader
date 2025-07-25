@@ -33,12 +33,12 @@ void vertex() {
 void fragment() {
     float height = 1.0;
     float width = 2.0;
-    
+
     vec2 noise_uv = UV * 5.0 + TIME * noise_speed * 0.1;
     vec2 noise_offset = (texture(noise_texture, noise_uv).rg - 0.5) * 2.0 * noise_strength;
-    
+
     vec2 wiggled_uv = UV + noise_offset;
-    
+
     float hex = hex_cells(wiggled_uv, width, height);
     vec3 line_col = clamp(hex_line_color.rgb + 0.2, vec3(0.0), vec3(1.0));
     vec4 final_color = mix(
@@ -46,15 +46,15 @@ void fragment() {
         vec4(line_col, hex_line_color.a),
         float(hex < line_width)
     );
-    
+
     vec3 view_dir = normalize(CAMERA_POSITION_WORLD - world_position);
     vec3 normal = normalize(world_normal);
     float rim_factor = 1.0 - max(dot(view_dir, normal), 0.0);
     rim_factor = pow(rim_factor, rim_power) * rim_intensity;
-    
+
     final_color.rgb += rim_color.rgb * rim_factor;
     final_color.a = max(final_color.a, rim_factor * rim_color.a);
-    
+
     ALBEDO = final_color.rgb;
     ALPHA = final_color.a;
 }

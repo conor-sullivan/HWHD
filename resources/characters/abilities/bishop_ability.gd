@@ -7,6 +7,7 @@ func player_do_ability() -> void:
 	gain_gold_for_districts()
 
 	GameEvents.requested_new_in_battle_notification.emit(GameData.current_battle.real_player.player_name, null, "'s districts cannot be destroyed this round", '')
+	GameEvents.toggle_shield.emit(GameData.current_battle.real_player, true)
 	GameData.current_battle.real_player.can_use_character_ability = false
 
 
@@ -16,6 +17,7 @@ func opponent_do_ability() -> void:
 	gain_gold_for_districts()
 
 	GameEvents.requested_new_in_battle_notification.emit(GameData.current_battle.opponent_player.player_name, null, "'s districts cannot be destroyed this round", '')
+	GameEvents.toggle_shield.emit(GameData.current_battle.opponent_player, true)
 	GameData.current_battle.opponent_player.can_use_character_ability = false
 	GameEvents.done_with_opponent_ability.emit()
 

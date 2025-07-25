@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=65 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="2_fe4ja"]
@@ -39,12 +39,15 @@
 [ext_resource type="Material" uid="uid://dytcu0poeovrw" path="res://shaders/in_play_dropzone_shader_material.tres" id="36_afkbo"]
 [ext_resource type="PackedScene" uid="uid://bypo155gcm3lj" path="res://PolyBlocks/EffectBlocks/assets/other/shockwave.tscn" id="36_mdvv0"]
 [ext_resource type="Texture2D" uid="uid://7tsfrcpr20dk" path="res://assets/sprites/in_play_dropzone_perimeter.png" id="37_8h6bs"]
+[ext_resource type="PackedScene" uid="uid://cy0uk2foyrhgk" path="res://PolyBlocks/EffectBlocks/scenes/other/scifi_shield.tscn" id="39_03xte"]
 [ext_resource type="Script" uid="uid://nuaoeiyylc3j" path="res://addons/card_3d/scenes/opponent_hand_card_collection_3d.gd" id="39_ilhaa"]
+[ext_resource type="Script" uid="uid://rmgy4fuw4j5r" path="res://scripts/player_shield.gd" id="40_e1v6h"]
 [ext_resource type="Script" uid="uid://dgfxoqkfniay1" path="res://addons/card_3d/scenes/opponent_deck.gd" id="40_m7fqn"]
 [ext_resource type="Script" uid="uid://b5lbcohon6nx5" path="res://addons/card_3d/scenes/opponent_in_play_card_collection.gd" id="42_eu6pb"]
 [ext_resource type="Script" uid="uid://dpy5ktgmscey3" path="res://addons/card_3d/scenes/opponent_discard_collection.gd" id="43_eu6pb"]
 [ext_resource type="Script" uid="uid://v6c5meq14gs2" path="res://scenes/in_battle_notification_manager/in_battle_notification_manager.gd" id="43_j021e"]
 [ext_resource type="Script" uid="uid://dj25ml6oq1ppu" path="res://scenes/battle/camera_3d.gd" id="44_lq6ex"]
+[ext_resource type="Script" uid="uid://ctxcwwdslo2ur" path="res://scripts/opponent_shield.gd" id="45_36ceb"]
 [ext_resource type="PackedScene" uid="uid://dxjnl7e1y15lt" path="res://assets/3D/skeleton_key.tscn" id="45_d046s"]
 [ext_resource type="PackedScene" uid="uid://dvrxax5xj8sk1" path="res://assets/3D/table_with_daggers.tscn" id="45_fagrh"]
 [ext_resource type="PackedScene" uid="uid://c5icbvohav8i2" path="res://assets/3D/skull.tscn" id="45_pqmvt"]
@@ -220,7 +223,7 @@ script = ExtResource("12_ueicy")
 card_layout_strategy = SubResource("Resource_n6gaa")
 
 [node name="InPlayCardCollection" parent="PlayerDragController" instance=ExtResource("9_pyfix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.423, -0.47)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.29067, -0.47)
 script = ExtResource("34_dsauo")
 shockwave_scene = ExtResource("36_mdvv0")
 dropzone_collision_shape = SubResource("ConvexPolygonShape3D_v3sqs")
@@ -235,6 +238,11 @@ transform = Transform3D(0.819, 0, 0, 0, 0.811, 0, 0, 0, 1, 0, -2.4574, -0.267111
 visible = false
 material_override = ExtResource("36_afkbo")
 texture = ExtResource("37_8h6bs")
+
+[node name="PlayerShield" parent="PlayerDragController" instance=ExtResource("39_03xte")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -3.64, 1)
+visible = false
+script = ExtResource("40_e1v6h")
 
 [node name="OpponentDragController" type="Node3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0, 0)
@@ -269,6 +277,12 @@ card_layout_strategy = SubResource("Resource_fagrh")
 transform = Transform3D(0.9, 0, 0, 0, -3.93403e-08, -0.9, 0, 0.9, -3.93403e-08, 0.13, 0.064, -0.1)
 visible = false
 skeleton = NodePath("../..")
+
+[node name="OpponentShield" parent="OpponentDragController" instance=ExtResource("39_03xte")]
+transform = Transform3D(-1, 6.60025e-15, 1.50996e-07, 1.50996e-07, 4.37114e-08, 1, 0, 1, -4.37114e-08, -3.84285e-07, -2.545, 1)
+visible = false
+skeleton = NodePath("../../PlayerDragController")
+script = ExtResource("45_36ceb")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, -1.875, 15.385)

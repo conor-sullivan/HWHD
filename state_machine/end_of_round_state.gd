@@ -12,6 +12,7 @@ func enter() -> void:
 	player_data_is_reset = false
 
 	reset_data()
+	reset_shields()
 
 
 func process_frame(_delta : float) -> State:
@@ -42,3 +43,7 @@ func reset_data() -> void:
 	GameEvents.player_data_changed.emit()
 
 	player_data_is_reset = true
+
+func reset_shields() -> void:
+	GameEvents.toggle_shield.emit(GameData.current_battle.real_player, false)
+	GameEvents.toggle_shield.emit(GameData.current_battle.opponent_player, false)
