@@ -1,4 +1,4 @@
-extends GPUParticles3D
+class_name BloodSpash extends GPUParticles3D
 
 var can_activate = true
 @export var auto_animate: bool = false

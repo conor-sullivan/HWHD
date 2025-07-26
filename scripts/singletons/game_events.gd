@@ -1,6 +1,9 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal do_player_assassinate_vfx()
+
+@warning_ignore("unused_signal")
 signal toggle_shield(player : Player, shielded : bool)
 
 @warning_ignore("unused_signal")

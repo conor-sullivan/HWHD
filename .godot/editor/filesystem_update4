@@ -68,7 +68,12 @@ res://scenes/battle/battle.tscn
 res://assets/3D/table_with_daggers.tscn
 res://scenes/hud/hud.tscn
 res://PolyBlocks/EffectBlocks/scenes/EffectBlocks_demo.tscn
-res://PolyBlocks/EffectBlocks/assets/other/shockwave_showcase.tscn
-res://PolyBlocks/EffectBlocks/assets/other/shockwave.tscn
-res://PolyBlocks/EffectBlocks/scenes/other/scifi_shield.tscn
-res://scripts/player_shield.gd
+res://PolyBlocks/EffectBlocks/scenes/other/attack_showcase.tscn
+res://PolyBlocks/EffectBlocks/assets/attacks/earth_attack.tscn
+res://PolyBlocks/EffectBlocks/assets/decals/decal_blood_spalsh_1.tscn
+res://PolyBlocks/EffectBlocks/source_files/scripts/ground_attack.gd
+res://PolyBlocks/EffectBlocks/scenes/other/decal_showcase.tscn
+res://PolyBlocks/EffectBlocks/scenes/other/splashes_showcase.tscn
+res://PolyBlocks/EffectBlocks/assets/splash/blood_splash.tscn
+res://PolyBlocks/EffectBlocks/assets/energy/laser.tscn
+res://PolyBlocks/EffectBlocks/source_files/scripts/splashes.gd

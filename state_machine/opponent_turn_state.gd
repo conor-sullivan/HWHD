@@ -29,6 +29,8 @@ func enter() -> void:
 	player = GameData.current_battle.opponent_player
 
 	if player.will_be_assassinated:
+		GameEvents.do_player_assassinate_vfx.emit()
+		await get_tree().create_timer(2.5).timeout
 		GameEvents.requested_new_in_battle_notification.emit(player.player_name, null, 'was assassinated and skips thier turn', '')
 		is_turn_ended = true
 		return

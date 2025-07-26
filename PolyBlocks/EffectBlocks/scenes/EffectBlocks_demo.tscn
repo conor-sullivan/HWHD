@@ -308,6 +308,7 @@ transform = Transform3D(-0.590746, 0, 0.806856, 0, 1, 0, -0.806856, 0, -0.590746
 
 [node name="ScifiShield" parent="Other" instance=ExtResource("10_a0cei")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 29.345, 0.223358, -5.61665)
+visible = false
 
 [node name="FireSmokeShowcase" parent="." instance=ExtResource("4_51yob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81015, 0, 5.56864)

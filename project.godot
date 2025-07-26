@@ -36,5 +36,4 @@ player_hand_collection=""
 
 [rendering]
 
-renderer/rendering_method="mobile"
 textures/default_filters/use_nearest_mipmap_filter=true
