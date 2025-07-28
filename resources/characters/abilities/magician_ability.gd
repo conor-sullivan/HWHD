@@ -50,6 +50,9 @@ func exchange_hands() -> void:
 	GameData.current_battle.real_player.district_cards_in_hand = opponent_hand
 	GameData.current_battle.opponent_player.district_cards_in_hand = player_hand
 
+	GameEvents.do_switch_hands_vfx.emit()
+
+
 	GameEvents.requested_players_exchange_hands.emit()
 	GameData.current_battle.real_player.can_use_character_ability = false
 

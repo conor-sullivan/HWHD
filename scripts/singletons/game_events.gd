@@ -1,6 +1,9 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal do_switch_hands_vfx()
+
+@warning_ignore("unused_signal")
 signal do_player_steal_vfx(coint : int)
 
 @warning_ignore("unused_signal")

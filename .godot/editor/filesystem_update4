@@ -76,3 +76,13 @@ res://PolyBlocks/EffectBlocks/assets/other/fireflies.tscn
 res://PolyBlocks/EffectBlocks/assets/other/coin_emitter_opponent.gd
 res://scripts/singletons/game_events.gd
 res://PolyBlocks/EffectBlocks/assets/other/coin_emitter_player.gd
+res://scenes/switch_hands_vfx/switch_hands_vfx.tscn
+res://PolyBlocks/EffectBlocks/source_files/meshes/props/undead_magic.tscn
+res://PolyBlocks/EffectBlocks/assets/fire/fire_magic.tscn
+res://scenes/switch_hands_vfx/switch_hands_vfx.gd
+res://PolyBlocks/EffectBlocks/scenes/other/decal_showcase.tscn
+res://PolyBlocks/EffectBlocks/assets/decals/decal_crack_3.tscn
+res://PolyBlocks/EffectBlocks/assets/other/portal.tscn
+res://PolyBlocks/EffectBlocks/assets/energy/lightning_ball.tscn
+res://resources/characters/abilities/magician_ability.gd
+res://scenes/magician_ability_display/magician_ability_display.gd
