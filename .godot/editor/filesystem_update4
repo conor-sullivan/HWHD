@@ -86,3 +86,7 @@ res://PolyBlocks/EffectBlocks/assets/other/portal.tscn
 res://PolyBlocks/EffectBlocks/assets/energy/lightning_ball.tscn
 res://resources/characters/abilities/magician_ability.gd
 res://scenes/magician_ability_display/magician_ability_display.gd
+res://PolyBlocks/EffectBlocks/assets/other/god_rays.tscn
+res://PolyBlocks/EffectBlocks/assets/other/god_rays.gd
+res://PolyBlocks/EffectBlocks/assets/other/god_rays_player.gd
+res://resources/characters/abilities/king_ability.gd

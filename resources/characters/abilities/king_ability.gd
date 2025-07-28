@@ -2,6 +2,8 @@ class_name KingAbility extends Ability
 
 
 func player_do_ability() -> void:
+	GameEvents.do_god_rays_player_vfx.emit()
+
 	GameData.current_battle.real_player.is_king = true
 	GameData.current_battle.opponent_player.is_king = false
 
@@ -11,6 +13,7 @@ func player_do_ability() -> void:
 	GameData.current_battle.real_player.can_use_character_ability = false
 
 func opponent_do_ability() -> void:
+	GameEvents.do_god_rays_opponent_vfx.emit()
 	GameData.current_battle.real_player.is_king = false
 	GameData.current_battle.opponent_player.is_king = true
 

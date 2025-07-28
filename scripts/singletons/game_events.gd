@@ -1,6 +1,12 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal do_god_rays_opponent_vfx()
+
+@warning_ignore("unused_signal")
+signal do_god_rays_player_vfx()
+
+@warning_ignore("unused_signal")
 signal do_switch_hands_vfx()
 
 @warning_ignore("unused_signal")
