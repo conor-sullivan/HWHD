@@ -29,8 +29,7 @@ spread = 90.0
 initial_velocity_min = 0.5
 initial_velocity_max = 2.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.05
-scale_max = 0.1
+scale_min = 0.5
 scale_curve = SubResource("CurveTexture_f4sok")
 color = Color(0.47451, 0, 0.0823529, 1)
 color_ramp = SubResource("GradientTexture1D_xghu0")
@@ -94,5 +93,6 @@ light_color = Color(1, 0.215686, 0.054902, 1)
 omni_range = 1.0
 
 [node name="Decal" parent="." instance=ExtResource("2_2w2bd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 size = Vector3(0.6, 1, 0.6)
 cull_mask = 1048573

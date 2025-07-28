@@ -1,4 +1,4 @@
-class_name EarthAttack extends Node3D
+class_name EarthAttackOpponent extends Node3D
 
 @onready var spikes: GPUParticles3D = $Spikes
 @onready var sparks: GPUParticles3D = $Sparks
@@ -7,7 +7,7 @@ class_name EarthAttack extends Node3D
 
 
 func _ready() -> void:
-	GameEvents.do_player_assassinate_vfx.connect(new_ground_attack)
+	GameEvents.do_opponent_assassinate_vfx.connect(new_ground_attack)
 
 
 func ground_attack():

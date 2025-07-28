@@ -1,6 +1,9 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal do_opponent_assassinate_vfx()
+
+@warning_ignore("unused_signal")
 signal do_player_assassinate_vfx()
 
 @warning_ignore("unused_signal")
