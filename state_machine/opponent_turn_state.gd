@@ -20,6 +20,7 @@ func enter() -> void:
 #	GameEvents.opponent_deck_cards_ready_for_gain_card_action.connect(_on_opponent_deck_cards_ready_for_gain_card_action)
 	GameEvents.started_player_turn_state.emit()
 	
+	ready_to_take_next_action = false
 	is_turn_ended = false
 	has_picked_action = false
 	has_used_ability = false
@@ -37,7 +38,10 @@ func enter() -> void:
 
 
 	if player.will_be_robbed:
+		var count = GameData.current_battle.opponent_player.gold_count
 		GameEvents.requested_player_rob_player.emit(GameData.current_battle.real_player, player)
+		GameEvents.do_opponent_steal_vfx.emit(count)
+		await get_tree().create_timer(3).timeout
 
 	$Timer.start()
 	player.has_taken_turn = false

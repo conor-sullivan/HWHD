@@ -365,7 +365,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.978399, 0.267346, -6.89657
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4517, 0.362542, -10.8039)
 
 [node name="MoneyEmitterShowcase" parent="." instance=ExtResource("26_4168m")]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 23.2961, -9.53674e-07, -13.212)
+transform = Transform3D(0.999998, 0.00181775, -0.000700245, -0.00181787, 0.999998, -0.000162298, 0.000699949, 0.000163568, 1, 23.2961, -9.53674e-07, -13.212)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MoneyEmitterShowcase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20271, 2)

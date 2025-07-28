@@ -62,3 +62,17 @@ res://scenes/battle/battle.tscn
 res://assets/3D/table_with_daggers.tscn
 res://scenes/dagger_attack/dagger_attack.tscn
 res://scenes/new_card_3d/new_card_3d.gd
+res://state_machine/opponent_turn_state.gd
+res://PolyBlocks/EffectBlocks/source_files/materials/god_rays.tres
+res://PolyBlocks/EffectBlocks/source_files/meshes/props/atm.tres
+res://PolyBlocks/EffectBlocks/source_files/meshes/props/wall.tres
+res://PolyBlocks/EffectBlocks/source_files/meshes/props/FirePit.tres
+res://PolyBlocks/EffectBlocks/source_files/meshes/props/flag_base.tres
+res://PolyBlocks/EffectBlocks/source_files/meshes/props/flag.tres
+res://PolyBlocks/EffectBlocks/scenes/EffectBlocks_demo.tscn
+res://PolyBlocks/EffectBlocks/scenes/other/money_emitter_showcase.tscn
+res://PolyBlocks/EffectBlocks/assets/other/coin_emitter.tscn
+res://PolyBlocks/EffectBlocks/assets/other/fireflies.tscn
+res://PolyBlocks/EffectBlocks/assets/other/coin_emitter_opponent.gd
+res://scripts/singletons/game_events.gd
+res://PolyBlocks/EffectBlocks/assets/other/coin_emitter_player.gd

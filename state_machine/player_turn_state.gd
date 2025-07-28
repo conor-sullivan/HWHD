@@ -29,7 +29,10 @@ func enter() -> void:
 		return
 
 	if player.will_be_robbed:
+		var count = GameData.current_battle.opponent_player.gold_count
 		GameEvents.requested_player_rob_player.emit(GameData.current_battle.opponent_player, player)
+		GameEvents.do_player_steal_vfx.emit(count)
+		await get_tree().create_timer(3).timeout
 
 	player.has_taken_turn = false
 	player.will_be_assassinated = false
