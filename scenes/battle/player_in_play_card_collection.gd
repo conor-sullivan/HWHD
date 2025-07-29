@@ -3,6 +3,7 @@ extends CardCollection3D
 
 
 @export var shockwave_scene : PackedScene = preload("res://PolyBlocks/EffectBlocks/assets/other/shockwave.tscn")
+@export var dust_scene : PackedScene = preload("res://PolyBlocks/EffectBlocks/assets/other/dust_ring.tscn")
 
 
 func insert_card(card: Card3D, index: int) -> void:
@@ -49,6 +50,14 @@ func create_shockwave(spawn_point : Vector3) -> void:
 	spawn_point.z = height_above_table
 	instance.global_position = spawn_point
 	instance.rotate_x(deg_to_rad(90))
+
+	var card_height = 3.5
+	var dust_instance = dust_scene.instantiate() as Node3D
+	add_child(dust_instance)
+	var pos = dust_instance.global_position
+	pos.y -= (card_height / 4)
+	pos.z = height_above_table
+	dust_instance.global_position = pos
 
 
 func can_insert_card(_card: NewCard3D, _from_collection) -> bool:

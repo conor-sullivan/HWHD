@@ -69,7 +69,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_il1lb"]
 resource_name = "attack"
-length = 3.0
+length = 2.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -77,10 +77,10 @@ tracks/0/path = NodePath("Dagger:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.333333, 0.466667, 1.43333, 2.26667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 0.0625001, 0.450625, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.333333, 0.466667, 1.43333, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 0.0625001, 0.450625, 1),
 "update": 0,
-"values": [Vector3(5.85727, -10.9637, 1.58875), Vector3(5.857, -10.964, 1.839), Vector3(5.857, -10.964, -1.776), Vector3(5.85727, -10.9637, 1.58875), Vector3(5.857, -10.964, 27.74), Vector3(5.85727, -10.9637, 1.58875), Vector3(5.85727, -10.9637, 1.58875)]
+"values": [Vector3(5.85727, -10.9637, 1.58875), Vector3(5.857, -10.964, 1.839), Vector3(5.857, -10.964, -1.776), Vector3(5.85727, -10.9637, 1.58875), Vector3(5.857, -10.964, 27.74), Vector3(5.85727, -10.9637, 1.58875)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
