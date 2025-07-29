@@ -26,6 +26,7 @@ func update_game_data() -> void:
 
 	for c in cards:
 		new_deck_data.push_back(c.resource)
+		c.player_owner = GameData.current_battle.opponent_player
 	
 	GameData.current_battle.opponent_player.district_deck_cards = new_deck_data
 

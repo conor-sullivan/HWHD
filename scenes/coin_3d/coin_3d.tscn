@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfqosm5yxnjr2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q03yj"]
+albedo_color = Color(1, 1, 0, 1)
+metallic = 0.62
+metallic_specular = 0.57
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a2hpd"]
+material = SubResource("StandardMaterial3D_q03yj")
+height = 0.2
+radial_segments = 32
+
+[node name="Coin3D" type="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_a2hpd")

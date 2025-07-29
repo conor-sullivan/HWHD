@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://2rki6j6j0bnu"]
 
 [ext_resource type="Texture2D" uid="uid://cxi3r0ixcouwu" path="res://PolyBlocks/EffectBlocks/source_files/textures/icons/star.png" id="1_glm7o"]
-[ext_resource type="Script" path="res://PolyBlocks/EffectBlocks/source_files/scripts/impact_single.gd" id="2_8mkk4"]
+[ext_resource type="Script" uid="uid://cu7qhqj7wu66b" path="res://PolyBlocks/EffectBlocks/source_files/scripts/impact_single.gd" id="2_8mkk4"]
 
 [sub_resource type="Curve" id="Curve_dldii"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.235075, 4.98572), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -25,8 +25,8 @@ angle_max = 90.0
 angular_velocity_min = 60.0
 angular_velocity_max = 60.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.2
-scale_max = 0.4
+scale_min = 0.75
+scale_max = 1.5
 scale_curve = SubResource("CurveTexture_vpvq1")
 color = Color(26.619, 20.144, 0, 1)
 emission_curve = SubResource("CurveTexture_jghbt")

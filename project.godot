@@ -33,6 +33,7 @@ project/assembly_name="3d card plugin"
 [global_group]
 
 player_hand_collection=""
+battle=""
 
 [rendering]
 

@@ -1,6 +1,7 @@
 class_name HUD
 extends CanvasLayer
 
+@export var gain_gold_label : PackedScene = preload("res://scenes/gain_gold_2d_label/gain_gold_2d_label.tscn")
 @export var missing_avatar_texture : Texture
 @export var unknown_avatar_texture : Texture
 
@@ -88,14 +89,31 @@ func _on_player_spent_gold(player: Player, count : int) -> void:
 
 func _on_player_gained_gold(player : Player, count : int) -> void:
 	for c in count:
+		var label_instance = gain_gold_label.instantiate()
 		var instance = gold_icon_scene.instantiate()
+		
 		if player.is_computer:
 			%OpponentGoldBoxContainer.add_child(instance)
+			add_child(label_instance)
+			var random_pos = %OpponentGoldBoxContainer.global_position + Vector2(randi_range(0, 100),randi_range(0, 100))
+			label_instance.position = random_pos
 		elif not player.is_computer:
 			%PlayerGoldBoxContainer.add_child(instance)
+			add_child(label_instance)
+			var random_pos = %PlayerGoldBoxContainer.global_position + Vector2(randi_range(0, -100),randi_range(0, 100))
+			label_instance.global_position = random_pos
+
+		label_instance.scale = Vector2.ZERO
+		var tween = create_tween()
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_SPRING)
+		tween.tween_property(label_instance, "scale", Vector2.ONE, 0.2)
+		tween.tween_interval(0.3)
+		tween.tween_property(label_instance, "scale", Vector2.ZERO, 0.2)
+		tween.tween_callback(Callable(label_instance, "queue_free"))
+		
 		if count > 1:
 			await get_tree().create_timer(0.1).timeout
-
 
 func _on_opponent_area_2d_mouse_entered() -> void:
 	if not GameData.current_battle.opponent_player.character_avatar_visible:

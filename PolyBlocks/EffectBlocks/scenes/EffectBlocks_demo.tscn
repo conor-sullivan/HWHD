@@ -351,6 +351,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.312, 0.1, 1.06058)
 
 [node name="ImpactsShowcase" parent="." instance=ExtResource("29_wbdmy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03204, 0.4, 1.44807)
+visible = false
 
 [node name="LootdropShowcase" parent="." instance=ExtResource("32_qooi6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57166, 0, -0.924336)

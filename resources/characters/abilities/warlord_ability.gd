@@ -27,6 +27,7 @@ func opponent_do_ability() -> void:
 
 
 func gain_gold_for_districts() -> void:
+	GameEvents.gain_gold_for_districts.emit(GameData.current_battle.current_players_turn, "Red")
 	for d in GameData.current_battle.current_players_turn.district_cards_in_play:
 		if d.color == 'Red':
 			GameData.current_battle.current_players_turn.gold_count += 1

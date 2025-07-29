@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://blacfif807885"]
+[gd_scene load_steps=9 format=3 uid="uid://blacfif807885"]
 
 [ext_resource type="PackedScene" uid="uid://dxpc2iac0hjpw" path="res://addons/card_3d/scenes/card_3d.tscn" id="1_h5pcq"]
 [ext_resource type="Script" uid="uid://dyxukp62ssst2" path="res://scenes/new_card_3d/new_card_3d.gd" id="2_0qyik"]
 [ext_resource type="Material" uid="uid://cdqx5tjuprjss" path="res://shaders/3d_card_aura_material.tres" id="3_0qyik"]
+[ext_resource type="PackedScene" uid="uid://crw4var8q7fof" path="res://scenes/district_card_coin_fx/district_card_coin_gain_fx.tscn" id="3_l2ec8"]
 [ext_resource type="Material" uid="uid://cersyaiqt0bgl" path="res://resources/district_cards/armoury.tres" id="4_vyxdp"]
 [ext_resource type="PackedScene" uid="uid://ckl0uqd3uf4fb" path="res://scenes/vfx_explosion/vfx_explosion.tscn" id="6_l2ec8"]
 [ext_resource type="Texture2D" uid="uid://bb1d5upu2qyq2" path="res://assets/sprites/district_value_back.png" id="6_vyxdp"]
@@ -12,6 +13,7 @@ size = Vector2(2.5, 3.5)
 
 [node name="NewCard3D" instance=ExtResource("1_h5pcq")]
 script = ExtResource("2_0qyik")
+coin_scene = ExtResource("3_l2ec8")
 card_type = 0
 aura_shader = ExtResource("3_0qyik")
 data = {}

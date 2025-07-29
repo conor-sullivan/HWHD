@@ -33,6 +33,8 @@ func insert_card(card: Card3D, index: int) -> void:
 	GameEvents.player_played_district_card.emit(card.resource)
 	card.is_in_play = true
 
+	card.player_owner = GameData.current_battle.real_player
+
 
 func get_card_future_position(index : int) -> Vector3:
 	var card_height = 3.5

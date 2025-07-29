@@ -2,6 +2,8 @@ class_name NewCard3D extends Card3D
 
 enum Type {CHARACTER, DISTRICT}
 
+
+@export var coin_scene : PackedScene = preload("res://scenes/district_card_coin_fx/district_card_coin_gain_fx.tscn")
 @export var card_type : Type
 @export var aura_shader : ShaderMaterial = preload("res://shaders/3d_card_aura_material.tres")
 @export var data: Dictionary:
@@ -64,6 +66,7 @@ func _ready() -> void:
 	GameEvents.started_player_turn_state.connect(_on_started_player_turn_state)
 	GameEvents.starting_excluded_characters_state.connect(_on_starting_excluded_characters_state)
 	GameEvents.warlord_ability_activated.connect(_on_warlord_ability_activated)
+	GameEvents.gain_gold_for_districts.connect(_on_gain_gold_for_districts)
 
 
 func _on_player_turn_ended() -> void:
@@ -202,3 +205,27 @@ func _on_requested_district_destroyed_by_opponent(_card : DistrictData) -> void:
 	await get_tree().create_timer(0.5).timeout
 	GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
 	call_deferred("queue_free")
+
+
+func _on_gain_gold_for_districts(player : Player, _color : String) -> void:
+	# Only act if this card is in play, belongs to the player, and is a gold district
+	if not is_in_play:
+		return
+	if player != player_owner:
+		return
+	if resource is DistrictData and resource.color == _color:
+		spawn_and_animate_coin()
+
+func spawn_and_animate_coin():
+	var coin = coin_scene.instantiate() as Node3D
+	
+	var battle = get_tree().get_first_node_in_group("battle")
+	if not battle:
+		return
+	battle.add_child(coin)	
+	
+	var pos = global_position
+	var card_height = 3
+	pos.z = 1
+	pos.y += card_height
+	coin.global_position = pos

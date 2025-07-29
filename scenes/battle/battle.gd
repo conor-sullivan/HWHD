@@ -129,6 +129,8 @@ func player_draw_card() -> void:
 	var drawn_card = player_deck_collection.remove_card(cards.size() - 1)
 	(drawn_card as NewCard3D).face_down = false
 	(drawn_card as NewCard3D).player_owner = GameData.current_battle.real_player
+	if not drawn_card.player_owner:
+		print('missing owner')
 	#(drawn_card as NewCard3D).is_in_hand = true
 	player_hand_collection.append_card(drawn_card)
 	drawn_card.global_position = card_global_position
@@ -223,3 +225,8 @@ func _on_requested_players_exchange_hands() -> void:
 		var instance = instantiate_district_card(c.district_name)
 		opponent_hand_collection.append_card(instance)
 # 		instance.face_down = true
+
+	for c in player_hand_collection.cards:
+		c.player_owner = GameData.current_battle.real_player
+	for c in opponent_hand_collection.cards:
+		c.player_owner = GameData.current_battle.opponent_player
