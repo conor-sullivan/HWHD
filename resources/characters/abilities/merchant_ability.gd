@@ -2,6 +2,7 @@ class_name MerchantAbility extends Ability
 
 
 func player_do_ability() -> void:
+	GameEvents.do_player_merchant_ability_vfx.emit()
 	GameData.current_battle.real_player.gold_count += 1
 	GameEvents.player_gained_gold.emit(GameData.current_battle.real_player, 1)
 	gain_gold_for_districts()
@@ -10,6 +11,7 @@ func player_do_ability() -> void:
 
 
 func opponent_do_ability() -> void:
+	GameEvents.do_opponent_merchant_ability_vfx.emit()
 	GameData.current_battle.opponent_player.gold_count += 1
 	GameEvents.player_gained_gold.emit(GameData.current_battle.opponent_player, 1)
 	gain_gold_for_districts()

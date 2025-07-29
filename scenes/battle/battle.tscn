@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cs2ru0s186hhg"]
+[gd_scene load_steps=79 format=3 uid="uid://cs2ru0s186hhg"]
 
 [ext_resource type="Script" uid="uid://dfas40y1xdc0k" path="res://scenes/battle/battle.gd" id="1_n6gaa"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="2_fe4ja"]
@@ -67,6 +67,9 @@
 [ext_resource type="PackedScene" uid="uid://uch8qkb3b6nc" path="res://PolyBlocks/EffectBlocks/assets/other/god_rays.tscn" id="64_f6obu"]
 [ext_resource type="Script" uid="uid://mb4qaeyohkhh" path="res://PolyBlocks/EffectBlocks/assets/other/god_rays_player.gd" id="65_1vyfy"]
 [ext_resource type="PackedScene" uid="uid://crw4var8q7fof" path="res://scenes/district_card_coin_fx/district_card_coin_gain_fx.tscn" id="67_dgc11"]
+[ext_resource type="PackedScene" uid="uid://bbhsu60brcpyg" path="res://PolyBlocks/EffectBlocks/assets/loot/healing.tscn" id="68_fbnxj"]
+[ext_resource type="Script" uid="uid://bru4d47iyqqnk" path="res://PolyBlocks/EffectBlocks/assets/loot/player_merchant_fx.gd" id="69_634ka"]
+[ext_resource type="Script" uid="uid://b3somxo8s28dj" path="res://PolyBlocks/EffectBlocks/assets/loot/opponent_merchant_fx.gd" id="69_rk1j3"]
 
 [sub_resource type="Environment" id="Environment_aua20"]
 background_mode = 1
@@ -381,6 +384,16 @@ transform = Transform3D(1, 0, 0, 0, -0.182235, -1.11599, 0, 0.983255, -0.206837,
 [node name="DistrictCardCoinGainFX" parent="." instance=ExtResource("67_dgc11")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.09421)
 visible = false
+
+[node name="PlayerMerchantFX" parent="." instance=ExtResource("68_fbnxj")]
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, -8.308, -2.03)
+visible = false
+script = ExtResource("69_634ka")
+
+[node name="OpponentMerchantFX" parent="." instance=ExtResource("68_fbnxj")]
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 8.23, -2.285)
+visible = false
+script = ExtResource("69_rk1j3")
 
 [connection signal="card_clicked" from="PlayerDragController/DeckCardCollection" to="." method="_on_deck_card_collection_card_clicked"]
 [connection signal="card_clicked" from="OpponentDragController/DeckCardCollection" to="." method="_on_opponent_deck_card_collection_card_clicked"]

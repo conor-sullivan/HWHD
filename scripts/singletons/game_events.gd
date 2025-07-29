@@ -1,6 +1,12 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal do_player_merchant_ability_vfx()
+
+@warning_ignore("unused_signal")
+signal do_opponent_merchant_ability_vfx()
+
+@warning_ignore("unused_signal")
 signal gain_gold_for_districts(player : Player, _color : String) 
 
 @warning_ignore("unused_signal")
