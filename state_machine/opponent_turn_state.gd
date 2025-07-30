@@ -17,7 +17,6 @@ func enter() -> void:
 	print('opponent turn state')
 
 	GameEvents.done_with_opponent_ability.connect(_on_done_with_opponent_ability)
-#	GameEvents.opponent_deck_cards_ready_for_gain_card_action.connect(_on_opponent_deck_cards_ready_for_gain_card_action)
 	GameEvents.started_player_turn_state.emit()
 	
 	ready_to_take_next_action = false
@@ -31,12 +30,12 @@ func enter() -> void:
 	GameData.current_battle.current_players_turn = player
 
 	if player.will_be_assassinated:
+		GameEvents.do_player_assassinate_vfx.emit()
+		await get_tree().create_timer(3).timeout
 		is_turn_ended = true
 		has_picked_action = true
 		has_used_ability = true
 		has_played_district_card = true
-		GameEvents.do_player_assassinate_vfx.emit()
-		await get_tree().create_timer(3).timeout
 		GameEvents.requested_new_in_battle_notification.emit(player.player_name, null, 'was assassinated and skips thier turn', '')
 		return
 
@@ -52,11 +51,14 @@ func enter() -> void:
 	player.can_play_district_card = true
 	player.can_use_character_ability = true
 	player.character_avatar_visible = true
+	player.in_play_districts_can_be_targeted = true
 
 	GameData.current_battle.current_players_turn = player
 
 
 func exit() -> void:
+	trigger_end_of_turn_abilities(player)
+
 	# Loop through all signals defined in GameEvents
 	for signal_info in GameEvents.get_signal_list():
 		var signal_name = signal_info.name
@@ -203,7 +205,7 @@ func _on_opponent_deck_cards_ready_for_gain_card_action(cards : Array[DistrictDa
 	
 	_card_to_keep.data = _card_to_keep_data
 	
-	_card_to_keep.face_down = false
+	_card_to_keep.face_down = true
 	
 	GameEvents.requested_append_card_in_player_hand.emit(GameData.current_battle.opponent_player, _card_to_keep)
 	_card_to_keep.global_position = Vector3(0, 0, -1)
@@ -239,3 +241,8 @@ func _on_done_with_opponent_ability() -> void:
 
 func _on_timer_timeout() -> void:
 	ready_to_take_next_action = true
+
+func trigger_end_of_turn_abilities(_player: Player) -> void:
+	for card in player.district_cards_in_play:
+		if card.ability_script and card.ability_script.has_method("on_end_of_turn"):
+			card.ability_script.on_end_of_turn(card, _player)

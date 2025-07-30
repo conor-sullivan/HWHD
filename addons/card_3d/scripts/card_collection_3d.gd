@@ -77,7 +77,6 @@ func insert_card(card: Card3D, index: int):
 	GameEvents.player_data_changed.emit()
 
 
-
 # remove and return card from the end of the list
 func pop_card() -> Card3D:
 	return remove_card(cards.size() - 1)

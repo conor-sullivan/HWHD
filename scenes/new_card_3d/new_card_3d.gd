@@ -59,6 +59,7 @@ var back_material : Material:
 
 
 func _ready() -> void:
+	GameEvents.do_poor_house_ability.connect(_on_poor_house_ability)
 	GameEvents.player_turn_ended.connect(_on_player_turn_ended)
 	GameEvents.requested_district_destroyed_by_opponent.connect(_on_requested_district_destroyed_by_opponent)
 	GameEvents.warlord_ability_done.connect(_on_warlord_ability_done)
@@ -177,13 +178,27 @@ func _on_static_body_3d_input_event(_camera, event, _event_position, _normal, _s
 		var pressed = event.pressed
 		if button == 1 and pressed == true:
 			card_3d_mouse_down.emit()
+
 			if is_targetable_by_warlord:
+				if not player_owner.in_play_districts_can_be_targeted:
+					return
+
+				player_owner.in_play_districts_can_be_targeted = false
+
 				disable_collision()
 				GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
+
 				%ExplosionParticles.start()
 				await get_tree().create_timer(0.5).timeout
+
 				GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
-				call_deferred("queue_free")
+
+				var parent_collection = get_parent()
+				if parent_collection is CardCollection3D:
+					var index = parent_collection.cards.find(self)
+					if index != -1:
+						parent_collection.remove_card(index)
+						call_deferred("queue_free")
 		elif button == 1 and pressed == false:
 			card_3d_mouse_up.emit()
 		
@@ -203,8 +218,15 @@ func _on_requested_district_destroyed_by_opponent(_card : DistrictData) -> void:
 #	GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
 	%ExplosionParticles.start()
 	await get_tree().create_timer(0.5).timeout
+
 	GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
-	call_deferred("queue_free")
+
+	var parent_collection = get_parent()
+	if parent_collection is CardCollection3D:
+		var index = parent_collection.cards.find(self)
+		if index != -1:
+			parent_collection.remove_card(index)
+			call_deferred("queue_free")
 
 
 func _on_gain_gold_for_districts(player : Player, _color : String) -> void:
@@ -213,8 +235,15 @@ func _on_gain_gold_for_districts(player : Player, _color : String) -> void:
 		return
 	if player != player_owner:
 		return
-	if resource is DistrictData and resource.color == _color:
+	if not resource is DistrictData:
+		return
+	if resource.district_name == 'School of Magic':
 		spawn_and_animate_coin()
+		GameEvents.player_gained_gold.emit(player, 1)
+		return
+	if resource.color == _color:
+		spawn_and_animate_coin()
+	
 
 func spawn_and_animate_coin():
 	var coin = coin_scene.instantiate() as Node3D
@@ -229,3 +258,20 @@ func spawn_and_animate_coin():
 	pos.z = 1
 	pos.y += card_height
 	coin.global_position = pos
+
+
+func _on_poor_house_ability() -> void:
+	if not is_in_play:
+		return
+	if not resource is DistrictData:
+		return
+	if resource.district_name != 'Poor House':
+		return
+	
+	var player = GameData.current_battle.current_players_turn
+
+	if player != player_owner:
+		return
+
+	spawn_and_animate_coin()
+	print("Poor House ability triggered: Player gained 1 gold.")

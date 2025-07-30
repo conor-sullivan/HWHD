@@ -33,7 +33,7 @@ func _on_requested_append_card_in_player_hand(player : Player, card : NewCard3D)
 		return
 
 	print('appending card to opponents hand ', card.resource.district_name)	
-	card.face_down = false
+	card.face_down = true
 	append_card(card)
 
 	update_game_data()

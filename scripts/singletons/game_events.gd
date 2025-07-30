@@ -1,6 +1,9 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal do_poor_house_ability()
+
+@warning_ignore("unused_signal")
 signal do_opponent_arch_ability_vfx()
 
 @warning_ignore("unused_signal")

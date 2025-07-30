@@ -59,8 +59,7 @@ func choose_character_intermediate():
 		var ai_trade = 0
 		var ai_military = 0
 		for d in ai_built:
-			if d.has("color"):
-				match d["color"]:
+				match d.color:
 					"gold":
 						ai_noble += 1
 					"blue":

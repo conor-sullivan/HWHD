@@ -76,6 +76,11 @@ func destroy_district(_warlord_player : Player, _card : DistrictData) -> void:
 	GameEvents.warlord_ability_done.emit()
 	GameEvents.requested_new_in_battle_notification.emit(_warlord_player.player_name, null, ' destroyed ', _card.district_name)
 
+	if not _warlord_player.is_computer:
+		return
+	
+	GameData.current_battle.real_player.district_cards_in_play.erase(_card)
+
 
 func choose_no_target() -> void:
 	GameEvents.requested_new_in_battle_notification.emit('Warlord ', null, 'selected no targets', '')

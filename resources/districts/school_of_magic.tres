@@ -17,4 +17,5 @@ is_purple_foil = true
 ability_text = "Counts as any district of any color during the income phase."
 is_in_deck = false
 is_visible = false
+is_protected = false
 metadata/_custom_type_script = "uid://bbdpyr8inju5f"

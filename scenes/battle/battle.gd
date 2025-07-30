@@ -2,7 +2,7 @@ class_name Battle
 extends Node3D
 
 
-@export var duplicate_cards = 2
+@export var duplicate_cards = 4
 
 @onready var player_deck_collection = $PlayerDragController/DeckCardCollection
 @onready var player_hand_collection = $PlayerDragController/HandCardCollection
@@ -43,11 +43,11 @@ func _ready() -> void:
 	character_deck.shuffle()
 	
 	for card in player_deck:
-#		card.face_down = true
+		card.face_down = true
 		player_deck_collection.append_card(card)
 		
 	for card in opponent_deck:
-#		card.face_down = true
+		card.face_down = true
 		opponent_deck_collection.append_card(card)
 	
 
@@ -154,7 +154,7 @@ func opponent_draw_card() -> void:
 	var cards = opponent_deck_collection.cards
 	var card_global_position = cards[cards.size() - 1].global_position
 	var drawn_card = opponent_deck_collection.remove_card(cards.size() - 1)
-	(drawn_card as NewCard3D).face_down = false
+	(drawn_card as NewCard3D).face_down = true
 	(drawn_card as NewCard3D).player_owner = GameData.current_battle.opponent_player
 	opponent_hand_collection.append_card(drawn_card)
 	drawn_card.global_position = card_global_position
@@ -209,6 +209,7 @@ func _on_district_card_destroyed_by_warlord(card_owner : Player, card : District
 	(instance as NewCard3D).player_owner = GameData.current_battle.opponent_player
 	if card_owner.is_computer:
 		opponent_hand_collection.append_card(instance)
+		GameData.current_battle.opponent_player.district_cards_in_play.erase(card)
 	else:
 		player_discard_collection.append_card(instance)
 

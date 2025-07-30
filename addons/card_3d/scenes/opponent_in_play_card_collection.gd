@@ -64,4 +64,4 @@ func can_reorder_card(_card: NewCard3D) -> bool:
 
 
 func can_remove_card(_card: NewCard3D) -> bool:
-	return false
+	return true

@@ -41,6 +41,7 @@ func enter() -> void:
 	player.can_use_character_ability = true
 	player.character_avatar_visible = true
 	player.is_picking_action = true
+	player.in_play_districts_can_be_targeted = true
 
 
 	await get_tree().create_timer(3).timeout
@@ -49,6 +50,8 @@ func enter() -> void:
 
 
 func exit() -> void:
+	trigger_end_of_turn_abilities()
+
 	# Loop through all signals defined in GameEvents
 	for signal_info in GameEvents.get_signal_list():
 		var signal_name = signal_info.name
@@ -139,3 +142,9 @@ func _on_player_played_district_card(card : DistrictData) -> void:
 	
 	player.districts_played_this_turn += 1
 	player.district_cards_in_play += [card]
+
+
+func trigger_end_of_turn_abilities() -> void:
+	for card in player.district_cards_in_play:
+		if card.ability_script and card.ability_script.has_method("on_end_of_turn"):
+			card.ability_script.on_end_of_turn(card, player)

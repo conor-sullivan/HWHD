@@ -13,3 +13,4 @@ class_name DistrictData
 @export var is_in_deck : bool
 @export var is_visible : bool
 @export var is_protected : bool = false
+@export var ability_script : Resource = null
