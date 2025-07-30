@@ -214,7 +214,6 @@ func _on_requested_district_destroyed_by_opponent(_card : DistrictData) -> void:
 	if _card != resource:
 		return
 	disable_collision()
-	print('ready to destroy', resource)
 #	GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
 	%ExplosionParticles.start()
 	await get_tree().create_timer(0.5).timeout
@@ -274,4 +273,3 @@ func _on_poor_house_ability() -> void:
 		return
 
 	spawn_and_animate_coin()
-	print("Poor House ability triggered: Player gained 1 gold.")

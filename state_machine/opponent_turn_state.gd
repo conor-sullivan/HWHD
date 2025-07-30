@@ -53,7 +53,6 @@ func enter() -> void:
 	player.character_avatar_visible = true
 	player.in_play_districts_can_be_targeted = true
 
-	GameData.current_battle.current_players_turn = player
 
 
 func exit() -> void:
@@ -151,6 +150,9 @@ func process_frame(_delta :  float) -> State:
 			return player_turn_state
 		
 	if not player:
+		return null
+
+	if player.will_be_assassinated:
 		return null
 
 	if not ready_to_take_next_action:
