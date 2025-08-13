@@ -17,10 +17,12 @@ func _on_player_ready_to_choose_action() -> void:
 func gain_2_gold() -> void:
 	GameEvents.player_gained_gold.emit(GameData.current_battle.current_players_turn, 2)
 	GameData.current_battle.current_players_turn.gold_count += 2
+	GameEvents.player_chose_action.emit(GameData.current_battle.current_players_turn)
 
 
 func gain_card() -> void:
 	GameEvents.requested_gain_card_action.emit(GameData.current_battle.current_players_turn)
+	GameEvents.player_chose_action.emit(GameData.current_battle.current_players_turn)
 
 
 func new_scale_tween() -> Tween:

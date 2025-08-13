@@ -16,6 +16,7 @@ var is_turn_ended : bool = false
 func enter() -> void:
 	print('opponent turn state')
 
+	GameEvents.player_chose_action.connect(_on_player_chose_action)
 	GameEvents.done_with_opponent_ability.connect(_on_done_with_opponent_ability)
 	GameEvents.started_player_turn_state.emit()
 	
@@ -28,6 +29,19 @@ func enter() -> void:
 
 	player = GameData.current_battle.opponent_player
 	GameData.current_battle.current_players_turn = player
+
+	if player.will_be_assassinated and DistrictAbilitiesManager.can_player_take_turn_when_assassinated(player):
+		player.has_taken_turn = false
+		player.can_play_district_card = false
+		player.can_use_character_ability = false
+		player.character_avatar_visible = true
+		player.is_picking_action = true
+		player.in_play_districts_can_be_targeted = true
+		
+		await get_tree().create_timer(3).timeout
+		GameEvents.player_ready_to_choose_action.emit()
+
+		return
 
 	if player.will_be_assassinated:
 		GameEvents.do_player_assassinate_vfx.emit()
@@ -95,6 +109,7 @@ func setup_ai() -> void:
 
 # gold or cards
 func gold_or_card() -> void:
+	setup_ai()
 	var result = ai.choose_gain_gold_or_card()
 
 	if result == 'gold':
@@ -108,6 +123,7 @@ func gold_or_card() -> void:
 	ready_to_take_next_action = false
 	$Timer.start()
 	GameEvents.requested_opponent_gain_card_action.emit()
+	GameEvents.player_chose_action.emit(player)
 
 
 # use special ability
@@ -248,3 +264,19 @@ func trigger_end_of_turn_abilities(_player: Player) -> void:
 	for card in player.district_cards_in_play:
 		if card.ability_script and card.ability_script.has_method("on_end_of_turn"):
 			card.ability_script.on_end_of_turn(card, _player)
+
+
+func _on_player_chose_action(_player: Player) -> void:
+	if _player != player:
+		return
+
+	if not player.will_be_assassinated:
+		return
+	
+	GameEvents.do_player_assassinate_vfx.emit()
+	await get_tree().create_timer(3).timeout
+	is_turn_ended = true
+	has_picked_action = true
+	has_used_ability = true
+	has_played_district_card = true
+	GameEvents.requested_new_in_battle_notification.emit(player.player_name, null, 'was assassinated and skips thier turn', '')

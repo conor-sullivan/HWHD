@@ -87,3 +87,9 @@ res://scripts/singletons/district_abilities_manager.gd
 res://resources/districts/district_abilities/park_ability.gd
 res://scenes/new_card_3d/new_card_3d.gd
 res://scenes/ai/ai.gd
+res://scenes/in_battle_action_selector/in_battle_action_selection.gd
+res://scripts/singletons/game_events.gd
+res://state_machine/player_turn_state.gd
+res://state_machine/opponent_turn_state.gd
+res://resources/districts/district_abilities/hospital_ability.gd
+res://scenes/in_battle_action_selector/in_battle_action_selection.tscn

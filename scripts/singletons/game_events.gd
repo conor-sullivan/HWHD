@@ -1,6 +1,9 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal player_chose_action(player : Player)
+
+@warning_ignore("unused_signal")
 signal do_poor_house_ability()
 
 @warning_ignore("unused_signal")
