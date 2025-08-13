@@ -93,3 +93,8 @@ res://state_machine/player_turn_state.gd
 res://state_machine/opponent_turn_state.gd
 res://resources/districts/district_abilities/hospital_ability.gd
 res://scenes/in_battle_action_selector/in_battle_action_selection.tscn
+res://scenes/in_battle_card_selector_display/in_play_card_selector_display.tscn
+res://scenes/in_battle_card_selector_display/in_play_card_selector_display.gd
+res://scenes/hud/hud.tscn
+res://scenes/warlord_ability_display/warlord_ability_display.tscn
+res://scenes/battle/battle.gd

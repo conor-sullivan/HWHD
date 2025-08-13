@@ -196,12 +196,15 @@ func _on_static_body_3d_input_event(_camera, event, _event_position, _normal, _s
 
 				GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
 
+
+				var discard = get_tree().get_first_node_in_group('opponent_discard_collection') as CardCollection3D
 				var parent_collection = get_parent()
 				if parent_collection is CardCollection3D:
 					var index = parent_collection.cards.find(self)
 					if index != -1:
 						parent_collection.remove_card(index)
-						call_deferred("queue_free")
+						discard.insert_card(self, 0)
+						#call_deferred("queue_free")
 		elif button == 1 and pressed == false:
 			card_3d_mouse_up.emit()
 		
@@ -223,12 +226,14 @@ func _on_requested_district_destroyed_by_opponent(_card : DistrictData) -> void:
 
 	GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
 
+	var discard = get_tree().get_first_node_in_group('player_discard_collection') as CardCollection3D
 	var parent_collection = get_parent()
 	if parent_collection is CardCollection3D:
 		var index = parent_collection.cards.find(self)
 		if index != -1:
 			parent_collection.remove_card(index)
-			call_deferred("queue_free")
+			discard.insert_card(self, 0)
+			#call_deferred("queue_free")
 
 
 func _on_gain_gold_for_districts(player : Player, _color : String) -> void:

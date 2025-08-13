@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bow1rict0x8l2"]
+
+[ext_resource type="Script" uid="uid://bww025rfl0w5s" path="res://scenes/in_battle_card_selector_display/in_play_card_selector_display.gd" id="1_6wly6"]
+[ext_resource type="Texture2D" uid="uid://b5d2dicwjsn46" path="res://assets/sprites/in_play_cards_vinette.png" id="1_68oms"]
+
+[node name="InPlayCardSelectorDisplay" type="CanvasLayer"]
+script = ExtResource("1_6wly6")
+
+[node name="Vignette" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_68oms")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.39
+offset_top = 446.805
+offset_right = -22.39
+offset_bottom = 477.805
+grow_horizontal = 2
+text = "DONE"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

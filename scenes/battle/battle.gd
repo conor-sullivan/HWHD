@@ -21,7 +21,7 @@ func _ready() -> void:
 	GameEvents.requested_opponent_play_card_from_hand.connect(_on_requested_opponent_play_card_from_hand)
 	GameEvents.requested_player_discard_cards.connect(_on_requested_player_discard_cards)
 	GameEvents.requested_players_exchange_hands.connect(_on_requested_players_exchange_hands)
-	GameEvents.district_card_destroyed_by_warlord.connect(_on_district_card_destroyed_by_warlord)
+#	GameEvents.district_card_destroyed_by_warlord.connect(_on_district_card_destroyed_by_warlord)
 	GameEvents.done_drawing_initial_character_cards.connect(_on_done_drawing_initial_character_cards)
 	GameEvents.ready_to_exclude_characters.connect(_on_ready_to_exclude_characters)
 	GameEvents.requested_player_draw_district_cards.connect(_on_requested_player_draw_district_cards)
@@ -200,18 +200,18 @@ func _on_accept_button_pressed() -> void:
 	GameEvents.accepted_character_cards.emit()
 
 
-func _on_district_card_destroyed_by_warlord(card_owner : Player, card : DistrictData) -> void:
-	if not card_owner:
-		return
-	var instance = instantiate_district_card(card.district_name)
-	(instance as NewCard3D).face_down = false
-#	instance.global_position = Vector3.ZERO
-	(instance as NewCard3D).player_owner = GameData.current_battle.opponent_player
-	if card_owner.is_computer:
-		opponent_hand_collection.append_card(instance)
-		GameData.current_battle.opponent_player.district_cards_in_play.erase(card)
-	else:
-		player_discard_collection.append_card(instance)
+#func _on_district_card_destroyed_by_warlord(card_owner : Player, card : DistrictData) -> void:
+	#if not card_owner:
+		#return
+	#var instance = instantiate_district_card(card.district_name)
+	#(instance as NewCard3D).face_down = false
+##	instance.global_position = Vector3.ZERO
+	#(instance as NewCard3D).player_owner = GameData.current_battle.opponent_player
+	#if card_owner.is_computer:
+		#opponent_hand_collection.append_card(instance)
+		#GameData.current_battle.opponent_player.district_cards_in_play.erase(card)
+	#else:
+		#player_discard_collection.append_card(instance)
 
 
 func _on_requested_players_exchange_hands() -> void:
