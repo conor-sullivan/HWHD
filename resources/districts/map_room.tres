@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://dog3ox055j4i5"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=7 format=3 uid="uid://dog3ox055j4i5"]
 
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_5423u"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_gsxdf"]
 [ext_resource type="Material" uid="uid://dryiu2v8sywjn" path="res://resources/district_cards/map_room.tres" id="2_jrf1c"]
 [ext_resource type="Texture2D" uid="uid://bwj3dxp7oy7yj" path="res://assets/sprites/Map Room.png" id="4_jrf1c"]
+[ext_resource type="Script" path="res://resources/districts/district_abilities/map_room_ability.gd" id="5_map_room"]
+
+[sub_resource type="Resource" id="Resource_map_room"]
+script = ExtResource("5_map_room")
 
 [resource]
 script = ExtResource("1_gsxdf")
@@ -17,4 +21,6 @@ is_purple_foil = true
 ability_text = "Gain 1 bonus point for each card in your hand at the end of the game."
 is_in_deck = false
 is_visible = false
+is_protected = false
+ability_script = SubResource("Resource_map_room")
 metadata/_custom_type_script = "uid://bbdpyr8inju5f"

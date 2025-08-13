@@ -695,6 +695,8 @@ func choose_warlord_target() -> DistrictData:
 			# Pick a random valid target from the opponent's districts that can be destroyed
 			var possible_targets = []
 			for d in human_player_state.district_cards_in_play:
+				if not DistrictAbilitiesManager.can_district_be_destroyed(d, GameData.current_battle.opponent_player):
+					continue
 				if d.cost > 1 and d.cost - 1 <= ai_player_state.gold_count and not d.is_protected:
 					possible_targets.append(d)
 			if possible_targets.is_empty():
@@ -705,6 +707,8 @@ func choose_warlord_target() -> DistrictData:
 			var best_target = null
 			var best_cost = -1
 			for d in human_player_state.district_cards_in_play:
+				if not DistrictAbilitiesManager.can_district_be_destroyed(d, GameData.current_battle.opponent_player):
+					continue
 				if d.cost > 1 and d.cost - 1 <= ai_player_state.gold_count and not d.is_protected:
 					if d.cost > best_cost:
 						best_cost = d.cost
@@ -715,6 +719,8 @@ func choose_warlord_target() -> DistrictData:
 			var best_target = null
 			var best_score = -1000
 			for d in human_player_state.district_cards_in_play:
+				if not DistrictAbilitiesManager.can_district_be_destroyed(d, GameData.current_battle.opponent_player):
+					continue
 				if d.cost > 1 and d.cost - 1 <= ai_player_state.gold_count and not d.is_protected:
 					var score = d.cost * 2
 					if d.is_purple_foil:

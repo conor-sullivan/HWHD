@@ -165,6 +165,9 @@ func _on_warlord_ability_activated() -> void:
 	if not player_owner.in_play_districts_can_be_targeted:
 		return
 
+	if not DistrictAbilitiesManager.can_district_be_destroyed(resource, player_owner):
+		return
+
 	if GameData.current_battle.current_players_turn.gold_count >= (cost - 1):
 		is_targetable_by_warlord = true
 

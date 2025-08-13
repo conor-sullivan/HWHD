@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://pt8rcrjy58u6"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=7 format=3 uid="uid://pt8rcrjy58u6"]
 
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_luw6u"]
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_olykd"]
 [ext_resource type="Material" uid="uid://dh33eyt81p8sg" path="res://resources/district_cards/school_of_magic.tres" id="2_2sexx"]
 [ext_resource type="Texture2D" uid="uid://bhbqhnr2k1t6c" path="res://assets/sprites/School of Magic.png" id="4_2sexx"]
+[ext_resource type="Script" path="res://resources/districts/district_abilities/school_of_magic_ability.gd" id="5_school"]
+
+[sub_resource type="Resource" id="Resource_school"]
+script = ExtResource("5_school")
 
 [resource]
 script = ExtResource("1_olykd")
@@ -18,4 +22,5 @@ ability_text = "Counts as any district of any color during the income phase."
 is_in_deck = false
 is_visible = false
 is_protected = false
+ability_script = SubResource("Resource_school")
 metadata/_custom_type_script = "uid://bbdpyr8inju5f"

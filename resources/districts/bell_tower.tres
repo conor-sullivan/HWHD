@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="DistrictData" load_steps=5 format=3 uid="uid://cbsqt6ic2128a"]
+[gd_resource type="Resource" script_class="DistrictData" load_steps=7 format=3 uid="uid://cbsqt6ic2128a"]
 
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_60v4j"]
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_jma6c"]
 [ext_resource type="Material" uid="uid://re31pwk7yihn" path="res://resources/district_cards/bell_tower.tres" id="2_rioc0"]
 [ext_resource type="Texture2D" uid="uid://d0rm6fd7vh74m" path="res://assets/sprites/Bell Tower.png" id="4_rioc0"]
+[ext_resource type="Script" path="res://resources/districts/district_abilities/bell_tower_ability.gd" id="5_bell_tower"]
+
+[sub_resource type="Resource" id="Resource_bell_tower"]
+script = ExtResource("5_bell_tower")
 
 [resource]
 script = ExtResource("1_60v4j")
@@ -17,4 +21,6 @@ is_purple_foil = true
 ability_text = "Grants 4 points, if you have 7 districts; 2 points if you have 7 districts when others do too."
 is_in_deck = false
 is_visible = false
+is_protected = false
+ability_script = SubResource("Resource_bell_tower")
 metadata/_custom_type_script = "uid://bbdpyr8inju5f"
