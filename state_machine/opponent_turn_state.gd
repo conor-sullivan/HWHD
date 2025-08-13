@@ -70,8 +70,6 @@ func enter() -> void:
 
 
 func exit() -> void:
-	trigger_end_of_turn_abilities(player)
-
 	# Loop through all signals defined in GameEvents
 	for signal_info in GameEvents.get_signal_list():
 		var signal_name = signal_info.name
@@ -259,11 +257,6 @@ func _on_done_with_opponent_ability() -> void:
 
 func _on_timer_timeout() -> void:
 	ready_to_take_next_action = true
-
-func trigger_end_of_turn_abilities(_player: Player) -> void:
-	for card in player.district_cards_in_play:
-		if card.ability_script and card.ability_script.has_method("on_end_of_turn"):
-			card.ability_script.on_end_of_turn(card, _player)
 
 
 func _on_player_chose_action(_player: Player) -> void:
