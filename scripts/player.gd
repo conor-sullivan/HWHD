@@ -110,3 +110,11 @@ var possible_character_targets : Array[CharacterData] :
 	set(targets):
 		possible_character_targets = targets
 		GameEvents.player_data_changed.emit()
+var is_doing_warlord_ability : bool = false :
+	set(value):
+		is_doing_warlord_ability = value
+		GameEvents.player_data_changed.emit()
+var is_doing_necropolis_ability : bool = false :
+	set(value):
+		is_doing_necropolis_ability = value
+		GameEvents.player_data_changed.emit()

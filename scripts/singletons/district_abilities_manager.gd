@@ -119,12 +119,14 @@ func _on_gain_card_action(player: Player) -> void:
 
 func _on_district_played(card: DistrictData) -> void:
 	"""Trigger abilities when a district is played"""
-	# Find which player played this card
-	var player = null
-	if GameData.current_battle.current_players_turn.district_cards_in_play.has(card):
-		player = GameData.current_battle.current_players_turn
-	elif GameData.current_battle.opponent_player.district_cards_in_play.has(card):
-		player = GameData.current_battle.opponent_player
+	## Find which player played this card
+	#var player = null
+	#if GameData.current_battle.current_players_turn.district_cards_in_play.has(card):
+		#player = GameData.current_battle.current_players_turn
+	#elif GameData.current_battle.opponent_player.district_cards_in_play.has(card):
+		#player = GameData.current_battle.opponent_player
+	
+	var player = GameData.current_battle.current_players_turn
 	
 	if player:
 		register_player_abilities(player)

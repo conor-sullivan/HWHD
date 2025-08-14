@@ -3,9 +3,9 @@ class_name NewCard3D extends Card3D
 enum Type {CHARACTER, DISTRICT}
 
 
-@export var coin_scene : PackedScene = preload("res://scenes/district_card_coin_fx/district_card_coin_gain_fx.tscn")
-@export var card_type : Type
-@export var aura_shader : ShaderMaterial = preload("res://shaders/3d_card_aura_material.tres")
+@export var coin_scene: PackedScene = preload("res://scenes/district_card_coin_fx/district_card_coin_gain_fx.tscn")
+@export var card_type: Type
+@export var aura_shader: ShaderMaterial = preload("res://shaders/3d_card_aura_material.tres")
 @export var data: Dictionary:
 	set(data):
 		if data.has("id"):
@@ -24,7 +24,7 @@ enum Type {CHARACTER, DISTRICT}
 		if data.has("sprite_texture"):
 			sprite_texture = data["sprite_texture"]
 
-var resource : Resource :
+var resource: Resource:
 	set(value):
 		resource = value
 		if resource is CharacterData:
@@ -32,27 +32,27 @@ var resource : Resource :
 		elif resource is DistrictData:
 			card_type = Type.DISTRICT
 #var is_in_hand: bool = false
-var is_real_players : bool = false
-var is_targetable_by_warlord : bool = false
-var is_in_play : bool = false
-var player_owner : Player 
+var is_real_players: bool = false
+var is_targetable_by_warlord: bool = false
+var is_in_play: bool = false
+var player_owner: Player
 var sprite_texture = Texture
-var mouse_inside : bool = false
-var id : String
-var cost : int
-var coin_cost : int :
+var mouse_inside: bool = false
+var id: String
+var cost: int
+var coin_cost: int:
 	set(cost):
 		if cost > 0:
 			$CardMesh/CostBackSprite3D/CostLabel.text = str(cost)
 
 
-var front_material : Material :
+var front_material: Material:
 	set(material):
 		if material:
 			$CardMesh/CardFrontMesh.set_surface_override_material(0, material)
 
 
-var back_material : Material:
+var back_material: Material:
 	set(material):
 		if material:
 			$CardMesh/CardBackMesh.set_surface_override_material(0, material)
@@ -81,9 +81,19 @@ func player_can_afford() -> bool:
 		return false
 	if GameData.current_battle.real_player.gold_count >= cost:
 		return true
+	if resource.district_name == 'Necropolis':
+		return can_afford_necropolis()
 	else:
 		return false
 		
+
+func can_afford_necropolis() -> bool:
+	if GameData.current_battle.real_player.gold_count >= resource.cost:
+		return true
+	if GameData.current_battle.real_player.district_cards_in_play_count > 0:
+		return true
+	return false
+
 
 func player_is_taking_action() -> bool:
 	return GameData.current_battle.real_player.is_picking_action
@@ -106,7 +116,11 @@ func set_shader() -> void:
 	if is_targetable_by_warlord:
 		return
 	%Shader.hide()
+
 	if not GameData.current_battle: return
+	if GameData.current_battle.real_player.is_doing_necropolis_ability and is_in_play:
+		%Shader.show()
+		return
 	if not GameData.current_battle.real_player.can_play_district_card: return
 	if player_is_taking_action(): return
 	if player_can_afford() and is_in_hand():
@@ -128,7 +142,7 @@ func _to_string():
 func _on_static_body_3d_mouse_entered():
 	super()
 	
-	if face_down: 
+	if face_down:
 		return
 		
 	$PopupTimer.start()
@@ -137,7 +151,7 @@ func _on_static_body_3d_mouse_entered():
 func _on_static_body_3d_mouse_exited():
 	super()
 	
-	if face_down: 
+	if face_down:
 		return
 		
 	$PopupTimer.stop()
@@ -146,7 +160,7 @@ func _on_static_body_3d_mouse_exited():
 
 
 func _on_popup_timer_timeout() -> void:
-	if face_down: 
+	if face_down:
 		return
 		
 	if mouse_inside:
@@ -182,39 +196,72 @@ func _on_static_body_3d_input_event(_camera, event, _event_position, _normal, _s
 		if button == 1 and pressed == true:
 			card_3d_mouse_down.emit()
 
-			if is_targetable_by_warlord:
-				if not player_owner.in_play_districts_can_be_targeted:
-					return
+			if GameData.current_battle.real_player.is_doing_warlord_ability:
+				do_warlord_ability()
 
-				player_owner.in_play_districts_can_be_targeted = false
-
-				disable_collision()
-				GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
-
-				%ExplosionParticles.start()
-				await get_tree().create_timer(0.5).timeout
-
-				GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
-
-
-				var discard = get_tree().get_first_node_in_group('opponent_discard_collection') as CardCollection3D
-				var parent_collection = get_parent()
-				if parent_collection is CardCollection3D:
-					var index = parent_collection.cards.find(self)
-					if index != -1:
-						parent_collection.remove_card(index)
-						discard.insert_card(self, 0)
-						#call_deferred("queue_free")
+			if GameData.current_battle.real_player.is_doing_necropolis_ability:
+				do_necropolis_ability()
 		elif button == 1 and pressed == false:
 			card_3d_mouse_up.emit()
 		
+		
+
+func do_necropolis_ability() -> void:
+	if player_owner != GameData.current_battle.real_player:
+		return
+	if not is_in_play:
+		return
+	disable_collision()
+#	GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
+
+	%ExplosionParticles.start()
+	await get_tree().create_timer(0.5).timeout
+
+	GameEvents.necropolis_ability_done.emit()
+	GameData.current_battle.current_players_turn.is_doing_necropolis_ability = false
+
+	var discard = get_tree().get_first_node_in_group('player_discard_collection') as CardCollection3D
+	var discard_index = discard.cards.size()
+	var parent_collection = get_parent()
+	if parent_collection is CardCollection3D:
+		var index = parent_collection.cards.find(self)
+		if index != -1:
+			parent_collection.remove_card(index)
+			discard.insert_card(self, discard_index)
+
+
+func do_warlord_ability() -> void:
+	if is_targetable_by_warlord:
+		if not player_owner.in_play_districts_can_be_targeted:
+			return
+
+		player_owner.in_play_districts_can_be_targeted = false
+
+		disable_collision()
+		GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
+
+		%ExplosionParticles.start()
+		await get_tree().create_timer(0.5).timeout
+
+		GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
+		GameData.current_battle.current_players_turn.is_doing_warlord_ability = false
+
+		var discard = get_tree().get_first_node_in_group('opponent_discard_collection') as CardCollection3D
+		var discard_index = discard.cards.size()
+		var parent_collection = get_parent()
+		if parent_collection is CardCollection3D:
+			var index = parent_collection.cards.find(self)
+			if index != -1:
+				parent_collection.remove_card(index)
+				discard.insert_card(self, discard_index)
+
 
 func _on_warlord_ability_done() -> void:
 	is_targetable_by_warlord = false
 	%Shader.hide()
 
 
-func _on_requested_district_destroyed_by_opponent(_card : DistrictData) -> void:
+func _on_requested_district_destroyed_by_opponent(_card: DistrictData) -> void:
 	if not is_targetable_by_warlord:
 		return
 	if _card != resource:
@@ -236,7 +283,7 @@ func _on_requested_district_destroyed_by_opponent(_card : DistrictData) -> void:
 			#call_deferred("queue_free")
 
 
-func _on_gain_gold_for_districts(player : Player, _color : String) -> void:
+func _on_gain_gold_for_districts(player: Player, _color: String) -> void:
 	# Only act if this card is in play, belongs to the player, and is a gold district
 	if not is_in_play:
 		return
@@ -258,7 +305,7 @@ func spawn_and_animate_coin():
 	var battle = get_tree().get_first_node_in_group("battle")
 	if not battle:
 		return
-	battle.add_child(coin)	
+	battle.add_child(coin)
 	
 	var pos = global_position
 	var card_height = 3

@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_jma6c"]
 [ext_resource type="Material" uid="uid://re31pwk7yihn" path="res://resources/district_cards/bell_tower.tres" id="2_rioc0"]
 [ext_resource type="Texture2D" uid="uid://d0rm6fd7vh74m" path="res://assets/sprites/Bell Tower.png" id="4_rioc0"]
-[ext_resource type="Script" path="res://resources/districts/district_abilities/bell_tower_ability.gd" id="5_bell_tower"]
+[ext_resource type="Script" uid="uid://bqsyirowkod7g" path="res://resources/districts/district_abilities/bell_tower_ability.gd" id="5_bell_tower"]
 
 [sub_resource type="Resource" id="Resource_bell_tower"]
 script = ExtResource("5_bell_tower")

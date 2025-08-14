@@ -16,6 +16,7 @@ func enter() -> void:
 	GameEvents.player_played_district_card.connect(_on_player_played_district_card)
 	GameEvents.started_player_turn_state.emit()
 	GameEvents.player_picked_district_card_to_keep.connect(_on_player_picked_district_card_to_keep)
+	GameEvents.necropolis_chose_no_targets.connect(_on_necropolis_chose_no_targets)
 	
 	is_turn_ended = false
 
@@ -148,13 +149,14 @@ func _on_in_battle_action_selected(action : Callable) -> void:
 
 
 func _on_player_played_district_card(card : DistrictData) -> void:
+	if card.district_name == 'Necropolis':
+		return
+
 	var current_gold = player.gold_count
 	player.gold_count = current_gold - card.cost
 	
 	GameEvents.player_spent_gold.emit(player, card.cost)
 	
-	player.districts_played_this_turn += 1
-	player.district_cards_in_play += [card]
 
 
 func _on_player_chose_action(_player : Player):
@@ -168,3 +170,13 @@ func _on_player_chose_action(_player : Player):
 	await get_tree().create_timer(3).timeout
 	GameEvents.requested_new_in_battle_notification.emit(player.player_name, null, 'was assassinated and skips thier turn', '')
 	is_turn_ended = true
+
+
+func _on_necropolis_chose_no_targets(_player : Player) -> void:
+	if _player != player:
+		return
+	
+	var necropolis_cost = 5
+	GameEvents.player_spent_gold.emit(player, necropolis_cost)
+	player.gold_count -= necropolis_cost
+	player.is_doing_necropolis_ability = false

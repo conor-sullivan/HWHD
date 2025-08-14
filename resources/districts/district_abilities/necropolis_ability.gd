@@ -13,4 +13,6 @@ func _trigger_necropolis_ability(player: Player) -> void:
 	"""Allow player to destroy one of their own districts instead of paying cost"""
 	# This would need UI implementation for district selection
 	# For now, we'll emit a notification
+	GameEvents.trigger_necropolis_ability.emit(player)
+	player.is_doing_necropolis_ability = true
 	emit_ability_notification(player, "can destroy a district instead of paying cost")

@@ -1,6 +1,15 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal necropolis_ability_done
+
+@warning_ignore("unused_signal")
+signal necropolis_chose_no_targets
+
+@warning_ignore("unused_signal")
+signal trigger_necropolis_ability(player : Player)
+
+@warning_ignore("unused_signal")
 signal player_chose_action(player : Player)
 
 @warning_ignore("unused_signal")

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bbdpyr8inju5f" path="res://resources/districts/district_data.gd" id="1_olykd"]
 [ext_resource type="Material" uid="uid://dh33eyt81p8sg" path="res://resources/district_cards/school_of_magic.tres" id="2_2sexx"]
 [ext_resource type="Texture2D" uid="uid://bhbqhnr2k1t6c" path="res://assets/sprites/School of Magic.png" id="4_2sexx"]
-[ext_resource type="Script" path="res://resources/districts/district_abilities/school_of_magic_ability.gd" id="5_school"]
+[ext_resource type="Script" uid="uid://771racpyudr2" path="res://resources/districts/district_abilities/school_of_magic_ability.gd" id="5_school"]
 
 [sub_resource type="Resource" id="Resource_school"]
 script = ExtResource("5_school")

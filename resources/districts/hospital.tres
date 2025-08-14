@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_w77ne"]
 [ext_resource type="Material" uid="uid://d1ene6tlgh5p8" path="res://resources/district_cards/hospital.tres" id="2_khqn3"]
 [ext_resource type="Texture2D" uid="uid://cd7i71pfkjn0u" path="res://assets/sprites/Hospital.png" id="4_khqn3"]
-[ext_resource type="Script" path="res://resources/districts/district_abilities/hospital_ability.gd" id="5_hospital"]
+[ext_resource type="Script" uid="uid://4t4vuqkyn8t2" path="res://resources/districts/district_abilities/hospital_ability.gd" id="5_hospital"]
 
 [sub_resource type="Resource" id="Resource_hospital"]
 script = ExtResource("5_hospital")

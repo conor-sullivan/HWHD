@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_71geh"]
 [ext_resource type="Material" uid="uid://dgltk1usjjb3a" path="res://resources/district_cards/necropolis.tres" id="2_7ysvo"]
 [ext_resource type="Texture2D" uid="uid://bsb7i363w5pg2" path="res://assets/sprites/Necropolis.png" id="4_7ysvo"]
-[ext_resource type="Script" path="res://resources/districts/district_abilities/necropolis_ability.gd" id="5_necropolis"]
+[ext_resource type="Script" uid="uid://dooftrx3vp12x" path="res://resources/districts/district_abilities/necropolis_ability.gd" id="5_necropolis"]
 
 [sub_resource type="Resource" id="Resource_necropolis"]
 script = ExtResource("5_necropolis")

@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://7kixd7vh6qac" path="res://resources/district_cards/district_back.tres" id="1_mgxd1"]
 [ext_resource type="Material" uid="uid://d0sl8215yr8io" path="res://resources/district_cards/imperial_treasury.tres" id="2_av0mq"]
 [ext_resource type="Texture2D" uid="uid://bogbwfho5se6h" path="res://assets/sprites/Imperial Treasury.png" id="4_av0mq"]
-[ext_resource type="Script" path="res://resources/districts/district_abilities/imperial_treasure_ability.gd" id="5_imperial"]
+[ext_resource type="Script" uid="uid://cdrtx8y8fnse6" path="res://resources/districts/district_abilities/imperial_treasure_ability.gd" id="5_imperial"]
 
 [sub_resource type="Resource" id="Resource_imperial"]
 script = ExtResource("5_imperial")

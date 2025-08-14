@@ -27,6 +27,10 @@ func insert_card(card: Card3D, index: int) -> void:
 	
 	apply_card_layout()
 	card_added.emit(card)
+
+	GameData.current_battle.real_player.districts_played_this_turn += 1
+	GameData.current_battle.real_player.district_cards_in_play += [card.resource]
+	
 	GameEvents.player_data_changed.emit()
 
 

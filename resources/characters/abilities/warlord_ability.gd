@@ -3,6 +3,7 @@ class_name WarlordAbility extends Ability
 var ai = AI.new()
 
 func player_do_ability() -> void:
+	GameData.current_battle.current_players_turn.is_doing_warlord_ability = true
 	gain_gold_for_districts()
 	update_player_data()
 	GameEvents.warlord_ability_activated.emit()
@@ -10,6 +11,7 @@ func player_do_ability() -> void:
 
 
 func opponent_do_ability() -> void:
+	GameData.current_battle.current_players_turn.is_doing_warlord_ability = true
 	gain_gold_for_districts()
 	update_player_data()
 	GameEvents.warlord_ability_activated.emit()
@@ -80,8 +82,10 @@ func destroy_district(_warlord_player : Player, _card : DistrictData) -> void:
 		return
 	
 	GameData.current_battle.real_player.district_cards_in_play.erase(_card)
+	GameData.current_battle.current_players_turn.is_doing_warlord_ability = false
 
 
 func choose_no_target() -> void:
+	GameData.current_battle.current_players_turn.is_doing_warlord_ability = false
 	GameEvents.requested_new_in_battle_notification.emit('Warlord ', null, 'selected no targets', '')
 	GameEvents.warlord_ability_done.emit()
