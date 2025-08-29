@@ -139,21 +139,27 @@ func play_district_card() -> void:
 	for c in player.district_cards_in_hand:
 		print(c.district_name)
 	setup_ai()
+
 	var card = ai.choose_district_card_to_play()
 	if not card:
+		return
+
+	GameEvents.requested_opponent_play_card_from_hand.emit(card)
+
+	player.districts_played_this_turn += 1
+	player.district_cards_in_play += [card]
+	ready_to_take_next_action = false
+
+	$Timer.start()
+
+	if card.district_name == 'Necropolis':
 		return
 
 	var current_gold = player.gold_count
 	player.gold_count = current_gold - card.cost
 	
 	GameEvents.player_spent_gold.emit(player, card.cost)
-	
-	GameEvents.requested_opponent_play_card_from_hand.emit(card)
-	player.districts_played_this_turn += 1
-	player.district_cards_in_play += [card]
 
-	ready_to_take_next_action = false
-	$Timer.start()
 
 
 func process_frame(_delta :  float) -> State:
@@ -273,3 +279,13 @@ func _on_player_chose_action(_player: Player) -> void:
 	has_used_ability = true
 	has_played_district_card = true
 	GameEvents.requested_new_in_battle_notification.emit(player.player_name, null, 'was assassinated and skips thier turn', '')
+
+
+func _on_necropolis_chose_no_targets(_player : Player) -> void:
+	if _player != player:
+		return
+	
+	var necropolis_cost = 5
+	GameEvents.player_spent_gold.emit(player, necropolis_cost)
+	player.gold_count -= necropolis_cost
+	player.is_doing_necropolis_ability = false

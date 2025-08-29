@@ -153,7 +153,7 @@ func _on_character_selected(character: CharacterData) -> void:
 				if ability.has_method("on_character_selected"):
 					ability.on_character_selected(district, player, character)
 
-func can_district_be_destroyed(district: DistrictData, owner: Player) -> bool:
+func can_district_be_destroyed(district: DistrictData, _owner: Player) -> bool:
 	"""Check if a district can be destroyed (for Keep ability)"""
 	if district.ability_script != null and district.ability_script.has_method("can_be_destroyed"):
 		return district.ability_script.can_be_destroyed(district, owner)

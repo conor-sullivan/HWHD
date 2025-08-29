@@ -262,25 +262,25 @@ func _on_warlord_ability_done() -> void:
 
 
 func _on_requested_district_destroyed_by_opponent(_card: DistrictData) -> void:
-	if not is_targetable_by_warlord:
-		return
+	#if not is_targetable_by_warlord or not GameData.current_battle.current_players_turn.is_doing_necropolis_ability:
+		#return
 	if _card != resource:
 		return
 	disable_collision()
-#	GameEvents.district_card_selected_by_warlord.emit(GameData.current_battle.current_players_turn, resource)
 	%ExplosionParticles.start()
 	await get_tree().create_timer(0.5).timeout
 
-	GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
+	if not GameData.current_battle.current_players_turn.is_doing_necropolis_ability:
+		GameEvents.district_card_destroyed_by_warlord.emit(player_owner, resource)
 
 	var discard = get_tree().get_first_node_in_group('player_discard_collection') as CardCollection3D
+	var discard_index = discard.cards.size()
 	var parent_collection = get_parent()
 	if parent_collection is CardCollection3D:
 		var index = parent_collection.cards.find(self)
 		if index != -1:
 			parent_collection.remove_card(index)
-			discard.insert_card(self, 0)
-			#call_deferred("queue_free")
+			discard.insert_card(self, discard_index)
 
 
 func _on_gain_gold_for_districts(player: Player, _color: String) -> void:

@@ -77,3 +77,7 @@ res://scenes/battle/battle.tscn
 res://scenes/hud/hud.tscn
 res://scenes/in_battle_card_selector_display/in_play_card_selector_display.gd
 res://scripts/singletons/game_events.gd
+res://resources/districts/district_abilities/necropolis_ability.gd
+res://state_machine/opponent_turn_state.gd
+res://state_machine/player_turn_state.gd
+res://scripts/singletons/district_abilities_manager.gd
